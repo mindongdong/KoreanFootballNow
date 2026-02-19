@@ -1,7 +1,10 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
-import { join } from 'path';
+import { dirname, join } from 'path';
+import { fileURLToPath } from 'url';
 import { Resend } from 'resend';
 import { findLatestNewsletter, buildNewsletter } from '../newsletters/core.js';
+
+const __dirname = dirname(fileURLToPath(import.meta.url));
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
