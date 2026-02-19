@@ -74,8 +74,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     if (fromEmail && latestMdPath) {
       const { subject, html } = buildNewsletter(latestMdPath, newslettersDir);
       console.log('[debug] built subject:', subject);
-      await resend.emails.send({ from: fromEmail, to: trimmedEmail, subject, html });
-      console.log('[debug] email sent');
+      const sendResult = await resend.emails.send({ from: fromEmail, to: trimmedEmail, subject, html });
+      console.log('[debug] send result:', JSON.stringify(sendResult));
     }
   } catch (err) {
     console.error('Failed to send welcome newsletter:', err);
