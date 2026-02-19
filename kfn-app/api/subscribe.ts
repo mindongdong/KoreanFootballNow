@@ -63,19 +63,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   }
 
   // Best-effort: send latest newsletter to new subscriber
+  // Resend rate limit: 2 req/s — contacts.list + contacts.create 이후 대기
   try {
     const fromEmail = process.env.RESEND_FROM_EMAIL;
-    const newslettersDir = join(__dirname, '..', 'newsletters');
-    console.log('[debug] __dirname:', __dirname);
-    console.log('[debug] newslettersDir:', newslettersDir);
-    console.log('[debug] fromEmail:', fromEmail ? 'SET' : 'NOT SET');
-    const latestMdPath = findLatestNewsletter(newslettersDir);
-    console.log('[debug] latestMdPath:', latestMdPath);
-    if (fromEmail && latestMdPath) {
-      const { subject, html } = buildNewsletter(latestMdPath, newslettersDir);
-      console.log('[debug] built subject:', subject);
-      const sendResult = await resend.emails.send({ from: fromEmail, to: trimmedEmail, subject, html });
-      console.log('[debug] send result:', JSON.stringify(sendResult));
+    if (fromEmail) {
+      const newslettersDir = join(__dirname, '..', 'newsletters');
+      const latestMdPath = findLatestNewsletter(newslettersDir);
+      if (latestMdPath) {
+        const { subject, html } = buildNewsletter(latestMdPath, newslettersDir);
+        await new Promise((r) => setTimeout(r, 1000));
+        await resend.emails.send({ from: fromEmail, to: trimmedEmail, subject, html });
+      }
     }
   } catch (err) {
     console.error('Failed to send welcome newsletter:', err);
