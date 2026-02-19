@@ -63,7 +63,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const fromEmail = process.env.RESEND_FROM_EMAIL;
     if (fromEmail) {
-      const newslettersDir = join(process.cwd(), 'newsletters');
+      const newslettersDir = join(__dirname, '..', 'newsletters');
       const latestMdPath = findLatestNewsletter(newslettersDir);
       if (latestMdPath) {
         const { subject, html } = buildNewsletter(latestMdPath, newslettersDir);
