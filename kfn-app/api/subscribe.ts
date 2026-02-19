@@ -65,13 +65,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
   // Best-effort: send latest newsletter to new subscriber
   try {
     const fromEmail = process.env.RESEND_FROM_EMAIL;
-    if (fromEmail) {
-      const newslettersDir = join(__dirname, '..', 'newsletters');
-      const latestMdPath = findLatestNewsletter(newslettersDir);
-      if (latestMdPath) {
-        const { subject, html } = buildNewsletter(latestMdPath, newslettersDir);
-        await resend.emails.send({ from: fromEmail, to: trimmedEmail, subject, html });
-      }
+    const newslettersDir = join(__dirname, '..', 'newsletters');
+    console.log('[debug] __dirname:', __dirname);
+    console.log('[debug] newslettersDir:', newslettersDir);
+    console.log('[debug] fromEmail:', fromEmail ? 'SET' : 'NOT SET');
+    const latestMdPath = findLatestNewsletter(newslettersDir);
+    console.log('[debug] latestMdPath:', latestMdPath);
+    if (fromEmail && latestMdPath) {
+      const { subject, html } = buildNewsletter(latestMdPath, newslettersDir);
+      console.log('[debug] built subject:', subject);
+      await resend.emails.send({ from: fromEmail, to: trimmedEmail, subject, html });
+      console.log('[debug] email sent');
     }
   } catch (err) {
     console.error('Failed to send welcome newsletter:', err);
