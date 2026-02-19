@@ -4,8 +4,13 @@
   "outputDirectory": "dist",
   "installCommand": "npm install",
   "framework": "vite",
+  "functions": {
+    "api/subscribe.ts": {
+      "includeFiles": "newsletters/**"
+    }
+  },
   "rewrites": [
-    { "source": "/((?!assets/|.*\\.csv$).*)", "destination": "/index.html" }
+    { "source": "/((?!api/|assets/|.*\\.csv$).*)", "destination": "/index.html" }
   ],
   "headers": [
     {
