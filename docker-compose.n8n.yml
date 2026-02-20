@@ -13,6 +13,11 @@ services:
     environment:
       # n8n 기본 설정
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_NODES_EXCLUDE=
+
+      # Task runner 타임아웃 (31명 크롤링: 약 5~10분 소요)
+      - N8N_RUNNERS_TASK_TIMEOUT=900
+      - N8N_RUNNERS_HEARTBEAT_INTERVAL=120
 
       # Puppeteer/Playwright 설정
       - PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
