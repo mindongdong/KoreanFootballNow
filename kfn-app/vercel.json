@@ -7,6 +7,12 @@
   "functions": {
     "api/subscribe.ts": {
       "includeFiles": "newsletters/**"
+    },
+    "api/player-stats.ts": {
+      "maxDuration": 10
+    },
+    "api/player-profile.ts": {
+      "maxDuration": 10
     }
   },
   "rewrites": [
