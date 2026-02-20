@@ -217,7 +217,7 @@ function renderTop3(content: string): string {
                                                 </td>
                                             </tr>
                                         </table>
-                                        <p style="margin: 16px 0 0 0; padding: 10px; background-color: #fafafa; font-size: 11px; color: #666666; border-radius: 6px;">시즌 누적: ${season}</p>
+                                        <p style="margin: 16px 0 0 0; padding: 10px; background-color: #fafafa; font-size: 11px; color: #666666; border-radius: 6px;">시즌 누적: ${season}</p>${p.props['코멘트'] ? `\n                                        <p style="margin: 10px 0 0 0; font-size: 12px; color: #444444; line-height: 1.6; font-style: italic;">${p.props['코멘트']}</p>` : ''}
                                     </td>
                                 </tr>
                             </table>`;
@@ -249,7 +249,7 @@ function renderTop3(content: string): string {
                                             </tr>
                                         </table>
                                         <p style="margin: 12px 0 0 0; font-size: 12px; color: #666666;">${summary}</p>
-                                        <p style="margin: 8px 0 0 0; font-size: 11px; color: #999999;">시즌 누적: ${season}</p>
+                                        <p style="margin: 8px 0 0 0; font-size: 11px; color: #999999;">시즌 누적: ${season}</p>${p.props['코멘트'] ? `\n                                        <p style="margin: 8px 0 0 0; font-size: 11px; color: #444444; line-height: 1.5; font-style: italic;">${p.props['코멘트']}</p>` : ''}
                                     </td>
                                 </tr>
                             </table>`;
