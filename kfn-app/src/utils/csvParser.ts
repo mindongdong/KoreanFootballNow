@@ -14,6 +14,29 @@ export const parseRecentMatch = (jsonString: string | null): RecentMatch | null 
 };
 
 export const loadPlayerData = async (filePath: string): Promise<Player[]> => {
+  // 1. Try API first
+  try {
+    const apiResponse = await fetch('/api/player-stats', {
+      signal: AbortSignal.timeout(10000),
+    });
+    if (apiResponse.ok) {
+      const json = await apiResponse.json();
+      if (json.data && Array.isArray(json.data)) {
+        return (json.data as Player[]).map((player) => ({
+          ...player,
+          recent_match: parseRecentMatch(
+            typeof player.recent_matches_json === 'string'
+              ? player.recent_matches_json
+              : null
+          ),
+        }));
+      }
+    }
+  } catch {
+    console.warn('[loadPlayerData] API unavailable, falling back to CSV');
+  }
+
+  // 2. CSV fallback (original logic)
   const response = await fetch(filePath);
   const csvText = await response.text();
 
