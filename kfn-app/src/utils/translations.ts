@@ -10,6 +10,7 @@ const POSITION_TRANSLATIONS: Record<string, string> = {
   'right winger': '오른쪽 윙어',
   'forward': '포워드',
   'midfielder': '미드필더',
+  'left midfielder': '왼쪽 미드필더',
 };
 
 const LEAGUE_TRANSLATIONS: Record<string, string> = {
@@ -31,6 +32,7 @@ const LEAGUE_TRANSLATIONS: Record<string, string> = {
   'superligaen': '슈퍼리가엔',
   'super liga': '슈퍼리가',
   'ekstraklasa': '엑스트라클라사',
+  'eerste divisie': '에이르스터 디비시',
 };
 
 const TEAM_TRANSLATIONS: Record<string, string> = {
@@ -64,6 +66,12 @@ const TEAM_TRANSLATIONS: Record<string, string> = {
   'los angeles fc': 'LA FC',
   'minnesota united': '미네소타 유나이티드',
   'st. louis city': '세인트루이스 시티',
+  'coventry city': '코번트리 시티',
+  'karlsruher sc': '카를스루에 SC',
+  'beşiktaş': '베식타시',
+  'fc dordrecht': 'FC 도르드레흐트',
+  'oxford united': '옥스퍼드 유나이티드',
+  'first vienna fc': '피르스트 비엔나 FC',
 };
 
 const PREFERRED_FOOT_TRANSLATIONS: Record<string, string> = {
