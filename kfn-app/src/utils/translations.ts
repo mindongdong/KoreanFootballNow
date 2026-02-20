@@ -33,6 +33,7 @@ const LEAGUE_TRANSLATIONS: Record<string, string> = {
   'super liga': '슈퍼리가',
   'ekstraklasa': '엑스트라클라사',
   'eerste divisie': '에이르스터 디비시',
+  '2. liga': '2. Liga',
 };
 
 const TEAM_TRANSLATIONS: Record<string, string> = {
@@ -72,6 +73,7 @@ const TEAM_TRANSLATIONS: Record<string, string> = {
   'fc dordrecht': 'FC 도르드레흐트',
   'oxford united': '옥스퍼드 유나이티드',
   'first vienna fc': '피르스트 비엔나 FC',
+  'gent': '헨트',
 };
 
 const PREFERRED_FOOT_TRANSLATIONS: Record<string, string> = {
