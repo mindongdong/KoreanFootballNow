@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  n8n:
+    build:
+      context: .
+      dockerfile: Dockerfile.n8n
+    container_name: n8n
+    ports:
+      - "5678:5678"
+    volumes:
+      - n8n_data:/home/node/.n8n
+    environment:
+      # n8n 기본 설정
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+
+      # Puppeteer/Playwright 설정
+      - PUPPETEER_EXECUTABLE_PATH=/usr/bin/chromium-browser
+
+      # Code 노드에서 모듈 사용 허용 (중요!)
+      - NODE_FUNCTION_ALLOW_BUILTIN=*
+      - NODE_FUNCTION_ALLOW_EXTERNAL=*
+
+      # playwright-core 모듈 경로 (Code 노드에서 require('playwright-core') 가능)
+      - NODE_PATH=/opt/n8n-custom/node_modules
+    cap_add:
+      - SYS_ADMIN
+    shm_size: '2gb'
+    restart: unless-stopped
+
+volumes:
+  n8n_data:

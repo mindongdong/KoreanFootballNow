@@ -1,0 +1,81 @@
+# Stage 1: Alpine에서 Chromium 및 의존성 설치
+FROM alpine:3.22 AS chromium-builder
+
+RUN apk add --no-cache \
+    chromium \
+    nss \
+    freetype \
+    harfbuzz \
+    ca-certificates \
+    ttf-freefont
+
+# Stage 2: n8n 이미지에 Chromium 복사
+FROM n8nio/n8n:latest
+
+USER root
+
+# Chromium 바이너리 및 라이브러리 복사
+COPY --from=chromium-builder /usr/bin/chromium-browser /usr/bin/chromium-browser
+COPY --from=chromium-builder /usr/lib/chromium /usr/lib/chromium
+COPY --from=chromium-builder /usr/share/fonts /usr/share/fonts
+
+# 공유 라이브러리 복사 (nss, freetype, harfbuzz 등)
+COPY --from=chromium-builder /usr/lib/libnss* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libnspr* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libsmime* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libssl3.so /usr/lib/
+COPY --from=chromium-builder /usr/lib/libplc4.so /usr/lib/
+COPY --from=chromium-builder /usr/lib/libplds4.so /usr/lib/
+COPY --from=chromium-builder /usr/lib/libfreetype* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libharfbuzz* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libfontconfig* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libpng* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libbrotli* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libgraphite2* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libexpat* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libdbus* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libatk* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libatspi* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libgdk* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libgtk* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libglib* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libgobject* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libgio* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libgmodule* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libpango* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libcairo* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libpixman* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libX* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libxcb* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libxkb* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libwayland* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libffi* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libintl* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libmount* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libblkid* /usr/lib/
+COPY --from=chromium-builder /usr/lib/libpcre* /usr/lib/
+COPY --from=chromium-builder /etc/fonts /etc/fonts
+
+# chromium 심볼릭 링크
+RUN ln -sf /usr/bin/chromium-browser /usr/bin/chromium
+
+# Playwright 환경 변수
+ENV PLAYWRIGHT_SKIP_BROWSER_DOWNLOAD=1 \
+    PLAYWRIGHT_BROWSERS_PATH=/usr/bin \
+    NODE_PATH=/opt/n8n-custom/node_modules
+
+# 커스텀 모듈 디렉토리 생성
+RUN mkdir -p /opt/n8n-custom && \
+    chown -R node:node /opt/n8n-custom
+
+USER node
+
+# Playwright 설치 (playwright-core만 - 브라우저 번들 제외)
+WORKDIR /opt/n8n-custom
+RUN npm init -y && \
+    npm install playwright-core
+
+# 설치 확인
+RUN node -e "const { chromium } = require('/opt/n8n-custom/node_modules/playwright-core'); console.log('✓ Playwright installed');"
+
+WORKDIR /home/node
