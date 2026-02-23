@@ -1,0 +1,515 @@
+country,division,league_name_fotmob,league_name_kr,fotmob_league_id,team_name_fotmob,fotmob_team_id,team_name_kr
+잉글랜드,1부,Premier League,프리미어리그,47,Arsenal,9825,아스널
+잉글랜드,1부,Premier League,프리미어리그,47,Manchester City,8456,맨체스터 시티
+잉글랜드,1부,Premier League,프리미어리그,47,Aston Villa,10252,아스톤 빌라
+잉글랜드,1부,Premier League,프리미어리그,47,Chelsea,8455,첼시
+잉글랜드,1부,Premier League,프리미어리그,47,Manchester United,10260,맨체스터 유나이티드
+잉글랜드,1부,Premier League,프리미어리그,47,Liverpool,8650,리버풀
+잉글랜드,1부,Premier League,프리미어리그,47,Brentford,9937,브렌트퍼드
+잉글랜드,1부,Premier League,프리미어리그,47,AFC Bournemouth,8678,본머스
+잉글랜드,1부,Premier League,프리미어리그,47,Everton,8668,에버턴
+잉글랜드,1부,Premier League,프리미어리그,47,Fulham,9879,풀럼
+잉글랜드,1부,Premier League,프리미어리그,47,Newcastle United,10261,뉴캐슬 유나이티드
+잉글랜드,1부,Premier League,프리미어리그,47,Sunderland,8472,선덜랜드
+잉글랜드,1부,Premier League,프리미어리그,47,Crystal Palace,9826,크리스털 팰리스
+잉글랜드,1부,Premier League,프리미어리그,47,Brighton & Hove Albion,10204,브라이턴
+잉글랜드,1부,Premier League,프리미어리그,47,Leeds United,8463,리즈 유나이티드
+잉글랜드,1부,Premier League,프리미어리그,47,Tottenham Hotspur,8586,토트넘 홋스퍼
+잉글랜드,1부,Premier League,프리미어리그,47,Nottingham Forest,10203,노팅엄 포레스트
+잉글랜드,1부,Premier League,프리미어리그,47,West Ham United,8654,웨스트햄 유나이티드
+잉글랜드,1부,Premier League,프리미어리그,47,Burnley,8191,번리
+잉글랜드,1부,Premier League,프리미어리그,47,Wolverhampton Wanderers,8602,울버햄프턴
+잉글랜드,2부,Championship,챔피언십,48,Coventry City,8669,코번트리 시티
+잉글랜드,2부,Championship,챔피언십,48,Middlesbrough,8549,미들즈브러
+잉글랜드,2부,Championship,챔피언십,48,Millwall,10004,밀월
+잉글랜드,2부,Championship,챔피언십,48,Ipswich Town,9902,입스위치 타운
+잉글랜드,2부,Championship,챔피언십,48,Hull City,8667,헐 시티
+잉글랜드,2부,Championship,챔피언십,48,Wrexham,9841,렉섬
+잉글랜드,2부,Championship,챔피언십,48,Birmingham City,8658,버밍엄 시티
+잉글랜드,2부,Championship,챔피언십,48,Derby County,10170,더비 카운티
+잉글랜드,2부,Championship,챔피언십,48,Watford,9817,왓퍼드
+잉글랜드,2부,Championship,챔피언십,48,Preston North End,8411,프레스턴 노스엔드
+잉글랜드,2부,Championship,챔피언십,48,Southampton,8466,사우샘프턴
+잉글랜드,2부,Championship,챔피언십,48,Bristol City,8427,브리스톨 시티
+잉글랜드,2부,Championship,챔피언십,48,Queens Park Rangers,10172,퀸즈 파크 레인저스
+잉글랜드,2부,Championship,챔피언십,48,Sheffield United,8657,셰필드 유나이티드
+잉글랜드,2부,Championship,챔피언십,48,Swansea City,10003,스완지 시티
+잉글랜드,2부,Championship,챔피언십,48,Stoke City,10194,스토크 시티
+잉글랜드,2부,Championship,챔피언십,48,Charlton Athletic,8451,찰턴 애슬레틱
+잉글랜드,2부,Championship,챔피언십,48,Norwich City,9850,노리치 시티
+잉글랜드,2부,Championship,챔피언십,48,Portsmouth,8462,포츠머스
+잉글랜드,2부,Championship,챔피언십,48,Blackburn Rovers,8655,블랙번 로버스
+잉글랜드,2부,Championship,챔피언십,48,West Bromwich Albion,8659,웨스트브로미치 앨비언
+잉글랜드,2부,Championship,챔피언십,48,Leicester City,8197,레스터 시티
+잉글랜드,2부,Championship,챔피언십,48,Oxford United,8653,옥스퍼드 유나이티드
+잉글랜드,2부,Championship,챔피언십,48,Sheffield Wednesday,10163,셰필드 웬즈데이
+독일,1부,Bundesliga,분데스리가,54,Bayern München,9823,바이에른 뮌헨
+독일,1부,Bundesliga,분데스리가,54,Borussia Dortmund,9789,보루시아 도르트문트
+독일,1부,Bundesliga,분데스리가,54,Hoffenheim,8226,호펜하임
+독일,1부,Bundesliga,분데스리가,54,VfB Stuttgart,10269,VfB 슈투트가르트
+독일,1부,Bundesliga,분데스리가,54,RB Leipzig,178475,RB 라이프치히
+독일,1부,Bundesliga,분데스리가,54,Bayer Leverkusen,8178,바이어 레버쿠젠
+독일,1부,Bundesliga,분데스리가,54,Freiburg,8358,프라이부르크
+독일,1부,Bundesliga,분데스리가,54,Eintracht Frankfurt,9810,아인트라흐트 프랑크푸르트
+독일,1부,Bundesliga,분데스리가,54,Union Berlin,8149,우니온 베를린
+독일,1부,Bundesliga,분데스리가,54,Augsburg,8406,아우크스부르크
+독일,1부,Bundesliga,분데스리가,54,Hamburger SV,9790,함부르거 SV
+독일,1부,Bundesliga,분데스리가,54,1. FC Köln,8722,1. FC 쾰른
+독일,1부,Bundesliga,분데스리가,54,Mainz 05,9905,마인츠 05
+독일,1부,Bundesliga,분데스리가,54,Borussia Mönchengladbach,9788,보루시아 묀헨글라트바흐
+독일,1부,Bundesliga,분데스리가,54,Wolfsburg,8721,볼프스부르크
+독일,1부,Bundesliga,분데스리가,54,St. Pauli,8152,장크트 파울리
+독일,1부,Bundesliga,분데스리가,54,Werder Bremen,8697,베르더 브레멘
+독일,1부,Bundesliga,분데스리가,54,FC Heidenheim,94937,FC 하이덴하임
+독일,2부,2. Bundesliga,2. 분데스리가,146,Schalke 04,10189,샬케 04
+독일,2부,2. Bundesliga,2. 분데스리가,146,Darmstadt,8262,다름슈타트
+독일,2부,2. Bundesliga,2. 분데스리가,146,Elversberg,8232,엘버스베르크
+독일,2부,2. Bundesliga,2. 분데스리가,146,Paderborn,8460,파더보른
+독일,2부,2. Bundesliga,2. 분데스리가,146,Hannover 96,9904,하노버 96
+독일,2부,2. Bundesliga,2. 분데스리가,146,Kaiserslautern,8350,카이저슬라우테른
+독일,2부,2. Bundesliga,2. 분데스리가,146,Hertha BSC,8177,헤르타 BSC
+독일,2부,2. Bundesliga,2. 분데스리가,146,1. FC Nürnberg,8165,1. FC 뉘른베르크
+독일,2부,2. Bundesliga,2. 분데스리가,146,Karlsruher SC,8295,카를스루에 SC
+독일,2부,2. Bundesliga,2. 분데스리가,146,Bochum,9911,보훔
+독일,2부,2. Bundesliga,2. 분데스리가,146,Arminia Bielefeld,9912,아르미니아 빌레펠트
+독일,2부,2. Bundesliga,2. 분데스리가,146,Fortuna Düsseldorf,8194,포르투나 뒤셀도르프
+독일,2부,2. Bundesliga,2. 분데스리가,146,Eintracht Braunschweig,9776,아인트라흐트 브라운슈바이크
+독일,2부,2. Bundesliga,2. 분데스리가,146,Holstein Kiel,8150,홀슈타인 킬
+독일,2부,2. Bundesliga,2. 분데스리가,146,Preussen Münster,8171,프로이센 뮌스터
+독일,2부,2. Bundesliga,2. 분데스리가,146,Magdeburg,8188,마그데부르크
+독일,2부,2. Bundesliga,2. 분데스리가,146,Dynamo Dresden,8480,디나모 드레스덴
+독일,2부,2. Bundesliga,2. 분데스리가,146,Greuther Fürth,8357,그로이터 퓌르트
+프랑스,1부,Ligue 1,리그 1,53,Paris Saint-Germain,9847,파리 생제르맹
+프랑스,1부,Ligue 1,리그 1,53,Lens,8588,랑스
+프랑스,1부,Ligue 1,리그 1,53,Lyon,9748,리옹
+프랑스,1부,Ligue 1,리그 1,53,Marseille,8592,마르세유
+프랑스,1부,Ligue 1,리그 1,53,Lille,8639,릴
+프랑스,1부,Ligue 1,리그 1,53,Rennes,9851,렌
+프랑스,1부,Ligue 1,리그 1,53,Strasbourg,9848,스트라스부르
+프랑스,1부,Ligue 1,리그 1,53,Monaco,9829,모나코
+프랑스,1부,Ligue 1,리그 1,53,Lorient,8689,로리앙
+프랑스,1부,Ligue 1,리그 1,53,Toulouse,9941,툴루즈
+프랑스,1부,Ligue 1,리그 1,53,Brest,8521,브레스트
+프랑스,1부,Ligue 1,리그 1,53,Angers,8121,앙제
+프랑스,1부,Ligue 1,리그 1,53,Le Havre,9746,르아브르
+프랑스,1부,Ligue 1,리그 1,53,Nice,9831,니스
+프랑스,1부,Ligue 1,리그 1,53,Paris FC,6379,파리 FC
+프랑스,1부,Ligue 1,리그 1,53,Auxerre,8583,오세르
+프랑스,1부,Ligue 1,리그 1,53,Nantes,9830,낭트
+프랑스,1부,Ligue 1,리그 1,53,Metz,8550,메스
+스페인,1부,LaLiga,라리가,87,Barcelona,8634,바르셀로나
+스페인,1부,LaLiga,라리가,87,Real Madrid,8633,레알 마드리드
+스페인,1부,LaLiga,라리가,87,Villarreal,10205,비야레알
+스페인,1부,LaLiga,라리가,87,Atletico Madrid,9906,아틀레티코 마드리드
+스페인,1부,LaLiga,라리가,87,Real Betis,8603,레알 베티스
+스페인,1부,LaLiga,라리가,87,Celta Vigo,9910,셀타 비고
+스페인,1부,LaLiga,라리가,87,Espanyol,8558,에스파뇰
+스페인,1부,LaLiga,라리가,87,Athletic Club,8315,아틀레틱 클럽
+스페인,1부,LaLiga,라리가,87,Osasuna,8371,오사수나
+스페인,1부,LaLiga,라리가,87,Real Sociedad,8560,레알 소시에다드
+스페인,1부,LaLiga,라리가,87,Sevilla,8302,세비야
+스페인,1부,LaLiga,라리가,87,Getafe,8305,헤타페
+스페인,1부,LaLiga,라리가,87,Girona,7732,지로나
+스페인,1부,LaLiga,라리가,87,Rayo Vallecano,8370,라요 바예카노
+스페인,1부,LaLiga,라리가,87,Deportivo Alaves,9866,데포르티보 알라베스
+스페인,1부,LaLiga,라리가,87,Valencia,10267,발렌시아
+스페인,1부,LaLiga,라리가,87,Elche,10268,엘체
+스페인,1부,LaLiga,라리가,87,Mallorca,8661,마요르카
+스페인,1부,LaLiga,라리가,87,Levante,8581,레반테
+스페인,1부,LaLiga,라리가,87,Real Oviedo,8670,레알 오비에도
+스페인,2부,LaLiga2,라리가2,140,Racing Santander,8696,라싱 산탄데르
+스페인,2부,LaLiga2,라리가2,140,Castellon,10279,카스테욘
+스페인,2부,LaLiga2,라리가2,140,Almeria,9865,알메리아
+스페인,2부,LaLiga2,라리가2,140,Deportivo La Coruna,9783,데포르티보 라코루냐
+스페인,2부,LaLiga2,라리가2,140,Malaga,9864,말라가
+스페인,2부,LaLiga2,라리가2,140,Las Palmas,8306,라스팔마스
+스페인,2부,LaLiga2,라리가2,140,Cordoba,7869,코르도바
+스페인,2부,LaLiga2,라리가2,140,Sporting Gijon,9869,스포르팅 히혼
+스페인,2부,LaLiga2,라리가2,140,Burgos CF,7876,부르고스 CF
+스페인,2부,LaLiga2,라리가2,140,AD Ceuta FC,357259,AD 세우타 FC
+스페인,2부,LaLiga2,라리가2,140,Eibar,8372,에이바르
+스페인,2부,LaLiga2,라리가2,140,Cadiz,8385,카디스
+스페인,2부,LaLiga2,라리가2,140,Albacete,8393,알바세테
+스페인,2부,LaLiga2,라리가2,140,Leganes,7854,레가네스
+스페인,2부,LaLiga2,라리가2,140,Granada,7878,그라나다
+스페인,2부,LaLiga2,라리가2,140,FC Andorra,494050,FC 안도라
+스페인,2부,LaLiga2,라리가2,140,Real Sociedad B,161744,레알 소시에다드 B
+스페인,2부,LaLiga2,라리가2,140,SD Huesca,96925,SD 우에스카
+스페인,2부,LaLiga2,라리가2,140,Real Valladolid,10281,레알 바야돌리드
+스페인,2부,LaLiga2,라리가2,140,Cultural Leonesa,1753,쿨투랄 레오네사
+스페인,2부,LaLiga2,라리가2,140,CD Mirandes,4032,CD 미란데스
+스페인,2부,LaLiga2,라리가2,140,Real Zaragoza,8394,레알 사라고사
+이탈리아,1부,Serie A,세리에 A,55,Inter,8636,인테르
+이탈리아,1부,Serie A,세리에 A,55,Milan,8564,밀란
+이탈리아,1부,Serie A,세리에 A,55,Roma,8686,로마
+이탈리아,1부,Serie A,세리에 A,55,Napoli,9875,나폴리
+이탈리아,1부,Serie A,세리에 A,55,Juventus,9885,유벤투스
+이탈리아,1부,Serie A,세리에 A,55,Como,10171,코모
+이탈리아,1부,Serie A,세리에 A,55,Atalanta,8524,아탈란타
+이탈리아,1부,Serie A,세리에 A,55,Sassuolo,7943,사수올로
+이탈리아,1부,Serie A,세리에 A,55,Lazio,8543,라치오
+이탈리아,1부,Serie A,세리에 A,55,Bologna,9857,볼로냐
+이탈리아,1부,Serie A,세리에 A,55,Udinese,8600,우디네세
+이탈리아,1부,Serie A,세리에 A,55,Parma,10167,파르마
+이탈리아,1부,Serie A,세리에 A,55,Cagliari,8529,칼리아리
+이탈리아,1부,Serie A,세리에 A,55,Genoa,10233,제노아
+이탈리아,1부,Serie A,세리에 A,55,Torino,9804,토리노
+이탈리아,1부,Serie A,세리에 A,55,Cremonese,7801,크레모네세
+이탈리아,1부,Serie A,세리에 A,55,Lecce,9888,레체
+이탈리아,1부,Serie A,세리에 A,55,Fiorentina,8535,피오렌티나
+이탈리아,1부,Serie A,세리에 A,55,Pisa,6479,피사
+이탈리아,1부,Serie A,세리에 A,55,Hellas Verona,9876,엘라스 베로나
+이탈리아,2부,Serie B,세리에 B,86,Venezia,7881,베네치아
+이탈리아,2부,Serie B,세리에 B,86,Monza,6504,몬차
+이탈리아,2부,Serie B,세리에 B,86,Frosinone,9891,프로시노네
+이탈리아,2부,Serie B,세리에 B,86,Palermo,8540,팔레르모
+이탈리아,2부,Serie B,세리에 B,86,Catanzaro,10168,카탄차로
+이탈리아,2부,Serie B,세리에 B,86,Modena,9887,모데나
+이탈리아,2부,Serie B,세리에 B,86,Juve Stabia,6106,유베 스타비아
+이탈리아,2부,Serie B,세리에 B,86,Cesena,584022,체세나
+이탈리아,2부,Serie B,세리에 B,86,Sudtirol,189475,쥐트티롤
+이탈리아,2부,Serie B,세리에 B,86,Empoli,8534,엠폴리
+이탈리아,2부,Serie B,세리에 B,86,Carrarese,6488,카라레세
+이탈리아,2부,Serie B,세리에 B,86,Padova,583944,파도바
+이탈리아,2부,Serie B,세리에 B,86,Sampdoria,9882,삼프도리아
+이탈리아,2부,Serie B,세리에 B,86,Avellino,6722,아벨리노
+이탈리아,2부,Serie B,세리에 B,86,Reggiana,6500,레자나
+이탈리아,2부,Serie B,세리에 B,86,Mantova,9889,만토바
+이탈리아,2부,Serie B,세리에 B,86,Spezia,9881,스페치아
+이탈리아,2부,Serie B,세리에 B,86,Virtus Entella,208932,비르투스 엔텔라
+이탈리아,2부,Serie B,세리에 B,86,Bari,9976,바리
+이탈리아,2부,Serie B,세리에 B,86,Pescara,9878,페스카라
+네덜란드,1부,Eredivisie,에레디비시,57,PSV Eindhoven,8640,PSV 에인트호번
+네덜란드,1부,Eredivisie,에레디비시,57,Feyenoord,10235,페예노르트
+네덜란드,1부,Eredivisie,에레디비시,57,NEC Nijmegen,8464,NEC 네이메헌
+네덜란드,1부,Eredivisie,에레디비시,57,Ajax,8593,아약스
+네덜란드,1부,Eredivisie,에레디비시,57,AZ Alkmaar,10229,AZ 알크마르
+네덜란드,1부,Eredivisie,에레디비시,57,FC Twente,8611,FC 트벤터
+네덜란드,1부,Eredivisie,에레디비시,57,Sparta Rotterdam,8614,스파르타 로테르담
+네덜란드,1부,Eredivisie,에레디비시,57,FC Utrecht,9908,FC 위트레흐트
+네덜란드,1부,Eredivisie,에레디비시,57,FC Groningen,8674,FC 흐로닝언
+네덜란드,1부,Eredivisie,에레디비시,57,SC Heerenveen,10228,SC 헤이렌번
+네덜란드,1부,Eredivisie,에레디비시,57,Fortuna Sittard,6422,포르투나 시타르트
+네덜란드,1부,Eredivisie,에레디비시,57,PEC Zwolle,6413,PEC 즈볼러
+네덜란드,1부,Eredivisie,에레디비시,57,Go Ahead Eagles,6433,호 어헤드 이글스
+네덜란드,1부,Eredivisie,에레디비시,57,Excelsior,10218,엑셀시오르
+네덜란드,1부,Eredivisie,에레디비시,57,FC Volendam,6601,FC 폴렌담
+네덜란드,1부,Eredivisie,에레디비시,57,NAC Breda,9761,NAC 브레다
+네덜란드,1부,Eredivisie,에레디비시,57,Telstar,6414,텔스타르
+네덜란드,1부,Eredivisie,에레디비시,57,Heracles,9791,헤라클레스
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,ADO Den Haag,10217,ADO 덴하흐
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,Cambuur,7788,캄뷔르
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,De Graafschap,8526,더 흐라프스합
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,Jong PSV,455494,용 PSV
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,Roda JC Kerkrade,9803,로다 JC 케르크라더
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,Willem II,8525,빌럼 II
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,FC Dordrecht,6631,FC 도르드레흐트
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,Almere City FC,4116,알메러 시티 FC
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,RKC Waalwijk,10219,RKC 발베이크
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,FC Den Bosch,9835,FC 덴보스
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,VVV-Venlo,9839,VVV 펜로
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,FC Eindhoven,6416,FC 에인트호번
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,Jong FC Utrecht,278960,용 FC 위트레흐트
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,Helmond Sport,6417,헬몬트 스포르트
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,MVV Maastricht,9838,MVV 마스트리흐트
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,FC Emmen,6660,FC 에멘
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,Jong AZ Alkmaar,681217,용 AZ 알크마르
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,TOP Oss,7781,TOP 오스
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,Vitesse,8277,피테서
+네덜란드,2부,Eerste Divisie,에르스터 디비시,111,Jong Ajax,163363,용 아약스
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Hearts,9860,하츠
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Rangers,8548,레인저스
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Celtic,9925,셀틱
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Motherwell,9927,마더웰
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Hibernian,10251,히버니언
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Falkirk,8596,폴커크
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Dundee United,9938,던디 유나이티드
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Aberdeen,8485,애버딘
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Dundee FC,8284,던디 FC
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,St. Mirren,9800,세인트 미렌
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Kilmarnock,8597,킬마녹
+스코틀랜드,1부,Premiership,스코티시 프리미어십,64,Livingston,8282,리빙스턴
+스코틀랜드,2부,Scottish Championship,스코티시 챔피언십,123,St. Johnstone,8467,세인트 존스턴
+스코틀랜드,2부,Scottish Championship,스코티시 챔피언십,123,Partick Thistle,8426,파틱 시슬
+스코틀랜드,2부,Scottish Championship,스코티시 챔피언십,123,Arbroath,8280,아브로스
+스코틀랜드,2부,Scottish Championship,스코티시 챔피언십,123,Ayr United,9913,에어 유나이티드
+스코틀랜드,2부,Scottish Championship,스코티시 챔피언십,123,Raith Rovers,10250,레이스 로버스
+스코틀랜드,2부,Scottish Championship,스코티시 챔피언십,123,Greenock Morton,8648,그리녹 모턴
+스코틀랜드,2부,Scottish Championship,스코티시 챔피언십,123,Dunfermline Athletic,8457,던펌린 애슬레틱
+스코틀랜드,2부,Scottish Championship,스코티시 챔피언십,123,Queen's Park,8235,퀸스 파크
+스코틀랜드,2부,Scottish Championship,스코티시 챔피언십,123,Airdrieonians,8176,에어드리오니언스
+스코틀랜드,2부,Scottish Championship,스코티시 챔피언십,123,Ross County,8649,로스 카운티
+튀르키예,1부,Super Lig,쉬페르리그,71,Galatasaray,8637,갈라타사라이
+튀르키예,1부,Super Lig,쉬페르리그,71,Fenerbahçe,8695,페네르바흐체
+튀르키예,1부,Super Lig,쉬페르리그,71,Trabzonspor,9752,트라브존스포르
+튀르키예,1부,Super Lig,쉬페르리그,71,Beşiktaş,10188,베식타스
+튀르키예,1부,Super Lig,쉬페르리그,71,Göztepe,1925,괴즈테페
+튀르키예,1부,Super Lig,쉬페르리그,71,Başakşehir,1933,바샥셰히르
+튀르키예,1부,Super Lig,쉬페르리그,71,Samsunspor,9750,삼순스포르
+튀르키예,1부,Super Lig,쉬페르리그,71,Kocaelispor,1569,코자엘리스포르
+튀르키예,1부,Super Lig,쉬페르리그,71,Gaziantep FK,4081,가지안테프 FK
+튀르키예,1부,Super Lig,쉬페르리그,71,Alanyaspor,4678,알라냐스포르
+튀르키예,1부,Super Lig,쉬페르리그,71,Rizespor,2166,리제스포르
+튀르키예,1부,Super Lig,쉬페르리그,71,Gençlerbirliği,7800,겐츨레르비를리이
+튀르키예,1부,Super Lig,쉬페르리그,71,Konyaspor,8622,코냐스포르
+튀르키예,1부,Super Lig,쉬페르리그,71,Antalyaspor,1931,안탈리아스포르
+튀르키예,1부,Super Lig,쉬페르리그,71,Eyüpspor,4681,에윱스포르
+튀르키예,1부,Super Lig,쉬페르리그,71,Kasımpaşa,4685,카슴파샤
+튀르키예,1부,Super Lig,쉬페르리그,71,Kayserispor,10182,카이세리스포르
+튀르키예,1부,Super Lig,쉬페르리그,71,Fatih Karagümrük,2088,파티흐 카라귐뤽
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Erzurumspor FK,281467,에르주룸스포르 FK
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Esenler Erokspor,863838,에센레르 에록스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Amed Sportif,96498,아메드 스포르티프
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Çorum FK,357274,초룸 FK
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Bodrum FK,658811,보드룸 FK
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Pendikspor,95745,펜딕스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Igdir FK,1281818,으디르 FK
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Manisa Futbol Kulübü,658812,마니사 FK
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Bandırmaspor,162975,반드르마스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Van Spor Kulübü,146408,반 스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Boluspor,4675,볼루스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Istanbulspor,106560,이스탄불스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Keçiörengücü,8387,케치외렌귀취
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Sivasspor,6265,시바스스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Ümraniyespor,281460,위므라니예스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Sariyer,2090,사리예르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Serik Spor,914196,세리크 스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Sakaryaspor,4124,사카리아스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Hatayspor,95749,하타이스포르
+튀르키예,2부,1. Lig,TFF 1. 리그,165,Adana Demirspor,1926,아다나 데미르스포르
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Union St.Gilloise,7978,위니옹 생질루아즈
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,St.Truiden,9997,신트트라위던
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Club Brugge,8342,클럽 브뤼허
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Anderlecht,8635,안데를레흐트
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,KV Mechelen,8203,KV 메헬런
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Gent,9991,헨트
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Genk,9987,헹크
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Standard Liege,9985,스탕다르 리에주
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Westerlo,10001,베스테를로
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Sporting Charleroi,9986,스포르팅 샤를루아
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Royal Antwerp,9988,로열 앤트워프
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Zulte Waregem,10000,쥘터 바러험
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,OH Leuven,1773,OH 뢰번
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,Cercle Brugge,9984,세르클 브뤼허
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,RAAL La Louviere,1218969,RAAL 라 루비에르
+벨기에,1부,Belgian Pro League,벨기에 프로리그,40,FCV Dender EH,7947,FCV 덴더르
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,SK Beveren,8475,SK 베버런
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Kortrijk,8571,코르트레이크
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Lommel,6702,로멀
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Beerschot,583877,베르스호트
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,FC Liege,6363,FC 리에주
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Patro Eisden,274583,파트로 에이스던
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Eupen,6351,오이펜
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Gent U23,1379188,헨트 U23
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,KSC Lokeren,213307,KSC 로케런
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,RWDM Brussels,9992,RWDM 브뤼셀
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,K. Lierse SK,465631,리르서 SK
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Francs Borains,96953,프랑 보랭
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Anderlecht Futures,1378461,안데를레흐트 퓨처스
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Genk U23,1378463,헹크 U23
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,RFC Seraing,149408,RFC 스랭
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Club Brugge NXT,1173026,클럽 브뤼허 NXT
+벨기에,2부,Challenger Pro League,챌린저 프로리그,264,Olympic de Charleroi,4137,올랭피크 드 샤를루아
+덴마크,1부,Superligaen,수페르리가엔,46,AGF,8071,AGF
+덴마크,1부,Superligaen,수페르리가엔,46,FC Midtjylland,8113,FC 미트윌란
+덴마크,1부,Superligaen,수페르리가엔,46,Brøndby IF,8595,브뢴뷔 IF
+덴마크,1부,Superligaen,수페르리가엔,46,Sønderjyske,8487,쇠네르위스케
+덴마크,1부,Superligaen,수페르리가엔,46,Nordsjælland,10202,노르셸란
+덴마크,1부,Superligaen,수페르리가엔,46,Viborg,9939,비보르
+덴마크,1부,Superligaen,수페르리가엔,46,FC København,8391,FC 코펜하겐
+덴마크,1부,Superligaen,수페르리가엔,46,OB,8414,OB
+덴마크,1부,Superligaen,수페르리가엔,46,Randers FC,8410,란데르스 FC
+덴마크,1부,Superligaen,수페르리가엔,46,Fredericia,8454,프레데리시아
+덴마크,1부,Superligaen,수페르리가엔,46,Silkeborg,8415,실케보르
+덴마크,1부,Superligaen,수페르리가엔,46,Vejle Boldklub,8231,베일레 볼클럽
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,Lyngby,9907,륑뷔
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,Hillerød,9940,힐레뢰
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,AC Horsens,9814,AC 호르센스
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,Hvidovre,10240,비도브레
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,Esbjerg fB,8285,에스비에르 fB
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,AaB,8470,AaB
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,Kolding IF,6308,콜딩 IF
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,B 93,8453,B 93
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,Aarhus Fremad,8109,오르후스 프레마
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,Hobro,9950,호브로
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,HB Køge,8289,HB 쾨에
+덴마크,2부,NordicBet Liga,노르딕벳 리가,85,Middelfart,9969,미엘파르트
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,FC Porto,9773,FC 포르투
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Sporting CP,9768,스포르팅 CP
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Benfica,9772,벤피카
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Braga,10264,브라가
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Gil Vicente,9764,질 비센테
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Estoril,7842,에스토릴
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Moreirense,8348,모레이렌스
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Famalicao,1634,파말리캉
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Vitoria de Guimaraes,7844,비토리아 드 기마랑이스
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Arouca,158085,아로카
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Alverca,9780,알베르카
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Estrela da Amadora,1074320,에스트렐라 다 아마도라
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Casa Pia AC,212821,카사 피아 AC
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Nacional,10214,나시오날
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Rio Ave,7841,리우 아베
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Tondela,188163,톤델라
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,Santa Clara,1567,산타 클라라
+포르투갈,1부,Liga Portugal,리가 포르투갈,61,AVS Futebol SAD,1889,AVS 푸테볼 SAD
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,FK Crvena Zvezda,8687,FK 츠르베나 즈베즈다
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,Partizan Beograd,7998,파르티잔 베오그라드
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,Vojvodina,6406,보이보디나
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,Novi Pazar,187854,노비 파자르
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,Zeleznicar Pancevo,676141,젤레즈니차르 판체보
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,FK Radnik Surdulica,463461,FK 라드니크 수르둘리차
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,FK Radnicki 1923,1675,FK 라드니츠키 1923
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,Cukaricki,6374,추카리츠키
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,OFK Beograd,8692,OFK 베오그라드
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,Radnicki Nis,6410,라드니츠키 니시
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,TSC Backa Topola,676140,TSC 바츠카 토폴라
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,FK IMT Beograd,568569,FK IMT 베오그라드
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,Mladost Lucani,1739,믈라도스트 루차니
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,Javor,2391,야보르
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,FK Spartak Subotica,176525,FK 스파르타크 수보티차
+세르비아,1부,Super Liga,세르비아 슈퍼리가,182,Napredak,6050,나프레다크
+오스트리아,2부,2. Liga,2. 리가,119,Austria Lustenau,9982,오스트리아 루스테나우
+오스트리아,2부,2. Liga,2. 리가,119,Amstetten,8326,암슈테텐
+오스트리아,2부,2. Liga,2. 리가,119,SKN St. Pölten,1907,SKN 장크트푈텐
+오스트리아,2부,2. Liga,2. 리가,119,Admira Wacker,10053,아드미라 바커
+오스트리아,2부,2. Liga,2. 리가,119,Floridsdorfer AC,8274,플로리츠도르퍼 AC
+오스트리아,2부,2. Liga,2. 리가,119,Austria Wien II,10248,오스트리아 빈 II
+오스트리아,2부,2. Liga,2. 리가,119,FC Liefering,1915,FC 리페링
+오스트리아,2부,2. Liga,2. 리가,119,First Vienna FC,2030,피르스트 비엔나 FC
+오스트리아,2부,2. Liga,2. 리가,119,Austria Salzburg,206091,오스트리아 잘츠부르크
+오스트리아,2부,2. Liga,2. 리가,119,Rapid Wien II,1952,라피트 빈 II
+오스트리아,2부,2. Liga,2. 리가,119,SK Austria Klagenfurt,10009,SK 오스트리아 클라겐푸르트
+오스트리아,2부,2. Liga,2. 리가,119,Kapfenberger SV,9979,카프펜베르거 SV
+오스트리아,2부,2. Liga,2. 리가,119,SPG HOGO Wels,946908,SPG HOGO 벨스
+오스트리아,2부,2. Liga,2. 리가,119,Sturm Graz II,1921,슈투름 그라츠 II
+오스트리아,2부,2. Liga,2. 리가,119,SW Bregenz,80619,SW 브레겐츠
+오스트리아,2부,2. Liga,2. 리가,119,SV Stripfing,611179,SV 스트립핑
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Chelsea U21,773652,첼시 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Ipswich Town U21,1796115,입스위치 타운 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Manchester United U21,1070257,맨체스터 유나이티드 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Fulham U21,860801,풀럼 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Liverpool U21,1070259,리버풀 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Southampton U21,773645,사우샘프턴 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Tottenham Hotspur U21,860802,토트넘 홋스퍼 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Manchester City U21,860800,맨체스터 시티 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Leicester City U21,773642,레스터 시티 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Brighton & Hove Albion U21,773678,브라이턴 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Arsenal U21,950214,아스널 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,West Ham United U21,773649,웨스트햄 유나이티드 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Crystal Palace U21,1267874,크리스털 팰리스 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Everton U21,773653,에버턴 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Stoke City U21,773650,스토크 시티 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Middlesbrough U21,773660,미들즈브러 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Sunderland U21,773657,선덜랜드 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Aston Villa U21,1070261,아스톤 빌라 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Wolverhampton Wanderers U21,773683,울버햄프턴 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Nottingham Forest U21,1389162,노팅엄 포레스트 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Leeds United U21,1177187,리즈 유나이티드 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Newcastle United U21,860798,뉴캐슬 유나이티드 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Reading U21,773686,레딩 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Norwich City U21,773658,노리치 시티 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Birmingham U21,1796111,버밍엄 시티 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Blackburn Rovers U21,773685,블랙번 로버스 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Burnley U21,1796112,번리 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,Derby County U21,773680,더비 카운티 U21
+잉글랜드,U21,Premier League 2,프리미어리그 2,9084,West Bromwich Albion U21,773656,웨스트브로미치 앨비언 U21
+프랑스,2부,Ligue 2,리그 2,110,Troyes,10242,트루아
+프랑스,2부,Ligue 2,리그 2,110,Saint-Etienne,9853,생테티엔
+프랑스,2부,Ligue 2,리그 2,110,Reims,9837,랭스
+프랑스,2부,Ligue 2,리그 2,110,Red Star,6390,레드 스타
+프랑스,2부,Ligue 2,리그 2,110,Le Mans,8682,르망
+프랑스,2부,Ligue 2,리그 2,110,Dunkerque,47214,됭케르크
+프랑스,2부,Ligue 2,리그 2,110,Annecy FC,293352,안시 FC
+프랑스,2부,Ligue 2,리그 2,110,Rodez,4120,로데즈
+프랑스,2부,Ligue 2,리그 2,110,Montpellier,10249,몽펠리에
+프랑스,2부,Ligue 2,리그 2,110,Pau,6355,포
+프랑스,2부,Ligue 2,리그 2,110,Guingamp,9747,갱강
+프랑스,2부,Ligue 2,리그 2,110,Grenoble,9855,그르노블
+프랑스,2부,Ligue 2,리그 2,110,Nancy,8481,낭시
+프랑스,2부,Ligue 2,리그 2,110,Boulogne,4170,불로뉴
+프랑스,2부,Ligue 2,리그 2,110,Clermont Foot,8311,클레르몽 풋
+프랑스,2부,Ligue 2,리그 2,110,Amiens,8587,아미앵
+프랑스,2부,Ligue 2,리그 2,110,Laval,7853,라발
+프랑스,2부,Ligue 2,리그 2,110,SC Bastia,7794,SC 바스티아
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Maritimo,10212,마리티무
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Academico Viseu,1786,아카데미쿠 비제우
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Sporting CP B,338301,스포르팅 CP B
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Torreense,212820,토렌스
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Lusitania Lourosa,188154,루지타니아 로루자
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Uniao de Leiria,9771,우니앙 드 레이리아
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Vizela,4531,비젤라
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Feirense,4064,페이렌스
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,FC Porto B,338304,FC 포르투 B
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Benfica B,338302,벤피카 B
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Chaves,9774,샤베스
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Leixoes,6421,레이쇼잉스
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Felgueiras 1932,474326,펠게이라스 1932
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Penafiel,6547,페나피엘
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Oliveirense,1785,올리베이렌스
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Portimonense,9765,포르티모넨스
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Farense,6004,파렌스
+포르투갈,2부,Liga Portugal 2,리가 포르투갈 2,185,Pacos de Ferreira,6403,파수스 드 페레이라
+스위스,1부,Super League,스위스 슈퍼리그,69,Thun,10191,툰
+스위스,1부,Super League,스위스 슈퍼리그,69,St. Gallen,10190,장크트갈렌
+스위스,1부,Super League,스위스 슈퍼리그,69,Lugano,7896,루가노
+스위스,1부,Super League,스위스 슈퍼리그,69,Sion,10179,시옹
+스위스,1부,Super League,스위스 슈퍼리그,69,Basel,9931,바젤
+스위스,1부,Super League,스위스 슈퍼리그,69,Young Boys,10192,영 보이스
+스위스,1부,Super League,스위스 슈퍼리그,69,Luzern,10199,루체른
+스위스,1부,Super League,스위스 슈퍼리그,69,FC Zürich,10243,FC 취리히
+스위스,1부,Super League,스위스 슈퍼리그,69,Lausanne,7730,로잔
+스위스,1부,Super League,스위스 슈퍼리그,69,Servette,9777,세르베트
+스위스,1부,Super League,스위스 슈퍼리그,69,Grasshopper,9956,그라스호퍼
+스위스,1부,Super League,스위스 슈퍼리그,69,Winterthur,7894,빈터투어
+스위스,2부,Challenge League,챌린지리그,163,FC Vaduz,9824,FC 파두츠
+스위스,2부,Challenge League,챌린지리그,163,Aarau,9930,아라우
+스위스,2부,Challenge League,챌린지리그,163,Yverdon,6447,이베르동
+스위스,2부,Challenge League,챌린지리그,163,FC Stade Lausanne-Ouchy,289334,FC 스타드 로잔우시
+스위스,2부,Challenge League,챌린지리그,163,Xamax,7955,자막스
+스위스,2부,Challenge League,챌린지리그,163,FC Rapperswil-Jona,185504,FC 라퍼스빌요나
+스위스,2부,Challenge League,챌린지리그,163,Wil,10175,빌
+스위스,2부,Challenge League,챌린지리그,163,Stade Nyonnais,2442,스타드 니오네
+스위스,2부,Challenge League,챌린지리그,163,Etoile Carouge,1594,에투알 카루주
+스위스,2부,Challenge League,챌린지리그,163,Bellinzona,6493,벨린초나
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,Salzburg,10013,잘츠부르크
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,Sturm Graz,10014,슈투름 그라츠
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,LASK,9977,LASK
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,Austria Wien,10011,오스트리아 빈
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,Hartberg,10056,하르트베르크
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,Rapid Wien,10015,라피트 빈
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,Ried,10017,리트
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,Altach,10008,알타흐
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,Wolfsberger AC,1954,볼프스베르거 AC
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,WSG Tirol,1583,WSG 티롤
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,Grazer AK,10012,그라처 AK
+오스트리아,1부,Austrian Bundesliga,오스트리아 분데스리가,38,BW Linz,2433,BW 린츠
+미국,1부,Major League Soccer,메이저리그 사커,130,Nashville SC,915807,내슈빌 SC
+미국,1부,Major League Soccer,메이저리그 사커,130,FC Cincinnati,722265,FC 신시내티
+미국,1부,Major League Soccer,메이저리그 사커,130,New York Red Bulls,6514,뉴욕 레드불스
+미국,1부,Major League Soccer,메이저리그 사커,130,DC United,6602,DC 유나이티드
+미국,1부,Major League Soccer,메이저리그 사커,130,Charlotte FC,1323940,샬럿 FC
+미국,1부,Major League Soccer,메이저리그 사커,130,New York City FC,546238,뉴욕 시티 FC
+미국,1부,Major League Soccer,메이저리그 사커,130,Columbus Crew,6001,콜럼버스 크루
+미국,1부,Major League Soccer,메이저리그 사커,130,Toronto FC,56453,토론토 FC
+미국,1부,Major League Soccer,메이저리그 사커,130,Chicago Fire FC,6397,시카고 파이어 FC
+미국,1부,Major League Soccer,메이저리그 사커,130,Orlando City,267810,올랜도 시티
+미국,1부,Major League Soccer,메이저리그 사커,130,Philadelphia Union,191716,필라델피아 유니언
+미국,1부,Major League Soccer,메이저리그 사커,130,Atlanta United,773958,애틀랜타 유나이티드
+미국,1부,Major League Soccer,메이저리그 사커,130,New England Revolution,6580,뉴잉글랜드 레볼루션
+미국,1부,Major League Soccer,메이저리그 사커,130,Inter Miami CF,960720,인터 마이애미 CF
+미국,1부,Major League Soccer,메이저리그 사커,130,CF Montreal,161195,CF 몬트리올
+미국,1부,Major League Soccer,메이저리그 사커,130,San Diego FC,1701119,샌디에이고 FC
+미국,1부,Major League Soccer,메이저리그 사커,130,Los Angeles FC,867280,LA FC
+미국,1부,Major League Soccer,메이저리그 사커,130,San Jose Earthquakes,6603,새너제이 어스퀘이크스
+미국,1부,Major League Soccer,메이저리그 사커,130,Seattle Sounders FC,130394,시애틀 사운더스 FC
+미국,1부,Major League Soccer,메이저리그 사커,130,FC Dallas,6399,FC 댈러스
+미국,1부,Major League Soccer,메이저리그 사커,130,Portland Timbers,307690,포틀랜드 팀버스
+미국,1부,Major League Soccer,메이저리그 사커,130,Houston Dynamo FC,8259,휴스턴 다이나모 FC
+미국,1부,Major League Soccer,메이저리그 사커,130,Vancouver Whitecaps,307691,밴쿠버 화이트캡스
+미국,1부,Major League Soccer,메이저리그 사커,130,Austin FC,1218886,오스틴 FC
+미국,1부,Major League Soccer,메이저리그 사커,130,Minnesota United,207242,미네소타 유나이티드
+미국,1부,Major League Soccer,메이저리그 사커,130,LA Galaxy,6637,LA 갤럭시
+미국,1부,Major League Soccer,메이저리그 사커,130,St. Louis City,1427963,세인트루이스 시티
+미국,1부,Major League Soccer,메이저리그 사커,130,Real Salt Lake,6606,레알 솔트레이크
+미국,1부,Major League Soccer,메이저리그 사커,130,Colorado Rapids,8314,콜로라도 래피즈
+미국,1부,Major League Soccer,메이저리그 사커,130,Sporting Kansas City,6604,스포르팅 캔자스시티
