@@ -1,4 +1,5 @@
 # KFN (Korean Football Now)
+https://koreanfootballnow.com/
 
 > 코리안리거 해외 반응 AI 요약 미디어 & 매치 데이터 플랫폼
 
