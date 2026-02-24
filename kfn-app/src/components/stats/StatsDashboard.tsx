@@ -3,7 +3,7 @@ import FilterPanel from './FilterPanel';
 import StatsTable from './StatsTable';
 import { PlayerProfileModal } from './PlayerProfileModal';
 import { loadPlayerData, getUniqueLeagues, getUniquePositions } from '@/utils/csvParser';
-import { sortData, filterData, validatePlayer } from '@/utils/dataHelpers';
+import { sortData, filterData, validatePlayer, formatCollectionDate } from '@/utils/dataHelpers';
 import type { Player, SortConfig } from '@/types';
 
 const StatsDashboard: React.FC = () => {
@@ -14,10 +14,11 @@ const StatsDashboard: React.FC = () => {
   const [selectedLeagues, setSelectedLeagues] = useState<string[]>([]);
   const [selectedPosition, setSelectedPosition] = useState<string>('');
   const [injuredOnly, setInjuredOnly] = useState<boolean>(false);
-  const [sortConfig, setSortConfig] = useState<SortConfig>({ key: null, direction: 'asc' });
+  const [sortConfig, setSortConfig] = useState<SortConfig>({ key: 'player_name_kr', direction: 'asc' });
 
   const [selectedPlayerId, setSelectedPlayerId] = useState<string | null>(null);
   const [selectedPlayerName, setSelectedPlayerName] = useState<string>('');
+  const [selectedPlayerMatchesJson, setSelectedPlayerMatchesJson] = useState<string | null>(null);
 
   const leagues = useMemo(() => (players.length > 0 ? getUniqueLeagues(players) : []), [players]);
   const positions = useMemo(() => (players.length > 0 ? getUniquePositions(players) : []), [players]);
@@ -54,6 +55,22 @@ const StatsDashboard: React.FC = () => {
     }));
   };
 
+  const numericSortKeys = new Set([
+    'recent_rating', 'recent_minutes', 'recent_goals', 'recent_assists',
+    'season_avg_rating', 'season_goals', 'season_assists', 'season_matches',
+  ]);
+
+  const handleMobileSort = (columnKey: string) => {
+    if (!columnKey) {
+      setSortConfig({ key: 'player_name_kr', direction: 'asc' });
+      return;
+    }
+    const direction = numericSortKeys.has(columnKey) ? 'desc' : 'asc';
+    setSortConfig({ key: columnKey, direction });
+  };
+
+  const collectionDate = players[0]?.collection_date ?? null;
+
   const handleResetFilters = () => {
     setSelectedLeagues([]);
     setSelectedPosition('');
@@ -63,11 +80,13 @@ const StatsDashboard: React.FC = () => {
   const handlePlayerClick = (player: Player) => {
     setSelectedPlayerId(String(player.player_id));
     setSelectedPlayerName(player.player_name_kr || player.player_name);
+    setSelectedPlayerMatchesJson(player.recent_matches_json ?? null);
   };
 
   const handleCloseModal = () => {
     setSelectedPlayerId(null);
     setSelectedPlayerName('');
+    setSelectedPlayerMatchesJson(null);
   };
 
   if (loading) {
@@ -93,6 +112,10 @@ const StatsDashboard: React.FC = () => {
       <div className="mb-8">
         <h2 className="text-2xl font-bold tracking-tight text-gray-900 mb-1">시즌 타임라인 대시보드</h2>
         <p className="text-sm text-gray-400">해외파 한국 선수들의 주간 활약상을 한눈에 확인하세요</p>
+        <div className="border-t border-gray-100 pt-2 mt-2 space-y-0.5">
+          <p className="text-xs text-gray-400">※ 최근 지표는 가장 최근 1경기(리그·컵·대항전 포함) 기준이며, 선수 프로필에서 최근 5경기 상세를 확인할 수 있습니다</p>
+          <p className="text-xs text-gray-400">※ 유럽: 2025-26 시즌 / MLS: 2026 시즌 기준</p>
+        </div>
       </div>
 
       <FilterPanel
@@ -112,12 +135,15 @@ const StatsDashboard: React.FC = () => {
         sortConfig={sortConfig}
         onSort={handleSort}
         onPlayerClick={handlePlayerClick}
+        collectionDate={collectionDate}
+        onMobileSort={handleMobileSort}
       />
 
       <PlayerProfileModal
         playerId={selectedPlayerId}
         playerName={selectedPlayerName}
         onClose={handleCloseModal}
+        recentMatchesJson={selectedPlayerMatchesJson}
       />
     </div>
   );

@@ -6,7 +6,7 @@ import { Accordion } from '@/components/ui/accordion';
 import { ArrowUpDown, ArrowUp, ArrowDown, ExternalLink } from 'lucide-react';
 import { useMediaQuery } from '@/hooks/useMediaQuery';
 import { useScrollShadow } from '@/hooks/useScrollShadow';
-import { formatRating, formatStat, formatMinutes } from '@/utils/dataHelpers';
+import { formatRating, formatStat, formatMinutes, formatCollectionDate } from '@/utils/dataHelpers';
 import { translateTeam, translateLeague, translatePosition } from '@/utils/translations';
 import type { Player, SortConfig } from '@/types';
 import PlayerCard from './PlayerCard';
@@ -17,6 +17,8 @@ interface StatsTableProps {
   sortConfig: SortConfig;
   onSort: (key: string) => void;
   onPlayerClick: (player: Player) => void;
+  collectionDate: string | null;
+  onMobileSort: (key: string) => void;
 }
 
 interface Column {
@@ -26,7 +28,7 @@ interface Column {
   className?: string;
 }
 
-const StatsTable: React.FC<StatsTableProps> = ({ players, sortConfig, onSort, onPlayerClick }) => {
+const StatsTable: React.FC<StatsTableProps> = ({ players, sortConfig, onSort, onPlayerClick, collectionDate, onMobileSort }) => {
   const isMobile = useMediaQuery('(max-width: 768px)');
   const tableWrapperRef = useRef<HTMLDivElement>(null);
   const { scrolled, scrolledEnd } = useScrollShadow(tableWrapperRef);
@@ -51,11 +53,29 @@ const StatsTable: React.FC<StatsTableProps> = ({ players, sortConfig, onSort, on
   ];
 
   if (isMobile) {
+    const formattedDate = formatCollectionDate(collectionDate);
     return (
       <div className="w-full py-4">
-        <p className="text-sm text-gray-400 mb-4">
-          총 <span className="font-semibold text-gray-900">{players.length}</span>명의 선수
-        </p>
+        <div className="flex items-center justify-between mb-4">
+          <p className="text-sm text-gray-400">
+            총 <span className="font-semibold text-gray-900">{players.length}</span>명의 선수
+          </p>
+          <select
+            value={sortConfig.key ?? ''}
+            onChange={(e) => onMobileSort(e.target.value)}
+            className="text-sm border border-gray-200 rounded-lg px-3 py-1.5 bg-white text-gray-700 focus:outline-none focus:ring-2 focus:ring-kfn-red/20 focus:border-kfn-red"
+          >
+            <option value="">정렬 기준</option>
+            <option value="player_name_kr">선수명</option>
+            <option value="recent_rating">최근 평점</option>
+            <option value="recent_goals">최근 골</option>
+            <option value="recent_assists">최근 AS</option>
+            <option value="recent_minutes">최근 출전</option>
+            <option value="season_avg_rating">시즌 평점</option>
+            <option value="season_goals">시즌 골</option>
+            <option value="season_assists">시즌 AS</option>
+          </select>
+        </div>
         {players.length === 0 ? (
           <div className="text-center py-12 text-gray-400">필터 조건에 맞는 선수가 없습니다</div>
         ) : (
@@ -64,6 +84,11 @@ const StatsTable: React.FC<StatsTableProps> = ({ players, sortConfig, onSort, on
               <PlayerCard key={`${player.player_id}-${index}`} player={player} index={index} onViewProfile={onPlayerClick} />
             ))}
           </Accordion>
+        )}
+        {formattedDate && (
+          <p className="text-xs text-gray-400 mt-4 text-center">
+            총 {players.length}명의 선수 · FotMob 기준 · {formattedDate} 업데이트
+          </p>
         )}
       </div>
     );
@@ -154,6 +179,9 @@ const StatsTable: React.FC<StatsTableProps> = ({ players, sortConfig, onSort, on
       <div className="mt-4">
         <p className="text-sm text-gray-400">
           총 <span className="font-semibold text-gray-900">{players.length}</span>명의 선수
+          {collectionDate && (
+            <> · FotMob 기준 · {formatCollectionDate(collectionDate)} 업데이트</>
+          )}
         </p>
       </div>
     </div>
