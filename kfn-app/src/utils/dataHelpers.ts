@@ -1,4 +1,4 @@
-import type { Player, FilterOptions } from '../types';
+import type { Player, FilterOptions, RecentMatch, RecentAggregate } from '../types';
 
 export const sortData = (
   data: Player[],
@@ -71,4 +71,61 @@ export const validatePlayer = (player: unknown): player is Player => {
   if (!player || typeof player !== 'object') return false;
   const p = player as Record<string, unknown>;
   return !!(p.player_name_kr && p.player_id && p.team && p.league);
+};
+
+export const parseRecentMatches = (jsonString: string | null): RecentMatch[] => {
+  if (!jsonString || jsonString.trim() === '') return [];
+  try {
+    const matches = JSON.parse(jsonString) as RecentMatch[];
+    if (!Array.isArray(matches)) return [];
+    return matches;
+  } catch {
+    return [];
+  }
+};
+
+export const computeRecentAggregate = (
+  matches: RecentMatch[],
+  window = 5,
+): RecentAggregate | null => {
+  const slice = matches.slice(0, window);
+  if (slice.length === 0) return null;
+
+  const ratings = slice
+    .map((m) => (m.rating ? parseFloat(m.rating) : null))
+    .filter((r): r is number => r != null && !isNaN(r));
+
+  return {
+    matchCount: slice.length,
+    avgRating: ratings.length > 0
+      ? Math.round((ratings.reduce((s, v) => s + v, 0) / ratings.length) * 100) / 100
+      : null,
+    totalGoals: slice.reduce((s, m) => s + (m.goals ?? 0), 0),
+    totalAssists: slice.reduce((s, m) => s + (m.assists ?? 0), 0),
+    totalMinutes: slice.reduce((s, m) => s + (m.minutes ?? 0), 0),
+  };
+};
+
+export const formatMatchDate = (dateStr: string | null): string => {
+  if (!dateStr) return '-';
+  // Extract YYYY-MM-DD portion regardless of input format
+  const match = dateStr.match(/(\d{4})-(\d{2})-(\d{2})/);
+  if (match) return `${match[1]}-${match[2]}-${match[3]}`;
+  return dateStr;
+};
+
+export const formatCollectionDate = (isoDate: string | null): string => {
+  if (!isoDate) return '';
+  try {
+    const d = new Date(isoDate);
+    if (isNaN(d.getTime())) return isoDate;
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
+    const hh = String(d.getHours()).padStart(2, '0');
+    const mi = String(d.getMinutes()).padStart(2, '0');
+    return `${yyyy}.${mm}.${dd} ${hh}:${mi}`;
+  } catch {
+    return isoDate;
+  }
 };

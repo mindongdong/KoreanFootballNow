@@ -1,5 +1,6 @@
 import Papa from 'papaparse';
 import type { Player, RecentMatch } from '../types';
+import { parseRecentMatches, computeRecentAggregate } from './dataHelpers';
 
 export const parseRecentMatch = (jsonString: string | null): RecentMatch | null => {
   if (!jsonString || jsonString.trim() === '') return null;
@@ -22,14 +23,17 @@ export const loadPlayerData = async (filePath: string): Promise<Player[]> => {
     if (apiResponse.ok) {
       const json = await apiResponse.json();
       if (json.data && Array.isArray(json.data)) {
-        return (json.data as Player[]).map((player) => ({
-          ...player,
-          recent_match: parseRecentMatch(
-            typeof player.recent_matches_json === 'string'
-              ? player.recent_matches_json
-              : null
-          ),
-        }));
+        return (json.data as Player[]).map((player) => {
+          const matchesJson = typeof player.recent_matches_json === 'string'
+            ? player.recent_matches_json
+            : null;
+          const matches = parseRecentMatches(matchesJson);
+          return {
+            ...player,
+            recent_match: matches[0] ?? null,
+            recentAggregate: computeRecentAggregate(matches),
+          };
+        });
       }
     }
   } catch {
@@ -48,10 +52,14 @@ export const loadPlayerData = async (filePath: string): Promise<Player[]> => {
       transformHeader: (header: string) => header.trim(),
       transform: (value: string) => (value === '' ? null : value),
       complete: (results) => {
-        const playersWithRecentMatch = results.data.map((player) => ({
-          ...player,
-          recent_match: parseRecentMatch(player.recent_matches_json),
-        }));
+        const playersWithRecentMatch = results.data.map((player) => {
+          const matches = parseRecentMatches(player.recent_matches_json);
+          return {
+            ...player,
+            recent_match: matches[0] ?? null,
+            recentAggregate: computeRecentAggregate(matches),
+          };
+        });
         resolve(playersWithRecentMatch);
       },
       error: (error: Error) => reject(error),

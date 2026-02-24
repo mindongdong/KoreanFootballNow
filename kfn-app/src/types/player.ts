@@ -10,6 +10,14 @@ export interface RecentMatch {
   is_motm: boolean;
 }
 
+export interface RecentAggregate {
+  matchCount: number;
+  avgRating: number | null;
+  totalGoals: number;
+  totalAssists: number;
+  totalMinutes: number;
+}
+
 export interface Player {
   collection_date: string;
   week: string;
@@ -20,6 +28,7 @@ export interface Player {
   league: string;
   position: string;
   recent_match?: RecentMatch | null;
+  recentAggregate?: RecentAggregate | null;
   season_matches: number | null;
   season_goals: number | null;
   season_assists: number | null;
