@@ -1,25 +1,32 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 import { ExternalLink, Award, Medal, Trophy } from 'lucide-react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 import { Tooltip } from '@/components/ui/tooltip';
 import { PlayerProfile } from '@/types/playerProfile';
 import { loadPlayerProfile, formatDecimal, formatSuccessRate } from '@/utils/profileParser';
 import { translateTeam, translateLeague, translatePosition, translatePreferredFoot } from '@/utils/translations';
-import { formatStat } from '@/utils/dataHelpers';
+import { formatStat, formatRating, formatMinutes, parseRecentMatches, formatMatchDate } from '@/utils/dataHelpers';
+import { useMediaQuery } from '@/hooks/useMediaQuery';
 
 interface PlayerProfileModalProps {
   playerId: string | null;
   playerName: string;
   onClose: () => void;
+  recentMatchesJson?: string | null;
 }
 
 type TabType = 'overview' | 'attack' | 'passing' | 'defense';
 
-export function PlayerProfileModal({ playerId, playerName, onClose }: PlayerProfileModalProps) {
+export function PlayerProfileModal({ playerId, playerName, onClose, recentMatchesJson }: PlayerProfileModalProps) {
   const [profile, setProfile] = useState<PlayerProfile | null>(null);
   const [loading, setLoading] = useState(true);
   const [activeTab, setActiveTab] = useState<TabType>('overview');
   const [imageError, setImageError] = useState(false);
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const recentMatches = useMemo(
+    () => parseRecentMatches(recentMatchesJson ?? null).slice(0, 5),
+    [recentMatchesJson],
+  );
 
   useEffect(() => {
     if (!playerId) return;
@@ -102,79 +109,83 @@ export function PlayerProfileModal({ playerId, playerName, onClose }: PlayerProf
             <p className="text-gray-400">선수 정보를 찾을 수 없습니다.</p>
           </div>
         ) : (
-          <div className="flex flex-col gap-6 p-6 max-h-[90vh] overflow-y-auto">
-            {/* Header */}
-            <div className="flex items-center gap-4 pb-6 border-b border-gray-100">
-              <div className="flex-shrink-0 w-20 h-20">
-                {!imageError ? (
-                  <img
-                    src={`https://images.fotmob.com/image_resources/playerimages/${playerId}.png`}
-                    alt={profile.player_name_kr || profile.player_name}
-                    className="w-full h-full rounded-full object-cover shadow-md"
-                    onError={() => setImageError(true)}
-                  />
-                ) : (
-                  <div className="w-20 h-20 rounded-full bg-gradient-to-br from-kfn-red to-red-800 flex items-center justify-center text-white text-2xl font-bold shadow-md">
-                    {(profile.player_name_kr || profile.player_name)?.charAt(0)}
-                  </div>
-                )}
-              </div>
-              <div className="flex-1">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                  {profile.player_name_kr || profile.player_name}
-                </h2>
-                <div className="flex flex-wrap gap-2">
-                  <span className="px-2.5 py-1 rounded-md bg-kfn-red/10 text-kfn-red text-xs font-bold">
-                    {translateTeam(profile.team)}
-                  </span>
-                  <span className="px-2.5 py-1 rounded-md bg-gray-100 text-gray-600 text-xs font-bold">
-                    {translateLeague(profile.league)}
-                  </span>
-                  {profile.is_injured === 'Yes' && (
-                    <span className="px-2.5 py-1 rounded-md bg-red-50 text-red-600 text-xs font-bold">부상</span>
+          <div className="flex flex-col h-full max-h-[calc(90vh-2rem)]">
+            {/* Fixed header area */}
+            <div className="flex-shrink-0 p-6 pb-0 space-y-6">
+              {/* Header */}
+              <div className="flex items-center gap-4 pb-6 border-b border-gray-100">
+                <div className="flex-shrink-0 w-20 h-20">
+                  {!imageError ? (
+                    <img
+                      src={`https://images.fotmob.com/image_resources/playerimages/${playerId}.png`}
+                      alt={profile.player_name_kr || profile.player_name}
+                      className="w-full h-full rounded-full object-cover shadow-md"
+                      onError={() => setImageError(true)}
+                    />
+                  ) : (
+                    <div className="w-20 h-20 rounded-full bg-gradient-to-br from-kfn-red to-red-800 flex items-center justify-center text-white text-2xl font-bold shadow-md">
+                      {(profile.player_name_kr || profile.player_name)?.charAt(0)}
+                    </div>
                   )}
                 </div>
+                <div className="flex-1">
+                  <h2 className="text-2xl font-bold text-gray-900 mb-2">
+                    {profile.player_name_kr || profile.player_name}
+                  </h2>
+                  <div className="flex flex-wrap gap-2">
+                    <span className="px-2.5 py-1 rounded-md bg-kfn-red/10 text-kfn-red text-xs font-bold">
+                      {translateTeam(profile.team)}
+                    </span>
+                    <span className="px-2.5 py-1 rounded-md bg-gray-100 text-gray-600 text-xs font-bold">
+                      {translateLeague(profile.league)}
+                    </span>
+                    {profile.is_injured === 'Yes' && (
+                      <span className="px-2.5 py-1 rounded-md bg-red-50 text-red-600 text-xs font-bold">부상</span>
+                    )}
+                  </div>
+                </div>
+                {profile.fotmob_url && (
+                  <a
+                    href={profile.fotmob_url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1.5 px-4 py-2 bg-kfn-red/10 text-kfn-red rounded-lg text-sm font-semibold hover:bg-kfn-red hover:text-white transition-all"
+                  >
+                    FotMob <ExternalLink className="w-4 h-4" />
+                  </a>
+                )}
               </div>
-              {profile.fotmob_url && (
-                <a
-                  href={profile.fotmob_url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 px-4 py-2 bg-kfn-red/10 text-kfn-red rounded-lg text-sm font-semibold hover:bg-kfn-red hover:text-white transition-all"
-                >
-                  FotMob <ExternalLink className="w-4 h-4" />
-                </a>
-              )}
+
+              {/* Details */}
+              <div className="grid grid-cols-3 sm:grid-cols-5 gap-4 p-4 bg-gray-50 rounded-xl">
+                <div><span className="text-xs text-gray-400 uppercase font-semibold">포지션</span><p className="text-sm font-semibold">{translatePosition(profile.position)}</p></div>
+                <div><span className="text-xs text-gray-400 uppercase font-semibold">나이</span><p className="text-sm font-semibold">{profile.age}세</p></div>
+                <div><span className="text-xs text-gray-400 uppercase font-semibold">키</span><p className="text-sm font-semibold">{profile.height || '-'}</p></div>
+                <div><span className="text-xs text-gray-400 uppercase font-semibold">주발</span><p className="text-sm font-semibold">{translatePreferredFoot(profile.preferred_foot)}</p></div>
+                <div><span className="text-xs text-gray-400 uppercase font-semibold">시장가치</span><p className="text-sm font-semibold">{profile.market_value}</p></div>
+              </div>
+
+              {/* Tabs */}
+              <div className="flex gap-1 p-1 bg-gray-100 rounded-xl overflow-x-auto">
+                {tabs.map((tab) => (
+                  <button
+                    key={tab.id}
+                    onClick={() => setActiveTab(tab.id)}
+                    className={`flex-1 min-w-fit px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
+                      activeTab === tab.id
+                        ? 'bg-kfn-red text-white'
+                        : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
+                    }`}
+                  >
+                    {tab.label}
+                  </button>
+                ))}
+              </div>
             </div>
 
-            {/* Details */}
-            <div className="grid grid-cols-3 sm:grid-cols-5 gap-4 p-4 bg-gray-50 rounded-xl">
-              <div><span className="text-xs text-gray-400 uppercase font-semibold">포지션</span><p className="text-sm font-semibold">{translatePosition(profile.position)}</p></div>
-              <div><span className="text-xs text-gray-400 uppercase font-semibold">나이</span><p className="text-sm font-semibold">{profile.age}세</p></div>
-              <div><span className="text-xs text-gray-400 uppercase font-semibold">키</span><p className="text-sm font-semibold">{profile.height || '-'}</p></div>
-              <div><span className="text-xs text-gray-400 uppercase font-semibold">주발</span><p className="text-sm font-semibold">{translatePreferredFoot(profile.preferred_foot)}</p></div>
-              <div><span className="text-xs text-gray-400 uppercase font-semibold">시장가치</span><p className="text-sm font-semibold">{profile.market_value}</p></div>
-            </div>
-
-            {/* Tabs */}
-            <div className="flex gap-1 p-1 bg-gray-100 rounded-xl overflow-x-auto">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`flex-1 min-w-fit px-4 py-2.5 rounded-lg text-sm font-semibold transition-all ${
-                    activeTab === tab.id
-                      ? 'bg-kfn-red text-white'
-                      : 'text-gray-500 hover:text-gray-900 hover:bg-gray-50'
-                  }`}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
-
-            {/* Tab Content */}
-            <div className="space-y-6 animate-[fadeIn_0.3s_ease]">
+            {/* Scrollable tab content */}
+            <div className="flex-1 min-h-0 overflow-y-auto p-6 pt-6">
+              <div className="space-y-6 animate-[fadeIn_0.3s_ease]">
               {activeTab === 'overview' && (
                 <>
                   <div className="p-4 bg-gray-50 rounded-xl">
@@ -195,6 +206,55 @@ export function PlayerProfileModal({ playerId, playerName, onClose }: PlayerProf
                       {renderStat('도움 (90분당)', formatDecimal(profile.assists_per90))}
                     </div>
                   </div>
+                  {recentMatches.length > 0 && (
+                    <div className="p-4 bg-gray-50 rounded-xl">
+                      <h3 className="text-sm font-bold text-gray-900 mb-4 pb-2 border-b-2 border-kfn-red/20">최근 경기</h3>
+                      {isMobile ? (
+                        <div className="space-y-2">
+                          {recentMatches.map((match, i) => (
+                            <div key={i} className="flex items-center justify-between p-2 bg-white rounded-lg text-sm">
+                              <div className="flex flex-col">
+                                <span className="font-medium">{translateTeam(match.opponent)}</span>
+                                <span className="text-xs text-gray-400">{formatMatchDate(match.date)} · {match.result}</span>
+                              </div>
+                              <div className="flex items-center gap-3 text-xs">
+                                <span className="font-semibold">{match.rating ? formatRating(parseFloat(match.rating)) : '-'}</span>
+                                <span>{match.goals}G/{match.assists}A</span>
+                                <span className="text-gray-400">{formatMinutes(match.minutes)}</span>
+                              </div>
+                            </div>
+                          ))}
+                        </div>
+                      ) : (
+                        <table className="w-full text-sm">
+                          <thead>
+                            <tr className="text-xs text-gray-500 border-b border-gray-200">
+                              <th className="text-left py-2 font-medium">날짜</th>
+                              <th className="text-left py-2 font-medium">상대</th>
+                              <th className="text-center py-2 font-medium">결과</th>
+                              <th className="text-center py-2 font-medium">평점</th>
+                              <th className="text-center py-2 font-medium">골</th>
+                              <th className="text-center py-2 font-medium">AS</th>
+                              <th className="text-center py-2 font-medium">출전</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            {recentMatches.map((match, i) => (
+                              <tr key={i} className="border-b border-gray-100 last:border-0">
+                                <td className="py-2 text-gray-600">{formatMatchDate(match.date)}</td>
+                                <td className="py-2 font-medium">{translateTeam(match.opponent)}</td>
+                                <td className="py-2 text-center">{match.result}</td>
+                                <td className="py-2 text-center font-semibold">{match.rating ? formatRating(parseFloat(match.rating)) : '-'}</td>
+                                <td className="py-2 text-center">{formatStat(match.goals)}</td>
+                                <td className="py-2 text-center">{formatStat(match.assists)}</td>
+                                <td className="py-2 text-center">{formatMinutes(match.minutes)}</td>
+                              </tr>
+                            ))}
+                          </tbody>
+                        </table>
+                      )}
+                    </div>
+                  )}
                 </>
               )}
               {activeTab === 'attack' && (
@@ -264,6 +324,7 @@ export function PlayerProfileModal({ playerId, playerName, onClose }: PlayerProf
                   </div>
                 </>
               )}
+              </div>
             </div>
           </div>
         )}
