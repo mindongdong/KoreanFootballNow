@@ -1,0 +1,211 @@
+rank,name_en,name_kr
+1,Spain,스페인
+2,Argentina,아르헨티나
+3,France,프랑스
+4,England,잉글랜드
+5,Brazil,브라질
+6,Portugal,포르투갈
+7,Netherlands,네덜란드
+8,Morocco,모로코
+9,Belgium,벨기에
+10,Germany,독일
+11,Croatia,크로아티아
+12,Senegal,세네갈
+13,Italy,이탈리아
+14,Colombia,콜롬비아
+15,USA,미국
+16,Mexico,멕시코
+17,Uruguay,우루과이
+18,Switzerland,스위스
+19,Japan,일본
+20,Iran,이란
+21,Denmark,덴마크
+22,South Korea,대한민국
+23,Ecuador,에콰도르
+24,Austria,오스트리아
+25,Turkiye,튀르키예
+26,Nigeria,나이지리아
+27,Australia,호주
+28,Algeria,알제리
+29,Canada,캐나다
+30,Ukraine,우크라이나
+31,Egypt,이집트
+32,Norway,노르웨이
+33,Panama,파나마
+34,Poland,폴란드
+35,Wales,웨일스
+36,Russia,러시아
+37,Ivory Coast,코트디부아르
+38,Scotland,스코틀랜드
+39,Serbia,세르비아
+40,Paraguay,파라과이
+41,Hungary,헝가리
+42,Sweden,스웨덴
+43,Czechia,체코
+44,Slovakia,슬로바키아
+45,Cameroon,카메룬
+46,Greece,그리스
+47,Tunisia,튀니지
+48,DR Congo,DR 콩고
+49,Romania,루마니아
+50,Venezuela,베네수엘라
+51,Costa Rica,코스타리카
+52,Uzbekistan,우즈베키스탄
+53,Peru,페루
+54,Mali,말리
+55,Chile,칠레
+56,Qatar,카타르
+57,Slovenia,슬로베니아
+58,Iraq,이라크
+59,Ireland,아일랜드
+60,South Africa,남아프리카공화국
+61,Saudi Arabia,사우디아라비아
+62,Burkina Faso,부르키나파소
+63,Albania,알바니아
+64,Jordan,요르단
+65,Honduras,온두라스
+66,North Macedonia,북마케도니아
+67,Cape Verde,카보베르데
+68,UAE,아랍에미리트
+69,Northern Ireland,북아일랜드
+70,Jamaica,자메이카
+71,Bosnia and Herzegovina,보스니아 헤르체고비나
+72,Ghana,가나
+73,Georgia,조지아
+74,Iceland,아이슬란드
+75,Finland,핀란드
+76,Bolivia,볼리비아
+77,Israel,이스라엘
+78,Oman,오만
+79,Kosovo,코소보
+80,Guinea,기니
+81,Curacao,퀴라소
+82,Montenegro,몬테네그로
+83,Haiti,아이티
+84,Syria,시리아
+85,New Zealand,뉴질랜드
+86,Gabon,가봉
+87,Bulgaria,불가리아
+88,Uganda,우간다
+89,Angola,앙골라
+90,Bahrain,바레인
+91,Zambia,잠비아
+92,Benin,베냉
+93,China,중국
+94,Guatemala,과테말라
+95,Palestine,팔레스타인
+96,Thailand,태국
+97,Trinidad and Tobago,트리니다드 토바고
+98,Belarus,벨라루스
+99,El Salvador,엘살바도르
+100,Tajikistan,타지키스탄
+101,Mozambique,모잠비크
+102,Luxembourg,룩셈부르크
+103,Kyrgyzstan,키르기스스탄
+104,Madagascar,마다가스카르
+105,Armenia,아르메니아
+106,Comoros,코모로
+107,Equatorial Guinea,적도 기니
+108,Vietnam,베트남
+109,Lebanon,레바논
+110,Tanzania,탄자니아
+111,Niger,니제르
+112,Libya,리비아
+113,Kenya,케냐
+114,Kazakhstan,카자흐스탄
+115,Mauritania,모리타니
+116,Gambia,감비아
+117,Sudan,수단
+118,Namibia,나미비아
+119,North Korea,북한
+120,Sierra Leone,시에라리온
+121,Malaysia,말레이시아
+122,Indonesia,인도네시아
+123,Suriname,수리남
+124,Togo,토고
+125,Faroe Islands,페로 제도
+126,Malawi,말라위
+127,Azerbaijan,아제르바이잔
+128,Cyprus,키프로스
+129,Estonia,에스토니아
+130,Rwanda,르완다
+131,Nicaragua,니카라과
+132,Zimbabwe,짐바브웨
+133,Guinea-Bissau,기니비사우
+134,Congo,콩고
+135,Kuwait,쿠웨이트
+136,Philippines,필리핀
+137,Turkmenistan,투르크메니스탄
+138,Central African Republic,중앙아프리카공화국
+139,Latvia,라트비아
+140,Liberia,라이베리아
+141,India,인도
+142,Dominican Republic,도미니카 공화국
+143,Lesotho,레소토
+144,Botswana,보츠와나
+145,Burundi,부룬디
+146,Lithuania,리투아니아
+147,Ethiopia,에티오피아
+148,Singapore,싱가포르
+149,Yemen,예멘
+150,New Caledonia,뉴칼레도니아
+151,Guyana,가이아나
+152,Solomon Islands,솔로몬 제도
+153,Hong Kong,홍콩
+154,St. Kitts and Nevis,세인트키츠 네비스
+155,Fiji,피지
+156,Puerto Rico,푸에르토리코
+157,Tahiti,타히티
+158,Moldova,몰도바
+159,Eswatini,에스와티니
+160,Vanuatu,바누아투
+161,Malta,몰타
+162,Afghanistan,아프가니스탄
+163,Myanmar,미얀마
+164,Grenada,그레나다
+165,Antigua and Barbuda,앤티가 바부다
+166,Cuba,쿠바
+167,Saint Lucia,세인트루시아
+168,South Sudan,남수단
+169,Bermuda,버뮤다
+170,Papua New Guinea,파푸아뉴기니
+171,Saint Vincent and The Grenadines,세인트빈센트 그레나딘
+172,Andorra,안도라
+173,Maldives,몰디브
+174,Chinese Taipei,차이니즈 타이페이
+175,Montserrat,몬트세랫
+176,Mauritius,모리셔스
+177,Chad,차드
+178,Barbados,바베이도스
+179,Cambodia,캄보디아
+180,Bangladesh,방글라데시
+181,Belize,벨리즈
+182,Nepal,네팔
+183,Dominica,도미니카
+184,American Samoa,아메리칸사모아
+185,Mongolia,몽골
+186,Cook Islands,쿡 제도
+187,Samoa,사모아
+188,Brunei,브루나이
+189,Sao Tome and Principe,상투메 프린시페
+190,Laos,라오스
+191,Aruba,아루바
+192,Bhutan,부탄
+193,Macao,마카오
+194,Sri Lanka,스리랑카
+195,Cayman Islands,케이맨 제도
+196,Djibouti,지부티
+197,Tonga,통가
+198,Timor-Leste,동티모르
+199,Pakistan,파키스탄
+200,Somalia,소말리아
+201,Guam,괌
+202,Gibraltar,지브롤터
+203,Seychelles,세이셸
+204,Turks and Caicos Islands,터크스 케이커스 제도
+205,Liechtenstein,리히텐슈타인
+206,Bahamas,바하마
+207,U.S. Virgin Islands,미국령 버진아일랜드
+208,British Virgin Islands,영국령 버진아일랜드
+209,Anguilla,앵귈라
+210,San Marino,산마리노
