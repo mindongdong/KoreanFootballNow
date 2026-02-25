@@ -19,6 +19,7 @@ export interface Article {
 export interface EvidenceData {
   charts: ChartData[];
   dataRows: DataRow[];
+  sources?: SourceItem[];
 }
 
 export interface ChartData {
@@ -35,6 +36,13 @@ export interface DataRow {
   value: string | number;
   interpretation: string;
   source?: string;
+  sourceUrl?: string;
+}
+
+export interface SourceItem {
+  url: string;
+  title: string;
+  type: 'reddit' | 'news' | 'data';
 }
 
 export interface AdCuration {

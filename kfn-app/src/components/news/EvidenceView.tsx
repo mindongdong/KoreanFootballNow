@@ -19,7 +19,7 @@ import {
   Pie,
   Cell,
 } from 'recharts';
-import { ArrowLeft, Database, Brain, BarChart3, Info } from 'lucide-react';
+import { ArrowLeft, Database, Brain, BarChart3, Info, ExternalLink } from 'lucide-react';
 import type { Article, ChartData, DataRow } from '@/types';
 
 interface EvidenceViewProps {
@@ -154,7 +154,14 @@ function DataRowCard({ row, index }: { row: DataRow; index: number }) {
           <div>
             <span className="text-sm font-bold text-gray-900">{row.label}</span>
             {row.source && (
-              <span className="ml-2 text-xs text-gray-400">({row.source})</span>
+              row.sourceUrl ? (
+                <a href={row.sourceUrl} target="_blank" rel="noopener noreferrer"
+                   className="ml-2 text-xs text-kfn-red hover:underline">
+                  ({row.source})
+                </a>
+              ) : (
+                <span className="ml-2 text-xs text-gray-400">({row.source})</span>
+              )
             )}
           </div>
         </div>
@@ -247,6 +254,32 @@ const EvidenceView: React.FC<EvidenceViewProps> = ({ article, onBack }) => {
           <div className="space-y-4">
             {evidence.dataRows.map((row, i) => (
               <DataRowCard key={i} row={row} index={i} />
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Sources Section */}
+      {evidence.sources && evidence.sources.length > 0 && (
+        <section className="mt-12">
+          <div className="flex items-center gap-2 mb-6">
+            <ExternalLink className="w-5 h-5 text-gray-400" />
+            <h2 className="text-lg font-bold text-gray-900">참고 출처</h2>
+          </div>
+          <div className="rounded-xl border border-gray-100 divide-y divide-gray-100">
+            {evidence.sources.map((src, i) => (
+              <a key={i} href={src.url} target="_blank" rel="noopener noreferrer"
+                 className="flex items-center gap-3 p-4 hover:bg-gray-50 transition-colors">
+                <span className={`px-2 py-0.5 rounded text-xs font-bold ${
+                  src.type === 'reddit' ? 'bg-orange-100 text-orange-700' :
+                  src.type === 'data' ? 'bg-green-100 text-green-700' :
+                  'bg-blue-100 text-blue-700'
+                }`}>
+                  {src.type === 'reddit' ? 'Reddit' : src.type === 'data' ? 'Data' : 'News'}
+                </span>
+                <span className="text-sm text-gray-700 flex-1 truncate">{src.title}</span>
+                <ExternalLink className="w-3.5 h-3.5 text-gray-400 flex-shrink-0" />
+              </a>
             ))}
           </div>
         </section>

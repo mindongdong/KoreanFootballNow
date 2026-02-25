@@ -19,6 +19,43 @@ function formatDate(dateString: string): string {
   });
 }
 
+function renderInlineMarkdown(text: string): React.ReactNode[] {
+  const combinedPattern = /(\[.+?\]\(https?:\/\/.+?\))|\*\*(.+?)\*\*/g;
+  const parts: React.ReactNode[] = [];
+  let lastIndex = 0;
+  let match;
+
+  while ((match = combinedPattern.exec(text)) !== null) {
+    if (match.index > lastIndex) {
+      parts.push(<span key={`t${lastIndex}`}>{text.slice(lastIndex, match.index)}</span>);
+    }
+
+    if (match[1]) {
+      const linkMatch = match[1].match(/\[(.+?)\]\((https?:\/\/.+?)\)/);
+      if (linkMatch) {
+        parts.push(
+          <a key={`l${match.index}`} href={linkMatch[2]} target="_blank" rel="noopener noreferrer"
+             className="text-kfn-red hover:underline font-medium">
+            {linkMatch[1]}
+          </a>
+        );
+      }
+    } else if (match[2]) {
+      parts.push(
+        <strong key={`b${match.index}`} className="font-semibold text-gray-900">{match[2]}</strong>
+      );
+    }
+
+    lastIndex = match.index + match[0].length;
+  }
+
+  if (lastIndex < text.length) {
+    parts.push(<span key={`t${lastIndex}`}>{text.slice(lastIndex)}</span>);
+  }
+
+  return parts.length > 0 ? parts : [<span key="0">{text}</span>];
+}
+
 const ArticleView: React.FC<ArticleViewProps> = ({ article, onBack, onShowEvidence }) => {
   const contentParagraphs = article.content.split('\n').filter((line) => line.trim());
 
@@ -84,36 +121,16 @@ const ArticleView: React.FC<ArticleViewProps> = ({ article, onBack, onShowEviden
             }
             if (line.startsWith('- ')) {
               const text = line.replace('- ', '');
-              const boldMatch = text.match(/\*\*(.+?)\*\*/);
-              if (boldMatch) {
-                const parts = text.split(/\*\*.+?\*\*/);
-                return (
-                  <div key={i} className="flex gap-3 mb-2 pl-1">
-                    <span className="text-kfn-red mt-1.5 text-xs">&#9679;</span>
-                    <p className="text-gray-700 leading-relaxed">
-                      {parts[0]}
-                      <strong className="font-semibold text-gray-900">{boldMatch[1]}</strong>
-                      {parts[1]}
-                    </p>
-                  </div>
-                );
-              }
               return (
                 <div key={i} className="flex gap-3 mb-2 pl-1">
                   <span className="text-kfn-red mt-1.5 text-xs">&#9679;</span>
-                  <p className="text-gray-700 leading-relaxed">{text}</p>
+                  <p className="text-gray-700 leading-relaxed">{renderInlineMarkdown(text)}</p>
                 </div>
               );
             }
             return (
               <p key={i} className="text-gray-700 leading-relaxed mb-4">
-                {line.split(/\*\*(.+?)\*\*/).map((part, j) =>
-                  j % 2 === 1 ? (
-                    <strong key={j} className="font-semibold text-gray-900">{part}</strong>
-                  ) : (
-                    <span key={j}>{part}</span>
-                  )
-                )}
+                {renderInlineMarkdown(line)}
               </p>
             );
           })}
