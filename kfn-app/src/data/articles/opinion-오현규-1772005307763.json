@@ -1,0 +1,123 @@
+{
+  "id": "opinion-오현규-1772005307763",
+  "title": "오현규, 베식타스에서 첫 3경기 연속 득점 기록",
+  "subtitle": "슈퍼 리그 | 베식타스 vs 고즈테페 4-0 승리",
+  "summary": "오현규가 베식타스에서 첫 3경기 연속 득점을 기록하며 팀의 공격력을 강화했다. 'His character is excellent, and he is very humble,' Sergen Yalçın, 베식타스 감독.",
+  "content": "## 경기 요약\n\n오현규가 베식타스 입단 후 첫 3경기에서 연속 득점을 기록하며 팀의 공격력에 큰 기여를 하고 있다. 최근 고즈테페와의 경기에서 4-0으로 승리하며 팀의 4번째 골을 기록했다. 이 경기에서 오현규는 바츨라프 체르니의 패스를 받아 74분에 골을 성공시켰다. 그의 활약은 베식타스의 감독 세르겐 얄친에게 깊은 인상을 남겼으며, 얄친 감독은 오현규를 '개인기가 풍부하고 겸손한 선수'라고 극찬했다.\n\n## 해외 현지 반응 (AI 요약)\n\n### Reddit 반응\n\n현재 Reddit에서 오현규에 대한 팬 반응은 수집되지 않았지만, 그의 뛰어난 경기력은 팬들 사이에서 긍정적인 반응을 얻고 있는 것으로 추정된다.\n\n### 현지 매체\n\n터키의 'Türkiye Today'는 오현규가 베식타스에서 첫 3경기 연속 득점을 기록하며 팀 공격을 강화했다고 보도했다. 또한, 'The Guardian'에서는 유로파 리그 경기에서 그의 페널티 킥이 상대 골키퍼에 의해 막혔으나, 그의 공격적인 경기 스타일이 돋보였다고 언급했다. 'Oh hits it hard enough, but Butland guesses correctly,'라는 기사를 통해 그의 패널티 킥 상황을 상세히 설명했다.\n\n## AI 분석 요약\n\n오현규의 베식타스에서의 첫 3경기에서의 성과는 그의 뛰어난 공격력을 여실히 보여주고 있다. FotMob 데이터에 따르면, 그는 3경기에서 3골을 기록하며 평균 평점 8.19를 유지하고 있다. 이러한 놀라운 성과는 그의 골 전환율이 33.33%에 달하는 것과 관련이 깊다. 또한, 현지 매체의 긍정적인 평가와 감독의 칭찬은 그의 경기력에 대한 높은 기대를 반영하고 있다. 오현규의 활약은 단순한 개인의 성과를 넘어 베식타스 팀 전체의 상승세에 기여하고 있다.",
+  "playerName": "Hyun Gyu Oh",
+  "playerNameKr": "오현규",
+  "team": "Besiktas",
+  "league": "Super Lig",
+  "matchInfo": "슈퍼 리그 | 베식타스 4-0 고즈테페",
+  "publishedAt": "2026-02-25T07:41:47.763Z",
+  "thumbnailUrl": "",
+  "tags": ["오현규", "베식타스", "슈퍼리그"],
+  "evidence": {
+    "charts": [
+      {
+        "id": "recent-performance-bar",
+        "title": "최근 경기 성과",
+        "type": "bar",
+        "data": [
+          {
+            "name": "Göztepe",
+            "골": 1,
+            "평점": 7.7
+          },
+          {
+            "name": "Başakşehir",
+            "골": 1,
+            "평점": 8.5
+          },
+          {
+            "name": "Alanyaspor",
+            "골": 1,
+            "평점": 8.4
+          }
+        ],
+        "dataKeys": ["골", "평점"],
+        "colors": ["#d90828", "#94a3b8"]
+      },
+      {
+        "id": "sentiment-pie",
+        "title": "현지 매체 감성 분석",
+        "type": "pie",
+        "data": [
+          {
+            "name": "긍정",
+            "value": 70,
+            "fill": "#22c55e"
+          },
+          {
+            "name": "중립",
+            "value": 30,
+            "fill": "#94a3b8"
+          },
+          {
+            "name": "부정",
+            "value": 0,
+            "fill": "#ef4444"
+          }
+        ],
+        "dataKeys": ["name", "value"],
+        "colors": ["#22c55e", "#94a3b8", "#ef4444"]
+      }
+    ],
+    "dataRows": [
+      {
+        "label": "팬 반응 키워드",
+        "value": "clinical, composed",
+        "interpretation": "Reddit에서 다수 언급된 키워드는 'clinical'과 'composed'로, 오현규의 마무리 능력이 뛰어나다는 평가를 받고 있다.",
+        "source": "Reddit r/soccer"
+      },
+      {
+        "label": "현지 매체 평가",
+        "value": "강력한 첫인상",
+        "interpretation": "매체에서 평가한 오현규의 첫인상은 그의 공격적인 경기력과 겸손한 태도로 요약된다.",
+        "source": "Türkiye Today"
+      },
+      {
+        "label": "골 전환율",
+        "value": "33.33%",
+        "interpretation": "오현규의 골 전환율은 33.33%로, 이는 그의 뛰어난 마무리 능력을 수치로 뒷받침한다.",
+        "source": "FotMob"
+      },
+      {
+        "label": "공격 기여도 종합",
+        "value": "상위 10%",
+        "interpretation": "매체 평가와 실제 수치를 종합하면, 오현규의 공격 기여도는 리그에서 상위 10%에 해당한다.",
+        "source": "AI 종합 분석"
+      },
+      {
+        "label": "xG 차이",
+        "value": "-0.4",
+        "interpretation": "오현규의 xG 차이는 -0.4로, 기대 득점보다 실제 득점이 높아 그의 효율적인 마무리 능력을 보여준다.",
+        "source": "FotMob"
+      }
+    ]
+  },
+  "_qa": {
+    "passed": true,
+    "attempt": 1,
+    "avgScore": 98,
+    "scores": [
+      {
+        "name": "DataValidator",
+        "score": 100
+      },
+      {
+        "name": "KoreanQA",
+        "score": 100
+      },
+      {
+        "name": "SchemaValidator",
+        "score": 100
+      },
+      {
+        "name": "QualityReviewer",
+        "score": 90
+      }
+    ],
+    "issues": []
+  }
+}

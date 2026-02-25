@@ -5,10 +5,11 @@ import ArticleList from './components/news/ArticleList';
 import ArticleView from './components/news/ArticleView';
 import EvidenceView from './components/news/EvidenceView';
 import StatsDashboard from './components/stats/StatsDashboard';
-import { mockArticles } from './data/mockArticles';
+import { loadArticles } from './utils/articleLoader';
 import type { Article, MainView, NewsView } from './types';
 
 function App() {
+  const articles = loadArticles();
   const [mainView, setMainView] = useState<MainView>('news');
   const [newsView, setNewsView] = useState<NewsView>('list');
   const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
@@ -51,7 +52,7 @@ function App() {
         {mainView === 'news' && (
           <>
             {newsView === 'list' && (
-              <ArticleList articles={mockArticles} onArticleClick={handleArticleClick} />
+              <ArticleList articles={articles} onArticleClick={handleArticleClick} />
             )}
             {newsView === 'article' && selectedArticle && (
               <ArticleView

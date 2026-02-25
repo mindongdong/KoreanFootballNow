@@ -1,0 +1,144 @@
+{
+  "id": "opinion-오현규-1771997869755",
+  "title": "오현규, 베식타스에서 3경기 연속 득점 기록으로 주목받다",
+  "subtitle": "터키 슈퍼리그 | 베식타스 4-0 고즈테페",
+  "summary": "오현규가 베식타스에서의 첫 3경기에서 연속 득점을 기록하며 팀의 공격력을 강화했다. \"His recent performances have strengthened Beşiktaş’s attack,\"라고 Türkiye Today가 평가했다.",
+  "content": "## 경기 요약\n\n오현규는 베식타스 이적 후 첫 3경기에서 모두 득점을 기록하며 팀의 공격력을 크게 강화했다. 그는 알라냐스포르와의 경기에서 자전거 킥으로 첫 득점을 올렸고, 이어진 바샥셰히르와 고즈테페와의 경기에서도 각각 1골씩을 추가했다. 특히 고즈테페와의 경기에서는 4-0 대승을 이끌며 팀의 네 번째 골을 기록했다.\n\n이러한 활약 덕분에 오현규는 베식타스 역사상 2005-06 시즌 이후 처음으로 첫 3경기에서 연속 득점을 기록한 선수가 되었다. 그의 골 전환율은 33.33%로, 이는 그의 공격 효율성을 잘 보여준다.\n\n## 해외 현지 반응 (AI 요약)\n\n### 현지 매체\n\nTürkiye Today는 \"Beşiktaş’s new signing Hyeon-gyu Oh has made a strong start to his career in Türkiye,\"라며 그의 뛰어난 출발을 강조했다. 베식타스 감독 세르겐 야신은 \"Oh Hyeon-gyu is a great player with abundant individuality,\"라며 그의 플레이 스타일과 인성을 칭찬했다.\n\nESPN Deportes는 고즈테페와의 경기에서 오현규가 74분에 팀의 네 번째 골을 기록했다고 보도하며 그의 경기력을 높이 평가했다. 오현규의 이적 초기 활약은 터키와 국제적으로 큰 관심을 받고 있다.\n\n## AI 분석 요약\n\n오현규의 베식타스에서의 초반 활약은 그의 축구 커리어에 중요한 전환점이 될 것으로 보인다. 그의 평균 평점은 8.19로 이는 그의 꾸준한 경기력을 나타낸다. 또한, 패스 성공률 79.2%와 드리블 성공률 50%는 그의 전방위적인 플레이 능력을 보여준다.\n\n그의 이적은 단순한 팀 전력 강화뿐만 아니라, 베식타스의 동아시아 시장 확장에도 기여할 것으로 예상된다. 오현규는 경기 전 맨발로 몸을 푸는 등 지역 문화를 적극적으로 수용하며 팬들에게 친근감을 주고 있다.",
+  "playerName": "Hyun Gyu Oh",
+  "playerNameKr": "오현규",
+  "team": "Besiktas",
+  "league": "Super Lig",
+  "matchInfo": "터키 슈퍼리그 | 베식타스 4-0 고즈테페",
+  "publishedAt": "2026-02-25T05:37:49.755Z",
+  "thumbnailUrl": "",
+  "tags": ["오현규", "베식타스", "슈퍼리그"],
+  "evidence": {
+    "charts": [
+      {
+        "id": "recent-performance-bar",
+        "title": "최근 경기 성과",
+        "type": "bar",
+        "data": [
+          {
+            "name": "고즈테페",
+            "골": 1,
+            "어시스트": 0
+          },
+          {
+            "name": "바샥셰히르",
+            "골": 1,
+            "어시스트": 1
+          },
+          {
+            "name": "알라냐스포르",
+            "골": 1,
+            "어시스트": 0
+          }
+        ],
+        "dataKeys": ["골", "어시스트"],
+        "colors": ["#d90828", "#94a3b8"]
+      },
+      {
+        "id": "performance-radar",
+        "title": "오현규 경기 능력 분석",
+        "type": "radar",
+        "data": [
+          {
+            "stat": "골 전환율",
+            "value": 33
+          },
+          {
+            "stat": "패스 성공률",
+            "value": 79
+          },
+          {
+            "stat": "드리블 성공률",
+            "value": 50
+          }
+        ],
+        "dataKeys": ["value"],
+        "colors": ["#d90828"]
+      },
+      {
+        "id": "sentiment-pie",
+        "title": "현지 반응 감성 분석",
+        "type": "pie",
+        "data": [
+          {
+            "name": "긍정",
+            "value": 70,
+            "fill": "#22c55e"
+          },
+          {
+            "name": "중립",
+            "value": 20,
+            "fill": "#94a3b8"
+          },
+          {
+            "name": "부정",
+            "value": 10,
+            "fill": "#ef4444"
+          }
+        ],
+        "dataKeys": ["value"],
+        "colors": ["#22c55e", "#94a3b8", "#ef4444"]
+      }
+    ],
+    "dataRows": [
+      {
+        "label": "경기 출전 시간",
+        "value": "266분",
+        "interpretation": "오현규는 베식타스에서의 첫 3경기 모두 선발 출전하며 총 266분을 소화했다. 이는 그의 체력과 경기 집중력을 보여준다.",
+        "source": "FotMob"
+      },
+      {
+        "label": "평균 평점",
+        "value": "8.19",
+        "interpretation": "평균 평점 8.19는 그의 경기력이 리그 평균을 크게 상회함을 나타낸다. 이는 그의 꾸준한 활약을 반영한다.",
+        "source": "FotMob"
+      },
+      {
+        "label": "골 전환율",
+        "value": "33.33%",
+        "interpretation": "오현규의 골 전환율은 33.33%로 매우 높은 수준이다. 이는 그의 정확한 슈팅 능력을 보여준다.",
+        "source": "FotMob"
+      },
+      {
+        "label": "패스 성공률",
+        "value": "79.2%",
+        "interpretation": "패스 성공률 79.2%는 그의 패스 정확도가 팀 내에서 중요한 역할을 하고 있음을 시사한다.",
+        "source": "FotMob"
+      },
+      {
+        "label": "드리블 성공률",
+        "value": "50%",
+        "interpretation": "드리블 성공률 50%는 상대 수비를 돌파하는 능력을 잘 나타내며, 공격 전개에 기여하고 있다.",
+        "source": "FotMob"
+      }
+    ]
+  },
+  "_qa": {
+    "passed": true,
+    "attempt": 2,
+    "avgScore": 100,
+    "scores": [
+      {
+        "name": "DataValidator",
+        "score": 100
+      },
+      {
+        "name": "KoreanQA",
+        "score": 100
+      },
+      {
+        "name": "SchemaValidator",
+        "score": 100
+      },
+      {
+        "name": "QualityReviewer",
+        "score": 100
+      }
+    ],
+    "issues": []
+  }
+}

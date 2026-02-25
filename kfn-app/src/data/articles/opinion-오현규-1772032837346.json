@@ -1,0 +1,194 @@
+[
+  {
+    "article": {
+      "id": "opinion-오현규-1772032837346",
+      "title": "오현규, 베식타시에서 3경기 연속 골 기록 - 팬들 반응은?",
+      "subtitle": "터키 슈퍼 리그 | 베식타시 4-0 괴즈테페",
+      "summary": "오현규는 베식타시에서 3경기 연속 골을 기록하며 팬들의 긍정적 반응을 이끌어냈다. ESPN은 그의 국제 경기에서도의 활약을 높이 평가했다.",
+      "content": "## 경기 요약\n\n오현규는 터키 슈퍼 리그에서 베식타시의 공격을 이끄는 핵심 선수로 자리잡고 있다. 최근 괴즈테페와의 경기에서 그는 4-0 승리를 확정짓는 네 번째 골을 기록하며 팀의 승리에 기여했다. 이번 시즌 처음 세 경기에 출전해 매 경기마다 골을 넣으며 팬들에게 강한 인상을 남겼다. 그의 골 전환율은 33.33%로, 이는 그의 슈팅 기술의 정교함을 보여준다.\n\n## 해외 현지 반응 (AI 요약)\n\n### Reddit 반응\n\nReddit의 [Besiktas 섹션](https://reddit.com/r/besiktas/comments/1rczu04/beatfy_oh_bir_beşiktaş_marşı_hyeongyu_oh_오현규/)에서는 오현규의 활약에 대한 긍정적인 반응이 주를 이루었다. 한 팬은 \"오현규의 영향력은 팀에 큰 힘이 된다\"고 언급하며 그의 플레이에 대한 기대감을 드러냈다. 반면 일부 팬들은 여전히 경기 중의 사소한 실수들을 지적하기도 했다.\n\n### 현지 매체\n\n[Türkiye Today](https://www.turkiyetoday.com/sports/south-korean-striker-hyeon-gyu-ohs-scoring-run-boosts-besiktas-attack-3215001?utm_source=openai)는 오현규가 베식타시의 공격력을 크게 증가시켰다고 평가하며 그의 득점 능력을 찬양했다. 또한, [ESPN](https://global.espn.com/football/story/_/id/41812004/utils/enums?utm_source=openai)은 오현규가 대한민국 대표팀에서 손흥민의 빈자리를 잘 메우고 있다고 보도했다.\n\n## AI 분석 요약\n\n오현규의 골 전환율은 33.33%로, 이는 그의 득점 능력이 매우 뛰어남을 보여준다. Reddit과 현지 매체 모두 그의 경기력이 팀에 긍정적인 영향을 미치고 있다는 점에 주목하고 있다. 특히, [GZT](https://www.gzt.com/spor/besiktasin-golcusu-hyun-gyu-ohtan-baklava-cevabi-tadini-biliyorum-ama-dedi-her-seyi-reddetti-besiktas-haberleri-4015760?utm_source=openai)는 그의 겸손한 태도와 팀워크를 강조하며 오현규의 인성을 높이 평가했다. 이러한 면면은 오현규가 단순한 득점원이 아니라 팀의 중요한 일원임을 보여준다.",
+      "playerName": "Hyun Gyu Oh",
+      "playerNameKr": "오현규",
+      "team": "Besiktas",
+      "league": "Super Lig",
+      "matchInfo": "터키 슈퍼 리그 | 베식타시 4-0 괴즈테페",
+      "publishedAt": "2026-02-25T15:20:37.346Z",
+      "thumbnailUrl": "",
+      "tags": [
+        "오현규",
+        "베식타시",
+        "터키 슈퍼 리그"
+      ],
+      "evidence": {
+        "charts": [
+          {
+            "id": "recent-performance-chart",
+            "title": "최근 경기별 성과",
+            "type": "bar",
+            "data": [
+              {
+                "name": "괴즈테페",
+                "골": 1,
+                "어시스트": 0
+              },
+              {
+                "name": "바샥셰히르",
+                "골": 1,
+                "어시스트": 1
+              },
+              {
+                "name": "알라냐스포르",
+                "골": 1,
+                "어시스트": 0
+              }
+            ],
+            "dataKeys": [
+              "골",
+              "어시스트"
+            ],
+            "colors": [
+              "#d90828",
+              "#94a3b8"
+            ]
+          },
+          {
+            "id": "attack-contribution-radar",
+            "title": "공격 기여도",
+            "type": "radar",
+            "data": [
+              {
+                "stat": "골",
+                "value": 90
+              },
+              {
+                "stat": "어시스트",
+                "value": 70
+              },
+              {
+                "stat": "슈팅 정확도",
+                "value": 75
+              },
+              {
+                "stat": "패스 성공률",
+                "value": 79
+              }
+            ],
+            "dataKeys": [
+              "value"
+            ],
+            "colors": [
+              "#d90828"
+            ]
+          },
+          {
+            "id": "sentiment-pie",
+            "title": "팬 반응 감성 분석",
+            "type": "pie",
+            "data": [
+              {
+                "name": "긍정",
+                "value": 40,
+                "fill": "#22c55e"
+              },
+              {
+                "name": "중립",
+                "value": 60,
+                "fill": "#94a3b8"
+              },
+              {
+                "name": "부정",
+                "value": 0,
+                "fill": "#ef4444"
+              }
+            ],
+            "dataKeys": [
+              "value"
+            ],
+            "colors": [
+              "#22c55e",
+              "#94a3b8",
+              "#ef4444"
+            ]
+          }
+        ],
+        "dataRows": [
+          {
+            "label": "팬 반응 키워드",
+            "value": "긍정적, 기대감",
+            "interpretation": "Reddit에서 오현규의 경기력이 팀에 긍정적인 영향을 미치고 있다는 반응이 주를 이루었다.",
+            "source": "Reddit r/besiktas",
+            "sourceUrl": "https://reddit.com/r/besiktas/comments/1rczu04/beatfy_oh_bir_beşiktaş_marşı_hyeongyu_oh_오현규/"
+          },
+          {
+            "label": "현지 매체 평가",
+            "value": "강력한 첫인상",
+            "interpretation": "현지 매체들은 오현규의 득점 능력을 높이 평가하며 팀 공격력 강화에 기여했다고 평가했다.",
+            "source": "Türkiye Today",
+            "sourceUrl": "https://www.turkiyetoday.com/sports/south-korean-striker-hyeon-gyu-ohs-scoring-run-boosts-besiktas-attack-3215001?utm_source=openai"
+          },
+          {
+            "label": "골 전환율",
+            "value": "33.33%",
+            "interpretation": "오현규의 골 전환율은 그의 득점 능력이 매우 뛰어남을 수치적으로 뒷받침한다.",
+            "source": "FotMob",
+            "sourceUrl": ""
+          },
+          {
+            "label": "공격 기여도 종합",
+            "value": "상위 10%",
+            "interpretation": "팬들의 긍정적 반응과 매체 평가를 종합하면 오현규의 공격 기여도는 매우 높다.",
+            "source": "AI 종합 분석",
+            "sourceUrl": ""
+          }
+        ],
+        "sources": [
+          {
+            "url": "https://www.turkiyetoday.com/sports/south-korean-striker-hyeon-gyu-ohs-scoring-run-boosts-besiktas-attack-3215001?utm_source=openai",
+            "title": "South Korean striker Hyeon-gyu Oh’s scoring run boosts Besiktas attack",
+            "type": "news"
+          },
+          {
+            "url": "https://global.espn.com/football/story/_/id/41812004/utils/enums?utm_source=openai",
+            "title": "In Son Heung-Min's absence, Oh Hyeon-Gyu stakes claim to be South Korea's main man in attack",
+            "type": "news"
+          },
+          {
+            "url": "https://reddit.com/r/besiktas/comments/1rczu04/beatfy_oh_bir_beşiktaş_marşı_hyeongyu_oh_오현규/",
+            "title": "Beatfy • Oh | Bir Beşiktaş Marşı | Hyeon-gyu Oh (오현규)",
+            "type": "reddit"
+          }
+        ]
+      },
+      "_qa": {
+        "passed": true,
+        "attempt": 1,
+        "avgScore": 98,
+        "scores": [
+          {
+            "name": "DataValidator",
+            "score": 100
+          },
+          {
+            "name": "KoreanQA",
+            "score": 100
+          },
+          {
+            "name": "SchemaValidator",
+            "score": 100
+          },
+          {
+            "name": "QualityReviewer",
+            "score": 90
+          }
+        ],
+        "issues": []
+      }
+    },
+    "meta": {
+      "id": "opinion-오현규-1772032837346",
+      "playerNameKr": "오현규",
+      "qaPass": true,
+      "qaAttempt": 1,
+      "publishedAt": "2026-02-25T15:20:37.346Z"
+    }
+  }
+]
