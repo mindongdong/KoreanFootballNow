@@ -1,1 +1,14 @@
 .DS_Store
+
+# n8n backup (contains encryptionKey and credentials)
+n8n-backup.tar.gz
+n8n_workflow_fotmob.json
+
+# Environment variables
+.env
+.env.*
+
+# Pipeline output (generated data)
+scripts/output/*.json
+scripts/output/*.txt
+!scripts/output/.gitkeep
