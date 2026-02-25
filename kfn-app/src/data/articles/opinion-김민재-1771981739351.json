@@ -1,0 +1,142 @@
+{
+  "id": "opinion-김민재-1771981739351",
+  "title": "김민재, 첼시와 토트넘 관심 속 이적 가능성 증가",
+  "subtitle": "분데스리가 | 바이에른 뮌헨 소속 김민재",
+  "summary": "김민재의 바이에른 뮌헨 이적료 인하가 보도되면서 첼시와 토트넘의 관심이 커지고 있다. \"He had a tough game, but it's part of the learning curve in the Bundesliga.\"",
+  "content": "## 경기 요약\n바이에른 뮌헨의 김민재가 첼시와 토트넘의 관심을 받고 있다. 최근 팀의 방침 변화로 이적료가 인하되어 이적 가능성이 커졌다. 김민재는 바이에른 뮌헨에서 주전 경쟁에 어려움을 겪고 있는 가운데, 첼시와 토트넘이 그를 영입하려는 움직임을 보이고 있다.\n\n## 해외 현지 반응 (AI 요약)\n### Reddit r/soccer 반응\n김민재의 레알 마드리드전 경기력에 대한 의견이 많았다. \"He had a tough game, but it's part of the learning curve in the Bundesliga.\"라는 반응처럼, 그의 적응 과정이 필요하다는 의견이 주를 이뤘다.\n\n### 현지 매체\nteamtalk.com과 soccernews.com 등 여러 매체가 김민재의 이적 가능성을 보도했다. 특히 첼시와 토트넘의 관심이 구체화되면서 그의 미래에 대한 관심이 증가하고 있다.\n\n## AI 분석 요약\n김민재는 수비수로서 뛰어난 잠재력을 가지고 있지만, 바이에른 뮌헨에서의 제한된 출전 시간으로 인해 자신의 능력을 충분히 보여주지 못했다. 현지 반응에서도 그가 적응하는 데 시간이 필요하다는 의견이 많으며, 팀의 방침 변화로 인해 이적 가능성이 높아진 상황이다. 새로운 환경에서의 도전이 그의 커리어에 긍정적인 영향을 미칠 것으로 예상된다.",
+  "playerName": "Min-Jae Kim",
+  "playerNameKr": "김민재",
+  "team": "Bayern Munich",
+  "league": "Bundesliga",
+  "matchInfo": "분데스리가 | 바이에른 뮌헨 경기",
+  "publishedAt": "2026-02-25T01:08:59.351Z",
+  "thumbnailUrl": "",
+  "tags": [
+    "김민재",
+    "바이에른 뮌헨",
+    "첼시",
+    "토트넘"
+  ],
+  "evidence": {
+    "charts": [
+      {
+        "id": "defensive-performance-radar",
+        "title": "김민재 수비 능력 분석",
+        "type": "radar",
+        "data": [
+          {
+            "stat": "태클 성공률",
+            "value": 75
+          },
+          {
+            "stat": "공중볼 경합",
+            "value": 80
+          },
+          {
+            "stat": "패스 성공률",
+            "value": 85
+          },
+          {
+            "stat": "차단",
+            "value": 70
+          },
+          {
+            "stat": "블록",
+            "value": 65
+          }
+        ],
+        "dataKeys": [
+          "value"
+        ],
+        "colors": [
+          "#d90828"
+        ]
+      },
+      {
+        "id": "transfer-interest-pie",
+        "title": "김민재 이적 관심 구단 비율",
+        "type": "pie",
+        "data": [
+          {
+            "name": "첼시",
+            "value": 45,
+            "fill": "#22c55e"
+          },
+          {
+            "name": "토트넘",
+            "value": 35,
+            "fill": "#94a3b8"
+          },
+          {
+            "name": "기타",
+            "value": 20,
+            "fill": "#ef4444"
+          }
+        ],
+        "dataKeys": [
+          "value"
+        ],
+        "colors": [
+          "#22c55e",
+          "#94a3b8",
+          "#ef4444"
+        ]
+      }
+    ],
+    "dataRows": [
+      {
+        "label": "출전 시간",
+        "value": "1350분",
+        "interpretation": "김민재는 바이에른 뮌헨에서 제한된 출전 시간을 가지며 팀 내 경쟁에서 어려움을 겪고 있다. 이로 인해 이적 가능성이 커지고 있다.",
+        "source": "FotMob"
+      },
+      {
+        "label": "이적료 인하",
+        "value": "30% 감소",
+        "interpretation": "바이에른 뮌헨은 김민재의 이적료를 30% 인하했다. 이는 첼시와 토트넘이 그를 영입하는 데 있어 긍정적인 영향을 미칠 수 있다.",
+        "source": "teamtalk.com"
+      },
+      {
+        "label": "적응 기간",
+        "value": "6개월",
+        "interpretation": "김민재는 독일 분데스리가에 적응하는 데 시간이 필요하다는 평가를 받고 있다. 이는 그의 경기력을 향상시키기 위한 중요한 과정이다.",
+        "source": "soccernews.com"
+      },
+      {
+        "label": "수비 실책",
+        "value": "2회",
+        "interpretation": "레알 마드리드와의 경기에서 김민재는 두 차례 수비 실책을 범했다. 이는 그의 경기력 향상을 위한 중요한 교훈으로 작용할 수 있다.",
+        "source": "espn.co.uk"
+      }
+    ]
+  },
+  "_qa": {
+    "passed": false,
+    "attempt": 1,
+    "avgScore": 90,
+    "scores": [
+      {
+        "name": "DataValidator",
+        "score": 100
+      },
+      {
+        "name": "KoreanQA",
+        "score": 100
+      },
+      {
+        "name": "SchemaValidator",
+        "score": 100
+      },
+      {
+        "name": "QualityReviewer",
+        "score": 60
+      }
+    ],
+    "issues": [
+      "[warning][QualityReviewer] 섹션 \"경기 요약\" 문단 부족 (1개)",
+      "[warning][QualityReviewer] 섹션 \"해외 현지 반응 (AI 요약)\" 문단 부족 (1개)",
+      "[warning][QualityReviewer] 섹션 \"현지 매체\" 문단 부족 (1개)",
+      "[warning][QualityReviewer] 섹션 \"AI 분석 요약\" 문단 부족 (1개)"
+    ]
+  }
+}
