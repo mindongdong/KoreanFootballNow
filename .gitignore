@@ -12,3 +12,7 @@ n8n_workflow_fotmob.json
 scripts/output/*.json
 scripts/output/*.txt
 !scripts/output/.gitkeep
+
+# Generated article data (n8n pipeline output)
+kfn-app/src/data/articles/*.json
+!kfn-app/src/data/articles/.gitkeep
