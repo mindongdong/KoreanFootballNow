@@ -1,0 +1,1492 @@
+{
+  "name": "My workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "triggerAtHour": 6
+            }
+          ]
+        }
+      },
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        -624,
+        160
+      ],
+      "id": "2d687ec5-8a4f-45fe-9725-5d787cfd44e5",
+      "name": "Schedule Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 추적할 한국 선수 리스트\nconst koreanPlayers = [\n  {\n    id: 212867,\n    name: \"Heung-Min Son\",\n    nameKr: \"손흥민\",\n  },\n  {\n    id: 828159,\n    name: \"Min-Jae Kim\",\n    nameKr: \"김민재\",\n  },\n  {\n    id: 940976,\n    name: \"Kang-In Lee\",\n    nameKr: \"이강인\",\n  },\n  {\n    id: 620026,\n    name: \"Hee-Chan Hwang\",\n    nameKr: \"황희찬\",\n  },\n  {\n    id: 623698,\n    name: \"In-Beom Hwang\",\n    nameKr: \"황인범\",\n  },\n  {\n    id: 1386482,\n    name: \"Bae Jun-Ho\",\n    nameKr: \"배준호\",\n  },\n  {\n    id: 1609329,\n    name: \"Min-Hyeok Yang\",\n    nameKr: \"양민혁\",\n  },\n  {\n    id: 523749,\n    name: \"Jae-Sung Lee\",\n    nameKr: \"이재성\",\n  },\n  {\n    id: 1026781,\n    name: \"Gue-Sung Cho\",\n    nameKr: \"조규성\",\n  },\n  {\n    id: 925345,\n    name: \"Hyun-Seok Hong\",\n    nameKr: \"홍현석\",\n  },\n  {\n    id: 433677,\n    name: \"Ui-Jo Hwang\",\n    nameKr: \"황의조\",\n  },\n  {\n    id: 1132818,\n    name: \"Seol Young-Woo\",\n    nameKr: \"설영우\",\n  },\n  {\n    id: 1232560,\n    name: \"Hyun-Jun Yang\",\n    nameKr: \"양현준\",\n  },\n  {\n    id: 1185902,\n    name: \"Jens Castrop\",\n    nameKr: \"옌스 카스트로프\",\n  },\n  {\n    id: 1085809,\n    name: \"Hyeok-Kyu Kwon\",\n    nameKr: \"권혁규\",\n  },\n  {\n    id: 1684578,\n    name: \"Min-Su Kim\",\n    nameKr: \"김민수\",\n  },\n  {\n    id: 1044299,\n    name: \"Hyun Gyu Oh\",\n    nameKr: \"오현규\",\n  },\n  {\n    id: 848102,\n    name: \"Seung-Ho Paik\",\n    nameKr: \"백승호\",\n  },\n  {\n    id: 1109166,\n    name: \"Sang-Bin Jeong\",\n    nameKr: \"정상빈\",\n  },\n  {\n    id: 949673,\n    name: \"Woo-Yeong Jeong\",\n    nameKr: \"정우영\",\n  },\n  {\n    id: 1613077,\n    name: \"Do-Young Yoon\",\n    nameKr: \"윤도영\",\n  },\n  {\n    id: 1656881,\n    name: \"Park Seung-Soo\",\n    nameKr: \"박승수\",\n  },\n  {\n    id: 1107283,\n    name: \"Ji-Sung Eom\",\n    nameKr: \"엄지성\",\n  },\n  {\n    id: 1232253,\n    name: \"Han-Beom Lee\",\n    nameKr: \"이한범\",\n  },\n  {\n    id: 1107251,\n    name: \"Tae-Seok Lee\",\n    nameKr: \"이태석\",\n  },\n  {\n    id: 1328820,\n    name: \"Hyun-Ju Lee\",\n    nameKr: \"이현주\",\n  },\n  {\n    id: 1341538,\n    name: \"Ji-Soo Kim\",\n    nameKr: \"김지수\",\n  },\n  {\n    id: 1238478,\n    name: \"Young-Jun Lee\",\n    nameKr: \"이영준\",\n  },\n  {  \n\tid: 922539,  \n\tname: \"Jin-Woo Jeon\",  \n\tnameKr: \"전진우\",  \n   },  \n   {  \n\tid: 1275290,  \n\tname: \"Jong-Min Seo\",  \n\tnameKr: \"서종민\",  \n   },\n];\n\nreturn koreanPlayers.map(player => ({ json: player }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -416,
+        160
+      ],
+      "id": "8380f641-e8be-45a0-a777-c2e5cf5905ad",
+      "name": "한국 선수 리스트"
+    },
+    {
+      "parameters": {
+        "jsCode": "const { exec } = require('child_process');\nconst fs = require('fs');\nconst players = $input.all().map(item => item.json);\nfs.writeFileSync('/tmp/players.json', JSON.stringify(players));\n\nconst stdout = await new Promise((resolve, reject) => {\n  exec('node /opt/n8n-custom/fotmob-scraper.js /tmp/players.json', {\n    timeout: 600000,\n    maxBuffer: 50 * 1024 * 1024\n  }, (error, stdout, stderr) => {\n    if (error) reject(new Error(stderr || error.message));\n    else resolve(stdout);\n  });\n});\n\nconst results = JSON.parse(stdout);\nreturn results.map(r => ({ json: r }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        -208,
+        160
+      ],
+      "id": "1e105ad0-37bc-4519-95fd-681d28fcd5ce",
+      "name": "Fotmob 데이터 수집"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Google Sheets는 flat structure만 지원하므로 변환 필요\nconst items = $input.all().map(item => item.json);\n\nconst flattenedData = items.map(data => {\n  return {\n    // 메타\n    collection_date: data.collection_date,\n    week: data.week,\n    \n    // 기본 정보\n    player_id: data.id,\n    player_name: data.name,\n    player_name_kr: data.name_kr,\n    team: data.team,\n    league: data.league,\n    position: data.position,\n    \n    // 주간 통계 (flatten)\n    weekly_matches: data.weekly_stats?.matches || 0,\n    weekly_minutes: data.weekly_stats?.minutes || 0,\n    weekly_goals: data.weekly_stats?.goals || 0,\n    weekly_assists: data.weekly_stats?.assists || 0,\n    weekly_avg_rating: data.weekly_stats?.avg_rating || 0,\n    weekly_mvp_score: data.weekly_stats?.mvp_score || 0,\n    \n    // 시즌 통계 (flatten)\n    season_matches: data.season_stats.matches,\n    season_goals: data.season_stats.goals,\n    season_assists: data.season_stats.assists,\n    season_avg_rating: data.season_stats.avg_rating,\n    season_yellow_cards: data.season_stats.yellow_cards,\n    season_red_cards: data.season_stats.red_cards,\n    \n    // 최근 경기 (JSON 문자열로 저장)\n    recent_matches_json: JSON.stringify(data.recent_matches),\n    \n    // 부상 정보\n    is_injured: data.injury_status ? 'Yes' : 'No',\n    injury_status: data.injury_status?.status || null,\n    injury_expected_return: data.injury_status?.expected_return || null,\n    \n    // 기타\n    on_loan: data.on_loan ? 'Yes' : 'No',\n    contract_end: data.contract_end,\n    fotmob_url: data.fotmob_url\n  };\n});\n\nreturn flattenedData.map(data => ({ json: data }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        160
+      ],
+      "id": "f5a2a595-d19b-4331-a9d1-7341aed18d4b",
+      "name": "데이터 flatten"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// n8n Node: Player Profile Data Processing\n// FotMob API → Player Profile Stats (player_profile_stats.csv용)\n// ============================================\n\n// ========== Helper Functions ==========\n\nfunction safeGet(obj, ...keys) {\n  return keys.reduce((acc, key) => (acc && acc[key] !== undefined ? acc[key] : null), obj);\n}\n\nfunction parseFloat2(value) {\n  if (value == null || value === '') return 0;\n  const parsed = parseFloat(value);\n  return isNaN(parsed) ? 0 : Math.round(parsed * 100) / 100;\n}\n\nfunction parseInt2(value) {\n  if (value == null || value === '') return 0;\n  const parsed = parseInt(value);\n  return isNaN(parsed) ? 0 : parsed;\n}\n\nfunction parsePercent(value) {\n  if (value == null || value === '') return 0;\n  const strVal = String(value).replace('%', '');\n  return parseFloat2(strVal);\n}\n\nfunction calculateAge(birthDateStr) {\n  if (!birthDateStr) return null;\n  const birth = new Date(birthDateStr);\n  const today = new Date();\n  let age = today.getFullYear() - birth.getFullYear();\n  const monthDiff = today.getMonth() - birth.getMonth();\n  if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birth.getDate())) {\n    age--;\n  }\n  return age;\n}\n\nfunction getPlayerInfoValue(playerInfo, key) {\n  if (!Array.isArray(playerInfo)) return '';\n  const item = playerInfo.find(info => info.title === key);\n  return item?.value?.fallback || '';\n}\n\nfunction getStatValue(statsSection, category, statKey) {\n  if (!statsSection || !statsSection.items || !Array.isArray(statsSection.items)) return null;\n\n  const categoryData = statsSection.items.find(item => item.localizedTitleId === category);\n  if (!categoryData || !categoryData.items || !Array.isArray(categoryData.items)) return null;\n\n  const stat = categoryData.items.find(s => s.localizedTitleId === statKey);\n  if (!stat) return null;\n\n  // statValue가 문자열인 경우 파싱\n  if (stat.statValue != null) {\n    const strVal = String(stat.statValue);\n    if (strVal.includes('%')) return parsePercent(strVal);\n    if (strVal.includes('.')) return parseFloat2(strVal);\n    return parseInt2(strVal);\n  }\n\n  return null;\n}\n\n// ========== Section Extractors ==========\n\n// Section 1: Profile Header (18개 필드 - birth_date, nationality 제거)\nfunction extractProfileHeader(api) {\n  const playerInfo = api.playerInformation || [];\n  const birthDate = safeGet(api, 'birthDate', 'utcTime');\n\n  return {\n    player_id: api.id || null,\n    player_name: api.name || '',\n    player_name_kr: '', // 별도 매핑 필요\n    age: calculateAge(birthDate),\n    height: getPlayerInfoValue(playerInfo, 'Height'),\n    preferred_foot: getPlayerInfoValue(playerInfo, 'Preferred foot'),\n    shirt_number: getPlayerInfoValue(playerInfo, 'Shirt number'),\n    position: safeGet(api, 'positionDescription', 'primaryPosition', 'label') || '',\n    team: safeGet(api, 'primaryTeam', 'teamName') || '',\n    team_id: safeGet(api, 'primaryTeam', 'teamId') || null,\n    league: safeGet(api, 'mainLeague', 'leagueName') || '',\n    league_id: safeGet(api, 'mainLeague', 'leagueId') || null,\n    season: safeGet(api, 'mainLeague', 'season') || '',\n    market_value: getPlayerInfoValue(playerInfo, 'Market value'),\n    contract_end: safeGet(api, 'contractEnd', 'utcTime') || null,\n    is_injured: !!api.injuryInformation,\n    injury_status: safeGet(api, 'injuryInformation', 'name') || null,\n    fotmob_url: api.id ? `https://www.fotmob.com/players/${api.id}` : ''\n  };\n}\n\n// Section 2: Key Stats Cards (6개 필드 - per90/percentile 제거)\nfunction extractKeyStats(firstSeasonStats) {\n  const topStatCard = firstSeasonStats?.topStatCard?.items || [];\n  const result = {};\n\n  const statKeys = ['goals', 'assists', 'rating', 'matches_uppercase', 'player_started_matches', 'minutes_played'];\n  const statMapping = {\n    'matches_uppercase': 'matches',\n    'player_started_matches': 'started'\n  };\n\n  statKeys.forEach(key => {\n    const statData = topStatCard.find(s => s.localizedTitleId === key);\n    const outputKey = statMapping[key] || key;\n\n    result[outputKey] = statData?.statValue != null ? parseFloat2(statData.statValue) : 0;\n  });\n\n  return result;\n}\n\n// Section 3: Attack (7개 필드 - xg_difference, shots, shots_on_target, shooting_accuracy, big_chances_missed 제거)\nfunction extractAttackStats(firstSeasonStats) {\n  const statsSection = firstSeasonStats?.statsSection;\n\n  const goals = getStatValue(statsSection, 'shooting', 'goals') || 0;\n  const shots = getStatValue(statsSection, 'shooting', 'shots') || 0;\n\n  return {\n    attack_goals: goals,\n    attack_expected_goals: getStatValue(statsSection, 'shooting', 'expected_goals') || 0,\n    attack_non_penalty_xg: getStatValue(statsSection, 'shooting', 'non_penalty_xg') || 0,\n    attack_conversion_rate: shots > 0 ? Math.round((goals / shots) * 10000) / 100 : 0,\n    attack_dribbles_succeeded: getStatValue(statsSection, 'possession', 'dribbles_succeeded') || 0,\n    attack_dribble_success_rate: parsePercent(getStatValue(statsSection, 'possession', 'won_contest_subtitle')),\n    attack_touches_in_box: getStatValue(statsSection, 'possession', 'touches_opp_box') || 0\n  };\n}\n\n// Section 4: Passing (9개 필드 - xa_difference, key_passes 제거)\nfunction extractPassingStats(firstSeasonStats) {\n  const statsSection = firstSeasonStats?.statsSection;\n\n  return {\n    passing_assists: getStatValue(statsSection, 'passing', 'assists') || 0,\n    passing_expected_assists: getStatValue(statsSection, 'passing', 'expected_assists') || 0,\n    passing_chances_created: getStatValue(statsSection, 'passing', 'chances_created') || 0,\n    passing_successful_passes: getStatValue(statsSection, 'passing', 'successful_passes') || 0,\n    passing_pass_accuracy: getStatValue(statsSection, 'passing', 'successful_passes_accuracy') || 0,\n    passing_long_balls_accurate: getStatValue(statsSection, 'passing', 'long_balls_accurate') || 0,\n    passing_long_ball_accuracy: getStatValue(statsSection, 'passing', 'long_ball_succeeeded_accuracy') || 0,\n    passing_crosses_accurate: getStatValue(statsSection, 'passing', 'crosses_succeeeded') || 0,\n    passing_cross_accuracy: getStatValue(statsSection, 'passing', 'crosses_succeeeded_accuracy') || 0\n  };\n}\n\n// Section 5: Possession (2개 필드 - touches, touches_in_box, fouls_won 제거)\nfunction extractPossessionStats(firstSeasonStats) {\n  const statsSection = firstSeasonStats?.statsSection;\n\n  return {\n    possession_dispossessed: getStatValue(statsSection, 'possession', 'dispossessed') || 0,\n    possession_penalty_won: parseInt2(getStatValue(statsSection, 'possession', 'penalty_won_title'))\n  };\n}\n\n// Section 6: Defense (9개 필드 - tackles_successful, tackle_success_rate, clearances, ground_duels_won, ground_duel_success_rate, fouls_committed 제거)\nfunction extractDefenseStats(firstSeasonStats) {\n  const statsSection = firstSeasonStats?.statsSection;\n\n  return {\n    defense_tackles: getStatValue(statsSection, 'defending', 'matchstats.headers.tackles') || 0,\n    defense_interceptions: getStatValue(statsSection, 'defending', 'interceptions') || 0,\n    defense_blocked_shots: getStatValue(statsSection, 'defending', 'blocked_shots') || 0,\n    defense_duels_won: getStatValue(statsSection, 'defending', 'duel_won') || 0,\n    defense_duel_success_rate: getStatValue(statsSection, 'defending', 'duel_won_percent') || 0,\n    defense_aerials_won: getStatValue(statsSection, 'defending', 'aerials_won') || 0,\n    defense_aerial_success_rate: getStatValue(statsSection, 'defending', 'aerials_won_percent') || 0,\n    defense_recoveries: getStatValue(statsSection, 'defending', 'recoveries') || 0,\n    defense_dribbled_past: getStatValue(statsSection, 'defending', 'dribbled_past') || 0\n  };\n}\n\n// Section 7: Discipline (4개 필드)\nfunction extractDisciplineStats(firstSeasonStats) {\n  const statsSection = firstSeasonStats?.statsSection;\n\n  return {\n    discipline_yellow_cards: getStatValue(statsSection, 'discipline', 'yellow_cards') || 0,\n    discipline_red_cards: getStatValue(statsSection, 'discipline', 'red_cards') || 0,\n    discipline_fouls_committed: getStatValue(statsSection, 'defending', 'fouls') || 0,\n    discipline_fouls_won: getStatValue(statsSection, 'possession', 'fouls_won') || 0\n  };\n}\n\n// Section 8: Shot Analysis (9개 필드 - goals, blocked, off_target, total_xg, quality 제거)\nfunction extractShotAnalysis(firstSeasonStats) {\n  const statsSection = firstSeasonStats?.statsSection;\n  const shotmap = firstSeasonStats?.shotmap || [];\n\n  // statsSection에서 정확한 총 슈팅과 유효 슈팅 가져오기\n  const totalShots = getStatValue(statsSection, 'shooting', 'shots') || 0;\n  const onTargetFromStats = getStatValue(statsSection, 'shooting', 'ShotsOnTarget') || 0;\n\n  // shotmap에서 상세 분석 데이터 계산\n  const leftFoot = shotmap.filter(s => s.situation === 'RegularPlay' && s.shotType?.includes('LeftFoot')).length;\n  const rightFoot = shotmap.filter(s => s.situation === 'RegularPlay' && s.shotType?.includes('RightFoot')).length;\n  const headed = shotmap.filter(s => s.shotType?.includes('Header')).length;\n\n  const openPlay = shotmap.filter(s => s.situation === 'RegularPlay').length;\n  const freeKick = shotmap.filter(s => s.situation === 'FreeKick').length;\n  const penalty = shotmap.filter(s => s.situation === 'Penalty').length;\n\n  // shotmap 데이터가 있을 때만 비율 계산, 없으면 0\n  const shotmapLength = shotmap.length;\n  const preferredFootShots = Math.max(leftFoot, rightFoot);\n  const preferredFootRatio = shotmapLength > 0 ? Math.round((preferredFootShots / shotmapLength) * 10000) / 100 : 0;\n\n  return {\n    shot_total_shots: totalShots,\n    shot_on_target: onTargetFromStats,\n    shot_left_foot: leftFoot,\n    shot_right_foot: rightFoot,\n    shot_headed: headed,\n    shot_open_play: openPlay,\n    shot_free_kick: freeKick,\n    shot_penalty: penalty,\n    shot_preferred_foot_ratio: preferredFootRatio\n  };\n}\n\n// ========== Main Processing ==========\n\nconst allData = $input.all().map(item => item.json);\nconst successfulData = allData.filter(item => item.success);\n\nconst profileData = successfulData.map(item => {\n  const api = item.apiResponse;\n\n  if (!api) {\n    return {\n      error: 'No API response',\n      playerInfo: item.playerInfo\n    };\n  }\n\n  const firstSeasonStats = api.firstSeasonStats;\n\n  if (!firstSeasonStats) {\n    return {\n      error: 'No firstSeasonStats',\n      playerInfo: item.playerInfo,\n      player_id: api.id,\n      player_name: api.name\n    };\n  }\n\n  // 모든 섹션 추출\n  const profileHeader = extractProfileHeader(api);\n  const keyStats = extractKeyStats(firstSeasonStats);\n  const attackStats = extractAttackStats(firstSeasonStats);\n  const passingStats = extractPassingStats(firstSeasonStats);\n  const possessionStats = extractPossessionStats(firstSeasonStats);\n  const defenseStats = extractDefenseStats(firstSeasonStats);\n  const disciplineStats = extractDisciplineStats(firstSeasonStats);\n  const shotAnalysis = extractShotAnalysis(firstSeasonStats);\n\n  // 모든 필드 병합\n  return {\n    // 메타 정보\n    collection_date: item.timestamp,\n    collection_week: new Date().toISOString().slice(0, 10),\n\n    // Profile Header\n    ...profileHeader,\n\n    // Key Stats Cards\n    ...keyStats,\n\n    // Attack\n    ...attackStats,\n\n    // Passing\n    ...passingStats,\n\n    // Possession\n    ...possessionStats,\n\n    // Defense\n    ...defenseStats,\n\n    // Discipline\n    ...disciplineStats,\n\n    // Shot Analysis\n    ...shotAnalysis\n  };\n});\n\n// 에러 데이터 필터링 (선택사항)\nconst validProfiles = profileData.filter(p => !p.error);\n\n// n8n 형식으로 반환\nreturn validProfiles.map(data => ({ json: data }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "id": "f5380973-f05b-46f4-a026-f34d1f645db9",
+      "name": "선수 프로필 데이터 전처리"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 날짜 필터링 함수\nfunction filterMatchesByWeek(matches, daysBack = 7) {\n  const cutoffDate = new Date();\n  cutoffDate.setDate(cutoffDate.getDate() - daysBack);\n  \n  return matches.filter(match => {\n    if (!match.matchDate?.utcTime) return false;\n    const matchDate = new Date(match.matchDate.utcTime);\n    return matchDate > cutoffDate;\n  });\n}\n\n// MVP 점수 계산\nfunction calculateMvpScore(weeklyMatches) {\n  if (!weeklyMatches.length) return 0;\n  \n  const totalGoals = weeklyMatches.reduce((sum, m) => sum + (m.goals || 0), 0);\n  const totalAssists = weeklyMatches.reduce((sum, m) => sum + (m.assists || 0), 0);\n  const totalMinutes = weeklyMatches.reduce((sum, m) => sum + (m.minutesPlayed || 0), 0);\n  const motmCount = weeklyMatches.filter(m => m.playerOfTheMatch).length;\n  \n  const validRatings = weeklyMatches\n    .filter(m => m.ratingProps?.rating && m.minutesPlayed > 0)\n    .map(m => parseFloat(m.ratingProps.rating));\n  \n  const avgRating = validRatings.length \n    ? validRatings.reduce((sum, r) => sum + r, 0) / validRatings.length \n    : 0;\n  \n  return (\n    (totalGoals + totalAssists) * 2.0 +\n    avgRating +\n    (totalMinutes / 90) +\n    motmCount * 1.5\n  );\n}\n\n// 메인 처리 로직\nconst allData = $input.all().map(item => item.json);\nconst successfulData = allData.filter(item => item.success);\n\nconst parsedData = successfulData.map(item => {\n  const player = item.playerInfo;\n  const api = item.apiResponse;\n  \n  // 시즌 통계 추출\n  const mainLeagueStats = api.mainLeague?.stats || [];\n  const statsMap = {};\n  mainLeagueStats.forEach(stat => {\n    statsMap[stat.localizedTitleId] = stat.value;\n  });\n  \n  // 최근 50경기 (필터링용)\n  const recentMatches = (api.recentMatches || []).slice(0, 50);\n  \n  // 최근 7일 경기 필터링\n  const weeklyMatches = filterMatchesByWeek(recentMatches);\n  \n  // 주간 통계 계산\n  const weeklyStats = weeklyMatches.length > 0 ? {\n    matches: weeklyMatches.length,\n    minutes: weeklyMatches.reduce((sum, m) => sum + (m.minutesPlayed || 0), 0),\n    goals: weeklyMatches.reduce((sum, m) => sum + (m.goals || 0), 0),\n    assists: weeklyMatches.reduce((sum, m) => sum + (m.assists || 0), 0),\n    avg_rating: parseFloat(\n      (weeklyMatches\n        .filter(m => m.ratingProps?.rating && m.minutesPlayed > 0)\n        .reduce((sum, m, _, arr) => sum + parseFloat(m.ratingProps.rating) / arr.length, 0)\n      ).toFixed(2)\n    ) || 0,\n    mvp_score: parseFloat(calculateMvpScore(weeklyMatches).toFixed(2))\n  } : null;\n  \n  // 시즌 통계\n  const seasonStats = {\n    matches: statsMap.matches_uppercase || 0,\n    goals: statsMap.goals || 0,\n    assists: statsMap.assists || 0,\n    avg_rating: statsMap.rating || 0,\n    yellow_cards: statsMap.yellow_cards || 0,\n    red_cards: statsMap.red_cards || 0\n  };\n  \n  // 최근 경기 기록 (최대 10경기)\n  const recentMatchesFormatted = recentMatches.slice(0, 10).map(match => ({\n    date: match.matchDate?.utcTime || null,\n    opponent: match.opponentTeamName || 'Unknown',\n    result: `${match.homeScore || 0}-${match.awayScore || 0}`,\n    is_home: match.isHomeTeam || false,\n    minutes: match.minutesPlayed || 0,\n    goals: match.goals || 0,\n    assists: match.assists || 0,\n    rating: match.ratingProps?.rating || null,\n    is_motm: match.playerOfTheMatch || false\n  }));\n  \n  // 부상 상태\n  const injuryStatus = api.injuryInformation ? {\n    status: api.injuryInformation.name || 'Injured',\n    expected_return: api.injuryInformation.expectedReturn?.expectedReturnFallback || 'Unknown'\n  } : null;\n  \n  return {\n    // 메타 정보\n    collection_date: item.timestamp,\n    week: new Date().toISOString().slice(0, 10),\n    \n    // 기본 정보\n    id: player.id,\n    name: player.name,\n    name_kr: player.nameKr,\n    team: api.primaryTeam?.teamName || 'Unknown',\n    league: api.mainLeague?.leagueName || 'Unknown',\n    position: api.positionDescription?.primaryPosition?.label || 'Unknown',\n    \n    // 주간 통계\n    weekly_stats: weeklyStats,\n    \n    // 시즌 통계\n    season_stats: seasonStats,\n    \n    // 최근 경기\n    recent_matches: recentMatchesFormatted,\n    \n    // 부상 정보\n    injury_status: injuryStatus,\n    \n    // 기타\n    fotmob_url: `https://www.fotmob.com/players/${player.id}`,\n    on_loan: api.primaryTeam?.onLoan || false,\n    contract_end: api.contractEnd?.utcTime?.slice(0, 10) || null\n  };\n});\n\nreturn parsedData.map(data => ({ json: data }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        0,
+        160
+      ],
+      "id": "08fd7eee-a92e-4e5f-afcb-cc5d8df3203c",
+      "name": "선수 최근 경기 데이터 전처리"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// n8n Node: Player Profile Flatten\n// player_profile_processing.js → Google Sheets/CSV용 flat structure\n// ============================================\n\n// Google Sheets는 flat structure만 지원하므로 변환\n// 60개 필드를 모두 flat한 단일 레벨로 변환\n\nconst items = $input.all().map(item => item.json);\n\nconst flattenedData = items.map(data => {\n  return {\n    // ========== 메타 정보 ==========\n    collection_date: data.collection_date,\n    collection_week: data.collection_week,\n\n    // ========== Section 1: Profile Header (18개) ==========\n    player_id: data.player_id,\n    player_name: data.player_name,\n    player_name_kr: data.player_name_kr || '',\n    age: data.age,\n    height: data.height,\n    preferred_foot: data.preferred_foot,\n    shirt_number: data.shirt_number,\n    position: data.position,\n    team: data.team,\n    team_id: data.team_id,\n    league: data.league,\n    league_id: data.league_id,\n    season: data.season,\n    market_value: data.market_value,\n    contract_end: data.contract_end,\n    is_injured: data.is_injured ? 'Yes' : 'No',\n    injury_status: data.injury_status || '',\n    fotmob_url: data.fotmob_url,\n\n    // ========== Section 2: Key Stats Cards (6개) ==========\n    matches: data.matches || 0,\n    started: data.started || 0,\n    minutes_played: data.minutes_played || 0,\n    goals: data.goals || 0,\n    assists: data.assists || 0,\n    rating: data.rating || 0,\n\n    // ========== Section 3: Attack (7개) ==========\n    attack_goals: data.attack_goals || 0,\n    attack_expected_goals: data.attack_expected_goals || 0,\n    attack_non_penalty_xg: data.attack_non_penalty_xg || 0,\n    attack_conversion_rate: data.attack_conversion_rate || 0,\n    attack_dribbles_succeeded: data.attack_dribbles_succeeded || 0,\n    attack_dribble_success_rate: data.attack_dribble_success_rate || 0,\n    attack_touches_in_box: data.attack_touches_in_box || 0,\n\n    // ========== Section 4: Passing (9개) ==========\n    passing_assists: data.passing_assists || 0,\n    passing_expected_assists: data.passing_expected_assists || 0,\n    passing_chances_created: data.passing_chances_created || 0,\n    passing_successful_passes: data.passing_successful_passes || 0,\n    passing_pass_accuracy: data.passing_pass_accuracy || 0,\n    passing_long_balls_accurate: data.passing_long_balls_accurate || 0,\n    passing_long_ball_accuracy: data.passing_long_ball_accuracy || 0,\n    passing_crosses_accurate: data.passing_crosses_accurate || 0,\n    passing_cross_accuracy: data.passing_cross_accuracy || 0,\n\n    // ========== Section 5: Possession (2개) ==========\n    possession_dispossessed: data.possession_dispossessed || 0,\n    possession_penalty_won: data.possession_penalty_won || 0,\n\n    // ========== Section 6: Defense (9개) ==========\n    defense_tackles: data.defense_tackles || 0,\n    defense_interceptions: data.defense_interceptions || 0,\n    defense_blocked_shots: data.defense_blocked_shots || 0,\n    defense_duels_won: data.defense_duels_won || 0,\n    defense_duel_success_rate: data.defense_duel_success_rate || 0,\n    defense_aerials_won: data.defense_aerials_won || 0,\n    defense_aerial_success_rate: data.defense_aerial_success_rate || 0,\n    defense_recoveries: data.defense_recoveries || 0,\n    defense_dribbled_past: data.defense_dribbled_past || 0,\n\n    // ========== Section 7: Discipline (4개) ==========\n    discipline_yellow_cards: data.discipline_yellow_cards || 0,\n    discipline_red_cards: data.discipline_red_cards || 0,\n    discipline_fouls_committed: data.discipline_fouls_committed || 0,\n    discipline_fouls_won: data.discipline_fouls_won || 0,\n\n    // ========== Section 8: Shot Analysis (9개) ==========\n    shot_total_shots: data.shot_total_shots || 0,\n    shot_on_target: data.shot_on_target || 0,\n    shot_left_foot: data.shot_left_foot || 0,\n    shot_right_foot: data.shot_right_foot || 0,\n    shot_headed: data.shot_headed || 0,\n    shot_open_play: data.shot_open_play || 0,\n    shot_free_kick: data.shot_free_kick || 0,\n    shot_penalty: data.shot_penalty || 0,\n    shot_preferred_foot_ratio: data.shot_preferred_foot_ratio || 0\n  };\n});\n\nreturn flattenedData.map(data => ({ json: data }));\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        208,
+        0
+      ],
+      "id": "d0e403ba-8be7-46d9-b11c-68e1be662a52",
+      "name": "데이터 flatten2"
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1dOO35FjIKPBuZEAz4OtbBg68s-Gue6Vol-LEA9M6L70",
+          "mode": "list",
+          "cachedResultName": "Fotmob-data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dOO35FjIKPBuZEAz4OtbBg68s-Gue6Vol-LEA9M6L70/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Korean_Players_Weekly",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dOO35FjIKPBuZEAz4OtbBg68s-Gue6Vol-LEA9M6L70/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "player_id"
+          ],
+          "schema": [
+            {
+              "id": "collection_date",
+              "displayName": "collection_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "week",
+              "displayName": "week",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "player_id",
+              "displayName": "player_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "player_name",
+              "displayName": "player_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "player_name_kr",
+              "displayName": "player_name_kr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "team",
+              "displayName": "team",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "league",
+              "displayName": "league",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "position",
+              "displayName": "position",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "weekly_matches",
+              "displayName": "weekly_matches",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "weekly_minutes",
+              "displayName": "weekly_minutes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "weekly_goals",
+              "displayName": "weekly_goals",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "weekly_assists",
+              "displayName": "weekly_assists",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "weekly_avg_rating",
+              "displayName": "weekly_avg_rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "weekly_mvp_score",
+              "displayName": "weekly_mvp_score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "season_matches",
+              "displayName": "season_matches",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "season_goals",
+              "displayName": "season_goals",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "season_assists",
+              "displayName": "season_assists",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "season_avg_rating",
+              "displayName": "season_avg_rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "season_yellow_cards",
+              "displayName": "season_yellow_cards",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "season_red_cards",
+              "displayName": "season_red_cards",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "recent_matches_json",
+              "displayName": "recent_matches_json",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "is_injured",
+              "displayName": "is_injured",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "injury_status",
+              "displayName": "injury_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "injury_expected_return",
+              "displayName": "injury_expected_return",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "on_loan",
+              "displayName": "on_loan",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "contract_end",
+              "displayName": "contract_end",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fotmob_url",
+              "displayName": "fotmob_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        384,
+        160
+      ],
+      "id": "628c95da-4bb4-4acb-985e-21182ea965d6",
+      "name": "Weekly Stats 업데이트",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "CFdIryFNJrj3Q3gG",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "appendOrUpdate",
+        "documentId": {
+          "__rl": true,
+          "value": "1dOO35FjIKPBuZEAz4OtbBg68s-Gue6Vol-LEA9M6L70",
+          "mode": "list",
+          "cachedResultName": "Fotmob-data",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dOO35FjIKPBuZEAz4OtbBg68s-Gue6Vol-LEA9M6L70/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1243385034,
+          "mode": "list",
+          "cachedResultName": "Korean_Players_Profile",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1dOO35FjIKPBuZEAz4OtbBg68s-Gue6Vol-LEA9M6L70/edit#gid=1243385034"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {
+            "player_id": "={{ $json.player_id }}"
+          },
+          "matchingColumns": [
+            "player_id"
+          ],
+          "schema": [
+            {
+              "id": "collection_date",
+              "displayName": "collection_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "collection_week",
+              "displayName": "collection_week",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "player_id",
+              "displayName": "player_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "player_name",
+              "displayName": "player_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "player_name_kr",
+              "displayName": "player_name_kr",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "birth_date",
+              "displayName": "birth_date",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "age",
+              "displayName": "age",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "nationality",
+              "displayName": "nationality",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "height",
+              "displayName": "height",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "preferred_foot",
+              "displayName": "preferred_foot",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shirt_number",
+              "displayName": "shirt_number",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "position",
+              "displayName": "position",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "team",
+              "displayName": "team",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "team_id",
+              "displayName": "team_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "league",
+              "displayName": "league",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "league_id",
+              "displayName": "league_id",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "season",
+              "displayName": "season",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "market_value",
+              "displayName": "market_value",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "contract_end",
+              "displayName": "contract_end",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "is_injured",
+              "displayName": "is_injured",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "injury_status",
+              "displayName": "injury_status",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "fotmob_url",
+              "displayName": "fotmob_url",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "matches",
+              "displayName": "matches",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "matches_per90",
+              "displayName": "matches_per90",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "matches_percentile",
+              "displayName": "matches_percentile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "started",
+              "displayName": "started",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "started_per90",
+              "displayName": "started_per90",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "started_percentile",
+              "displayName": "started_percentile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "minutes_played",
+              "displayName": "minutes_played",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "minutes_played_per90",
+              "displayName": "minutes_played_per90",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "minutes_played_percentile",
+              "displayName": "minutes_played_percentile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "goals",
+              "displayName": "goals",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "goals_per90",
+              "displayName": "goals_per90",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "goals_percentile",
+              "displayName": "goals_percentile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "assists",
+              "displayName": "assists",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "assists_per90",
+              "displayName": "assists_per90",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "assists_percentile",
+              "displayName": "assists_percentile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "rating",
+              "displayName": "rating",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "rating_per90",
+              "displayName": "rating_per90",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "rating_percentile",
+              "displayName": "rating_percentile",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attack_goals",
+              "displayName": "attack_goals",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attack_expected_goals",
+              "displayName": "attack_expected_goals",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attack_xg_difference",
+              "displayName": "attack_xg_difference",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attack_non_penalty_xg",
+              "displayName": "attack_non_penalty_xg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attack_shots",
+              "displayName": "attack_shots",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attack_shots_on_target",
+              "displayName": "attack_shots_on_target",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attack_conversion_rate",
+              "displayName": "attack_conversion_rate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attack_dribbles_succeeded",
+              "displayName": "attack_dribbles_succeeded",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attack_dribble_success_rate",
+              "displayName": "attack_dribble_success_rate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "attack_touches_in_box",
+              "displayName": "attack_touches_in_box",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passing_assists",
+              "displayName": "passing_assists",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passing_expected_assists",
+              "displayName": "passing_expected_assists",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passing_xa_difference",
+              "displayName": "passing_xa_difference",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passing_chances_created",
+              "displayName": "passing_chances_created",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passing_successful_passes",
+              "displayName": "passing_successful_passes",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passing_pass_accuracy",
+              "displayName": "passing_pass_accuracy",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passing_long_balls_accurate",
+              "displayName": "passing_long_balls_accurate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passing_long_ball_accuracy",
+              "displayName": "passing_long_ball_accuracy",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passing_crosses_accurate",
+              "displayName": "passing_crosses_accurate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "passing_cross_accuracy",
+              "displayName": "passing_cross_accuracy",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "possession_touches",
+              "displayName": "possession_touches",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "possession_touches_in_box",
+              "displayName": "possession_touches_in_box",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "possession_dispossessed",
+              "displayName": "possession_dispossessed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "possession_fouls_won",
+              "displayName": "possession_fouls_won",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "possession_penalty_won",
+              "displayName": "possession_penalty_won",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "defense_tackles",
+              "displayName": "defense_tackles",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "defense_interceptions",
+              "displayName": "defense_interceptions",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "defense_blocked_shots",
+              "displayName": "defense_blocked_shots",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "defense_duels_won",
+              "displayName": "defense_duels_won",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "defense_duel_success_rate",
+              "displayName": "defense_duel_success_rate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "defense_aerials_won",
+              "displayName": "defense_aerials_won",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "defense_aerial_success_rate",
+              "displayName": "defense_aerial_success_rate",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "defense_recoveries",
+              "displayName": "defense_recoveries",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "defense_dribbled_past",
+              "displayName": "defense_dribbled_past",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "defense_fouls_committed",
+              "displayName": "defense_fouls_committed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "discipline_yellow_cards",
+              "displayName": "discipline_yellow_cards",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "discipline_red_cards",
+              "displayName": "discipline_red_cards",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "discipline_fouls_committed",
+              "displayName": "discipline_fouls_committed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "discipline_fouls_won",
+              "displayName": "discipline_fouls_won",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_total_shots",
+              "displayName": "shot_total_shots",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_goals",
+              "displayName": "shot_goals",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_on_target",
+              "displayName": "shot_on_target",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_blocked",
+              "displayName": "shot_blocked",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_off_target",
+              "displayName": "shot_off_target",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_left_foot",
+              "displayName": "shot_left_foot",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_right_foot",
+              "displayName": "shot_right_foot",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_headed",
+              "displayName": "shot_headed",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_open_play",
+              "displayName": "shot_open_play",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_free_kick",
+              "displayName": "shot_free_kick",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_penalty",
+              "displayName": "shot_penalty",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_total_xg",
+              "displayName": "shot_total_xg",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_preferred_foot_ratio",
+              "displayName": "shot_preferred_foot_ratio",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "shot_quality",
+              "displayName": "shot_quality",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        416,
+        0
+      ],
+      "id": "a84bcc44-1fc3-4c4a-b118-d28bdba83f4f",
+      "name": "Player Profile 업데이트",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "CFdIryFNJrj3Q3gG",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "한국 선수 리스트",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "한국 선수 리스트": {
+      "main": [
+        [
+          {
+            "node": "Fotmob 데이터 수집",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fotmob 데이터 수집": {
+      "main": [
+        [
+          {
+            "node": "선수 최근 경기 데이터 전처리",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "선수 프로필 데이터 전처리",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "데이터 flatten": {
+      "main": [
+        [
+          {
+            "node": "Weekly Stats 업데이트",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "선수 최근 경기 데이터 전처리": {
+      "main": [
+        [
+          {
+            "node": "데이터 flatten",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "선수 프로필 데이터 전처리": {
+      "main": [
+        [
+          {
+            "node": "데이터 flatten2",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "데이터 flatten2": {
+      "main": [
+        [
+          {
+            "node": "Player Profile 업데이트",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "726d5f65-ec43-49f7-8a40-215d08ba0282",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "fcc8ea9af5573f5d8a5f85ac98ca380d1d2a4dab6bc83f75e7171dc7ee7e70da"
+  },
+  "id": "4AjVjCzB7bZ2pKvk",
+  "tags": []
+}

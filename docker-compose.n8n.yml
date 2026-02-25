@@ -10,6 +10,7 @@ services:
       - "5678:5678"
     volumes:
       - n8n_data:/home/node/.n8n
+      - ./kfn-app/src/data/articles:/tmp/kfn-articles
     environment:
       # n8n 기본 설정
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
@@ -25,6 +26,9 @@ services:
       # Code 노드에서 모듈 사용 허용 (중요!)
       - NODE_FUNCTION_ALLOW_BUILTIN=*
       - NODE_FUNCTION_ALLOW_EXTERNAL=*
+
+      # OpenAI API (여론 수집 → GPT 기사 생성 워크플로우)
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
 
       # playwright-core 모듈 경로 (Code 노드에서 require('playwright-core') 가능)
       - NODE_PATH=/opt/n8n-custom/node_modules

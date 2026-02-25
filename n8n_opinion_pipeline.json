@@ -1,0 +1,677 @@
+{
+  "name": "KFN 여론 수집 + GPT 기사 생성",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -800,
+        300
+      ],
+      "id": "a1b2c3d4-0001-4000-a000-000000000001",
+      "name": "Manual Trigger"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 선수 검색 레지스트리 (docs/player-search-registry.md 기반)\nconst playerSearchConfig = [\n  // ===== Tier 1: 주요 선수 =====\n  {\n    id: 212867,\n    fotmobName: \"Heung-Min Son\",\n    nameKr: \"손흥민\",\n    team: \"LAFC\",\n    league: \"MLS\",\n    tier: 1,\n    searchQueries: {\n      googleNews: '\"Son Heung-min\" OR \"Heung-Min Son\"',\n      reddit: '\"Son Heung-min\" OR \"Heung-Min Son\"',\n    },\n    subreddits: [\"soccer\", \"LAFC\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 828159,\n    fotmobName: \"Min-Jae Kim\",\n    nameKr: \"김민재\",\n    team: \"Bayern Munich\",\n    league: \"Bundesliga\",\n    tier: 1,\n    searchQueries: {\n      googleNews: '\"Kim Min-jae\" OR \"Min-Jae Kim\"',\n      reddit: '\"Kim Min-jae\" OR \"Min-Jae Kim\"',\n    },\n    subreddits: [\"soccer\", \"fcbayern\"],\n    falsePositiveRisk: \"medium\",\n  },\n  {\n    id: 940976,\n    fotmobName: \"Kang-In Lee\",\n    nameKr: \"이강인\",\n    team: \"PSG\",\n    league: \"Ligue 1\",\n    tier: 1,\n    searchQueries: {\n      googleNews: '\"Lee Kang-in\" OR \"Kang-In Lee\"',\n      reddit: '\"Lee Kang-in\" OR \"Kang-In Lee\"',\n    },\n    subreddits: [\"soccer\", \"psg\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 620026,\n    fotmobName: \"Hee-Chan Hwang\",\n    nameKr: \"황희찬\",\n    team: \"Wolverhampton\",\n    league: \"Premier League\",\n    tier: 1,\n    searchQueries: {\n      googleNews: '\"Hwang Hee-Chan\" OR \"Hee-Chan Hwang\"',\n      reddit: '\"Hwang Hee-Chan\" OR \"Hee-Chan Hwang\"',\n    },\n    subreddits: [\"soccer\", \"WWFC\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1044299,\n    fotmobName: \"Hyun Gyu Oh\",\n    nameKr: \"오현규\",\n    team: \"Besiktas\",\n    league: \"Super Lig\",\n    tier: 1,\n    searchQueries: {\n      googleNews: '\"Hyeon-Gyu Oh\" OR \"Oh Hyeon-Gyu\"',\n      reddit: '\"Hyeon-Gyu Oh\" OR \"Oh Hyeon-Gyu\"',\n    },\n    subreddits: [\"soccer\", \"besiktas\"],\n    falsePositiveRisk: \"low\",\n  },\n\n  // ===== Tier 2: 중간 수준 선수 =====\n  {\n    id: 623698,\n    fotmobName: \"In-Beom Hwang\",\n    nameKr: \"황인범\",\n    team: \"Feyenoord\",\n    league: \"Eredivisie\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Hwang In-Beom\" OR \"In-Beom Hwang\"',\n      reddit: '\"Hwang In-Beom\" OR \"In-Beom Hwang\"',\n    },\n    subreddits: [\"soccer\", \"Feyenoord\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1386482,\n    fotmobName: \"Bae Jun-Ho\",\n    nameKr: \"배준호\",\n    team: \"Stoke City\",\n    league: \"Championship\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Bae Jun-Ho\" OR \"Jun-Ho Bae\"',\n      reddit: '\"Bae Jun-Ho\"',\n    },\n    subreddits: [\"soccer\", \"StokeCityFC\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1609329,\n    fotmobName: \"Min-Hyeok Yang\",\n    nameKr: \"양민혁\",\n    team: \"Coventry City\",\n    league: \"Championship\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Yang Min-hyeok\" OR \"Min-Hyeok Yang\"',\n      reddit: '\"Yang Min-hyeok\" OR \"Min-Hyeok Yang\"',\n    },\n    subreddits: [\"soccer\", \"ccfc\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 523749,\n    fotmobName: \"Jae-Sung Lee\",\n    nameKr: \"이재성\",\n    team: \"Mainz 05\",\n    league: \"Bundesliga\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Lee Jae-Sung\" OR \"Jae-Sung Lee\"',\n      reddit: '\"Lee Jae-Sung\" OR \"Jae-Sung Lee\"',\n    },\n    subreddits: [\"soccer\", \"Mainz05\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1026781,\n    fotmobName: \"Gue-Sung Cho\",\n    nameKr: \"조규성\",\n    team: \"FC Midtjylland\",\n    league: \"Superligaen\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Cho Gue-Sung\" OR \"Gue-Sung Cho\"',\n      reddit: '\"Cho Gue-Sung\" OR \"Gue-Sung Cho\"',\n    },\n    subreddits: [\"soccer\", \"Superligaen\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 925345,\n    fotmobName: \"Hyun-Seok Hong\",\n    nameKr: \"홍현석\",\n    team: \"KRC Genk\",\n    league: \"Belgian Pro League\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Hong Hyun-seok\" OR \"Hyun-Seok Hong\"',\n      reddit: '\"Hong Hyun-seok\" OR \"Hyun-Seok Hong\"',\n    },\n    subreddits: [\"soccer\", \"belgianfootball\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 433677,\n    fotmobName: \"Ui-Jo Hwang\",\n    nameKr: \"황의조\",\n    team: \"Alanyaspor\",\n    league: \"Super Lig\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Hwang Ui-Jo\" OR \"Ui-Jo Hwang\"',\n      reddit: '\"Hwang Ui-Jo\" OR \"Ui-Jo Hwang\"',\n    },\n    subreddits: [\"soccer\", \"superlig\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1185902,\n    fotmobName: \"Jens Castrop\",\n    nameKr: \"옌스 카스트로프\",\n    team: \"Borussia Monchengladbach\",\n    league: \"Bundesliga\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Jens Castrop\"',\n      reddit: '\"Jens Castrop\"',\n    },\n    subreddits: [\"soccer\", \"fohlenelf\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 949673,\n    fotmobName: \"Woo-Yeong Jeong\",\n    nameKr: \"정우영\",\n    team: \"Union Berlin\",\n    league: \"Bundesliga\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Jeong Woo-Yeong\" OR \"Woo-Yeong Jeong\"',\n      reddit: '\"Woo-Yeong Jeong\" OR \"Jeong Woo-Yeong\"',\n    },\n    subreddits: [\"soccer\", \"UnionBerlin\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1232560,\n    fotmobName: \"Hyun-Jun Yang\",\n    nameKr: \"양현준\",\n    team: \"Celtic\",\n    league: \"Scottish Premiership\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Yang Hyun-Jun\" OR \"Hyun-Jun Yang\"',\n      reddit: '\"Yang Hyun-Jun\" OR \"Hyun-Jun Yang\"',\n    },\n    subreddits: [\"soccer\", \"CelticFC\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1109166,\n    fotmobName: \"Sang-Bin Jeong\",\n    nameKr: \"정상빈\",\n    team: \"St. Louis City\",\n    league: \"MLS\",\n    tier: 2,\n    searchQueries: {\n      googleNews: '\"Jeong Sang-Bin\" OR \"Sang-Bin Jeong\"',\n      reddit: '\"Sang-Bin Jeong\" OR \"Jeong Sang-bin\"',\n    },\n    subreddits: [\"soccer\", \"stlouiscitysc\"],\n    falsePositiveRisk: \"low\",\n  },\n\n  // ===== Tier 3: 데이터 적은 선수 =====\n  {\n    id: 1132818,\n    fotmobName: \"Seol Young-Woo\",\n    nameKr: \"설영우\",\n    team: \"Crvena Zvezda\",\n    league: \"Serbian SuperLiga\",\n    tier: 3,\n    searchQueries: {\n      googleNews: '\"Seol Young-Woo\" OR \"Young-Woo Seol\"',\n      reddit: '\"Seol Young-Woo\"',\n    },\n    subreddits: [\"soccer\"],\n    falsePositiveRisk: \"medium\",\n  },\n  {\n    id: 848102,\n    fotmobName: \"Seung-Ho Paik\",\n    nameKr: \"백승호\",\n    team: \"Birmingham City\",\n    league: \"Championship\",\n    tier: 3,\n    searchQueries: {\n      googleNews: '\"Paik Seung-Ho\" OR \"Seung-Ho Paik\"',\n      reddit: '\"Paik Seung-Ho\" OR \"Seung-Ho Paik\"',\n    },\n    subreddits: [\"soccer\", \"BCFC\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1085809,\n    fotmobName: \"Hyeok-Kyu Kwon\",\n    nameKr: \"권혁규\",\n    team: \"SC Paderborn\",\n    league: \"2. Bundesliga\",\n    tier: 3,\n    searchQueries: {\n      googleNews: '\"Kwon Hyeok-Kyu\" OR \"Hyeok-Kyu Kwon\"',\n      reddit: '\"Kwon Hyeok-Kyu\" OR \"Hyeok-Kyu Kwon\"',\n    },\n    subreddits: [\"soccer\", \"2bundesliga\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1684578,\n    fotmobName: \"Min-Su Kim\",\n    nameKr: \"김민수\",\n    team: \"FC Andorra\",\n    league: \"Segunda Division\",\n    tier: 3,\n    searchQueries: {\n      googleNews: '\"Kim Min-Su\" OR \"Min-Su Kim\"',\n      reddit: '\"Kim Min-Su\" OR \"Min-Su Kim\"',\n    },\n    subreddits: [\"soccer\"],\n    falsePositiveRisk: \"medium\",\n  },\n  {\n    id: 1613077,\n    fotmobName: \"Do-Young Yoon\",\n    nameKr: \"윤도영\",\n    team: \"PSV\",\n    league: \"Eredivisie\",\n    tier: 3,\n    searchQueries: {\n      googleNews: '\"Yoon Do-Young\" OR \"Do-Young Yoon\"',\n      reddit: '\"Yoon Do-Young\" OR \"Do-Young Yoon\"',\n    },\n    subreddits: [\"soccer\", \"Eredivisie\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1656881,\n    fotmobName: \"Park Seung-Soo\",\n    nameKr: \"박승수\",\n    team: \"Newcastle United\",\n    league: \"Premier League\",\n    tier: 3,\n    searchQueries: {\n      googleNews: '\"Park Seung-Soo\"',\n      reddit: '\"Park Seung-Soo\"',\n    },\n    subreddits: [\"soccer\", \"NUFC\"],\n    falsePositiveRisk: \"medium\",\n  },\n  {\n    id: 1107283,\n    fotmobName: \"Ji-Sung Eom\",\n    nameKr: \"엄지성\",\n    team: \"Swansea City\",\n    league: \"Championship\",\n    tier: 3,\n    searchQueries: {\n      googleNews: '\"Eom Ji-Sung\" OR \"Ji-Sung Eom\"',\n      reddit: '\"Eom Ji-Sung\" OR \"Ji-Sung Eom\"',\n    },\n    subreddits: [\"soccer\", \"SwanseaCity\"],\n    falsePositiveRisk: \"low\",\n  },\n\n  // ===== Tier 4: 데이터 극소 선수 =====\n  {\n    id: 1232253,\n    fotmobName: \"Han-Beom Lee\",\n    nameKr: \"이한범\",\n    team: \"FC Nordsjaelland\",\n    league: \"Superligaen\",\n    tier: 4,\n    searchQueries: {\n      googleNews: '\"Lee Han-Beom\" OR \"Han-Beom Lee\"',\n      reddit: '\"Lee Han-Beom\" OR \"Han-Beom Lee\"',\n    },\n    subreddits: [\"soccer\", \"Superligaen\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1107251,\n    fotmobName: \"Tae-Seok Lee\",\n    nameKr: \"이태석\",\n    team: \"Randers FC\",\n    league: \"Superligaen\",\n    tier: 4,\n    searchQueries: {\n      googleNews: '\"Lee Tae-Seok\" OR \"Tae-Seok Lee\"',\n      reddit: '\"Lee Tae-Seok\" OR \"Tae-Seok Lee\"',\n    },\n    subreddits: [\"soccer\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1328820,\n    fotmobName: \"Hyun-Ju Lee\",\n    nameKr: \"이현주\",\n    team: \"Arouca\",\n    league: \"Liga Portugal\",\n    tier: 4,\n    searchQueries: {\n      googleNews: '\"Lee Hyun-Ju\" OR \"Hyun-Ju Lee\"',\n      reddit: '\"Lee Hyun-Ju\" OR \"Hyun-Ju Lee\"',\n    },\n    subreddits: [\"soccer\"],\n    falsePositiveRisk: \"high\",\n  },\n  {\n    id: 1341538,\n    fotmobName: \"Ji-Soo Kim\",\n    nameKr: \"김지수\",\n    team: \"Kaiserslautern\",\n    league: \"2. Bundesliga\",\n    tier: 4,\n    searchQueries: {\n      googleNews: '\"Kim Ji-Soo\" OR \"Ji-Soo Kim\"',\n      reddit: '\"Kim Ji-Soo\" OR \"Ji-Soo Kim\"',\n    },\n    subreddits: [\"soccer\", \"2bundesliga\"],\n    falsePositiveRisk: \"high\",\n  },\n  {\n    id: 1238478,\n    fotmobName: \"Young-Jun Lee\",\n    nameKr: \"이영준\",\n    team: \"Grasshopper\",\n    league: \"Swiss Super League\",\n    tier: 4,\n    searchQueries: {\n      googleNews: '\"Lee Young-Jun\" OR \"Young-Jun Lee\"',\n      reddit: '\"Lee Young-Jun\" OR \"Young-Jun Lee\"',\n    },\n    subreddits: [\"soccer\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 922539,\n    fotmobName: \"Jin-Woo Jeon\",\n    nameKr: \"전진우\",\n    team: \"Grasshopper\",\n    league: \"Swiss Super League\",\n    tier: 4,\n    searchQueries: {\n      googleNews: '\"Jeon Jin-Woo\" OR \"Jin-Woo Jeon\"',\n      reddit: '\"Jeon Jin-Woo\" OR \"Jin-Woo Jeon\"',\n    },\n    subreddits: [\"soccer\"],\n    falsePositiveRisk: \"low\",\n  },\n  {\n    id: 1275290,\n    fotmobName: \"Jong-Min Seo\",\n    nameKr: \"서종민\",\n    team: \"FC Midtjylland\",\n    league: \"Superligaen\",\n    tier: 4,\n    searchQueries: {\n      googleNews: '\"Seo Jong-Min\" OR \"Jong-Min Seo\"',\n      reddit: '\"Seo Jong-Min\" OR \"Jong-Min Seo\"',\n    },\n    subreddits: [\"soccer\"],\n    falsePositiveRisk: \"high\",\n  },\n];\n\nreturn playerSearchConfig.map(player => ({ json: player }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -560,
+        300
+      ],
+      "id": "a1b2c3d4-0002-4000-a000-000000000002",
+      "name": "선수 검색 레지스트리"
+    },
+    {
+      "parameters": {
+        "jsCode": "// 활성 선수 필터\n// MVP: 전원 수집 (30명) 또는 tier 기반 필터\n// 설정: maxTier를 변경하여 수집 범위 조절\nconst maxTier = 4; // 1=Tier1만(5명), 2=Tier1-2(16명), 3=Tier1-3(23명), 4=전원(30명)\n\nconst players = $input.all().map(item => item.json);\nconst filtered = players.filter(p => p.tier <= maxTier);\n\nreturn filtered.map(player => ({ json: player }));"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -320,
+        300
+      ],
+      "id": "a1b2c3d4-0003-4000-a000-000000000003",
+      "name": "활성 선수 필터"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// 대상 선수 선택\n// mode에 따라 필터링 전략 변경\n// ============================================\n\n// ── 설정 ──────────────────────────────────\n// 'manual'       : selectedIds 목록에 있는 선수만 실행\n// 'recent_match' : 최근 24시간 내 경기가 있는 선수만 (TODO: FotMob API 연동)\n// 'all'          : 전체 통과 (활성 선수 필터 결과 그대로)\nconst mode = 'manual';\n\n// manual 모드: 실행할 선수 FotMob ID 목록\n// 레지스트리의 id 필드와 매칭\nconst selectedIds = [\n  1044299,  // 오현규 (Besiktas)\n  828159,   // 김민재 (Bayern Munich)\n  940976,   // 이강인 (PSG)\n];\n// ───────────────────────────────────────────\n\nconst players = $input.all().map(item => item.json);\n\nif (mode === 'all') {\n  return players.map(p => ({ json: p }));\n}\n\nif (mode === 'manual') {\n  const idSet = new Set(selectedIds);\n  const filtered = players.filter(p => idSet.has(p.id));\n\n  if (filtered.length === 0) {\n    throw new Error(\n      `선택된 선수가 없습니다. selectedIds: [${selectedIds.join(', ')}]\\n` +\n      `사용 가능한 ID: ${players.map(p => p.id + '(' + p.nameKr + ')').join(', ')}`\n    );\n  }\n\n  return filtered.map(p => ({ json: p }));\n}\n\nif (mode === 'recent_match') {\n  // TODO: FotMob API 연동\n  // 각 선수의 최근 경기 일시를 조회하여 24시간 이내인 경우만 통과\n  // 구현 예시:\n  //\n  // const cutoff = new Date();\n  // cutoff.setHours(cutoff.getHours() - 24);\n  //\n  // const results = [];\n  // for (const player of players) {\n  //   const res = await fetch(`https://www.fotmob.com/api/playerData?id=${player.id}`);\n  //   const data = await res.json();\n  //   const lastMatch = data.recentMatches?.[0];\n  //   if (lastMatch) {\n  //     const matchDate = new Date(lastMatch.matchDate);\n  //     if (matchDate >= cutoff) {\n  //       results.push({ json: { ...player, lastMatch } });\n  //     }\n  //   }\n  //   await new Promise(r => setTimeout(r, 500)); // rate limit\n  // }\n  // return results.length > 0 ? results : []; // 빈 배열이면 워크플로우 자동 중단\n\n  // 현재는 미구현 → 전체 통과 (fallback)\n  console.log('[대상 선수 선택] recent_match 모드 미구현 → 전체 통과');\n  return players.map(p => ({ json: p }));\n}\n\nthrow new Error(`알 수 없는 mode: \"${mode}\". 사용 가능: manual, recent_match, all`);\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        -200,
+        300
+      ],
+      "id": "a1b2c3d4-0012-4000-a000-000000000012",
+      "name": "대상 선수 선택"
+    },
+    {
+      "parameters": {
+        "options": {
+          "batchSize": 1
+        }
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 1,
+      "position": [
+        40,
+        300
+      ],
+      "id": "a1b2c3d4-0004-4000-a000-000000000004",
+      "name": "SplitInBatches"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition-skip-check",
+              "leftValue": "={{ $json.collected.totalItems }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        1600,
+        200
+      ],
+      "id": "a1b2c3d4-0006-4000-a000-000000000006",
+      "name": "수집 데이터 체크"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// GPT 프롬프트 빌드 (v4 - 실제 스탯 데이터 통합)\n// 초회: 수집 데이터 + 스탯 기반 기사 생성\n// 재시도: QA 피드백 반영하여 재생성\n// ============================================\n\nconst input = $input.first().json;\n\n// QA 재시도 감지\nconst isQaRetry = !!input.qaFeedback;\n\nlet player, qaAttempt, qaFeedback;\n\nif (isQaRetry) {\n  // QA 통과? False에서 루프백\n  player = input.player;\n  qaAttempt = (input.qaAttempt || 0) + 1;\n  qaFeedback = input.qaFeedback;\n} else {\n  // 스탯 데이터 병합에서 최초 진입\n  player = input;\n  qaAttempt = 1;\n  qaFeedback = null;\n}\n\nconst { webSearchSummary, newsSources, redditSources } = player.collected;\n\n// 뉴스 소스 텍스트 생성\nconst newsSourcesText = newsSources.map((n, i) =>\n  `[뉴스${i + 1}] ${n.title} (${n.url})`\n).join('\\n');\n\n// Reddit 소스 텍스트 생성\nconst redditSourcesText = redditSources.map((r, i) =>\n  `[Reddit${i + 1}] ${r.title} (${r.url})`\n).join('\\n');\n\nconst systemPrompt = `너는 한국 축구 전문 AI 기자이다. 해외파 선수에 대한 현지 여론과 뉴스를 분석하여 한국어 기사를 작성한다.\n\n출력 형식은 반드시 아래 JSON 스키마를 따라야 한다:\n{\n  \"title\": \"기사 제목 (한글, 핵심 수치/반응 포함, 인용 반응 또는 핵심 수치 + 선수명)\",\n  \"subtitle\": \"부제목 (경기/리그 정보)\",\n  \"summary\": \"1-2문장 요약 (핵심 수치 + 영문 반응 인용 포함)\",\n  \"content\": \"마크다운 기사 본문 (3개 섹션: ## 경기 요약, ## 해외 현지 반응 (AI 요약), ## AI 분석 요약)\",\n  \"matchInfo\": \"리그/대회명 | 경기 스코어\",\n  \"tags\": [\"선수이름한글\", \"팀이름한글\", ...],\n  \"evidence\": {\n    \"charts\": [\n      {\n        \"id\": \"고유-kebab-id\",\n        \"title\": \"차트 제목 (한글)\",\n        \"type\": \"bar|radar|line|pie\",\n        \"data\": [/* 차트 타입에 맞는 데이터 */],\n        \"dataKeys\": [\"키1\", \"키2\"],\n        \"colors\": [\"#d90828\", \"#94a3b8\"]\n      }\n    ],\n    \"dataRows\": [\n      {\n        \"label\": \"지표명 (한글)\",\n        \"value\": \"수치 또는 텍스트\",\n        \"interpretation\": \"해석 (한글, 2문장 이상, 30자 이상, 비교/맥락 포함)\",\n        \"source\": \"출처명 (실제 존재하는 매체/데이터소스)\"\n      }\n    ]\n  }\n}\n\n=== 차트 데이터 구조 규칙 ===\n1. bar 차트: data 각 항목에 { name: \"항목명(한글)\", 키1: 숫자, 키2: 숫자 }\n2. radar 차트: data 각 항목에 { stat: \"능력명(한글)\", value: 0~100 숫자 }\n3. line 차트: data 각 항목에 { match/시점키: \"라벨\", 데이터키: 숫자 }\n4. pie 차트: data 각 항목에 { name: \"카테고리(한글)\", value: 숫자, fill: \"#hex색상\" }\n   - 감성 분석: 긍정(#22c55e), 중립(#94a3b8), 부정(#ef4444) 사용, value 합계 = 100\n\n=== 기사 작성 규칙 ===\n1. content는 반드시 3개 섹션: ## 경기 요약, ## 해외 현지 반응 (AI 요약), ## AI 분석 요약\n2. 해외 현지 반응 섹션에서 ### Reddit r/{sub} 반응, ### 현지 매체 등 하위 섹션 사용\n   - 반드시 수집 데이터의 실제 인용만 사용 (출처 조작 금지)\n3. evidence.charts: 3-4개, 최소 2종류 이상 차트 타입, 감성 pie chart 필수 포함\n4. evidence.dataRows: 4-5개, 각 interpretation 30자 이상, 비교/맥락 포함\n5. colors에는 브랜드 컬러 #d90828(빨강)과 #94a3b8(회색) 사용\n6. 한글 일관성: 선수명 한글, 영문 정확(FotMob 이름 아닌 실제 표기법 사용)\n7. 태그에 반드시 선수한글명, 팀한글명 포함\n8. 각 섹션 최소 2문단 이상, content 전체 500자 이상\n9. 비축구 콘텐츠 필터링, 다국어 원문 한국어 번역\n10. 수집 데이터가 부족하면 무리하게 만들지 말고 있는 정보만으로 작성\n\n=== 실제 스탯 데이터 활용 규칙 (중요) ===\n아래에 FotMob 기반 실제 선수 스탯이 제공될 수 있다. 제공된 경우:\n1. charts의 bar/radar/line 차트에 반드시 실제 수치를 사용할 것\n2. dataRows의 value에 반드시 실제 수치를 사용할 것\n3. 데이터를 임의로 만들거나 추측하지 말 것\n4. source에 \"FotMob\" 또는 실제 데이터 출처를 명시할 것\n5. 최근 경기 데이터가 있으면 경기별 성과 bar 차트 생성\n6. 포지션별 주요 지표로 radar 차트 생성`;\n\nlet userPrompt = `선수: ${player.nameKr} (${player.fotmobName})\n팀: ${player.team || '정보없음'}\n리그: ${player.league || '정보없음'}\n\n=== AI 웹 검색으로 수집된 현지 반응 ===\n${webSearchSummary || '(수집된 데이터 없음)'}\n\n=== 출처: 해외 뉴스 (${newsSources.length}건) ===\n${newsSourcesText || '(수집된 뉴스 없음)'}\n\n=== 출처: Reddit (${redditSources.length}건) ===\n${redditSourcesText || '(수집된 Reddit 반응 없음)'}`;\n\n// ====== 실제 스탯 데이터 추가 ======\nif (player.statsData && player.statsData.hasData) {\n  const { profile, weeklyStats, recentMatches } = player.statsData;\n\n  userPrompt += '\\n\\n=== 실제 선수 스탯 데이터 (FotMob 기반) ===';\n  userPrompt += '\\n아래 데이터는 FotMob에서 수집된 실제 데이터이다. 차트와 dataRows 생성 시 반드시 이 데이터를 기반으로 해야 한다.\\n';\n\n  if (profile) {\n    userPrompt += '\\n--- 선수 프로필 ---';\n    userPrompt += `\\n시장 가치: ${profile.market_value || 'N/A'}`;\n    userPrompt += `\\n포지션: ${profile.position || 'N/A'}`;\n    userPrompt += `\\n시즌: ${profile.season || 'N/A'}`;\n    userPrompt += `\\n출전 경기: ${profile.matches || 'N/A'} (선발: ${profile.started || 'N/A'})`;\n    userPrompt += `\\n출전 시간: ${profile.minutes_played || 'N/A'}분`;\n    userPrompt += `\\n골: ${profile.goals || 0} (xG: ${profile.attack_expected_goals || 'N/A'})`;\n    userPrompt += `\\n어시스트: ${profile.assists || 0} (xA: ${profile.passing_expected_assists || 'N/A'})`;\n    userPrompt += `\\n평균 평점: ${profile.rating || 'N/A'} (백분위: ${profile.rating_percentile || 'N/A'})`;\n\n    // 포지션별 세부 지표\n    const pos = (profile.position || '').toLowerCase();\n\n    if (pos.includes('forward') || pos.includes('striker') || pos.includes('winger') || pos.includes('att')) {\n      userPrompt += '\\n\\n--- 공격 지표 ---';\n      userPrompt += `\\n슈팅: ${profile.attack_shots || 0} (유효슈팅: ${profile.attack_shots_on_target || 0})`;\n      userPrompt += `\\n슈팅 정확도: ${profile.attack_shooting_accuracy || 'N/A'}%`;\n      userPrompt += `\\n골 전환율: ${profile.attack_conversion_rate || 'N/A'}%`;\n      userPrompt += `\\nxG 차이: ${profile.attack_xg_difference || 'N/A'} (실제골 - xG)`;\n      userPrompt += `\\n빅찬스 실축: ${profile.attack_big_chances_missed || 0}`;\n      userPrompt += `\\n드리블 성공: ${profile.attack_dribbles_succeeded || 0} (${profile.attack_dribble_success_rate || 'N/A'}%)`;\n      userPrompt += `\\n박스 내 터치: ${profile.attack_touches_in_box || 0}`;\n    }\n\n    if (pos.includes('defender') || pos.includes('back') || pos.includes('cb')) {\n      userPrompt += '\\n\\n--- 수비 지표 ---';\n      userPrompt += `\\n태클: ${profile.defense_tackles || 0} (성공: ${profile.defense_tackles_successful || 0}, ${profile.defense_tackle_success_rate || 'N/A'}%)`;\n      userPrompt += `\\n인터셉트: ${profile.defense_interceptions || 0}`;\n      userPrompt += `\\n클리어링: ${profile.defense_clearances || 0}`;\n      userPrompt += `\\n블록: ${profile.defense_blocked_shots || 0}`;\n      userPrompt += `\\n공중볼 성공: ${profile.defense_aerials_won || 0} (${profile.defense_aerial_success_rate || 'N/A'}%)`;\n      userPrompt += `\\n듀얼 성공률: ${profile.defense_duel_success_rate || 'N/A'}%`;\n      userPrompt += `\\n지상 듀얼: ${profile.defense_ground_duels_won || 0} (${profile.defense_ground_duel_success_rate || 'N/A'}%)`;\n      userPrompt += `\\n볼 회수: ${profile.defense_recoveries || 0}`;\n      userPrompt += `\\n드리블 허용: ${profile.defense_dribbled_past || 0}`;\n    }\n\n    if (pos.includes('midfielder') || pos.includes('mid')) {\n      userPrompt += '\\n\\n--- 패스/창의력 지표 ---';\n      userPrompt += `\\n키패스: ${profile.passing_key_passes || 0}`;\n      userPrompt += `\\n찬스 창출: ${profile.passing_chances_created || 0}`;\n      userPrompt += `\\n패스 성공: ${profile.passing_successful_passes || 0} (${profile.passing_pass_accuracy || 'N/A'}%)`;\n      userPrompt += `\\n롱볼 성공: ${profile.passing_long_balls_accurate || 0} (${profile.passing_long_ball_accuracy || 'N/A'}%)`;\n      userPrompt += `\\n크로스 성공: ${profile.passing_crosses_accurate || 0} (${profile.passing_cross_accuracy || 'N/A'}%)`;\n    }\n\n    // 공통 지표\n    userPrompt += '\\n\\n--- 공통 지표 ---';\n    userPrompt += `\\n패스 성공률: ${profile.passing_pass_accuracy || 'N/A'}%`;\n    userPrompt += `\\n경고: ${profile.discipline_yellow_cards || 0} / 퇴장: ${profile.discipline_red_cards || 0}`;\n    userPrompt += `\\n파울 유도: ${profile.possession_fouls_won || 0} / 파울 범함: ${profile.defense_fouls_committed || 0}`;\n    userPrompt += `\\n점유 터치: ${profile.possession_touches || 0}`;\n    userPrompt += `\\n볼 빼앗김: ${profile.possession_dispossessed || 0}`;\n  }\n\n  if (weeklyStats) {\n    userPrompt += '\\n\\n--- 주간 스탯 요약 ---';\n    userPrompt += `\\n수집일: ${weeklyStats.collection_date || 'N/A'}`;\n    userPrompt += `\\n시즌 경기: ${weeklyStats.season_matches || 'N/A'}`;\n    userPrompt += `\\n시즌 골: ${weeklyStats.season_goals || 0}`;\n    userPrompt += `\\n시즌 어시스트: ${weeklyStats.season_assists || 0}`;\n    userPrompt += `\\n시즌 평균 평점: ${weeklyStats.season_avg_rating || 'N/A'}`;\n    userPrompt += `\\n부상 여부: ${weeklyStats.is_injured || 'No'}`;\n    if (weeklyStats.injury_status) {\n      userPrompt += `\\n부상 상태: ${weeklyStats.injury_status}`;\n    }\n    if (weeklyStats.contract_end) {\n      userPrompt += `\\n계약 만료: ${weeklyStats.contract_end}`;\n    }\n  }\n\n  if (recentMatches && recentMatches.length > 0) {\n    userPrompt += '\\n\\n--- 최근 경기 (bar 차트용 실제 데이터) ---';\n    for (const match of recentMatches) {\n      const homeAway = match.is_home ? '(홈)' : '(원정)';\n      userPrompt += `\\n${match.date} vs ${match.opponent} ${homeAway}: ${match.result}`;\n      userPrompt += ` | ${match.minutes}분 | 골:${match.goals} 어시:${match.assists}`;\n      if (match.rating) userPrompt += ` | 평점:${match.rating}`;\n      if (match.is_motm) userPrompt += ' ★MOTM';\n    }\n  }\n\n  userPrompt += '\\n\\n=== 중요: 차트/dataRows 생성 시 위 실제 데이터를 반드시 사용할 것. 데이터를 임의로 만들지 말 것. ===';\n} else {\n  userPrompt += '\\n\\n※ 실제 스탯 데이터 미제공 — 수집된 뉴스/반응 내 언급된 수치만 사용할 것.';\n}\n\nuserPrompt += '\\n\\n위 데이터를 기반으로 기사 JSON을 생성해줘.';\n\n// QA 재시도 시 피드백 추가\nif (qaFeedback) {\n  userPrompt += `\\n\\n=== QA 검증 피드백 (${qaAttempt - 1}차 생성 결과) ===\n이전 생성 기사에서 다음 품질 이슈가 발견되었다. 모든 이슈를 수정하여 다시 생성해줘:\n\n${qaFeedback}\n\n특히 주의:\n- 각 섹션(경기 요약, 해외 현지 반응, AI 분석 요약)은 반드시 2문단 이상 작성\n- 감성 분석 pie chart 반드시 포함\n- charts 최소 3개, 최소 2가지 타입 사용\n- dataRows의 interpretation은 30자 이상\n- 실제 스탯 데이터가 제공된 경우 반드시 활용`;\n}\n\nreturn [{\n  json: {\n    player,\n    gptRequest: {\n      model: 'gpt-4o',\n      messages: [\n        { role: 'system', content: systemPrompt },\n        { role: 'user', content: userPrompt },\n      ],\n      response_format: { type: 'json_object' },\n      temperature: qaFeedback ? 0.5 : 0.7,\n      max_tokens: 8192,\n    },\n    systemPrompt,\n    userPrompt,\n    collectedData: { newsSources, redditSources },\n    qaAttempt,\n  },\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        2400,
+        200
+      ],
+      "id": "a1b2c3d4-0007-4000-a000-000000000007",
+      "name": "GPT 프롬프트 빌드"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.gptRequest) }}",
+        "options": {
+          "timeout": 120000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2640,
+        200
+      ],
+      "id": "a1b2c3d4-0008-4000-a000-000000000008",
+      "name": "OpenAI API 호출",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "openai-api-key",
+          "name": "OpenAI API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// 응답 파싱 (v2 - qaAttempt 전달)\n// GPT 응답 -> Article 스키마 매핑\n// ============================================\n\nconst input = $input.first().json;\nconst { player, systemPrompt, userPrompt, collectedData, qaAttempt } = $('GPT 프롬프트 빌드').first().json;\n\n// GPT 응답 파싱\nlet gptResponse;\ntry {\n  const rawContent = input.choices[0].message.content;\n  gptResponse = JSON.parse(rawContent);\n} catch (error) {\n  gptResponse = {\n    title: `${player.nameKr} 최신 소식`,\n    subtitle: '',\n    summary: 'GPT 응답 파싱 실패',\n    content: '## 경기 요약\\n\\n정보를 처리하는 중 오류가 발생했습니다.\\n\\n## 해외 현지 반응 (AI 요약)\\n\\n-\\n\\n## AI 분석 요약\\n\\n-',\n    tags: [player.nameKr],\n    evidence: { charts: [], dataRows: [] },\n  };\n}\n\n// Article 스키마로 매핑\nconst evidence = gptResponse.evidence || { charts: [], dataRows: [] };\n\nconst validChartTypes = ['bar', 'radar', 'line', 'pie'];\nconst charts = (evidence.charts || []).filter(chart =>\n  chart.id && chart.title && validChartTypes.includes(chart.type) &&\n  Array.isArray(chart.data) && chart.data.length > 0 &&\n  Array.isArray(chart.dataKeys) && chart.dataKeys.length > 0 &&\n  Array.isArray(chart.colors) && chart.colors.length > 0\n).map(chart => ({\n  id: chart.id,\n  title: chart.title,\n  type: chart.type,\n  data: chart.data,\n  dataKeys: chart.dataKeys,\n  colors: chart.colors,\n}));\n\nconst dataRows = (evidence.dataRows || []).filter(row =>\n  row.label && row.value !== undefined && row.interpretation\n).map(row => ({\n  label: row.label,\n  value: row.value,\n  interpretation: row.interpretation,\n  source: row.source || '',\n}));\n\nconst article = {\n  id: `opinion-${player.nameKr}-${Date.now()}`,\n  title: gptResponse.title || `${player.nameKr} 최신 소식`,\n  subtitle: gptResponse.subtitle || '',\n  summary: gptResponse.summary || '',\n  content: gptResponse.content || '',\n  playerName: player.fotmobName,\n  playerNameKr: player.nameKr,\n  team: player.team || '',\n  league: player.league || '',\n  matchInfo: gptResponse.matchInfo || gptResponse.subtitle || '',\n  publishedAt: new Date().toISOString(),\n  thumbnailUrl: '',\n  tags: Array.isArray(gptResponse.tags) ? gptResponse.tags : [player.nameKr],\n  evidence: { charts, dataRows },\n};\n\nreturn [{ json: { article, player, systemPrompt, userPrompt, collectedData, qaAttempt } }];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        2880,
+        200
+      ],
+      "id": "a1b2c3d4-0009-4000-a000-000000000009",
+      "name": "응답 파싱"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// QA 검증 (v3 - 워크플로우 레벨 재시도 루프 지원)\n// 4-Agent QA 검증 → qaPass로 루프/통과 결정\n// 실패 시 QA 피드백 포함하여 GPT 프롬프트 빌드로 루프\n// ============================================\n\nlet { article, player, systemPrompt, userPrompt, collectedData, qaAttempt } = $input.first().json;\nqaAttempt = qaAttempt || 1;\n\nconst MAX_QA_RETRIES = 3;\n\n// ========== QA Agent 1: DataValidator ==========\nfunction runDataValidator(art) {\n  const issues = [];\n\n  for (const row of (art.evidence?.dataRows || [])) {\n    if (!row.source || row.source.trim() === '') {\n      issues.push({ level: 'warning', msg: `dataRow \"${row.label}\" 출처 누락` });\n    }\n  }\n\n  for (const chart of (art.evidence?.charts || [])) {\n    if (chart.type === 'pie') {\n      const sum = chart.data.reduce((acc, d) => acc + (d.value || 0), 0);\n      if (sum !== 100) {\n        issues.push({ level: 'critical', msg: `pie chart \"${chart.title}\" 합계 ${sum} ≠ 100` });\n      }\n    }\n  }\n\n  const sevenDaysAgo = new Date();\n  sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);\n  if (new Date(art.publishedAt) < sevenDaysAgo) {\n    issues.push({ level: 'warning', msg: 'publishedAt이 7일 이전' });\n  }\n\n  return issues;\n}\n\n// ========== QA Agent 2: KoreanQA ==========\nfunction runKoreanQA(art, playerInfo) {\n  const issues = [];\n  const content = art.content || '';\n\n  const requiredSections = ['## 경기 요약', '## 해외 현지 반응 (AI 요약)', '## AI 분석 요약'];\n  for (const sec of requiredSections) {\n    if (!content.includes(sec)) {\n      issues.push({ level: 'critical', msg: `섹션 누락: ${sec}` });\n    }\n  }\n\n  if (!content.includes(playerInfo.nameKr) && !art.title.includes(playerInfo.nameKr)) {\n    issues.push({ level: 'warning', msg: `선수 한글명 \"${playerInfo.nameKr}\" 미포함` });\n  }\n\n  if (!art.tags || !art.tags.includes(playerInfo.nameKr)) {\n    issues.push({ level: 'warning', msg: `태그에 선수한글명 \"${playerInfo.nameKr}\" 누락` });\n  }\n\n  const brokenPattern = /[\\ufffd\\u0000-\\u0008\\u000b\\u000c\\u000e-\\u001f]/;\n  if (brokenPattern.test(content)) {\n    issues.push({ level: 'critical', msg: '인코딩 깨짐 감지' });\n  }\n\n  return issues;\n}\n\n// ========== QA Agent 3: SchemaValidator ==========\nfunction runSchemaValidator(art) {\n  const issues = [];\n\n  const requiredFields = ['id', 'title', 'subtitle', 'summary', 'content', 'playerName', 'playerNameKr', 'team', 'league', 'matchInfo', 'publishedAt', 'tags', 'evidence'];\n  for (const field of requiredFields) {\n    if (art[field] === undefined || art[field] === null) {\n      issues.push({ level: 'critical', msg: `필수필드 누락: ${field}` });\n    }\n  }\n\n  const charts = art.evidence?.charts || [];\n  if (charts.length < 1) {\n    issues.push({ level: 'critical', msg: 'charts 없음 (최소 1개 필요)' });\n  } else if (charts.length > 4) {\n    issues.push({ level: 'warning', msg: `charts ${charts.length}개 (권장 1-4개)` });\n  }\n\n  for (const chart of charts) {\n    if (!chart.id || !chart.title || !chart.type) {\n      issues.push({ level: 'critical', msg: '차트 필수필드 누락' });\n    }\n    if (!Array.isArray(chart.data) || chart.data.length === 0) {\n      issues.push({ level: 'critical', msg: `차트 data 비어있음: ${chart.id}` });\n    }\n    if (chart.type === 'pie') {\n      for (const d of (chart.data || [])) {\n        if (!d.fill) issues.push({ level: 'warning', msg: `pie 항목 fill 색상 누락: ${d.name}` });\n      }\n    }\n  }\n\n  const dataRows = art.evidence?.dataRows || [];\n  if (dataRows.length < 2) {\n    issues.push({ level: 'critical', msg: `dataRows ${dataRows.length}개 (최소 2개 필요)` });\n  } else if (dataRows.length > 5) {\n    issues.push({ level: 'info', msg: `dataRows ${dataRows.length}개 (권장 2-5개)` });\n  }\n\n  return issues;\n}\n\n// ========== QA Agent 4: QualityReviewer ==========\nfunction runQualityReviewer(art) {\n  const issues = [];\n  const content = art.content || '';\n\n  if (content.length < 500) {\n    issues.push({ level: 'critical', msg: `content 길이 부족: ${content.length}자 (최소 500자)` });\n  }\n\n  const sections = content.split(/## /);\n  for (const sec of sections.slice(1)) {\n    const paragraphs = sec.split('\\n\\n').filter(p => p.trim().length > 0);\n    if (paragraphs.length < 2) {\n      const secName = sec.split('\\n')[0].trim();\n      issues.push({ level: 'warning', msg: `섹션 \"${secName}\" 문단 부족 (${paragraphs.length}개)` });\n    }\n  }\n\n  const charts = art.evidence?.charts || [];\n  if (!charts.some(c => c.type === 'pie')) {\n    issues.push({ level: 'critical', msg: '감성 pie chart 없음' });\n  }\n\n  const chartTypes = new Set(charts.map(c => c.type));\n  if (chartTypes.size < 2 && charts.length > 0) {\n    issues.push({ level: 'warning', msg: `차트 타입 다양성 부족 (${chartTypes.size}종)` });\n  }\n\n  const hasKfnRed = charts.some(c => (c.colors || []).includes('#d90828'));\n  if (!hasKfnRed && charts.length > 0) {\n    issues.push({ level: 'info', msg: '브랜드 컬러 #d90828 미사용' });\n  }\n\n  for (const row of (art.evidence?.dataRows || [])) {\n    if ((row.interpretation || '').length < 30) {\n      issues.push({ level: 'warning', msg: `dataRow \"${row.label}\" interpretation ${(row.interpretation || '').length}자 (최소 30자)` });\n    }\n  }\n\n  return issues;\n}\n\n// ========== 채점 ==========\nfunction calcScore(issues) {\n  let score = 100;\n  for (const issue of issues) {\n    if (issue.level === 'critical') score -= 30;\n    else if (issue.level === 'warning') score -= 10;\n    else if (issue.level === 'info') score -= 2;\n  }\n  return Math.max(0, score);\n}\n\n// ========== 자동 수정 ==========\nfunction autoFix(art) {\n  for (const chart of (art.evidence?.charts || [])) {\n    if (chart.type === 'pie') {\n      const sum = chart.data.reduce((acc, d) => acc + (d.value || 0), 0);\n      if (sum !== 100 && sum > 0) {\n        chart.data = chart.data.map(d => ({ ...d, value: Math.round((d.value / sum) * 100) }));\n        const newSum = chart.data.reduce((acc, d) => acc + d.value, 0);\n        if (newSum !== 100) chart.data[0].value += (100 - newSum);\n      }\n    }\n  }\n  return art;\n}\n\n// ========== QA 실행 ==========\narticle = autoFix(article);\n\nconst agents = [\n  { name: 'DataValidator', issues: runDataValidator(article) },\n  { name: 'KoreanQA', issues: runKoreanQA(article, player) },\n  { name: 'SchemaValidator', issues: runSchemaValidator(article) },\n  { name: 'QualityReviewer', issues: runQualityReviewer(article) },\n];\n\nconst allIssues = agents.flatMap(a => a.issues.map(i => ({ ...i, agent: a.name })));\nconst scores = agents.map(a => ({ name: a.name, score: calcScore(a.issues) }));\nconst avgScore = scores.reduce((sum, s) => sum + s.score, 0) / scores.length;\nconst hasCritical = allIssues.some(i => i.level === 'critical');\nconst passed = !hasCritical && scores.every(s => s.score >= 80) && avgScore >= 80;\n\n// QA 통과 여부 결정: passed이거나 최대 재시도 도달 시 통과\nconst qaPass = passed || qaAttempt >= MAX_QA_RETRIES;\n\n// QA 피드백 생성 (재시도용)\nconst qaFeedbackText = allIssues\n  .filter(i => i.level === 'critical' || i.level === 'warning')\n  .map(i => `[${i.level}][${i.agent}] ${i.msg}`)\n  .join('\\n');\n\narticle._qa = {\n  passed,\n  attempt: qaAttempt,\n  avgScore: Math.round(avgScore),\n  scores,\n  issues: passed ? [] : allIssues.map(i => `[${i.level}][${i.agent}] ${i.msg}`),\n};\n\nreturn [{\n  json: {\n    article,\n    player,\n    collected: player.collected,\n    qaFeedback: qaFeedbackText,\n    qaAttempt,\n    qaPass,\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3120,
+        200
+      ],
+      "id": "a1b2c3d4-0011-4000-a000-000000000011",
+      "name": "QA 검증 + 재생성"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// JSON 파일 저장 (v2 - QA 루프 래퍼 지원)\n// 개별 JSON + 통합 articles.json 배열\n// ============================================\n\nconst fs = require('fs');\nconst _input = $input.first().json;\nconst article = _input.article || _input;\nconst dir = '/tmp/kfn-articles';\n\n// 디렉토리 생성\nif (!fs.existsSync(dir)) {\n  fs.mkdirSync(dir, { recursive: true });\n}\n\n// 개별 파일 저장\nconst individualPath = `${dir}/${article.id}.json`;\nfs.writeFileSync(individualPath, JSON.stringify(article, null, 2));\n\n// 통합 배열 업데이트\nconst allPath = `${dir}/articles.json`;\nlet all = [];\nif (fs.existsSync(allPath)) {\n  try {\n    all = JSON.parse(fs.readFileSync(allPath, 'utf-8'));\n  } catch (e) {\n    all = [];\n  }\n}\n\n// 같은 선수의 이전 기사 교체 (최신만 유지)\nall = all.filter(a => a.playerNameKr !== article.playerNameKr);\nall.push(article);\nall.sort((a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime());\nfs.writeFileSync(allPath, JSON.stringify(all, null, 2));\n\nreturn [{\n  json: {\n    saved: article.id,\n    playerNameKr: article.playerNameKr,\n    qaPass: article._qa?.passed || false,\n    qaAttempt: article._qa?.attempt || 1,\n    totalArticles: all.length,\n    filePath: individualPath,\n  },\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        3440,
+        200
+      ],
+      "id": "a1b2c3d4-0010-4000-a000-000000000010",
+      "name": "JSON 파일 저장"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// 검색 프롬프트 빌드\n// OpenAI Responses API (web_search_preview) 요청 생성\n// 초회: 일반 검색 / 재시도: 부족한 소스 보강\n// ============================================\n\nconst input = $input.first().json;\n\n// 재시도인 경우 player, attempt, accumulated가 이미 포함\nconst player = input.player || input;\nconst attempt = (input.attempt || 0) + 1;\nconst accumulated = input.accumulated || null;\n\nconst MAX_ATTEMPTS = 3;\nconst MIN_NEWS = 3;\nconst MIN_REDDIT = 2;\n\n// 검색 프롬프트 생성\nlet searchPrompt;\n\nif (!accumulated) {\n  // 초회 검색\n  const subs = (player.subreddits || []).map(s => 'r/' + s).join(', ');\n  searchPrompt = `Search for recent English-language news and fan reactions about Korean footballer ${player.nameKr} (${player.fotmobName}) at ${player.team} (${player.league}).\n\nFOCUS ON:\n1. English-language sports media coverage (BBC Sport, The Guardian, ESPN, The Athletic, transfermarkt, etc.) - recent match reports, transfer news, injury updates, tactical analysis\n2. Reddit fan discussions (r/soccer, ${subs}) - fan opinions, match threads, player ratings, top comments with context\n3. Fan sentiment and notable quotes from social media\n\nDO NOT include Korean-language sources.\nInclude source URLs for every item found.\nFor Reddit: include subreddit name, post title, top comments, upvote context.\n\nSearch for: ${player.searchQueries.googleNews}`;\n} else {\n  // 재시도 검색 - 부족한 소스에 집중\n  const newsCount = accumulated.newsSources ? accumulated.newsSources.length : 0;\n  const redditCount = accumulated.redditSources ? accumulated.redditSources.length : 0;\n  const focusAreas = [];\n  if (newsCount < MIN_NEWS) focusAreas.push(`news articles (currently ${newsCount}, need ${MIN_NEWS})`);\n  if (redditCount < MIN_REDDIT) focusAreas.push(`Reddit discussions (currently ${redditCount}, need ${MIN_REDDIT})`);\n\n  searchPrompt = `Previous search found ${newsCount} news articles and ${redditCount} Reddit discussions about ${player.nameKr} (${player.fotmobName}).\nWe need at least ${MIN_NEWS} news + ${MIN_REDDIT} Reddit sources.\nFocus more on: ${focusAreas.join(' and ')}.\n\nTry alternative search terms:\n- Full name variations: ${player.searchQueries.googleNews}\n- Team context: \"${player.team}\" + \"${player.fotmobName}\"\n- Recent events: last 3 days\n\nSearch for English-language coverage about this Korean footballer at ${player.team} (${player.league}).\nInclude source URLs for every item found.\nFor Reddit: include subreddit name, post title, top comments.`;\n}\n\n// OpenAI Responses API 요청 바디\nconst searchRequest = {\n  model: \"gpt-4o\",\n  tools: [{\n    type: \"web_search_preview\",\n    search_context_size: \"high\"\n  }],\n  input: searchPrompt\n};\n\nreturn [{\n  json: {\n    player,\n    searchRequest,\n    attempt,\n    accumulated\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        160,
+        300
+      ],
+      "id": "a1b2c3d4-0013-4000-a000-000000000013",
+      "name": "검색 프롬프트 빌드"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/responses",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.searchRequest) }}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        400,
+        300
+      ],
+      "id": "a1b2c3d4-0014-4000-a000-000000000014",
+      "name": "OpenAI 여론 검색",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "openai-api-key",
+          "name": "OpenAI API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// 검색 결과 파싱 (v2 - 최소 2회 수집 보장)\n// Responses API output에서 텍스트 + annotations 추출\n// 소스 분류 (news vs reddit) + 임계치 확인\n// ============================================\n\nconst input = $input.first().json;\nconst promptData = $('검색 프롬프트 빌드').first().json;\nconst player = promptData.player;\nconst attempt = promptData.attempt;\nconst previousAccumulated = promptData.accumulated;\n\nconst MIN_NEWS = 3;\nconst MIN_REDDIT = 2;\nconst MAX_ATTEMPTS = 3;\nconst MIN_ATTEMPTS = 2; // 최소 2회 수집 보장\n\n// Responses API 응답에서 텍스트와 annotations 추출\nlet fullText = '';\nconst allAnnotations = [];\n\nconst output = input.output || [];\nfor (const item of output) {\n  if (item.type === 'message' && item.content) {\n    for (const block of item.content) {\n      if (block.type === 'output_text') {\n        fullText += (block.text || '') + '\\n';\n        if (block.annotations) {\n          allAnnotations.push(...block.annotations);\n        }\n      }\n    }\n  }\n}\n\n// annotations에서 URL citation 분류\nconst newsSources = [];\nconst redditSources = [];\n\nfor (const ann of allAnnotations) {\n  if (ann.type === 'url_citation' && ann.url) {\n    const source = {\n      url: ann.url,\n      title: ann.title || '',\n    };\n\n    if (ann.url.includes('reddit.com')) {\n      if (!redditSources.some(s => s.url === source.url)) {\n        redditSources.push({ ...source, type: 'reddit' });\n      }\n    } else {\n      if (!newsSources.some(s => s.url === source.url)) {\n        newsSources.push({ ...source, type: 'news' });\n      }\n    }\n  }\n}\n\n// 이전 accumulated 데이터와 병합 (재시도 시)\nlet mergedNews = [...newsSources];\nlet mergedReddit = [...redditSources];\n\nif (previousAccumulated) {\n  const existingNewsUrls = new Set(mergedNews.map(s => s.url));\n  for (const prev of (previousAccumulated.newsSources || [])) {\n    if (!existingNewsUrls.has(prev.url)) {\n      mergedNews.push(prev);\n    }\n  }\n\n  const existingRedditUrls = new Set(mergedReddit.map(s => s.url));\n  for (const prev of (previousAccumulated.redditSources || [])) {\n    if (!existingRedditUrls.has(prev.url)) {\n      mergedReddit.push(prev);\n    }\n  }\n}\n\n// 이전 webSearchSummary 병합\nlet mergedSummary = fullText.trim();\nif (previousAccumulated && previousAccumulated.webSearchSummary) {\n  mergedSummary = previousAccumulated.webSearchSummary + '\\n\\n--- 추가 검색 결과 ---\\n\\n' + mergedSummary;\n}\n\n// 임계치 확인: 최소 2회 수집 보장 + 소스 임계치\nconst sourcesMet = mergedNews.length >= MIN_NEWS && mergedReddit.length >= MIN_REDDIT;\nconst meetsThreshold =\n  (sourcesMet && attempt >= MIN_ATTEMPTS) ||\n  attempt >= MAX_ATTEMPTS;\n\nreturn [{\n  json: {\n    player,\n    collected: {\n      webSearchSummary: mergedSummary,\n      newsSources: mergedNews,\n      redditSources: mergedReddit,\n      totalItems: mergedNews.length + mergedReddit.length,\n    },\n    attempt,\n    meetsThreshold,\n    accumulated: {\n      newsSources: mergedNews,\n      redditSources: mergedReddit,\n      webSearchSummary: mergedSummary,\n    }\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        640,
+        300
+      ],
+      "id": "a1b2c3d4-0015-4000-a000-000000000015",
+      "name": "검색 결과 파싱"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition-threshold-check",
+              "leftValue": "={{ $json.meetsThreshold }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        880,
+        300
+      ],
+      "id": "a1b2c3d4-0016-4000-a000-000000000016",
+      "name": "수집 충분?"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// 검증 프롬프트 빌드\n// 수집 데이터 품질 검증 요청 (OpenAI Chat Completions)\n// ============================================\n\nconst input = $input.first().json;\nconst player = input.player;\nconst collected = input.collected;\n\nconst sourcesJson = JSON.stringify({\n  newsSources: collected.newsSources,\n  redditSources: collected.redditSources,\n}, null, 2);\n\nconst validationPrompt = `You are a data quality validator for a Korean football news platform.\nReview the following collected data about ${player.nameKr} (${player.fotmobName}) at ${player.team} (${player.league}) and validate:\n\n1. RELEVANCE: Is each source actually about this specific player? Remove false positives (e.g., different person with similar name).\n2. RECENCY: Is the information from the last 3 days?\n3. LOCAL OPINION: Is this from overseas/international sources (not Korean media)?\n4. FACTUAL ACCURACY: Flag any obvious factual errors.\n5. RICHNESS: Rate the overall data quality for article generation (1-10).\n\nCollected sources:\n${sourcesJson}\n\nWeb search summary (first 3000 chars):\n${(collected.webSearchSummary || '').substring(0, 3000)}\n\nReturn JSON: {\n  \"validatedSources\": [{ \"url\": \"...\", \"title\": \"...\", \"type\": \"news|reddit\", \"isRelevant\": true/false, \"reason\": \"...\" }],\n  \"overallQuality\": 1-10,\n  \"hasSufficientData\": true/false,\n  \"summary\": \"brief quality assessment\"\n}`;\n\nconst validationRequest = {\n  model: \"gpt-4o\",\n  messages: [\n    { role: \"user\", content: validationPrompt }\n  ],\n  response_format: { type: \"json_object\" },\n  temperature: 0.2,\n  max_tokens: 4096\n};\n\nreturn [{\n  json: {\n    player,\n    collected,\n    validationRequest\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1000,
+        200
+      ],
+      "id": "a1b2c3d4-0017-4000-a000-000000000017",
+      "name": "검증 프롬프트 빌드"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.openai.com/v1/chat/completions",
+        "authentication": "genericCredentialType",
+        "genericAuthType": "httpHeaderAuth",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify($json.validationRequest) }}",
+        "options": {
+          "timeout": 60000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1200,
+        200
+      ],
+      "id": "a1b2c3d4-0018-4000-a000-000000000018",
+      "name": "OpenAI 데이터 검증",
+      "credentials": {
+        "httpHeaderAuth": {
+          "id": "openai-api-key",
+          "name": "OpenAI API Key"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// 검증 결과 파싱\n// 검증 결과 -> 필터링된 collected 데이터 생성\n// ============================================\n\nconst input = $input.first().json;\nconst prevData = $('검증 프롬프트 빌드').first().json;\nconst player = prevData.player;\nconst collected = prevData.collected;\n\n// 검증 결과 파싱\nlet validation;\ntry {\n  const rawContent = input.choices[0].message.content;\n  validation = JSON.parse(rawContent);\n} catch (error) {\n  // 검증 파싱 실패 시 원본 데이터 그대로 통과\n  validation = {\n    validatedSources: [],\n    overallQuality: 5,\n    hasSufficientData: true,\n    summary: 'Validation parsing failed, using original data'\n  };\n}\n\n// isRelevant=true인 소스만 필터링\nconst validatedUrls = new Map();\nfor (const src of (validation.validatedSources || [])) {\n  validatedUrls.set(src.url, src.isRelevant !== false);\n}\n\n// 검증된 소스만 필터링 (검증 결과에 없는 소스는 통과)\nconst validatedNews = collected.newsSources.filter(s =>\n  !validatedUrls.has(s.url) || validatedUrls.get(s.url)\n);\nconst validatedReddit = collected.redditSources.filter(s =>\n  !validatedUrls.has(s.url) || validatedUrls.get(s.url)\n);\n\nreturn [{\n  json: {\n    ...player,\n    collected: {\n      webSearchSummary: collected.webSearchSummary,\n      sources: [...validatedNews, ...validatedReddit],\n      newsSources: validatedNews,\n      redditSources: validatedReddit,\n      validation: {\n        quality: validation.overallQuality || 5,\n        hasSufficientData: validation.hasSufficientData !== false,\n        summary: validation.summary || ''\n      },\n      collectedAt: new Date().toISOString(),\n      totalItems: validatedNews.length + validatedReddit.length\n    }\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        1400,
+        200
+      ],
+      "id": "a1b2c3d4-0019-4000-a000-000000000019",
+      "name": "검증 결과 파싱"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "condition-qa-pass-check",
+              "leftValue": "={{ $json.qaPass }}",
+              "rightValue": true,
+              "operator": {
+                "type": "boolean",
+                "operation": "true"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        3280,
+        200
+      ],
+      "id": "a1b2c3d4-0020-4000-a000-000000000020",
+      "name": "QA 통과?"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ \"https://kfn-app.vercel.app/api/player-profile?id=\" + $json.id }}",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1800,
+        200
+      ],
+      "id": "a1b2c3d4-0021-4000-a000-000000000021",
+      "name": "프로필 API 조회",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "https://kfn-app.vercel.app/api/player-stats",
+        "options": {
+          "timeout": 15000
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2000,
+        200
+      ],
+      "id": "a1b2c3d4-0022-4000-a000-000000000022",
+      "name": "주간 스탯 API 조회",
+      "onError": "continueRegularOutput"
+    },
+    {
+      "parameters": {
+        "jsCode": "// ============================================\n// 스탯 데이터 병합\n// KFN API에서 조회한 선수 프로필/주간 스탯을\n// player 객체에 병합하여 GPT 프롬프트에 전달\n// ============================================\n\n// 원본 선수 + collected 데이터 (검증 결과 파싱 출력)\nconst playerData = $('검증 결과 파싱').first().json;\n\n// 프로필 API 응답 처리\nlet profileData = null;\ntry {\n  const profileResponse = $('프로필 API 조회').first().json;\n  if (profileResponse && profileResponse.data) {\n    profileData = profileResponse.data;\n  }\n} catch (e) {\n  // API 실패 시 무시 — 스탯 없이 기사 생성 가능\n}\n\n// 주간 스탯 API 응답 처리\nlet weeklyStats = null;\ntry {\n  const statsResponse = $('주간 스탯 API 조회').first().json;\n  if (statsResponse && statsResponse.data && Array.isArray(statsResponse.data)) {\n    weeklyStats = statsResponse.data.find(\n      s => String(s.player_id) === String(playerData.id)\n    );\n  }\n} catch (e) {\n  // API 실패 시 무시\n}\n\n// 최근 경기 데이터 파싱 (주간 스탯에 JSON 문자열로 포함)\nlet recentMatches = [];\nif (weeklyStats && weeklyStats.recent_matches_json) {\n  try {\n    const parsed = JSON.parse(weeklyStats.recent_matches_json);\n    if (Array.isArray(parsed)) {\n      recentMatches = parsed.slice(0, 5);\n    }\n  } catch (e) {\n    // 파싱 실패 무시\n  }\n}\n\n// statsData 병합\nconst statsData = {\n  profile: profileData,\n  weeklyStats: weeklyStats,\n  recentMatches: recentMatches,\n  hasData: !!(profileData || weeklyStats),\n};\n\nreturn [{\n  json: {\n    ...playerData,\n    statsData,\n  }\n}];\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 1,
+      "position": [
+        2200,
+        200
+      ],
+      "id": "a1b2c3d4-0023-4000-a000-000000000023",
+      "name": "스탯 데이터 병합"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "선수 검색 레지스트리",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "선수 검색 레지스트리": {
+      "main": [
+        [
+          {
+            "node": "활성 선수 필터",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "활성 선수 필터": {
+      "main": [
+        [
+          {
+            "node": "대상 선수 선택",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "대상 선수 선택": {
+      "main": [
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "SplitInBatches": {
+      "main": [
+        [
+          {
+            "node": "검색 프롬프트 빌드",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "검색 프롬프트 빌드": {
+      "main": [
+        [
+          {
+            "node": "OpenAI 여론 검색",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI 여론 검색": {
+      "main": [
+        [
+          {
+            "node": "검색 결과 파싱",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "검색 결과 파싱": {
+      "main": [
+        [
+          {
+            "node": "수집 충분?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "수집 충분?": {
+      "main": [
+        [
+          {
+            "node": "검증 프롬프트 빌드",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "검색 프롬프트 빌드",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "검증 프롬프트 빌드": {
+      "main": [
+        [
+          {
+            "node": "OpenAI 데이터 검증",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI 데이터 검증": {
+      "main": [
+        [
+          {
+            "node": "검증 결과 파싱",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "검증 결과 파싱": {
+      "main": [
+        [
+          {
+            "node": "수집 데이터 체크",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "수집 데이터 체크": {
+      "main": [
+        [
+          {
+            "node": "프로필 API 조회",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "GPT 프롬프트 빌드": {
+      "main": [
+        [
+          {
+            "node": "OpenAI API 호출",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "OpenAI API 호출": {
+      "main": [
+        [
+          {
+            "node": "응답 파싱",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "응답 파싱": {
+      "main": [
+        [
+          {
+            "node": "QA 검증 + 재생성",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "QA 검증 + 재생성": {
+      "main": [
+        [
+          {
+            "node": "QA 통과?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "JSON 파일 저장": {
+      "main": [
+        [
+          {
+            "node": "SplitInBatches",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "QA 통과?": {
+      "main": [
+        [
+          {
+            "node": "JSON 파일 저장",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "GPT 프롬프트 빌드",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "프로필 API 조회": {
+      "main": [
+        [
+          {
+            "node": "주간 스탯 API 조회",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "주간 스탯 API 조회": {
+      "main": [
+        [
+          {
+            "node": "스탯 데이터 병합",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "스탯 데이터 병합": {
+      "main": [
+        [
+          {
+            "node": "GPT 프롬프트 빌드",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "versionId": "",
+  "meta": {
+    "templateCredsSetupCompleted": false,
+    "instanceId": ""
+  },
+  "id": "",
+  "tags": []
+}
