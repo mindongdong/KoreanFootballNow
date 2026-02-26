@@ -597,3 +597,71 @@ export function buildNewsletter(mdPath: string, newslettersDir: string): { subje
 
   return { subject: meta.subject, html };
 }
+
+// ─── Welcome Email Builder ───
+
+interface WelcomeArticle {
+  id: string;
+  title: string;
+  playerNameKr: string;
+  team: string;
+  league: string;
+  summary: string;
+}
+
+function renderArticleCard(article: WelcomeArticle, isLast: boolean): string {
+  const borderBottom = isLast ? '' : 'border-bottom: 1px solid #f5f5f5;';
+  return `
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0" style="padding: 16px 0; ${borderBottom}">
+                                <tr>
+                                    <td>
+                                        <span style="display: inline-block; padding: 2px 8px; background-color: rgba(217,8,40,0.1); color: #d90828; font-size: 10px; font-weight: 600; border-radius: 4px; letter-spacing: 0.3px;">${article.league}</span>
+                                        <p style="margin: 8px 0 0 0; font-size: 15px; font-weight: 700; color: #000000; line-height: 1.4;">${article.title}</p>
+                                        <p style="margin: 6px 0 0 0; font-size: 12px; color: #666666;">${article.playerNameKr} · ${article.team}</p>
+                                        <p style="margin: 8px 0 0 0; font-size: 12px; color: #444444; line-height: 1.5;">${article.summary}</p>
+                                    </td>
+                                </tr>
+                            </table>`;
+}
+
+/**
+ * Build a welcome email from articles + welcome-template.html.
+ * Accepts pre-loaded articles array to avoid coupling with _lib/articles.ts.
+ */
+export function buildWelcomeEmail(
+  articles: WelcomeArticle[],
+  newslettersDir: string,
+): { subject: string; html: string } {
+  const templatePath = resolve(newslettersDir, 'welcome-template.html');
+  const templateContent = readFileSync(templatePath, 'utf-8');
+
+  let articlesHtml: string;
+  if (articles.length === 0) {
+    articlesHtml = `
+                            <table width="100%" cellpadding="0" cellspacing="0" border="0">
+                                <tr>
+                                    <td style="padding: 24px 0; text-align: center;">
+                                        <p style="margin: 0; font-size: 13px; color: #999999; line-height: 1.6;">
+                                            아직 게시된 뉴스가 없습니다.<br>
+                                            곧 새로운 소식을 전해드리겠습니다!
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>`;
+  } else {
+    articlesHtml = articles
+      .map((a, i) => renderArticleCard(a, i === articles.length - 1))
+      .join('\n');
+  }
+
+  const siteUrl = process.env.SITE_URL || 'https://koreanfootballnow.com';
+  const html = templateContent
+    .replace(/\{\{ARTICLES\}\}/g, articlesHtml)
+    .replace(/\{\{SITE_URL\}\}/g, siteUrl)
+    .replace(/\{\{UNSUBSCRIBE_URL\}\}/g, `${siteUrl}/api/unsubscribe`);
+
+  return {
+    subject: 'Korean Football Now에 오신 것을 환영합니다!',
+    html,
+  };
+}

@@ -2,7 +2,8 @@ import type { VercelRequest, VercelResponse } from '@vercel/node';
 import { dirname, join } from 'path';
 import { fileURLToPath } from 'url';
 import { Resend } from 'resend';
-import { findLatestNewsletter, buildNewsletter } from '../newsletters/core.js';
+import { loadArticlesFromDisk } from './_lib/articles.js';
+import { buildWelcomeEmail } from '../newsletters/core.js';
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
@@ -62,21 +63,20 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(500).json({ error: '구독 처리 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.' });
   }
 
-  // Best-effort: send latest newsletter to new subscriber
+  // Best-effort: send welcome email with latest articles
   // Resend rate limit: 2 req/s — contacts.list + contacts.create 이후 대기
   try {
     const fromEmail = process.env.RESEND_FROM_EMAIL;
     if (fromEmail) {
+      const articlesDir = join(__dirname, '..', 'src', 'data', 'articles');
+      const articles = loadArticlesFromDisk(articlesDir, 5);
       const newslettersDir = join(__dirname, '..', 'newsletters');
-      const latestMdPath = findLatestNewsletter(newslettersDir);
-      if (latestMdPath) {
-        const { subject, html } = buildNewsletter(latestMdPath, newslettersDir);
-        await new Promise((r) => setTimeout(r, 1000));
-        await resend.emails.send({ from: fromEmail, to: trimmedEmail, subject, html });
-      }
+      const { subject, html } = buildWelcomeEmail(articles, newslettersDir);
+      await new Promise((r) => setTimeout(r, 1000));
+      await resend.emails.send({ from: fromEmail, to: trimmedEmail, subject, html });
     }
   } catch (err) {
-    console.error('Failed to send welcome newsletter:', err);
+    console.error('Failed to send welcome email:', err);
   }
 
   return res.status(200).json({ message: '구독이 완료되었습니다!' });

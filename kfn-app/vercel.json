@@ -5,8 +5,11 @@
   "installCommand": "npm install",
   "framework": "vite",
   "functions": {
+    "api/articles.ts": {
+      "includeFiles": "src/data/articles/**"
+    },
     "api/subscribe.ts": {
-      "includeFiles": "newsletters/**"
+      "includeFiles": "{newsletters/**,src/data/articles/**}"
     },
     "api/player-stats.ts": {
       "maxDuration": 10
