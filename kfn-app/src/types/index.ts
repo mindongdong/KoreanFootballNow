@@ -6,6 +6,4 @@ export type {
   ChartData,
   DataRow,
   AdCuration,
-  MainView,
-  NewsView,
 } from './article';

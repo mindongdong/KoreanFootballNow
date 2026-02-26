@@ -56,5 +56,3 @@ export interface AdCuration {
   tag: string;
 }
 
-export type MainView = 'news' | 'stats';
-export type NewsView = 'list' | 'article' | 'evidence';

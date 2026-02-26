@@ -1,73 +1,67 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ArticleList from './components/news/ArticleList';
 import ArticleView from './components/news/ArticleView';
 import EvidenceView from './components/news/EvidenceView';
 import StatsDashboard from './components/stats/StatsDashboard';
+import ScrollToTop from './components/common/ScrollToTop';
 import { loadArticles } from './utils/articleLoader';
-import type { Article, MainView, NewsView } from './types';
+import type { Article } from './types';
+
+function ArticleViewPage({ articles }: { articles: Article[] }) {
+  const { articleId } = useParams<{ articleId: string }>();
+  const navigate = useNavigate();
+  const article = articles.find((a) => a.id === articleId);
+
+  if (!article) {
+    return <Navigate to="/news" replace />;
+  }
+
+  return (
+    <ArticleView
+      article={article}
+      onBack={() => navigate('/news')}
+      onShowEvidence={() => navigate(`/news/${articleId}/evidence`)}
+    />
+  );
+}
+
+function EvidenceViewPage({ articles }: { articles: Article[] }) {
+  const { articleId } = useParams<{ articleId: string }>();
+  const navigate = useNavigate();
+  const article = articles.find((a) => a.id === articleId);
+
+  if (!article) {
+    return <Navigate to="/news" replace />;
+  }
+
+  return (
+    <EvidenceView
+      article={article}
+      onBack={() => navigate(`/news/${articleId}`)}
+    />
+  );
+}
 
 function App() {
   const articles = loadArticles();
-  const [mainView, setMainView] = useState<MainView>('news');
-  const [newsView, setNewsView] = useState<NewsView>('list');
-  const [selectedArticle, setSelectedArticle] = useState<Article | null>(null);
-
-  const handleViewChange = (view: MainView) => {
-    setMainView(view);
-    if (view === 'news') {
-      setNewsView('list');
-      setSelectedArticle(null);
-    }
-  };
-
-  const handleArticleClick = (article: Article) => {
-    setSelectedArticle(article);
-    setNewsView('article');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleBackToList = () => {
-    setNewsView('list');
-    setSelectedArticle(null);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleShowEvidence = () => {
-    setNewsView('evidence');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
-
-  const handleBackToArticle = () => {
-    setNewsView('article');
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
 
   return (
     <div className="flex flex-col min-h-screen bg-[#fafafa]">
-      <Navbar activeView={mainView} onViewChange={handleViewChange} />
+      <Navbar />
+      <ScrollToTop />
 
       <main className="flex-1">
-        {mainView === 'news' && (
-          <>
-            {newsView === 'list' && (
-              <ArticleList articles={articles} onArticleClick={handleArticleClick} />
-            )}
-            {newsView === 'article' && selectedArticle && (
-              <ArticleView
-                article={selectedArticle}
-                onBack={handleBackToList}
-                onShowEvidence={handleShowEvidence}
-              />
-            )}
-            {newsView === 'evidence' && selectedArticle && (
-              <EvidenceView article={selectedArticle} onBack={handleBackToArticle} />
-            )}
-          </>
-        )}
-
-        {mainView === 'stats' && <StatsDashboard />}
+        <Routes>
+          <Route path="/" element={<Navigate to="/news" replace />} />
+          <Route path="/news" element={<ArticleList articles={articles} />} />
+          <Route path="/news/:articleId" element={<ArticleViewPage articles={articles} />} />
+          <Route path="/news/:articleId/evidence" element={<EvidenceViewPage articles={articles} />} />
+          <Route path="/stats/*" element={<StatsDashboard />} />
+          <Route path="*" element={<Navigate to="/news" replace />} />
+        </Routes>
       </main>
 
       <Footer />
