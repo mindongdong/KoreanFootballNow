@@ -1,0 +1,186 @@
+{
+  "id": "3",
+  "title": "\"벤치로 밀려난 김민재\" — 바이에른 팬들 사이 갈리는 반응, 이적 가능성 부상",
+  "subtitle": "Bundesliga 25/26: 김민재, 2경기 연속 선발 제외",
+  "summary": "바이에른 뮌헨에서 우파메카노-요나탄 타에 밀려 3순위로 내려간 김민재. 뮌헨 단장은 \"모두 건강하다\"고 밝혔고, 이적료를 3,000만 유로로 낮춰 방출을 시사했다. 독일 팬 반응은 안타까움과 \"팀을 위한 결정\"으로 갈리고 있다.",
+  "content": "## 상황 요약\n\n김민재(29세)가 바이에른 뮌헨에서 입지가 크게 흔들리고 있다. 2월 8일 호펜하임전에서는 경기 스쿼드 명단 자체에서 제외되었고, 2월 12일 라이프치히와의 DFB 포칼 8강전에서는 벤치에만 앉아 경기를 마쳤다. 우파메카노와 레버쿠젠에서 이적한 요나탄 타가 주전 센터백 조합으로 굳어지며, 일본의 이토 히로키에게도 밀리는 상황이다.\n\n## 해외 현지 반응 (AI 요약)\n\n### Reddit r/fcbayern 반응\n- **최다 추천 (1.6k)**: \"Feel bad for Kim Min-Jae. He gave everything for this club but Upa-Tah partnership is just too good right now.\"\n- **주요 반응 1**: \"Unpopular opinion: Kim deserves better than being 3rd choice. He should move to a club where he starts every game.\"\n- **주요 반응 2**: \"The squad depth is insane but someone always gets hurt. Kim's time will come.\"\n- **반대 의견**: \"Kompany made the right call. Results speak for themselves — 6 clean sheets in the last 8 with Upa-Tah.\"\n\n### 독일 현지 매체\n- **Kicker**: \"김민재의 바이에른 시대가 끝나가고 있다. 이적료 3,000만 유로면 많은 빅클럽이 관심을 보일 것.\"\n- **Bild**: \"김민재는 여전히 월드클래스 수비수다. 하지만 뮌헨의 현재 시스템에서 우파메카노-타 조합을 깨기 어려워 보인다.\"\n- **Sport1**: \"첼시, 맨유, 유벤투스 등 여러 클럽이 김민재에게 관심을 보이고 있다. 여름 이적 시장이 뜨거워질 전망.\"\n\n## AI 분석 요약\n\n김민재는 25/26 시즌 분데스리가에서 **15경기 출전(선발 11경기)**, **시즌 평균 평점 6.9**를 기록 중이다. 하지만 1월 14일 쾰른전 이후 선발 기회를 잡지 못하고 있으며, 바이에른은 이적료를 5,000만→3,000만 유로(약 470억원)로 낮추며 사실상 방출 의사를 시사했다. 북중미 월드컵을 앞두고 출전 시간 확보가 절실한 상황이다.",
+  "playerName": "Kim Min-Jae",
+  "playerNameKr": "김민재",
+  "team": "Bayern München",
+  "league": "Bundesliga",
+  "matchInfo": "분데스리가 25/26 | 김민재 2경기 연속 선발 제외",
+  "publishedAt": "2026-02-14T14:00:00Z",
+  "thumbnailUrl": "",
+  "tags": [
+    "김민재",
+    "바이에른뮌헨",
+    "분데스리가",
+    "이적설"
+  ],
+  "evidence": {
+    "charts": [
+      {
+        "id": "kim-minutes",
+        "title": "최근 10경기 출전 시간 (분)",
+        "type": "bar",
+        "data": [
+          {
+            "name": "14R",
+            "출전시간": 90
+          },
+          {
+            "name": "16R",
+            "출전시간": 90
+          },
+          {
+            "name": "18R",
+            "출전시간": 45
+          },
+          {
+            "name": "19R",
+            "출전시간": 90
+          },
+          {
+            "name": "20R",
+            "출전시간": 0
+          },
+          {
+            "name": "21R",
+            "출전시간": 0
+          },
+          {
+            "name": "22R",
+            "출전시간": 15
+          },
+          {
+            "name": "포칼",
+            "출전시간": 0
+          }
+        ],
+        "dataKeys": [
+          "출전시간"
+        ],
+        "colors": [
+          "#d90828"
+        ]
+      },
+      {
+        "id": "kim-cb-compare",
+        "title": "바이에른 센터백 서열 비교 (시즌 평점)",
+        "type": "bar",
+        "data": [
+          {
+            "name": "우파메카노",
+            "시즌평점": 7.3
+          },
+          {
+            "name": "요나탄 타",
+            "시즌평점": 7.1
+          },
+          {
+            "name": "김민재",
+            "시즌평점": 6.9
+          },
+          {
+            "name": "이토 히로키",
+            "시즌평점": 6.7
+          }
+        ],
+        "dataKeys": [
+          "시즌평점"
+        ],
+        "colors": [
+          "#94a3b8"
+        ]
+      },
+      {
+        "id": "kim-sentiment",
+        "title": "현지 여론 감성 분석",
+        "type": "pie",
+        "data": [
+          {
+            "name": "안타까움",
+            "value": 45,
+            "fill": "#3b82f6"
+          },
+          {
+            "name": "팀결정 지지",
+            "value": 30,
+            "fill": "#22c55e"
+          },
+          {
+            "name": "이적 권유",
+            "value": 18,
+            "fill": "#f59e0b"
+          },
+          {
+            "name": "부정",
+            "value": 7,
+            "fill": "#ef4444"
+          }
+        ],
+        "dataKeys": [
+          "value"
+        ],
+        "colors": [
+          "#3b82f6",
+          "#22c55e",
+          "#f59e0b",
+          "#ef4444"
+        ]
+      }
+    ],
+    "dataRows": [
+      {
+        "label": "선발 제외 기간",
+        "value": "1월 14일 이후 5경기",
+        "interpretation": "쾰른전(1/14) 이후 5경기 연속 선발 명단에서 빠졌습니다. 이 중 2경기는 아예 스쿼드에서 제외되었으며, 콤파니 감독은 \"모두 건강하다\"고만 답했습니다.",
+        "source": "Kicker / Bild",
+        "sourceUrl": "https://www.kicker.de"
+      },
+      {
+        "label": "이적료 인하",
+        "value": "5,000만 → 3,000만 유로",
+        "interpretation": "바이에른이 김민재의 이적료를 5,000만 유로에서 3,000만 유로(약 470억원)로 대폭 인하했습니다. 첼시, 맨유, 유벤투스 등이 관심을 보이고 있는 것으로 알려졌습니다.",
+        "source": "SPOTV NEWS / Bild",
+        "sourceUrl": "https://www.bild.de"
+      },
+      {
+        "label": "센터백 서열",
+        "value": "3순위 (우파메카노-타 뒤)",
+        "interpretation": "우파메카노-요나탄 타 조합이 최근 8경기에서 6회 클린시트를 기록하며 확고한 1순위로 자리잡았습니다. 김민재는 이토 히로키에게도 밀리며 사실상 4순위까지 내려간 상황입니다.",
+        "source": "Kicker",
+        "sourceUrl": "https://www.kicker.de"
+      },
+      {
+        "label": "월드컵 영향",
+        "value": "2026 북중미 월드컵 4개월 전",
+        "interpretation": "북중미 월드컵 개막까지 약 4개월 남은 상황에서 출전 시간 부족은 대표팀 컨디션에도 영향을 미칠 수 있습니다. 김민재는 잔류를 선택했지만, 여름 이적 가능성이 높아지고 있습니다.",
+        "source": "daum 스포츠",
+        "sourceUrl": "https://sports.daum.net"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://reddit.com/r/fcbayern/",
+        "title": "Feel bad for Kim Min-Jae. He gave everything for this club — r/fcbayern",
+        "type": "reddit"
+      },
+      {
+        "url": "https://www.kicker.de",
+        "title": "Kim Min-jaes Zeit bei Bayern neigt sich dem Ende — Kicker",
+        "type": "news"
+      },
+      {
+        "url": "https://www.bild.de",
+        "title": "Weltklasse-Verteidiger, aber kein Platz mehr — Bild",
+        "type": "news"
+      },
+      {
+        "url": "https://www.sport1.de",
+        "title": "Chelsea, ManUtd, Juventus interessiert an Kim Min-jae — Sport1",
+        "type": "news"
+      }
+    ]
+  }
+}

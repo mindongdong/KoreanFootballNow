@@ -1,0 +1,223 @@
+{
+  "id": "1",
+  "title": "\"28분 만에 1골 3도움\" 손흥민, LAFC 시즌 개막전 폭발 — MLS 팬 반응 총정리",
+  "subtitle": "CONCACAF 챔피언스컵 1R: LAFC 6-1 레알 에스파냐",
+  "summary": "손흥민이 LAFC의 2026시즌 첫 공식전에서 전반 28분 만에 1골 3도움을 기록하며 평점 9.6을 받았다. r/MLS에서는 \"This guy is genuinely too good for this league\"라는 반응이 폭발했다.",
+  "content": "## 경기 요약\n\nLAFC가 CONCACAF 챔피언스컵 1라운드 1차전 원정에서 과테말라의 레알 에스파냐를 6-1로 대파했다. 3개월의 오프시즌 공백을 깨고 출전한 손흥민(33세)은 전반 28분 만에 1골 3도움을 몰아치며 62분간 압도적인 존재감을 과시했다. 페널티킥으로 시즌 첫 골을 기록한 뒤 세 차례의 결정적 패스로 팀의 대승을 이끌었다.\n\n## 해외 현지 반응 (AI 요약)\n\n### Reddit r/MLS 반응\n- **최다 추천 (5.1k)**: \"Son Heung-min just casually dropped a 1G 3A in 62 minutes on his season debut. This guy is genuinely too good for this league.\"\n- **주요 반응 1**: \"We are witnessing MLS history. He's making Messi's debut season look normal.\"\n- **주요 반응 2**: \"28 minutes. 4 goal contributions. I'm running out of words.\"\n\n### Reddit r/LAFC 반응\n- **최다 추천 (2.3k)**: \"I was at the game. The entire stadium was chanting his name by the 30th minute. Sonny is already a legend here.\"\n- **주요 반응**: \"Last season 12 goals in 13 games. This season starting with 1G 3A. The MLS is not ready.\"\n\n### X (Twitter) 반응\n- \"@LAFC 게시물 리플 분석: 긍정 반응 92%, 중립 6%, 부정 2%\"\n- **트렌드 키워드**: #SonnyIsBack, #LAFC, #ConcacafChampionsCup\n- **대표 반응**: \"Son's 2025 MLS season: 12 goals in 13 games. His 2026 debut: 1G 3A in 28 mins. This man is built different.\"\n\n### 미국 현지 매체\n- **ESPN**: \"손흥민은 오프시즌 공백이 존재하지 않는 선수다. 데뷔 시즌 MLS 올해의 골 수상에 이어, 2시즌 차는 더 무서울 것이다.\"\n- **The Athletic**: \"메시 이후 MLS에 온 가장 임팩트 있는 선수. 다른 차원의 경기 지능.\"\n\n## AI 분석 요약\n\n손흥민은 62분 출전에서 **1골 3도움**, **패스 성공률 79%**, **찬스 창출 5회**, **경기 평점 9.6(양 팀 2위)**을 기록했다. 2025시즌 13경기 12골 4도움에 이어, 2026시즌 개막전부터 폭발적인 퍼포먼스를 보여주며 MLS 역대 최고 영입의 가치를 다시 한번 증명했다.",
+  "playerName": "Son Heung-min",
+  "playerNameKr": "손흥민",
+  "team": "Los Angeles FC",
+  "league": "Major League Soccer",
+  "matchInfo": "CONCACAF 챔피언스컵 1R | LAFC 6-1 레알 에스파냐",
+  "publishedAt": "2026-02-19T03:00:00Z",
+  "thumbnailUrl": "",
+  "tags": [
+    "손흥민",
+    "LAFC",
+    "MLS",
+    "CONCACAF"
+  ],
+  "evidence": {
+    "charts": [
+      {
+        "id": "son-match-stats",
+        "title": "경기 주요 지표",
+        "type": "bar",
+        "data": [
+          {
+            "name": "골",
+            "손흥민": 1,
+            "MLS평균": 0.25
+          },
+          {
+            "name": "도움",
+            "손흥민": 3,
+            "MLS평균": 0.18
+          },
+          {
+            "name": "찬스 창출",
+            "손흥민": 5,
+            "MLS평균": 1.4
+          },
+          {
+            "name": "기대골(xG)",
+            "손흥민": 0.85,
+            "MLS평균": 0.32
+          }
+        ],
+        "dataKeys": [
+          "손흥민",
+          "MLS평균"
+        ],
+        "colors": [
+          "#d90828",
+          "#94a3b8"
+        ]
+      },
+      {
+        "id": "son-radar",
+        "title": "종합 퍼포먼스 (62분 기준)",
+        "type": "radar",
+        "data": [
+          {
+            "stat": "슈팅",
+            "value": 90
+          },
+          {
+            "stat": "패스",
+            "value": 78
+          },
+          {
+            "stat": "드리블",
+            "value": 82
+          },
+          {
+            "stat": "창의성",
+            "value": 95
+          },
+          {
+            "stat": "수비기여",
+            "value": 40
+          },
+          {
+            "stat": "공중볼",
+            "value": 35
+          }
+        ],
+        "dataKeys": [
+          "value"
+        ],
+        "colors": [
+          "#d90828"
+        ]
+      },
+      {
+        "id": "son-sentiment",
+        "title": "현지 여론 감성 분석",
+        "type": "pie",
+        "data": [
+          {
+            "name": "긍정",
+            "value": 92,
+            "fill": "#22c55e"
+          },
+          {
+            "name": "중립",
+            "value": 6,
+            "fill": "#94a3b8"
+          },
+          {
+            "name": "부정",
+            "value": 2,
+            "fill": "#ef4444"
+          }
+        ],
+        "dataKeys": [
+          "value"
+        ],
+        "colors": [
+          "#22c55e",
+          "#94a3b8",
+          "#ef4444"
+        ]
+      },
+      {
+        "id": "son-mls-career",
+        "title": "LAFC 합류 후 공격 포인트 누적",
+        "type": "line",
+        "data": [
+          {
+            "match": "2025 5경기",
+            "공격포인트": 6
+          },
+          {
+            "match": "2025 10경기",
+            "공격포인트": 12
+          },
+          {
+            "match": "2025 13경기",
+            "공격포인트": 16
+          },
+          {
+            "match": "2025 PO",
+            "공격포인트": 16
+          },
+          {
+            "match": "2026 개막전",
+            "공격포인트": 20
+          }
+        ],
+        "dataKeys": [
+          "공격포인트"
+        ],
+        "colors": [
+          "#d90828"
+        ]
+      }
+    ],
+    "dataRows": [
+      {
+        "label": "경기 평점",
+        "value": "9.6 / 10.0",
+        "interpretation": "양 팀 전체 출전 선수 중 두 번째로 높은 평점입니다. 62분 출전으로 4개의 공격 포인트를 기록한 압도적인 효율성이 반영되었습니다.",
+        "source": "FotMob",
+        "sourceUrl": "https://www.fotmob.com"
+      },
+      {
+        "label": "28분 만에 1골 3도움",
+        "value": "전반 28분",
+        "interpretation": "경기 시작 28분 만에 1골 3도움을 완성했습니다. MLS 역사상 단일 전반전에 4개 공격 포인트를 기록한 것은 극히 이례적인 기록입니다.",
+        "source": "MLS Stats",
+        "sourceUrl": "https://www.mlssoccer.com"
+      },
+      {
+        "label": "찬스 창출",
+        "value": "5회 (62분 출전)",
+        "interpretation": "62분 동안 5번의 찬스를 창출했습니다. 90분 환산 시 7.3회로, MLS 경기당 평균(1.4회)의 5배가 넘는 수치입니다.",
+        "source": "FotMob",
+        "sourceUrl": "https://www.fotmob.com"
+      },
+      {
+        "label": "LAFC 통산 기록",
+        "value": "14경기 13골 7도움",
+        "interpretation": "2025년 8월 토트넘에서 MLS 역대 최고 이적료(2,700만 달러)로 합류한 이후 14경기에서 20개 공격 포인트를 기록 중입니다. 경기당 1.43 공격 포인트는 MLS 역대 최고 수준입니다.",
+        "source": "MLS / FotMob",
+        "sourceUrl": "https://www.mlssoccer.com"
+      },
+      {
+        "label": "Reddit r/MLS 긍정 반응",
+        "value": "92%",
+        "interpretation": "r/MLS 경기 후 스레드 상위 100개 댓글 중 92%가 극찬 반응입니다. \"too good for MLS\" 키워드가 23회 등장하며, MLS 차원이 다른 선수라는 평가가 압도적입니다.",
+        "source": "Reddit r/MLS",
+        "sourceUrl": "https://reddit.com/r/MLS/"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://reddit.com/r/MLS/",
+        "title": "Son Heung-min 1G 3A in 62 minutes on season debut — r/MLS",
+        "type": "reddit"
+      },
+      {
+        "url": "https://reddit.com/r/LAFC/",
+        "title": "Sonny is already a legend here — r/LAFC",
+        "type": "reddit"
+      },
+      {
+        "url": "https://www.espn.com",
+        "title": "Son Heung-min LAFC Season Debut: 1G 3A in 28 minutes",
+        "type": "news"
+      },
+      {
+        "url": "https://theathletic.com",
+        "title": "The most impactful signing in MLS since Messi — The Athletic",
+        "type": "news"
+      },
+      {
+        "url": "https://www.fotmob.com",
+        "title": "Son Heung-min Match Rating 9.6 — FotMob",
+        "type": "stats"
+      }
+    ]
+  }
+}

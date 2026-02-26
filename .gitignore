@@ -16,3 +16,11 @@ scripts/output/*.txt
 # Generated article data (n8n pipeline output)
 kfn-app/src/data/articles/*.json
 !kfn-app/src/data/articles/.gitkeep
+
+# 수동 검수 완료된 기사 데이터 — gitignore 예외
+!kfn-app/src/data/articles/opinion-김민재-1771077600000.json
+!kfn-app/src/data/articles/opinion-배준호-1771351200000.json
+!kfn-app/src/data/articles/opinion-손흥민-1771470000000.json
+!kfn-app/src/data/articles/opinion-오현규-1771934400000.json
+!kfn-app/src/data/articles/opinion-이강인-1771239600000.json
+!kfn-app/src/data/articles/opinion-황희찬-1770926400000.json

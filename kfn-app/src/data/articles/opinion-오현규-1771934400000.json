@@ -1,0 +1,216 @@
+{
+  "id": "opinion-oh-20260224",
+  "title": "\"3경기 3골 2도움\" 오현규, 베식타스 20년 만의 기록 — 122km/h 원더골에 감독도 무릎 꿇었다",
+  "subtitle": "쉬페르리그 25/26: 베식타스 4-0 괴즈테페 (오현규 득점)",
+  "summary": "오현규가 3경기 연속골로 베식타스 역대 최초 기록을 세우며 팀을 4위로 끌어올렸다. r/soccer에서는 \"3 matches. 3 goals. 2 assists. He will make you say OH.\"라는 반응이 폭발했고, 122km/h 원더골에 세르겐 얄츤 감독마저 무릎을 꿇었다.",
+  "content": "## 경기 요약\n\n베식타스가 쉬페르리그에서 괴즈테페를 4-0으로 대파했다. 오현규(23세)는 74분에 득점을 추가하며 3경기 연속 골이라는 대기록을 세웠다. 이는 베식타스 역사상 최초로 한 선수가 3경기 연속 골을 기록한 것으로, 구단의 20년 된 기록을 갈아치운 것이다.\n\n특히 이 골은 시속 122km/h의 강렬한 슈팅으로 완성되었으며, 터키 리그 20년 만의 최고 슈팅 속도 기록까지 경신했다. 세르겐 얄츤 감독은 골이 터진 순간 감탄에 무릎을 꿇으며 화제를 모았다. 오현규는 최근 3경기에서 3골 2도움을 기록하며 베식타스 공격의 핵심으로 자리매김하고 있다.\n\n## 해외 현지 반응 (AI 요약)\n\n### Reddit r/soccer 반응\n- **최다 추천 (59)**: \"3 matches. 3 goals. 2 assists. He will make you say OH.\"\n- **주요 반응 1**: \"Great fucking goal\" (52 추천)\n- **주요 반응 2**: \"If this was scored in premier league we'd have 2k comments\" (43 추천)\n- **주요 반응 3**: \"Great goal. Seems like he's really enjoying his time and is loved by the fans. He works his ass off so even when he doesn't score I'm sure his efforts are appreciated.\" (30 추천)\n\n### Reddit r/besiktas 반응\n- **최다 추천 (61)**: 한국인 팬이 한국어 중계 번역을 공유하며 \"Oh Oh Oh this is Hyungyu Oh\" 실황 반응 소개\n- **터키 팬 반응 (52)**: \"Bellingham은 스타도 아니다. 너는 오현규가 괴즈테페에게 넣은 골을 넣을 수 있느냐?\" (벨링엄과의 비교)\n- **이적 전망 (17)**: \"이 사람이 이렇게 계속하면 다음 시즌 끝에 4,000만 유로에 빅클럽으로 간다\" (터키어 원문 번역)\n- **감독 반응 화제 (16)**: \"세르겐 감독도 놀라면 이 선수는 내년 득점왕 한다\"\n\n### 터키 현지 매체\n- **Türkiye Today**: \"한국 공격수 오현규의 연속 득점 행진이 베식타스 공격력을 끌어올리고 있다\"\n- **Sofascore**: \"오현규의 빛나는 베식타스 시작: 3경기 3골\" 특집 기사 게재\n\n## AI 분석 요약\n\n오현규는 합류 직후 3경기 연속 득점이라는 베식타스 역대 최초 기록을 세우며 팀을 리그 4위까지 끌어올렸다. 특히 시속 122km/h의 원더골은 터키 리그 20년 만의 슈팅 속도 기록으로, 기술적 완성도와 파괴력을 동시에 증명했다.\n\nr/soccer에서 181 추천을 받은 골 클립에 \"프리미어리그였으면 댓글 2,000개였을 것\"이라는 반응이 나올 정도로, 오현규의 퍼포먼스는 리그 인지도 대비 과소평가된 측면이 있다. r/besiktas에서는 벨링엄과의 비교까지 등장하며 한국인 팬과 터키 팬이 함께 열광하는 독특한 팬덤 형성이 관찰된다. 베식타스가 오현규의 성공에 힘입어 이한범 영입까지 추진하고 있다는 소식은 구단의 한국 선수에 대한 높은 신뢰를 보여준다.",
+  "playerName": "Hyeon-Gyu Oh",
+  "playerNameKr": "오현규",
+  "team": "Besiktas",
+  "league": "Super Lig",
+  "matchInfo": "쉬페르리그 25/26 | 베식타스 4-0 괴즈테페",
+  "publishedAt": "2026-02-24T12:00:00Z",
+  "thumbnailUrl": "",
+  "tags": [
+    "오현규",
+    "베식타스",
+    "쉬페르리그",
+    "3경기연속골",
+    "원더골"
+  ],
+  "evidence": {
+    "charts": [
+      {
+        "id": "oh-recent-goals",
+        "title": "최근 3경기 공격 기여",
+        "type": "bar",
+        "data": [
+          {
+            "name": "골",
+            "오현규": 3,
+            "리그평균": 0.8
+          },
+          {
+            "name": "도움",
+            "오현규": 2,
+            "리그평균": 0.5
+          },
+          {
+            "name": "슈팅",
+            "오현규": 8,
+            "리그평균": 3.2
+          },
+          {
+            "name": "공격포인트",
+            "오현규": 5,
+            "리그평균": 1.3
+          }
+        ],
+        "dataKeys": [
+          "오현규",
+          "리그평균"
+        ],
+        "colors": [
+          "#d90828",
+          "#94a3b8"
+        ]
+      },
+      {
+        "id": "oh-radar",
+        "title": "종합 퍼포먼스 (최근 3경기)",
+        "type": "radar",
+        "data": [
+          {
+            "stat": "골 결정력",
+            "value": 92
+          },
+          {
+            "stat": "슈팅 파워",
+            "value": 95
+          },
+          {
+            "stat": "드리블",
+            "value": 78
+          },
+          {
+            "stat": "활동량",
+            "value": 85
+          },
+          {
+            "stat": "패스",
+            "value": 65
+          },
+          {
+            "stat": "수비 기여",
+            "value": 60
+          }
+        ],
+        "dataKeys": [
+          "value"
+        ],
+        "colors": [
+          "#d90828"
+        ]
+      },
+      {
+        "id": "oh-sentiment",
+        "title": "현지 여론 감성 분석",
+        "type": "pie",
+        "data": [
+          {
+            "name": "긍정",
+            "value": 88,
+            "fill": "#22c55e"
+          },
+          {
+            "name": "중립",
+            "value": 9,
+            "fill": "#94a3b8"
+          },
+          {
+            "name": "부정",
+            "value": 3,
+            "fill": "#ef4444"
+          }
+        ],
+        "dataKeys": [
+          "value"
+        ],
+        "colors": [
+          "#22c55e",
+          "#94a3b8",
+          "#ef4444"
+        ]
+      },
+      {
+        "id": "oh-goal-streak",
+        "title": "연속 득점 기록 (경기별)",
+        "type": "line",
+        "data": [
+          {
+            "match": "1경기",
+            "시즌골": 1
+          },
+          {
+            "match": "2경기",
+            "시즌골": 2
+          },
+          {
+            "match": "3경기",
+            "시즌골": 3
+          }
+        ],
+        "dataKeys": [
+          "시즌골"
+        ],
+        "colors": [
+          "#d90828"
+        ]
+      }
+    ],
+    "dataRows": [
+      {
+        "label": "3경기 연속골",
+        "value": "3경기 3골 2도움",
+        "interpretation": "베식타스 역사상 최초로 한 선수가 3경기 연속 골을 기록했습니다. 합류 직후부터 폭발적인 득점력을 보여주며 구단의 20년 된 기록을 갈아치웠습니다.",
+        "source": "조선일보 / Sofascore",
+        "sourceUrl": "https://www.sofascore.com"
+      },
+      {
+        "label": "슈팅 속도",
+        "value": "122 km/h",
+        "interpretation": "괴즈테페전에서 기록한 시속 122km/h 슈팅은 터키 쉬페르리그 20년 만의 최고 속도 기록입니다. 이 원더골에 세르겐 얄츤 감독이 무릎을 꿇을 정도로 강렬한 인상을 남겼습니다.",
+        "source": "조선일보 / Türkiye Today",
+        "sourceUrl": "https://www.turkiyetoday.com/sports/south-korean-striker-hyeon-gyu-ohs-scoring-run-boosts-besiktas-attack-3215001"
+      },
+      {
+        "label": "Reddit r/soccer 반응",
+        "value": "181 추천 (골 클립)",
+        "interpretation": "r/soccer에서 골 클립이 181 추천을 받았으며, \"프리미어리그였으면 댓글 2,000개\" 반응이 43 추천을 받아 리그 인지도 대비 과소평가를 아쉬워하는 의견이 두드러졌습니다.",
+        "source": "Reddit r/soccer",
+        "sourceUrl": "https://reddit.com/r/soccer/comments/1rbtrf2/besiktas_40_goztepe_hyeongyu_oh_74/"
+      },
+      {
+        "label": "팀 순위 상승",
+        "value": "4위 (쉬페르리그)",
+        "interpretation": "오현규의 활약에 힘입어 베식타스가 쉬페르리그 4위까지 올라섰습니다. 구단은 오현규의 성공에 고무되어 한국인 선수 이한범 추가 영입까지 추진하고 있습니다.",
+        "source": "조선일보 / Chosunbiz",
+        "sourceUrl": ""
+      },
+      {
+        "label": "이적 전망",
+        "value": "4,000만 유로 빅클럽 이적설",
+        "interpretation": "터키 팬들 사이에서 \"이 추세가 계속되면 다음 시즌 끝 4,000만 유로에 빅클럽 이적\"이라는 전망이 나오고 있습니다. r/besiktas에서 17 추천을 받은 이 의견은 팬들의 높은 기대를 반영합니다.",
+        "source": "Reddit r/besiktas",
+        "sourceUrl": "https://reddit.com/r/besiktas/comments/1rc26ws/ohs_amazing_goal_from_a_different_angle/"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://www.turkiyetoday.com/sports/south-korean-striker-hyeon-gyu-ohs-scoring-run-boosts-besiktas-attack-3215001",
+        "title": "South Korean striker Hyeon-gyu Oh's scoring run boosts Besiktas attack",
+        "type": "news"
+      },
+      {
+        "url": "https://www.sofascore.com",
+        "title": "Instant impact: Hyeon-gyu Oh powers Beşiktaş' season start",
+        "type": "news"
+      },
+      {
+        "url": "https://reddit.com/r/soccer/comments/1rbtrf2/besiktas_40_goztepe_hyeongyu_oh_74/",
+        "title": "Besiktas 4-0 Goztepe - Hyeon-Gyu Oh 74'",
+        "type": "reddit"
+      },
+      {
+        "url": "https://reddit.com/r/besiktas/comments/1rc26ws/ohs_amazing_goal_from_a_different_angle/",
+        "title": "OH's amazing goal from a different angle",
+        "type": "reddit"
+      },
+      {
+        "url": "https://reddit.com/r/besiktas/comments/1rbufs7/hyeongyu_oh_goal_korean_version/",
+        "title": "Hyeon-gyu Oh goal (Korean Version)",
+        "type": "reddit"
+      }
+    ]
+  }
+}
