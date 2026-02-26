@@ -2,6 +2,7 @@ import React from 'react';
 import { ArrowLeft, Eye, Calendar, Tag } from 'lucide-react';
 import type { Article } from '@/types';
 import AdCurationSection from './AdCuration';
+import { playerAdCurations } from '@/data/adCurations';
 
 interface ArticleViewProps {
   article: Article;
@@ -161,9 +162,12 @@ const ArticleView: React.FC<ArticleViewProps> = ({ article, onBack, onShowEviden
         )}
 
         {/* Ad Curation */}
-        {article.adCurations && article.adCurations.length > 0 && (
-          <AdCurationSection curations={article.adCurations} playerNameKr={article.playerNameKr} />
-        )}
+        {(() => {
+          const curations = playerAdCurations[article.playerNameKr] ?? [];
+          return curations.length > 0 ? (
+            <AdCurationSection curations={curations} playerNameKr={article.playerNameKr} />
+          ) : null;
+        })()}
       </article>
     </div>
   );
