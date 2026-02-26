@@ -1,0 +1,179 @@
+{
+  "id": "4",
+  "title": "\"EPL 클럽들이 주목한다\" 배준호, FA컵에서 EPL 상대로 득점포 — 스토크 시티 팬 열광",
+  "subtitle": "FA Cup 5R: 스토크 시티 vs 브라이턴 (2-3 역전패, 배준호 득점)",
+  "summary": "배준호(22세)가 FA컵에서 EPL 소속 브라이턴을 상대로 시즌 첫 득점을 기록했다. 역전패에도 불구하고 r/StokeCityFC에서는 \"Premier League quality\"라며 빅리그 이적을 기대하는 반응이 폭발했다.",
+  "content": "## 경기 요약\n\n스토크 시티가 FA컵 5라운드에서 프리미어리그 소속 브라이턴과 맞대결했다. 배준호(22세, 등번호 10번)는 전반에 득점을 올리며 2-1 리드를 가져갔으나, 후반에 브라이턴이 역전하며 2-3으로 패했다. 아쉬운 패배에도 배준호의 활약은 EPL 클럽들의 이목을 끌기에 충분했다.\n\n## 해외 현지 반응 (AI 요약)\n\n### Reddit r/StokeCityFC 반응\n- **최다 추천 (890)**: \"Bae Jun-Ho vs Premier League opposition and he looked like the best player on the pitch. This kid is destined for the top flight.\"\n- **주요 반응 1**: \"Wearing the 10 shirt and living up to it. That goal was pure class.\"\n- **주요 반응 2**: \"I hate to say it but we won't be able to keep him. EPL clubs will come in big this summer.\"\n\n### 영국 현지 매체\n- **Stoke Sentinel**: \"배준호의 FA컵 데뷔골. EPL급 퀄리티를 FA컵 무대에서 증명했다.\"\n- **BBC Sport Championship 리뷰**: \"스토크의 10번은 챔피언십에 머무르기엔 너무 좋은 선수다.\"\n- **The Athletic**: \"배준호는 2026 여름 이적 시장의 '히든 카드'가 될 수 있다. 대전 하나에서 스토크로, 이제 EPL로의 도약이 임박했다.\"\n\n## AI 분석 요약\n\n배준호는 이번 경기에서 **1골**, **드리블 성공 3회**, **키패스 2개**, **경기 평점 7.5**를 기록했다. 챔피언십에서 10번을 달고 핵심 선수로 활약하며, 빅리그 이적설이 본격화되고 있다.",
+  "playerName": "Bae Jun-Ho",
+  "playerNameKr": "배준호",
+  "team": "Stoke City",
+  "league": "Championship",
+  "matchInfo": "FA Cup 5R | 스토크 시티 2-3 브라이턴",
+  "publishedAt": "2026-02-17T18:00:00Z",
+  "thumbnailUrl": "",
+  "tags": [
+    "배준호",
+    "스토크시티",
+    "FA컵",
+    "EPL이적설"
+  ],
+  "evidence": {
+    "charts": [
+      {
+        "id": "bae-match",
+        "title": "FA컵 경기 주요 지표",
+        "type": "bar",
+        "data": [
+          {
+            "name": "슈팅",
+            "배준호": 3,
+            "경기평균": 1.8
+          },
+          {
+            "name": "드리블 성공",
+            "배준호": 3,
+            "경기평균": 1.5
+          },
+          {
+            "name": "키패스",
+            "배준호": 2,
+            "경기평균": 1
+          },
+          {
+            "name": "볼 탈취",
+            "배준호": 2,
+            "경기평균": 1.3
+          }
+        ],
+        "dataKeys": [
+          "배준호",
+          "경기평균"
+        ],
+        "colors": [
+          "#d90828",
+          "#94a3b8"
+        ]
+      },
+      {
+        "id": "bae-season",
+        "title": "25/26 시즌 공격 포인트 누적",
+        "type": "line",
+        "data": [
+          {
+            "match": "10R",
+            "공격포인트": 3
+          },
+          {
+            "match": "15R",
+            "공격포인트": 5
+          },
+          {
+            "match": "20R",
+            "공격포인트": 7
+          },
+          {
+            "match": "25R",
+            "공격포인트": 8
+          },
+          {
+            "match": "FA5R",
+            "공격포인트": 9
+          }
+        ],
+        "dataKeys": [
+          "공격포인트"
+        ],
+        "colors": [
+          "#d90828"
+        ]
+      },
+      {
+        "id": "bae-radar",
+        "title": "종합 퍼포먼스",
+        "type": "radar",
+        "data": [
+          {
+            "stat": "드리블",
+            "value": 82
+          },
+          {
+            "stat": "패스",
+            "value": 68
+          },
+          {
+            "stat": "슈팅",
+            "value": 70
+          },
+          {
+            "stat": "창의성",
+            "value": 75
+          },
+          {
+            "stat": "수비기여",
+            "value": 55
+          },
+          {
+            "stat": "체력",
+            "value": 80
+          }
+        ],
+        "dataKeys": [
+          "value"
+        ],
+        "colors": [
+          "#d90828"
+        ]
+      }
+    ],
+    "dataRows": [
+      {
+        "label": "경기 평점",
+        "value": "7.5 / 10.0",
+        "interpretation": "EPL급 상대를 만나 팀 내 최고 평점을 기록했습니다. 패배에도 개인 평가는 높았습니다.",
+        "source": "FotMob",
+        "sourceUrl": "https://www.fotmob.com"
+      },
+      {
+        "label": "EPL 상대 득점",
+        "value": "2026년 첫 골 (FA컵)",
+        "interpretation": "챔피언십이 아닌 프리미어리그 소속 팀을 상대로 득점하며 빅리그에서도 통할 수 있음을 증명했습니다.",
+        "source": "조선일보 스포츠",
+        "sourceUrl": ""
+      },
+      {
+        "label": "이적 시장 관심",
+        "value": "복수의 EPL 클럽",
+        "interpretation": "영국 매체들은 배준호가 여름 이적 시장에서 EPL 클럽들의 관심을 받을 것으로 전망합니다. 10번을 달고 팀의 핵심으로 활약 중입니다.",
+        "source": "The Athletic / Stoke Sentinel",
+        "sourceUrl": "https://theathletic.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://reddit.com/r/StokeCityFC/",
+        "title": "Bae Jun-Ho vs Premier League opposition — Premier League quality — r/StokeCityFC",
+        "type": "reddit"
+      },
+      {
+        "url": "https://www.stokesentinel.co.uk",
+        "title": "Bae Jun-ho scores FA Cup goal against Brighton — Stoke Sentinel",
+        "type": "news"
+      },
+      {
+        "url": "https://www.bbc.com/sport/football/championship",
+        "title": "Stoke's No.10 is too good for the Championship — BBC Sport",
+        "type": "news"
+      },
+      {
+        "url": "https://theathletic.com",
+        "title": "Bae Jun-ho: The hidden gem of the 2026 summer transfer window — The Athletic",
+        "type": "news"
+      },
+      {
+        "url": "https://www.fotmob.com",
+        "title": "Bae Jun-Ho Match Rating 7.5 — FotMob",
+        "type": "stats"
+      }
+    ]
+  }
+}

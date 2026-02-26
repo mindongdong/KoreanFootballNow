@@ -1,0 +1,179 @@
+{
+  "id": "2",
+  "title": "\"대체 불가\" 이강인, 47일 만의 복귀전에서 승리 견인 — PSG \"판매 불가\" 선언",
+  "subtitle": "Ligue 1 25/26 20R: PSG vs 스트라스부르 (2-1)",
+  "summary": "47일간의 부상 이탈 후 복귀한 이강인이 수적 열세 상황에서 결승골의 기점 역할을 하며 PSG의 신승을 이끌었다. 루이스 엔리케 감독은 \"압박 속 볼 키핑 능력은 대체 불가\"라며 극찬했고, PSG는 이강인을 \"판매 불가\"로 선언했다.",
+  "content": "## 경기 요약\n\nPSG가 리그앙 20라운드에서 스트라스부르를 2-1로 꺾었다. 이강인(25세)은 47일 만에 복귀전을 치르며 후반 교체 투입되었다. 10명으로 줄어든 수적 열세 상황에서 이강인은 볼 소유권을 안정시키며 결승골로 이어지는 핵심 패스를 연결했다.\n\n## 해외 현지 반응 (AI 요약)\n\n### Reddit r/psg 반응\n- **최다 추천 (2.8k)**: \"Kang-In Lee comes back after 47 days out and immediately changes the game. Irreplaceable.\"\n- **주요 반응 1**: \"The way he keeps the ball under pressure is genuinely world class. No one else in the squad can do that.\"\n- **주요 반응 2**: \"Enrique was right to declare him untouchable. We can't sell this guy.\"\n\n### 프랑스 현지 매체\n- **L'Equipe**: \"이강인의 복귀는 PSG에게 선물이다. 수적 열세에서 경기의 흐름을 바꾼 유일한 선수.\"\n- **RMC Sport**: \"1월에 아틀레티코가 이강인에게 관심을 보였지만, 엔리케 감독의 강력한 잔류 요청으로 협상이 무산됐다. 정당한 판단이었다.\"\n- **France Football**: \"이강인은 PSG의 창의성 그 자체다. 음바페 이후 가장 중요한 공격 자원.\"\n\n## AI 분석 요약\n\n이강인은 후반 교체 투입(32분 출전)에서 **패스 성공률 91%**, **키패스 3개**, **경기 평점 7.4**를 기록했다. 47일간의 이탈에도 불구하고 즉시 팀의 핵심으로 복귀하며, PSG가 \"판매 불가\"를 선언한 이유를 증명했다.",
+  "playerName": "Kang-In Lee",
+  "playerNameKr": "이강인",
+  "team": "Paris Saint-Germain",
+  "league": "Ligue 1",
+  "matchInfo": "Ligue 1 25/26 20R | PSG 2-1 스트라스부르",
+  "publishedAt": "2026-02-16T11:00:00Z",
+  "thumbnailUrl": "",
+  "tags": [
+    "이강인",
+    "PSG",
+    "Ligue 1",
+    "복귀전"
+  ],
+  "evidence": {
+    "charts": [
+      {
+        "id": "lee-impact",
+        "title": "복귀전 주요 지표 (32분 출전)",
+        "type": "bar",
+        "data": [
+          {
+            "name": "패스 성공",
+            "이강인": 21,
+            "팀평균": 28
+          },
+          {
+            "name": "키패스",
+            "이강인": 3,
+            "팀평균": 1.2
+          },
+          {
+            "name": "압박 회피",
+            "이강인": 5,
+            "팀평균": 2.1
+          },
+          {
+            "name": "볼 로스트",
+            "이강인": 1,
+            "팀평균": 3.8
+          }
+        ],
+        "dataKeys": [
+          "이강인",
+          "팀평균"
+        ],
+        "colors": [
+          "#d90828",
+          "#94a3b8"
+        ]
+      },
+      {
+        "id": "lee-sentiment",
+        "title": "현지 여론 감성 분석",
+        "type": "pie",
+        "data": [
+          {
+            "name": "긍정",
+            "value": 82,
+            "fill": "#22c55e"
+          },
+          {
+            "name": "중립",
+            "value": 13,
+            "fill": "#94a3b8"
+          },
+          {
+            "name": "부정",
+            "value": 5,
+            "fill": "#ef4444"
+          }
+        ],
+        "dataKeys": [
+          "value"
+        ],
+        "colors": [
+          "#22c55e",
+          "#94a3b8",
+          "#ef4444"
+        ]
+      },
+      {
+        "id": "lee-season",
+        "title": "25/26 시즌 출전 경기 평점",
+        "type": "line",
+        "data": [
+          {
+            "match": "11R",
+            "평점": 7.2
+          },
+          {
+            "match": "13R",
+            "평점": 6.8
+          },
+          {
+            "match": "15R",
+            "평점": 7.5
+          },
+          {
+            "match": "17R",
+            "평점": 7
+          },
+          {
+            "match": "20R",
+            "평점": 7.4
+          }
+        ],
+        "dataKeys": [
+          "평점"
+        ],
+        "colors": [
+          "#d90828"
+        ]
+      }
+    ],
+    "dataRows": [
+      {
+        "label": "경기 평점",
+        "value": "7.4 / 10.0",
+        "interpretation": "32분 교체 투입임을 감안하면 매우 높은 평점입니다. 투입 직후부터 팀의 볼 소유율이 12%포인트 상승했습니다.",
+        "source": "FotMob",
+        "sourceUrl": "https://www.fotmob.com"
+      },
+      {
+        "label": "패스 성공률",
+        "value": "91% (21/23)",
+        "interpretation": "32분 출전에서 23번의 패스를 시도해 21번 성공시켰습니다. 수적 열세 상황에서 이강인의 볼 키핑이 팀 안정화에 결정적이었습니다.",
+        "source": "FotMob",
+        "sourceUrl": "https://www.fotmob.com"
+      },
+      {
+        "label": "PSG \"판매 불가\" 선언",
+        "value": "공식 입장",
+        "interpretation": "1월 이적 시장에서 아틀레티코 마드리드가 이강인에게 관심을 보였으나, PSG는 공식적으로 \"판매 불가\"를 선언했습니다. 엔리케 감독이 직접 잔류를 요청한 것으로 알려졌습니다.",
+        "source": "L'Equipe / RMC Sport",
+        "sourceUrl": "https://www.lequipe.fr"
+      },
+      {
+        "label": "압박 회피 성공",
+        "value": "5회 (32분 출전)",
+        "interpretation": "상대 프레싱 상황에서 5번 볼을 지켜냈습니다. 90분 환산 14회로, 리그 1 전체 미드필더 중 상위 3%에 해당하는 수치입니다.",
+        "source": "FotMob",
+        "sourceUrl": "https://www.fotmob.com"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://reddit.com/r/psg/",
+        "title": "Kang-In Lee comes back after 47 days and immediately changes the game — r/psg",
+        "type": "reddit"
+      },
+      {
+        "url": "https://www.lequipe.fr",
+        "title": "Le retour de Kang-In Lee, un cadeau pour le PSG — L'Equipe",
+        "type": "news"
+      },
+      {
+        "url": "https://rmcsport.bfmtv.com",
+        "title": "PSG : Kang-In Lee, l'intouchable d'Enrique — RMC Sport",
+        "type": "news"
+      },
+      {
+        "url": "https://www.francefootball.fr",
+        "title": "Lee Kang-in, la créativité incarnée du PSG — France Football",
+        "type": "news"
+      },
+      {
+        "url": "https://www.fotmob.com",
+        "title": "Kang-In Lee Match Stats — FotMob",
+        "type": "stats"
+      }
+    ]
+  }
+}

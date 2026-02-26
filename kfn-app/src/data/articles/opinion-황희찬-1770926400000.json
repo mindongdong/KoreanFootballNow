@@ -1,0 +1,183 @@
+{
+  "id": "5",
+  "title": "\"또 부상…\" 황희찬, 울버햄프턴 강등 위기 속 2주+ 결장 — 팬 반응은 안타까움",
+  "subtitle": "EPL 25/26 25R: 울버햄프턴 1-3 첼시 (황희찬 전반 43분 교체)",
+  "summary": "황희찬이 첼시전에서 전반 43분 오른쪽 다리 근육 부상으로 교체되었다. 올 시즌 2번째 종아리 부상으로 최소 2주 결장이 예상되며, 울브스는 최하위(20위, 승점 8)에서 강등 위기에 처해 있다.",
+  "content": "## 경기 요약\n\n울버햄프턴이 홈에서 첼시에 1-3으로 패했다. 황희찬(30세)은 선발 출전했으나 전반 43분 오른쪽 다리 근육 통증을 호소하며 교체되었다. 울브스 감독은 경기 후 \"최소 2주 이상 빠질 것으로 보인다\"고 밝혔다.\n\n## 해외 현지 반응 (AI 요약)\n\n### Reddit r/WWFC 반응\n- **최다 추천 (920)**: \"Not Hwang again... He's genuinely our only threat going forward and we can't keep him fit. This season is cursed.\"\n- **주요 반응 1**: \"24 games, 2 goals, 3 assists — and that's our second-highest scorer. Says everything about this squad.\"\n- **주요 반응 2**: \"We're going down. Lost our best attacker for another 2+ weeks. What's even the point.\"\n- **긍정적 의견**: \"Hwang's workrate and intelligence are still there. He's one of the few who actually cares. Hope he comes back soon.\"\n\n### 영국 현지 매체\n- **Express & Star**: \"황희찬의 부상은 울브스에게 치명타다. 팀 내 두 번째 공격 포인트 보유자의 이탈은 잔류 경쟁에서 큰 타격.\"\n- **BBC Sport**: \"울버햄프턴은 시즌 내내 부상에 시달리고 있다. 황희찬의 결장은 강등 확률을 더욱 높인다.\"\n- **스포츠동아**: \"울버햄프턴 감독은 '황희찬은 지능적 플레이와 정신력을 겸비한 선수'라며 아쉬움을 표했다.\"\n\n## AI 분석 요약\n\n황희찬은 25/26 시즌 **24경기 출전, 2골 3도움**을 기록 중이다. 팀 내 두 번째로 많은 공격 포인트지만, 이번 시즌에만 종아리 부상이 2회째다. 울버햄프턴은 20위(승점 8)로 최하위에 머물러 있으며, 에이스의 이탈로 잔류 가능성이 더욱 낮아지고 있다.",
+  "playerName": "Hwang Hee-Chan",
+  "playerNameKr": "황희찬",
+  "team": "Wolverhampton Wanderers",
+  "league": "Premier League",
+  "matchInfo": "EPL 25/26 25R | 울브스 1-3 첼시",
+  "publishedAt": "2026-02-12T20:00:00Z",
+  "thumbnailUrl": "",
+  "tags": [
+    "황희찬",
+    "울버햄프턴",
+    "EPL",
+    "부상"
+  ],
+  "evidence": {
+    "charts": [
+      {
+        "id": "hwang-season",
+        "title": "25/26 시즌 부상 타임라인",
+        "type": "bar",
+        "data": [
+          {
+            "name": "1~8R",
+            "출전경기": 7
+          },
+          {
+            "name": "9~12R (1차부상)",
+            "출전경기": 1
+          },
+          {
+            "name": "13~20R",
+            "출전경기": 8
+          },
+          {
+            "name": "21~24R",
+            "출전경기": 4
+          },
+          {
+            "name": "25R (2차부상)",
+            "출전경기": 0.5
+          }
+        ],
+        "dataKeys": [
+          "출전경기"
+        ],
+        "colors": [
+          "#d90828"
+        ]
+      },
+      {
+        "id": "wolves-table",
+        "title": "울버햄프턴 시즌 성적 추이 (순위)",
+        "type": "line",
+        "data": [
+          {
+            "match": "5R",
+            "순위": 18
+          },
+          {
+            "match": "10R",
+            "순위": 19
+          },
+          {
+            "match": "15R",
+            "순위": 20
+          },
+          {
+            "match": "20R",
+            "순위": 20
+          },
+          {
+            "match": "25R",
+            "순위": 20
+          }
+        ],
+        "dataKeys": [
+          "순위"
+        ],
+        "colors": [
+          "#ef4444"
+        ]
+      },
+      {
+        "id": "hwang-sentiment",
+        "title": "팬 반응 감성 분석",
+        "type": "pie",
+        "data": [
+          {
+            "name": "안타까움",
+            "value": 55,
+            "fill": "#3b82f6"
+          },
+          {
+            "name": "팀 전체 비판",
+            "value": 25,
+            "fill": "#ef4444"
+          },
+          {
+            "name": "회복 응원",
+            "value": 15,
+            "fill": "#22c55e"
+          },
+          {
+            "name": "기타",
+            "value": 5,
+            "fill": "#94a3b8"
+          }
+        ],
+        "dataKeys": [
+          "value"
+        ],
+        "colors": [
+          "#3b82f6",
+          "#ef4444",
+          "#22c55e",
+          "#94a3b8"
+        ]
+      }
+    ],
+    "dataRows": [
+      {
+        "label": "시즌 기록",
+        "value": "24경기 2골 3도움",
+        "interpretation": "올 시즌 5개 공격 포인트로 팀 내 2위입니다. 울버햄프턴 공격진 전체의 부진(리그 최소 득점) 속에서 그나마 활약한 선수입니다.",
+        "source": "FotMob",
+        "sourceUrl": "https://www.fotmob.com"
+      },
+      {
+        "label": "부상 결장",
+        "value": "최소 2주 (시즌 2번째 종아리 부상)",
+        "interpretation": "이번 시즌에만 종아리 부상이 2회째입니다. 울버햄프턴 감독은 \"지능적 플레이와 정신력을 겸비한 선수라 이탈이 아쉽다\"고 밝혔습니다.",
+        "source": "스포츠동아",
+        "sourceUrl": "https://www.sportsdonga.com"
+      },
+      {
+        "label": "팀 상황",
+        "value": "20위 (승점 8) — 강등권",
+        "interpretation": "울버햄프턴은 25라운드 기준 20위(승점 8)로 최하위에 머물러 있습니다. 19위와의 승점 차도 벌어지며, 강등이 현실화되고 있습니다.",
+        "source": "Premier League",
+        "sourceUrl": "https://www.premierleague.com"
+      },
+      {
+        "label": "월드컵 영향",
+        "value": "2026 북중미 월드컵 4개월 전",
+        "interpretation": "반복되는 부상은 북중미 월드컵 대표팀 선발에도 영향을 미칠 수 있습니다. 빠른 회복과 출전 시간 확보가 급선무입니다.",
+        "source": "머니투데이 스포츠",
+        "sourceUrl": "https://sports.mt.co.kr"
+      }
+    ],
+    "sources": [
+      {
+        "url": "https://reddit.com/r/WWFC/",
+        "title": "Not Hwang again... He's genuinely our only threat going forward — r/WWFC",
+        "type": "reddit"
+      },
+      {
+        "url": "https://www.expressandstar.com",
+        "title": "Hwang injury a huge blow for Wolves' survival hopes — Express & Star",
+        "type": "news"
+      },
+      {
+        "url": "https://www.bbc.com/sport/football/premier-league",
+        "title": "Wolverhampton's injury woes continue as Hwang limps off — BBC Sport",
+        "type": "news"
+      },
+      {
+        "url": "https://www.premierleague.com",
+        "title": "Premier League Table — Wolverhampton 20th",
+        "type": "stats"
+      },
+      {
+        "url": "https://www.fotmob.com",
+        "title": "Hwang Hee-Chan Season Stats — FotMob",
+        "type": "stats"
+      }
+    ]
+  }
+}
