@@ -13,7 +13,6 @@ export interface Article {
   thumbnailUrl: string;
   tags: string[];
   evidence?: EvidenceData;
-  adCurations?: AdCuration[];
 }
 
 export interface EvidenceData {

@@ -1,5 +1,4 @@
 import type { Article } from '@/types';
-import { mockArticles } from '@/data/mockArticles';
 
 interface RawArticleJson {
   id?: string;
@@ -32,7 +31,7 @@ function stripQa(raw: RawArticleJson): Article {
 }
 
 export function loadArticles(): Article[] {
-  const jsonArticles: Article[] = [];
+  const articles: Article[] = [];
 
   for (const mod of Object.values(jsonModules)) {
     const entries = Array.isArray(mod) ? mod : [mod];
@@ -42,21 +41,16 @@ export function loadArticles(): Article[] {
         ? entry.article as RawArticleJson
         : entry;
       if (isValidArticle(raw)) {
-        jsonArticles.push(stripQa(raw));
+        articles.push(stripQa(raw));
       }
     }
   }
 
-  // JSON articles take priority over mockArticles (newer data)
-  const jsonIds = new Set(jsonArticles.map((a) => a.id));
-  const dedupedMock = mockArticles.filter((a) => !jsonIds.has(a.id));
-  const merged = [...jsonArticles, ...dedupedMock];
-
   // Sort by publishedAt descending (newest first)
-  merged.sort(
+  articles.sort(
     (a, b) =>
       new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
   );
 
-  return merged;
+  return articles;
 }
