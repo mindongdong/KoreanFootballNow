@@ -1,24 +1,69 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect, useMemo, useCallback } from 'react';
+import { useSearchParams, useNavigate, useParams, Routes, Route } from 'react-router-dom';
 import FilterPanel from './FilterPanel';
 import StatsTable from './StatsTable';
 import { PlayerProfileModal } from './PlayerProfileModal';
+import Pagination from '@/components/common/Pagination';
 import { loadPlayerData, getUniqueLeagues, getUniquePositions } from '@/utils/csvParser';
-import { sortData, filterData, validatePlayer, formatCollectionDate } from '@/utils/dataHelpers';
+import { sortData, filterData, validatePlayer } from '@/utils/dataHelpers';
 import type { Player, SortConfig } from '@/types';
 
+const PLAYERS_PER_PAGE = 20;
+
+const numericSortKeys = new Set([
+  'recent_rating', 'recent_minutes', 'recent_goals', 'recent_assists',
+  'season_avg_rating', 'season_goals', 'season_assists', 'season_matches',
+]);
+
+function parseSortParam(param: string | null): SortConfig {
+  if (!param) return { key: 'player_name_kr', direction: 'asc' };
+  const [key, dir] = param.split(':');
+  return {
+    key: key || 'player_name_kr',
+    direction: dir === 'desc' ? 'desc' : 'asc',
+  };
+}
+
+function formatSortParam(config: SortConfig): string {
+  return `${config.key}:${config.direction}`;
+}
+
+function PlayerProfileRoute({ players }: { players: Player[] }) {
+  const { playerId } = useParams<{ playerId: string }>();
+  const navigate = useNavigate();
+
+  const player = players.find((p) => String(p.player_id) === playerId);
+  const playerName = player ? (player.player_name_kr || player.player_name) : '';
+  const recentMatchesJson = player?.recent_matches_json ?? null;
+
+  return (
+    <PlayerProfileModal
+      playerId={playerId ?? null}
+      playerName={playerName}
+      onClose={() => navigate('/stats' + window.location.search)}
+      recentMatchesJson={recentMatchesJson}
+    />
+  );
+}
+
 const StatsDashboard: React.FC = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const navigate = useNavigate();
+
   const [players, setPlayers] = useState<Player[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
 
-  const [selectedLeagues, setSelectedLeagues] = useState<string[]>([]);
-  const [selectedPosition, setSelectedPosition] = useState<string>('');
-  const [injuredOnly, setInjuredOnly] = useState<boolean>(false);
-  const [sortConfig, setSortConfig] = useState<SortConfig>({ key: 'player_name_kr', direction: 'asc' });
+  // Read filter/sort/page state from URL
+  const selectedLeagues = useMemo(() => {
+    const param = searchParams.get('leagues');
+    return param ? param.split(',').filter(Boolean) : [];
+  }, [searchParams]);
 
-  const [selectedPlayerId, setSelectedPlayerId] = useState<string | null>(null);
-  const [selectedPlayerName, setSelectedPlayerName] = useState<string>('');
-  const [selectedPlayerMatchesJson, setSelectedPlayerMatchesJson] = useState<string | null>(null);
+  const selectedPosition = searchParams.get('position') || '';
+  const injuredOnly = searchParams.get('injured') === 'true';
+  const sortConfig = useMemo(() => parseSortParam(searchParams.get('sort')), [searchParams]);
+  const pageParam = parseInt(searchParams.get('page') || '1', 10);
 
   const leagues = useMemo(() => (players.length > 0 ? getUniqueLeagues(players) : []), [players]);
   const positions = useMemo(() => (players.length > 0 ? getUniquePositions(players) : []), [players]);
@@ -39,7 +84,7 @@ const StatsDashboard: React.FC = () => {
     fetchData();
   }, []);
 
-  const displayedPlayers = useMemo(() => {
+  const allFilteredPlayers = useMemo(() => {
     const filtered = filterData(players, {
       leagues: selectedLeagues,
       position: selectedPosition,
@@ -48,46 +93,67 @@ const StatsDashboard: React.FC = () => {
     return sortData(filtered, sortConfig.key, sortConfig.direction);
   }, [players, selectedLeagues, selectedPosition, injuredOnly, sortConfig]);
 
-  const handleSort = (columnKey: string) => {
-    setSortConfig((prev) => ({
-      key: columnKey,
-      direction: prev.key === columnKey && prev.direction === 'asc' ? 'desc' : 'asc',
-    }));
-  };
+  const totalPages = Math.max(1, Math.ceil(allFilteredPlayers.length / PLAYERS_PER_PAGE));
+  const currentPage = Math.min(Math.max(1, pageParam), totalPages);
+  const startIndex = (currentPage - 1) * PLAYERS_PER_PAGE;
+  const displayedPlayers = allFilteredPlayers.slice(startIndex, startIndex + PLAYERS_PER_PAGE);
 
-  const numericSortKeys = new Set([
-    'recent_rating', 'recent_minutes', 'recent_goals', 'recent_assists',
-    'season_avg_rating', 'season_goals', 'season_assists', 'season_matches',
-  ]);
+  const updateParams = useCallback((updates: Record<string, string | null>) => {
+    const next = new URLSearchParams(searchParams);
+    for (const [k, v] of Object.entries(updates)) {
+      if (v === null || v === '') {
+        next.delete(k);
+      } else {
+        next.set(k, v);
+      }
+    }
+    setSearchParams(next, { replace: true });
+  }, [searchParams, setSearchParams]);
 
-  const handleMobileSort = (columnKey: string) => {
+  const handleLeagueChange = useCallback((leagues: string[]) => {
+    updateParams({
+      leagues: leagues.length > 0 ? leagues.join(',') : null,
+      page: null,
+    });
+  }, [updateParams]);
+
+  const handlePositionChange = useCallback((position: string) => {
+    updateParams({ position: position || null, page: null });
+  }, [updateParams]);
+
+  const handleInjuredToggle = useCallback((checked: boolean) => {
+    updateParams({ injured: checked ? 'true' : null, page: null });
+  }, [updateParams]);
+
+  const handleResetFilters = useCallback(() => {
+    updateParams({ leagues: null, position: null, injured: null, page: null, sort: null });
+  }, [updateParams]);
+
+  const handleSort = useCallback((columnKey: string) => {
+    const newDirection = sortConfig.key === columnKey && sortConfig.direction === 'asc' ? 'desc' : 'asc';
+    const newSort: SortConfig = { key: columnKey, direction: newDirection };
+    updateParams({ sort: formatSortParam(newSort), page: null });
+  }, [sortConfig, updateParams]);
+
+  const handleMobileSort = useCallback((columnKey: string) => {
     if (!columnKey) {
-      setSortConfig({ key: 'player_name_kr', direction: 'asc' });
+      updateParams({ sort: null, page: null });
       return;
     }
     const direction = numericSortKeys.has(columnKey) ? 'desc' : 'asc';
-    setSortConfig({ key: columnKey, direction });
-  };
+    updateParams({ sort: formatSortParam({ key: columnKey, direction }), page: null });
+  }, [updateParams]);
+
+  const handlePageChange = useCallback((page: number) => {
+    updateParams({ page: page === 1 ? null : String(page) });
+    window.scrollTo(0, 0);
+  }, [updateParams]);
+
+  const handlePlayerClick = useCallback((player: Player) => {
+    navigate(`/stats/player/${player.player_id}${window.location.search}`);
+  }, [navigate]);
 
   const collectionDate = players[0]?.collection_date ?? null;
-
-  const handleResetFilters = () => {
-    setSelectedLeagues([]);
-    setSelectedPosition('');
-    setInjuredOnly(false);
-  };
-
-  const handlePlayerClick = (player: Player) => {
-    setSelectedPlayerId(String(player.player_id));
-    setSelectedPlayerName(player.player_name_kr || player.player_name);
-    setSelectedPlayerMatchesJson(player.recent_matches_json ?? null);
-  };
-
-  const handleCloseModal = () => {
-    setSelectedPlayerId(null);
-    setSelectedPlayerName('');
-    setSelectedPlayerMatchesJson(null);
-  };
 
   if (loading) {
     return (
@@ -124,14 +190,15 @@ const StatsDashboard: React.FC = () => {
         selectedLeagues={selectedLeagues}
         selectedPosition={selectedPosition}
         injuredOnly={injuredOnly}
-        onLeagueChange={setSelectedLeagues}
-        onPositionChange={setSelectedPosition}
-        onInjuredToggle={setInjuredOnly}
+        onLeagueChange={handleLeagueChange}
+        onPositionChange={handlePositionChange}
+        onInjuredToggle={handleInjuredToggle}
         onResetFilters={handleResetFilters}
       />
 
       <StatsTable
         players={displayedPlayers}
+        totalCount={allFilteredPlayers.length}
         sortConfig={sortConfig}
         onSort={handleSort}
         onPlayerClick={handlePlayerClick}
@@ -139,12 +206,15 @@ const StatsDashboard: React.FC = () => {
         onMobileSort={handleMobileSort}
       />
 
-      <PlayerProfileModal
-        playerId={selectedPlayerId}
-        playerName={selectedPlayerName}
-        onClose={handleCloseModal}
-        recentMatchesJson={selectedPlayerMatchesJson}
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        onPageChange={handlePageChange}
       />
+
+      <Routes>
+        <Route path="player/:playerId" element={<PlayerProfileRoute players={players} />} />
+      </Routes>
     </div>
   );
 };

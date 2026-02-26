@@ -14,6 +14,7 @@ import { cn } from '@/lib/utils';
 
 interface StatsTableProps {
   players: Player[];
+  totalCount?: number;
   sortConfig: SortConfig;
   onSort: (key: string) => void;
   onPlayerClick: (player: Player) => void;
@@ -28,7 +29,8 @@ interface Column {
   className?: string;
 }
 
-const StatsTable: React.FC<StatsTableProps> = ({ players, sortConfig, onSort, onPlayerClick, collectionDate, onMobileSort }) => {
+const StatsTable: React.FC<StatsTableProps> = ({ players, totalCount, sortConfig, onSort, onPlayerClick, collectionDate, onMobileSort }) => {
+  const displayTotal = totalCount ?? players.length;
   const isMobile = useMediaQuery('(max-width: 768px)');
   const tableWrapperRef = useRef<HTMLDivElement>(null);
   const { scrolled, scrolledEnd } = useScrollShadow(tableWrapperRef);
@@ -58,7 +60,7 @@ const StatsTable: React.FC<StatsTableProps> = ({ players, sortConfig, onSort, on
       <div className="w-full py-4">
         <div className="flex items-center justify-between mb-4">
           <p className="text-sm text-gray-400">
-            총 <span className="font-semibold text-gray-900">{players.length}</span>명의 선수
+            총 <span className="font-semibold text-gray-900">{displayTotal}</span>명의 선수
           </p>
           <select
             value={sortConfig.key ?? ''}
@@ -87,7 +89,7 @@ const StatsTable: React.FC<StatsTableProps> = ({ players, sortConfig, onSort, on
         )}
         {formattedDate && (
           <p className="text-xs text-gray-400 mt-4 text-center">
-            총 {players.length}명의 선수 · FotMob 기준 · {formattedDate} 업데이트
+            총 {displayTotal}명의 선수 · FotMob 기준 · {formattedDate} 업데이트
           </p>
         )}
       </div>
@@ -178,7 +180,7 @@ const StatsTable: React.FC<StatsTableProps> = ({ players, sortConfig, onSort, on
       </div>
       <div className="mt-4">
         <p className="text-sm text-gray-400">
-          총 <span className="font-semibold text-gray-900">{players.length}</span>명의 선수
+          총 <span className="font-semibold text-gray-900">{displayTotal}</span>명의 선수
           {collectionDate && (
             <> · FotMob 기준 · {formatCollectionDate(collectionDate)} 업데이트</>
           )}
