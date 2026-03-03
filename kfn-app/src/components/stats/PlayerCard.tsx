@@ -42,7 +42,16 @@ const PlayerCard: React.FC<PlayerCardProps> = ({ player, index, onViewProfile })
       <AccordionContent className="px-4 pb-4">
         <div className="space-y-4">
           <div>
-            <h4 className="text-sm font-semibold mb-2 text-kfn-red">최근 경기 기록</h4>
+            <div className="flex items-baseline justify-between mb-2">
+              <h4 className="text-sm font-semibold text-kfn-red">최근 경기 기록</h4>
+              {player.recent_match?.opponent && (
+                <span className="text-xs text-gray-400 truncate ml-2">
+                  vs {translateTeam(player.recent_match.opponent)}
+                  ({player.recent_match.is_home ? 'H' : 'A'})
+                  {player.recent_match.result ? ` · ${player.recent_match.result}` : ''}
+                </span>
+              )}
+            </div>
             <div className="grid grid-cols-2 gap-2 text-sm">
               <div className="flex justify-between">
                 <span className="text-gray-400">출전시간:</span>
