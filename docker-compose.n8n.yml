@@ -12,6 +12,10 @@ services:
       - n8n_data:/home/node/.n8n
       - ./kfn-app/src/data/articles:/tmp/kfn-articles
     environment:
+      # 타임존 설정 (Schedule Trigger 등에서 KST 기준 동작)
+      - GENERIC_TIMEZONE=Asia/Seoul
+      - TZ=Asia/Seoul
+
       # n8n 기본 설정
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       - N8N_NODES_EXCLUDE=
