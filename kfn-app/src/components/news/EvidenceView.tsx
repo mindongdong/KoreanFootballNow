@@ -222,7 +222,7 @@ const EvidenceView: React.FC<EvidenceViewProps> = ({ article, onBack }) => {
       <div className="flex gap-3 p-4 rounded-xl bg-blue-50 border border-blue-100 mb-10">
         <Info className="w-5 h-5 text-blue-500 flex-shrink-0 mt-0.5" />
         <p className="text-sm text-blue-700 leading-relaxed">
-          아래 데이터는 공개된 퍼블릭 소스(FotMob, Reddit, X 등)에서 자동 수집되었으며, AI의 해석 논리(Reasoning)와 함께 제공됩니다.
+          아래 데이터는 공개된 퍼블릭 소스(FotMob, Reddit, 현지 매체 등)에서 자동 수집되었으며, AI의 해석 논리(Reasoning)와 함께 제공됩니다.
         </p>
       </div>
 
