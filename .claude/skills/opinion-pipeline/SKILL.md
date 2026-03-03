@@ -190,6 +190,12 @@ WebFetch: https://arctic-shift.photon-reddit.com/api/comments/search
 
 응답 JSON에서 추출: `title`, `id`, `score`, `num_comments`, `permalink`, `created_utc`
 
+> **CRITICAL: Reddit URL 구성 시 반드시 `permalink` 필드를 그대로 사용**
+> Arctic Shift API 응답의 `permalink` 값(예: `/r/soccer/comments/1rhmkmt/houston_dynamo_0_2_lafc_stephen_eustaquio_82/`)을
+> `https://reddit.com` 뒤에 그대로 붙여서 URL을 생성한다.
+> 절대 post ID를 기억에 의존하여 URL을 재구성하지 않는다.
+> Reddit post ID는 글로벌 고유값이므로, ID가 한 글자라도 틀리면 전혀 무관한 포스트로 연결된다.
+
 ### 3b. 댓글 수집 (상위 3-4개 포스트)
 
 score 또는 num_comments 기준 상위 3-4개 포스트 선택 후, Arctic Shift 댓글 API로 수집:
@@ -300,6 +306,7 @@ content 마크다운은 반드시 3개 섹션으로 구성:
 - 서브레딧명 + 추천수 명시
 - 한국어 번역/요약 병기
 - 인용 시 `[포스트 제목](reddit URL)` 링크 필수
+- **CRITICAL**: Reddit URL은 Step 3에서 수집한 `permalink`를 그대로 사용. AI가 post ID를 기억에서 재구성하면 잘못된 포스트로 연결될 수 있음
 
 ##### `### 현지 매체`
 - 매체명 + 원문 핵심 인용
@@ -626,6 +633,7 @@ node .claude/skills/kfn-opinion-pipeline/scripts/validate-article.mjs /path/to/a
 - **[가독성]** content와 evidence에 FotMob 원시 필드명(`_percentile`, `_per90` 등)이 노출되지 않는지
 - **[가독성]** AI 분석 요약에서 경기 요약의 플레이 디테일을 괄호로 반복하지 않는지
 - **[가독성]** 전문 약어(DOGSO, 바이올런트 컨덕트 등)가 AI 분석 요약에서 불필요하게 재설명되지 않는지
+- **[Reddit URL]** content와 evidence.sources의 Reddit URL post ID가 Step 3에서 수집한 `permalink`과 정확히 일치하는지 (AI가 post ID를 재구성하면 무관한 포스트로 연결됨)
 
 ### 검증 실패 시
 
