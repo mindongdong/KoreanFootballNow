@@ -1,13 +1,14 @@
 import React from 'react';
-import { ArrowLeft, Eye, Calendar, Tag } from 'lucide-react';
+import { ArrowLeft, Calendar, Tag, Brain, ExternalLink as ExternalLinkIcon } from 'lucide-react';
 import type { Article } from '@/types';
+import DataRowCard from './DataRowCard';
+import SourcesList from './SourcesList';
 import AdCurationSection from './AdCuration';
 import { playerAdCurations } from '@/data/adCurations';
 
 interface ArticleViewProps {
   article: Article;
   onBack: () => void;
-  onShowEvidence: () => void;
 }
 
 function formatDate(dateString: string): string {
@@ -57,7 +58,7 @@ function renderInlineMarkdown(text: string): React.ReactNode[] {
   return parts.length > 0 ? parts : [<span key="0">{text}</span>];
 }
 
-const ArticleView: React.FC<ArticleViewProps> = ({ article, onBack, onShowEvidence }) => {
+const ArticleView: React.FC<ArticleViewProps> = ({ article, onBack }) => {
   const contentParagraphs = article.content.split('\n').filter((line) => line.trim());
 
   return (
@@ -137,27 +138,28 @@ const ArticleView: React.FC<ArticleViewProps> = ({ article, onBack, onShowEviden
           })}
         </div>
 
-        {/* Evidence CTA */}
-        {article.evidence && (
-          <div className="mb-10 p-6 sm:p-8 rounded-2xl bg-gradient-to-br from-kfn-dark to-gray-900 text-white">
-            <div className="flex items-start gap-4">
-              <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-kfn-red/20 flex items-center justify-center">
-                <Eye className="w-6 h-6 text-kfn-red" />
-              </div>
-              <div className="flex-1">
-                <h3 className="text-lg font-bold mb-1">데이터 근거 보기</h3>
-                <p className="text-gray-400 text-sm mb-4 leading-relaxed">
-                  이 기사의 바탕이 된 실제 경기 스탯과 AI의 해석 논리를 차트와 함께 확인하세요.
-                </p>
-                <button
-                  onClick={onShowEvidence}
-                  className="inline-flex items-center gap-2 px-5 py-2.5 bg-kfn-red hover:bg-kfn-red/90 text-white rounded-lg font-semibold text-sm transition-all hover:shadow-lg hover:shadow-kfn-red/25 active:scale-[0.98]"
-                >
-                  <Eye className="w-4 h-4" />
-                  근거 보기 (Evidence View)
-                </button>
-              </div>
+        {/* Evidence 인라인 */}
+        {article.evidence && article.evidence.dataRows.length > 0 && (
+          <div className="mb-10">
+            <div className="flex items-center gap-2 mb-6">
+              <Brain className="w-5 h-5 text-gray-400" />
+              <h2 className="text-lg font-bold text-gray-900">데이터 & AI 해석 논리</h2>
             </div>
+            <div className="space-y-4">
+              {article.evidence.dataRows.map((row, i) => (
+                <DataRowCard key={i} row={row} index={i} />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {article.evidence?.sources && article.evidence.sources.length > 0 && (
+          <div className="mb-10">
+            <div className="flex items-center gap-2 mb-6">
+              <ExternalLinkIcon className="w-5 h-5 text-gray-400" />
+              <h2 className="text-lg font-bold text-gray-900">참고 출처</h2>
+            </div>
+            <SourcesList sources={article.evidence.sources} />
           </div>
         )}
 
