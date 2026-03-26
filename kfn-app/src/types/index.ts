@@ -5,5 +5,6 @@ export type {
   EvidenceData,
   ChartData,
   DataRow,
+  SourceItem,
   AdCuration,
 } from './article';

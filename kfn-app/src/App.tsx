@@ -1,14 +1,16 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { Routes, Route, Navigate, useParams, useNavigate } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Footer from './components/layout/Footer';
 import ArticleList from './components/news/ArticleList';
 import ArticleView from './components/news/ArticleView';
-import EvidenceView from './components/news/EvidenceView';
-import StatsDashboard from './components/stats/StatsDashboard';
 import ScrollToTop from './components/common/ScrollToTop';
 import { loadArticles } from './utils/articleLoader';
 import type { Article } from './types';
+
+const HomePage = React.lazy(() => import('./pages/HomePage'));
+const PlayerListPage = React.lazy(() => import('./pages/PlayerListPage'));
+const PlayerDetailPage = React.lazy(() => import('./pages/PlayerDetailPage'));
 
 function ArticleViewPage({ articles }: { articles: Article[] }) {
   const { articleId } = useParams<{ articleId: string }>();
@@ -23,25 +25,15 @@ function ArticleViewPage({ articles }: { articles: Article[] }) {
     <ArticleView
       article={article}
       onBack={() => navigate('/news')}
-      onShowEvidence={() => navigate(`/news/${articleId}/evidence`)}
     />
   );
 }
 
-function EvidenceViewPage({ articles }: { articles: Article[] }) {
-  const { articleId } = useParams<{ articleId: string }>();
-  const navigate = useNavigate();
-  const article = articles.find((a) => a.id === articleId);
-
-  if (!article) {
-    return <Navigate to="/news" replace />;
-  }
-
+function PageLoader() {
   return (
-    <EvidenceView
-      article={article}
-      onBack={() => navigate(`/news/${articleId}`)}
-    />
+    <div className="flex items-center justify-center py-20">
+      <div className="w-6 h-6 border-2 border-kfn-red border-t-transparent rounded-full animate-spin" />
+    </div>
   );
 }
 
@@ -54,14 +46,19 @@ function App() {
       <ScrollToTop />
 
       <main className="flex-1">
-        <Routes>
-          <Route path="/" element={<Navigate to="/news" replace />} />
-          <Route path="/news" element={<ArticleList articles={articles} />} />
-          <Route path="/news/:articleId" element={<ArticleViewPage articles={articles} />} />
-          <Route path="/news/:articleId/evidence" element={<EvidenceViewPage articles={articles} />} />
-          <Route path="/stats/*" element={<StatsDashboard />} />
-          <Route path="*" element={<Navigate to="/news" replace />} />
-        </Routes>
+        <Suspense fallback={<PageLoader />}>
+          <Routes>
+            <Route path="/" element={<HomePage />} />
+            <Route path="/players" element={<PlayerListPage />} />
+            <Route path="/player/:id" element={<PlayerDetailPage />} />
+            <Route path="/news" element={<ArticleList articles={articles} />} />
+            <Route path="/news/:articleId" element={<ArticleViewPage articles={articles} />} />
+            {/* v1 호환: 기존 URL 리다이렉트 */}
+            <Route path="/stats/*" element={<Navigate to="/players" replace />} />
+            <Route path="/news/:articleId/evidence" element={<Navigate to="/news" replace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
+          </Routes>
+        </Suspense>
       </main>
 
       <Footer />
