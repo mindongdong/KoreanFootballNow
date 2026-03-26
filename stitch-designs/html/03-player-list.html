@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        body { font-family: 'Pretendard', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            line-height: 1;
+            font-size: 20px;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+    </style>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "secondary": "#5f5e5e",
+              "outline-variant": "#e7bdb9",
+              "on-secondary-container": "#656464",
+              "on-primary": "#ffffff",
+              "tertiary": "#4e5562",
+              "on-tertiary-fixed": "#151c27",
+              "inverse-surface": "#2f3131",
+              "on-surface-variant": "#5d3f3d",
+              "on-error": "#ffffff",
+              "inverse-on-surface": "#f0f1f1",
+              "error": "#ba1a1a",
+              "on-primary-fixed": "#410005",
+              "surface": "#f9f9f9",
+              "surface-variant": "#e2e2e2",
+              "secondary-container": "#e5e2e1",
+              "tertiary-fixed": "#dce2f3",
+              "on-error-container": "#93000a",
+              "on-tertiary": "#ffffff",
+              "primary": "#ac001c",
+              "secondary-fixed-dim": "#c9c6c5",
+              "secondary-fixed": "#e5e2e1",
+              "on-secondary-fixed": "#1c1b1b",
+              "primary-fixed": "#ffdad7",
+              "tertiary-container": "#666d7b",
+              "on-background": "#1a1c1c",
+              "outline": "#926e6c",
+              "on-tertiary-fixed-variant": "#404754",
+              "on-primary-fixed-variant": "#930016",
+              "on-primary-container": "#ffebe9",
+              "surface-dim": "#dadada",
+              "surface-container-highest": "#e2e2e2",
+              "surface-container-low": "#f3f3f3",
+              "inverse-primary": "#ffb3af",
+              "tertiary-fixed-dim": "#c0c7d6",
+              "on-surface": "#1a1c1c",
+              "surface-tint": "#c00021",
+              "background": "#f9f9f9",
+              "on-secondary-fixed-variant": "#474646",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e8e8e8",
+              "surface-container": "#eeeeee",
+              "primary-fixed-dim": "#ffb3af",
+              "surface-container-lowest": "#ffffff",
+              "primary-container": "#d90828",
+              "on-tertiary-container": "#eaf0ff",
+              "surface-bright": "#f9f9f9",
+              "on-secondary": "#ffffff"
+            },
+            fontFamily: {
+              "headline": ["Pretendard", "Inter"],
+              "body": ["Pretendard", "Inter"],
+              "label": ["Pretendard", "Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col">
+<!-- TopNavBar -->
+<header class="bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md sticky top-0 w-full z-50 border-b border-zinc-200/50 dark:border-zinc-800/50">
+<nav class="flex justify-between items-center h-16 px-6 max-w-7xl mx-auto">
+<div class="flex items-center gap-8">
+<span class="text-2xl font-black text-red-700 dark:text-red-600">KFN</span>
+<div class="hidden md:flex gap-6 items-center h-full">
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400 transition-colors text-sm font-medium Pretendard" href="#">Home</a>
+<a class="text-red-700 dark:text-red-500 font-bold border-b-2 border-red-700 dark:border-red-500 pb-1 text-sm font-medium Pretendard" href="#">Players</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400 transition-colors text-sm font-medium Pretendard" href="#">News</a>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden lg:flex bg-surface-container-highest px-3 py-1.5 rounded-lg items-center gap-2">
+<span class="material-symbols-outlined text-on-surface-variant text-lg">search</span>
+<input class="bg-transparent border-none focus:ring-0 text-sm w-48 text-on-surface" placeholder="Search players..." type="text"/>
+</div>
+<button class="p-2 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-lg transition-all active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-zinc-600">notifications</span>
+</button>
+<button class="p-2 hover:bg-zinc-100/50 dark:hover:bg-zinc-800/50 rounded-lg transition-all active:scale-95 duration-150 ease-in-out">
+<span class="material-symbols-outlined text-zinc-600">person</span>
+</button>
+</div>
+</nav>
+</header>
+<main class="flex-grow max-w-7xl mx-auto w-full px-6 py-10">
+<!-- Editorial Header -->
+<div class="mb-12">
+<h1 class="text-4xl font-bold tracking-tight mb-2">해외파 한국 선수 <span class="text-primary">(31명)</span></h1>
+<p class="text-on-surface-variant max-w-2xl text-sm">전 세계 리그에서 활약 중인 대한민국 축구 국가대표 및 해외파 선수들의 실시간 퍼포먼스 데이터와 현지 여론 지표를 확인하세요.</p>
+</div>
+<!-- Filter Shell -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10">
+<div class="flex flex-wrap gap-2">
+<button class="px-5 py-2 rounded-full bg-primary text-on-primary text-sm font-bold shadow-sm transition-all">All</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface text-sm font-medium hover:bg-surface-container-highest transition-all">EPL</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface text-sm font-medium hover:bg-surface-container-highest transition-all">Bundesliga</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface text-sm font-medium hover:bg-surface-container-highest transition-all">Ligue 1</button>
+<button class="px-5 py-2 rounded-full bg-surface-container-high text-on-surface text-sm font-medium hover:bg-surface-container-highest transition-all">Super Lig</button>
+</div>
+<div class="flex items-center gap-3">
+<span class="text-[10px] uppercase tracking-widest text-on-secondary-fixed-variant font-bold">Sort By</span>
+<div class="relative">
+<button class="bg-surface-container-highest px-4 py-2 rounded-lg text-sm font-semibold flex items-center gap-2 hover:bg-surface-variant transition-colors">
+                        Rating
+                        <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Player Grid -->
+<div class="editorial-grid">
+<!-- Player Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/15 hover:bg-surface-bright transition-all group">
+<div class="relative mb-4 aspect-[4/5] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Close-up of a professional football player in a white and blue kit looking determined on a blurred green stadium background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCKCHs6G3MUwW_vc0nWHcR8XIGnXH_c3cXJzjaIQ2b4SzFIIPOtSSCcd6Ua227DWpgSWRu-28TNYGltcPla3N-Hs1vtMKSWDhbTcxPywTMkHEcXxzxr_hhF-aYxcXws5elkfDodvdp-9x4GqrpAtZ5-x7n5aHthOqusQDX26xKKhjvmEsjogxtuGrjo1HJ9CTpJJYnZporQjWKmk-iCSTMuOjhrKOoIfLzRMKZASaPgHtHbX6g6yr59GcQna5nKl1_iiZnhS5V-V24"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold flex items-center gap-1 shadow-sm">
+<span class="text-orange-500">⭐</span> 8.2
+                    </div>
+</div>
+<div class="flex flex-col gap-1 mb-4">
+<h3 class="text-lg font-bold text-on-surface">Son Heung-min</h3>
+<p class="text-sm text-zinc-500">Tottenham Hotspur · EPL</p>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Goals</span>
+<span class="text-sm font-bold">12G</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Assists</span>
+<span class="text-sm font-bold">5A</span>
+</div>
+<div class="flex flex-col ml-auto text-right">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Minutes</span>
+<span class="text-sm font-bold">1,842'</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-tighter">
+<span class="flex items-center gap-1">🇰🇷 Domestic 78%</span>
+<span class="flex items-center gap-1">Global 91% 🌍</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-low rounded-full flex overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 78%"></div>
+<div class="h-full bg-secondary" style="width: 22%"></div>
+</div>
+</div>
+</div>
+<!-- Player Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/15 hover:bg-surface-bright transition-all group">
+<div class="relative mb-4 aspect-[4/5] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Professional football player in a red and white jersey sprinting across the pitch during a night match under floodlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC4c3aKUXxEDqARUA0XO0dLhb3IUW5xSJXiuwuflEoQ8hhBLz-lKmuSICeqqnseBNFwrp66aJ28cwucAqpBUHKEaMJ5xFZuF6tc2YB6lNlBYbNrRbB8L-n1vvy5gCjOa7KH4UsP4A73catQ3q_8E14yKK-2T_vGe0ki_O2mm5nV91rsJU-PTogMWksyvwnPSy38xlRuZDylffa6Sq59yrob-1FASx3gsGmWD0vdgFGs_TCu9Z1kdx_1I6lkg-C9u8wvtFD4jlB82pY"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold flex items-center gap-1 shadow-sm">
+<span class="text-orange-500">⭐</span> 7.9
+                    </div>
+</div>
+<div class="flex flex-col gap-1 mb-4">
+<h3 class="text-lg font-bold text-on-surface">Kim Min-jae</h3>
+<p class="text-sm text-zinc-500">FC Bayern Munich · Bundesliga</p>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Clean Sheets</span>
+<span class="text-sm font-bold">9</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Pass Accuracy</span>
+<span class="text-sm font-bold">91%</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-tighter">
+<span class="flex items-center gap-1">🇰🇷 Domestic 82%</span>
+<span class="flex items-center gap-1">Global 85% 🌍</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-low rounded-full flex overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 82%"></div>
+<div class="h-full bg-secondary" style="width: 18%"></div>
+</div>
+</div>
+</div>
+<!-- Player Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/15 hover:bg-surface-bright transition-all group">
+<div class="relative mb-4 aspect-[4/5] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Dynamic shot of a young football player in dark kit controlling the ball with focus in a modern stadium" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA2N4wY9SNWVBRKb7d7wH1Z8fIhEioMjng13rZfht8n6X_TQCHvXsVKjmMfbBTbof2yXzg4gFcyU0X0UYbin5FWDIerckwCnUmf-IMi6EFLx4hv6ZdP2JRdbwjun2YGO9KzKqjYydrIgqno2JecAYQ1d8BlImvEGSRYxKSS9zf-Vlo3jmEIII0LSsEN095KwwII60pUj-H7AqmfPqe5TITWqfoDRNLTR3kK7xb3wXe01XKluEFG6kJ63t0FNBBObEsX3cZniXiCyTE"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold flex items-center gap-1 shadow-sm">
+<span class="text-orange-500">⭐</span> 7.5
+                    </div>
+</div>
+<div class="flex flex-col gap-1 mb-4">
+<h3 class="text-lg font-bold text-on-surface">Lee Kang-in</h3>
+<p class="text-sm text-zinc-500">Paris Saint-Germain · Ligue 1</p>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Goals</span>
+<span class="text-sm font-bold">3G</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Assists</span>
+<span class="text-sm font-bold">4A</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-tighter">
+<span class="flex items-center gap-1">🇰🇷 Domestic 95%</span>
+<span class="flex items-center gap-1">Global 77% 🌍</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-low rounded-full flex overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 95%"></div>
+<div class="h-full bg-secondary" style="width: 5%"></div>
+</div>
+</div>
+</div>
+<!-- Player Card 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/15 hover:bg-surface-bright transition-all group">
+<div class="relative mb-4 aspect-[4/5] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Portrait of an athlete sitting on grass in football gear with a sunset backdrop and soft lens flare" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBwALXQ-tpRjB5AE0xhMbF2NfnIru4-B6i2g0aS5iqlj1Fd2FwYwN6lK1pRFKT37lnw2YRvVl_sVHndZK26VU-R4JpDFb6JUikTmbSZEyTC6PA0gmz2wjMi4ek2PkF6g28NfPLdZZRKkmWYX5L5YOzVDHNWBwUcoKqnfSUPzn9xfsdC_8Wd-hqb6R0nZG3kNOLr0uQlrWDjEwGK7fT5x1GR2ZNCtGD4-iUVrKxkkgsV5LVGrxeV1wxXv2CNJLHX8DzLbOoxgkU6Zgc"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold flex items-center gap-1 shadow-sm">
+<span class="text-orange-500">⭐</span> 7.1
+                    </div>
+</div>
+<div class="flex flex-col gap-1 mb-4">
+<h3 class="text-lg font-bold text-on-surface">Hwang Hee-chan</h3>
+<p class="text-sm text-zinc-500">Wolverhampton · EPL</p>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Goals</span>
+<span class="text-sm font-bold">10G</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Assists</span>
+<span class="text-sm font-bold">3A</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-tighter">
+<span class="flex items-center gap-1">🇰🇷 Domestic 74%</span>
+<span class="flex items-center gap-1">Global 70% 🌍</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-low rounded-full flex overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 74%"></div>
+<div class="h-full bg-secondary" style="width: 26%"></div>
+</div>
+</div>
+</div>
+<!-- Repeated for layout demonstration -->
+<!-- Player Card 5 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/15 hover:bg-surface-bright transition-all group opacity-80">
+<div class="relative mb-4 aspect-[4/5] rounded-lg overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500" data-alt="Football pitch from ground level perspective with lush green grass and stadium seating in distance under cloudy sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDoJNKU7GUd7P6mnK90JPWPIy7Bu6HEyl1fV3RWsjjduLZljGbz4L_eIhE-qOpJpxzO_Ft0U88IiB__qxwUZYbkdXM1MgZEBYGH5iC4ULCgbc-g7KqCAAOJXxYq4lKQ85-w-2G07zJEurCTgY3Dgv2lgXnJIGxNpSpnjAzDgHwY18fP_nrQN_UzV9b-mrnaioum4RUgmp_jywS2ek3cAvpYhcR7bXs_-ifFyZ2htF6I1GRDvtgvuSQX9nIyh4vZajKwnhysu2XpPRA"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded text-xs font-bold flex items-center gap-1 shadow-sm">
+<span class="text-orange-500">⭐</span> 6.8
+                    </div>
+</div>
+<div class="flex flex-col gap-1 mb-4">
+<h3 class="text-lg font-bold text-on-surface">Paik Seung-ho</h3>
+<p class="text-sm text-zinc-500">Birmingham City · EFL</p>
+</div>
+<div class="flex items-center gap-4 mb-4">
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Goals</span>
+<span class="text-sm font-bold">1G</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] uppercase tracking-widest text-zinc-400">Assists</span>
+<span class="text-sm font-bold">1A</span>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between text-[10px] font-bold uppercase tracking-tighter">
+<span class="flex items-center gap-1">🇰🇷 Domestic 68%</span>
+<span class="flex items-center gap-1">Global 62% 🌍</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container-low rounded-full flex overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 68%"></div>
+<div class="h-full bg-secondary" style="width: 32%"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Load More Section -->
+<div class="mt-16 flex justify-center">
+<button class="bg-surface-container-high px-10 py-4 rounded-full text-on-surface font-bold text-sm hover:bg-surface-container-highest transition-all flex items-center gap-2">
+                Load More Players
+                <span class="material-symbols-outlined">expand_more</span>
+</button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-950 dark:bg-black w-full py-12 px-6 mt-auto border-t border-zinc-900">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+<div>
+<span class="text-xl font-black text-white">KFN</span>
+<p class="mt-4 text-zinc-400 text-sm max-w-xs leading-relaxed">The ultimate digital newsroom for Korean footballers abroad. Real-time data, expert analysis, and editorial narratives.</p>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-white text-lg font-bold">Quick Links</span>
+<nav class="flex flex-col gap-2">
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm font-medium" href="#">Privacy Policy</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm font-medium" href="#">Terms of Service</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm font-medium" href="#">Contact Us</a>
+</nav>
+</div>
+<div class="flex flex-col gap-4">
+<span class="text-white text-lg font-bold">Newsletter</span>
+<div class="flex gap-2">
+<input class="bg-zinc-900 border-none rounded-lg text-white text-sm focus:ring-1 focus:ring-red-600 outline-none w-full" placeholder="Enter your email" type="email"/>
+<button class="bg-primary text-white px-4 py-2 rounded-lg text-sm font-bold">Join</button>
+</div>
+<p class="text-zinc-400 text-[10px] uppercase tracking-widest mt-2">© 2024 KOREAN FOOTBALL NOW. ALL RIGHTS RESERVED.</p>
+</div>
+</div>
+</footer>
+</body></html>

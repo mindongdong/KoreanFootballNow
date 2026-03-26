@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "tertiary": "#4e5562",
+              "on-background": "#1a1c1c",
+              "primary": "#ac001c",
+              "on-tertiary-container": "#eaf0ff",
+              "on-primary-fixed-variant": "#930016",
+              "surface-tint": "#c00021",
+              "surface-container-low": "#f3f3f3",
+              "on-secondary-fixed-variant": "#474646",
+              "surface-container-highest": "#e2e2e2",
+              "on-primary": "#ffffff",
+              "primary-fixed": "#ffdad7",
+              "surface-dim": "#dadada",
+              "inverse-surface": "#2f3131",
+              "error": "#ba1a1a",
+              "outline-variant": "#e7bdb9",
+              "on-primary-fixed": "#410005",
+              "secondary": "#5f5e5e",
+              "tertiary-container": "#666d7b",
+              "on-surface": "#1a1c1c",
+              "outline": "#926e6c",
+              "tertiary-fixed-dim": "#c0c7d6",
+              "secondary-fixed": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "surface-container": "#eeeeee",
+              "secondary-fixed-dim": "#c9c6c5",
+              "on-error-container": "#93000a",
+              "on-primary-container": "#ffebe9",
+              "on-error": "#ffffff",
+              "on-secondary": "#ffffff",
+              "surface-variant": "#e2e2e2",
+              "on-tertiary-fixed-variant": "#404754",
+              "error-container": "#ffdad6",
+              "surface-container-high": "#e8e8e8",
+              "surface-bright": "#f9f9f9",
+              "background": "#f9f9f9",
+              "primary-fixed-dim": "#ffb3af",
+              "on-tertiary": "#ffffff",
+              "secondary-container": "#e5e2e1",
+              "tertiary-fixed": "#dce2f3",
+              "on-tertiary-fixed": "#151c27",
+              "on-secondary-container": "#656464",
+              "inverse-primary": "#ffb3af",
+              "inverse-on-surface": "#f0f1f1",
+              "surface": "#f9f9f9",
+              "on-surface-variant": "#5d3f3d",
+              "on-secondary-fixed": "#1c1b1b",
+              "primary-container": "#d90828"
+            },
+            fontFamily: {
+              "headline": ["Pretendard", "Inter", "sans-serif"],
+              "body": ["Pretendard", "Inter", "sans-serif"],
+              "label": ["Pretendard", "Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Pretendard', sans-serif; -webkit-font-smoothing: antialiased; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-6 h-16 w-full">
+<div class="flex items-center gap-2 scale-95 active:opacity-80 transition-all">
+<span class="material-symbols-outlined text-[#ac001c] dark:text-[#d90828]" data-icon="sports_soccer">sports_soccer</span>
+<h1 class="text-2xl font-black text-[#ac001c] dark:text-[#d90828] tracking-tighter">KFN</h1>
+</div>
+<button class="material-symbols-outlined text-zinc-500 dark:text-zinc-400 hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors p-2 rounded-full" data-icon="menu">menu</button>
+</div>
+</header>
+<main class="pt-20 pb-24 px-5 max-w-[390px] mx-auto overflow-x-hidden">
+<!-- 1. 이번 라운드 활약 선수 -->
+<section class="mb-10">
+<div class="flex justify-between items-end mb-4 px-1">
+<h2 class="text-xl font-bold tracking-tight">이번 라운드 활약 선수</h2>
+<a class="text-xs font-medium text-on-surface-variant opacity-60" href="#">더보기 &gt;</a>
+</div>
+<div class="flex gap-4 overflow-x-auto no-scrollbar snap-x snap-mandatory -mx-5 px-5">
+<!-- Card 1 -->
+<div class="min-w-[280px] bg-surface-container-lowest p-6 rounded-xl snap-center transition-all">
+<div class="flex items-start justify-between mb-4">
+<div>
+<p class="text-[10px] font-bold text-primary mb-1 tracking-widest uppercase">MVP OF THE MATCH</p>
+<h3 class="text-2xl font-black tracking-tighter">손흥민</h3>
+<p class="text-xs text-on-surface-variant">LAFC · MLS</p>
+</div>
+<div class="text-right">
+<span class="text-3xl font-black text-primary leading-none">8.2</span>
+<p class="text-[9px] font-bold text-on-surface-variant">RATING</p>
+</div>
+</div>
+<div class="flex gap-4 mb-5">
+<div class="flex flex-col">
+<span class="text-xs font-bold">1골 1도움</span>
+<span class="text-[10px] text-on-surface-variant">포인트</span>
+</div>
+<div class="w-px h-6 bg-surface-container"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">90분</span>
+<span class="text-[10px] text-on-surface-variant">출전</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant">시즌 누적</span>
+<span class="text-xs font-black">12골 5도움</span>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="min-w-[280px] bg-surface-container-lowest p-6 rounded-xl snap-center opacity-70 scale-95 origin-left">
+<div class="flex items-start justify-between mb-4">
+<div>
+<p class="text-[10px] font-bold text-on-surface-variant mb-1 tracking-widest uppercase">TOP DEFENDER</p>
+<h3 class="text-2xl font-black tracking-tighter">김민재</h3>
+<p class="text-xs text-on-surface-variant">바이에른 뮌헨 · 분데스리가</p>
+</div>
+<div class="text-right">
+<span class="text-3xl font-black text-on-surface leading-none">7.8</span>
+<p class="text-[9px] font-bold text-on-surface-variant">RATING</p>
+</div>
+</div>
+<div class="flex gap-4 mb-5">
+<div class="flex flex-col">
+<span class="text-xs font-bold">클린시트</span>
+<span class="text-[10px] text-on-surface-variant">기록</span>
+</div>
+<div class="w-px h-6 bg-surface-container"></div>
+<div class="flex flex-col">
+<span class="text-xs font-bold">90분</span>
+<span class="text-[10px] text-on-surface-variant">출전</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-3 rounded-lg flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant">시즌 누적</span>
+<span class="text-xs font-black">2골 1도움</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 2. 주요 헤드라인 -->
+<section class="mb-10">
+<div class="flex justify-between items-end mb-4 px-1">
+<h2 class="text-xl font-bold tracking-tight">주요 헤드라인</h2>
+<a class="text-xs font-medium text-on-surface-variant opacity-60" href="#">더보기 &gt;</a>
+</div>
+<div class="flex flex-col gap-1">
+<article class="p-4 bg-surface-container-lowest rounded-xl flex items-center gap-4 transition-all active:bg-surface-bright">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[10px] font-bold text-primary px-1.5 py-0.5 bg-primary-container/10 rounded">EPL</span>
+<span class="text-[10px] text-on-surface-variant">3시간 전</span>
+</div>
+<h3 class="text-sm font-bold leading-snug line-clamp-2">손흥민, MLS 오스틴전 1골 1도움 맹활약</h3>
+</div>
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="action shot of a professional football match with intense green grass and stadium lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZiEsLIhCm2Q1NigI8LJNhAve5s9S9UvEfOgbKB3DBBnUzuA2qzSjy4gO7jIl37gnQCYHgpewK7MocbzeHnUutUBDBvwN4rRWZvaDCgZISb8IOcccJc2PC51hjTp7oufL2kpLuQipSwWwyqTvof04PHi0WczK-bPZUjB9PvC1V0PMQFll4W_ykMfCcT0AQFnjwgMULn7Jt8M3d6gRJNJtcT2_n87Cw_Kq_TcrlKmQGjaVHCDM89enhzTiYD80s7BNIiOdIWsO_TQU"/>
+</div>
+</article>
+<article class="p-4 bg-surface-container-lowest rounded-xl flex items-center gap-4 transition-all active:bg-surface-bright">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[10px] font-bold text-primary px-1.5 py-0.5 bg-primary-container/10 rounded">분데스리가</span>
+<span class="text-[10px] text-on-surface-variant">5시간 전</span>
+</div>
+<h3 class="text-sm font-bold leading-snug line-clamp-2">정우영, 프라이부르크전 풀타임</h3>
+</div>
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="professional football stadium filled with fans during a night match under bright floodlights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg41ZkBub7iCFFnPUmtJ9Nqsi2qNGk00aJ2LIlZ1Z-qw-FicneHcmc-Pp5-0MhlVZyK34uwgV-wrPYCvBr6Mj56b3JYTZ1sx5IgvPInalkLSxr6OpR91UVaX94zykmrxinzb1T0nNULJBFuSWhKkkXVgLtwAI6JB8icaEkjQ_zRhs4GvUxN8ZQI_riVhasGxlMHLSjgPweVF4UF-ekPUb1c72v4fdA8TaKi10wN2I9Wkir_tfgF_m5e_hZT_pMJ2eMyQIviz0hOz0"/>
+</div>
+</article>
+<article class="p-4 bg-surface-container-lowest rounded-xl flex items-center gap-4 transition-all active:bg-surface-bright">
+<div class="flex-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[10px] font-bold text-primary px-1.5 py-0.5 bg-primary-container/10 rounded">스코티시</span>
+<span class="text-[10px] text-on-surface-variant">1일 전</span>
+</div>
+<h3 class="text-sm font-bold leading-snug line-clamp-2">양현준, 마더웰전 인상적 데뷔</h3>
+</div>
+<div class="w-20 h-20 rounded-lg overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="close up of a professional soccer ball on a pristine grass field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC5R_4_tDTBLqXnKVj9VsHsggpKaRcSEu4q94ujnwqkgUtKW9wjOec3QF8kugV1Kil-KX9w9Whq9rMcPGiBqh-357CnBLrv8LCFTHoYCbcIyJPl9SD5yTaLIyHBN_nsQcR7vTE50IekwfV7hjP1dP5RPSY0R1LWHymVYnwLwuxkBjhiZDmtd84s0b4TH5PFvTnTcDROUg34AA3gqTXAkZnWI8EyCJfoqjCUHJlVv2wOnqHpIAbkuZuByYi4GqF1oaBirl0g1rINfx0"/>
+</div>
+</article>
+</div>
+</section>
+<!-- 3. 국내 vs 해외 온도차 -->
+<section class="mb-10">
+<div class="flex justify-between items-end mb-4 px-1">
+<h2 class="text-xl font-bold tracking-tight">국내 vs 해외 온도차</h2>
+<a class="text-xs font-medium text-on-surface-variant opacity-60" href="#">더보기 &gt;</a>
+</div>
+<div class="bg-[#f5f0ed] p-6 rounded-xl relative overflow-hidden">
+<div class="absolute -right-4 -top-4 opacity-10">
+<span class="material-symbols-outlined text-8xl" data-icon="leaderboard">leaderboard</span>
+</div>
+<div class="relative z-10">
+<div class="flex justify-between items-center mb-6">
+<h3 class="text-lg font-black tracking-tight">손흥민 (LAFC)</h3>
+<span class="text-xs font-bold text-primary bg-primary/10 px-2 py-1 rounded-full">+13%p 차이</span>
+</div>
+<div class="space-y-4 mb-6">
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-[10px] font-bold">국내 긍정</span>
+<span class="text-xs font-black">78%</span>
+</div>
+<div class="h-2.5 w-full bg-white/50 rounded-full overflow-hidden">
+<div class="h-full bg-primary rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between items-center mb-1.5">
+<span class="text-[10px] font-bold">해외 긍정</span>
+<span class="text-xs font-black">91%</span>
+</div>
+<div class="h-2.5 w-full bg-white/50 rounded-full overflow-hidden">
+<div class="h-full bg-on-surface rounded-full" style="width: 91%"></div>
+</div>
+</div>
+</div>
+<div class="bg-white/60 p-4 rounded-lg">
+<div class="flex items-center gap-1.5 mb-2">
+<span class="material-symbols-outlined text-xs text-primary" data-icon="auto_awesome">auto_awesome</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">AI Analysis</span>
+</div>
+<p class="text-[11px] leading-relaxed italic text-on-surface-variant font-medium">
+                            "국내에서는 'MLS 리그 수준' 논란이 섞이며 긍정도가 낮지만, 현지에서는 리그 역대급 영입이라는 평가가 지배적"
+                        </p>
+</div>
+</div>
+</div>
+</section>
+<!-- 4. 리그별 선수 -->
+<section class="mb-10">
+<h2 class="text-xl font-bold tracking-tight mb-4 px-1">리그별 선수</h2>
+<div class="flex gap-2 overflow-x-auto no-scrollbar mb-5 -mx-5 px-5">
+<button class="shrink-0 px-5 py-2 rounded-full bg-on-surface text-white text-xs font-bold">전체</button>
+<button class="shrink-0 px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-xs font-bold">EPL</button>
+<button class="shrink-0 px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-xs font-bold">분데스리가</button>
+<button class="shrink-0 px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-xs font-bold">라리가</button>
+<button class="shrink-0 px-5 py-2 rounded-full bg-surface-container-low text-on-surface-variant text-xs font-bold">MLS</button>
+</div>
+<div class="grid grid-cols-2 gap-3">
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-surface-container rounded-full mb-3 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="professional football player portrait in studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCxnIKfhH39PvLoauSTgz7NKAJ7M9sxLOjR4_AlsbobudxwDoCNPC8M86sfZTUNSZBzlJlj_Tc2j47znlcUtLqn0mWIt_w8WGlw4zFM_Wo8Nls7AEaRdZufW1gmJWhnaL50le5kqDMyfX4yIvmlj8prx2Zz1-zclTZoPgEAvPH3TQJQdyGeDQFi5TB22cNcFbIjHkWLw8UrvypoOVmRj7E_uZ3QQsBYd8Wyrd_oLIWHdEAaAN2rfzvcihLSvQUxMxDg57lKDj05gBE"/>
+</div>
+<span class="text-sm font-bold block mb-0.5">손흥민</span>
+<span class="text-[10px] text-on-surface-variant mb-3">LAFC</span>
+<div class="text-lg font-black text-primary">8.2</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-surface-container rounded-full mb-3 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="close up of professional athlete silhouette in shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDg8PsJk6wyUwKLrspc9Q9IsdIj7NeN4BVVL3V-ovywxWQ-ChVJwIKf3etCbSUwSxdOXsR1gyxiP75WVFJc5hdZB5qmNdYG3fnohUcK6TwlVSw6GP2xtxIe0nI6wMPdu39S5EAxs7INL6-mdXINW7KZKcS4FqSC3jeu7z7WXNy_xGG38idS3jrd0SAkFCKou5sTnHq2SfsAs0pHw7RbcIC-WdZo3e41noL-G9JQSc1tpDLXLB1D7yGMCypwkEAOH9btFoMKaDgDhk8"/>
+</div>
+<span class="text-sm font-bold block mb-0.5">김민재</span>
+<span class="text-[10px] text-on-surface-variant mb-3">뮌헨</span>
+<div class="text-lg font-black text-on-surface">7.8</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-surface-container rounded-full mb-3 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="soccer player celebrating on field from distance" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCP1UvUuPwbo6qz1NGvJ0bWiKTkswZLDLXstes7qKbJXWh1quCbbObxRywgXbbkj6__BVnLG8gKIX_aufCEt6oxUhs8dQkFnM5PHiJULeMeUWQJ4hNIe90b-zUvIUj_E-xwkkAlHWyCpek9JWElK6YSO9pSgK2kWZj4-EHP079E-xPOivE0Pyv2rJKExkO3ouYSs16k-mcmRmnBArJyhxxhQCbI_SFXmDTXhHTNgH0wZJhH4dRjQv--QJgjld39lD3UXrBDN3xtPv0"/>
+</div>
+<span class="text-sm font-bold block mb-0.5">이강인</span>
+<span class="text-[10px] text-on-surface-variant mb-3">PSG</span>
+<div class="text-lg font-black text-on-surface">7.5</div>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl flex flex-col items-center text-center">
+<div class="w-12 h-12 bg-surface-container rounded-full mb-3 flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="abstract football net detail with bokeh stadium lights background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtTkyTu_aIbcpRnBZ6WCszX0P5eu6TIO7W5GmM_NTwSuWwBnWN9oiOd7HLArAF0w6MfvIitRP98UD-b_BP2mQqazPFcWYjeYQ7q9c4hKZF6kGFQ_42_vIQPV5hgiKwy0xSQPkOL4PlFRoloHO-S9zFIYgDLbpMrOdK-3I-bj4ioCN0CGE3YqCXlCPhdveF2MSeNHGPwvKIe7nRJXdX4QK89Y6xhanwDseH3d8yUirbGaQuk1_PtLiWRtlsRVUsOZzzlcvc_eLBQnI"/>
+</div>
+<span class="text-sm font-bold block mb-0.5">황희찬</span>
+<span class="text-[10px] text-on-surface-variant mb-3">울버햄튼</span>
+<div class="text-lg font-black text-on-surface">7.2</div>
+</div>
+</div>
+</section>
+<!-- 5. 다음 라운드 경기 예정 -->
+<section class="mb-10">
+<h2 class="text-xl font-bold tracking-tight mb-4 px-1">다음 라운드 경기 예정</h2>
+<div class="bg-surface-container-low rounded-2xl overflow-hidden">
+<div class="p-5 border-b border-surface-container">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xs font-black text-primary">3/29 (토)</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between bg-surface-container-lowest p-3 rounded-lg">
+<span class="text-xs font-bold">손흥민 vs 마이애미</span>
+<span class="text-[10px] font-bold text-on-surface-variant">09:00</span>
+</div>
+<div class="flex items-center justify-between bg-surface-container-lowest p-3 rounded-lg">
+<span class="text-xs font-bold">김민재 vs 도르트문트</span>
+<span class="text-[10px] font-bold text-on-surface-variant">02:30</span>
+</div>
+</div>
+</div>
+<div class="p-5">
+<div class="flex items-center gap-2 mb-3">
+<span class="text-xs font-black text-on-surface">3/30 (일)</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between bg-surface-container-lowest p-3 rounded-lg">
+<span class="text-xs font-bold">이강인 vs 마르세유</span>
+<span class="text-[10px] font-bold text-on-surface-variant">03:45</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full mt-auto bg-zinc-950 dark:bg-black flex flex-col items-center text-center px-8 py-12 gap-6">
+<div class="text-lg font-bold text-white tracking-tighter">KFN</div>
+<div class="flex gap-6">
+<a class="text-xs font-['Pretendard'] text-zinc-500 hover:text-[#d90828] transition-colors" href="#">뉴스레터 구독</a>
+<a class="text-xs font-['Pretendard'] text-zinc-500 hover:text-[#d90828] transition-colors" href="#">이용약관</a>
+<a class="text-xs font-['Pretendard'] text-zinc-500 hover:text-[#d90828] transition-colors" href="#">개인정보처리방침</a>
+</div>
+<p class="text-xs font-['Pretendard'] text-zinc-500 leading-relaxed">
+            © 2024 KFN (Korean Football Now). 모든 권리 보유.
+        </p>
+</footer>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center px-4 pb-6 pt-3 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-xl rounded-t-[1.5rem] shadow-[0_-10px_30px_rgba(0,0,0,0.05)]">
+<a class="flex flex-col items-center justify-center text-[#ac001c] dark:text-[#d90828] bg-[#f3f3f3] dark:bg-zinc-900 rounded-xl px-4 py-1 transition-transform tap-highlight-transparent active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="home" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="text-[10px] font-medium font-['Pretendard'] mt-1">홈</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-transform tap-highlight-transparent active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="text-[10px] font-medium font-['Pretendard'] mt-1">선수</span>
+</a>
+<a class="flex flex-col items-center justify-center text-zinc-400 dark:text-zinc-500 hover:text-zinc-900 dark:hover:text-zinc-100 transition-transform tap-highlight-transparent active:scale-90" href="#">
+<span class="material-symbols-outlined" data-icon="article">article</span>
+<span class="text-[10px] font-medium font-['Pretendard'] mt-1">뉴스</span>
+</a>
+</nav>
+</body></html>

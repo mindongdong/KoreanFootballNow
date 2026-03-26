@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .glass-header { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "secondary": "#5f5e5e",
+                "outline-variant": "#e7bdb9",
+                "on-secondary-container": "#656464",
+                "on-primary": "#ffffff",
+                "tertiary": "#4e5562",
+                "on-tertiary-fixed": "#151c27",
+                "inverse-surface": "#2f3131",
+                "on-surface-variant": "#5d3f3d",
+                "on-error": "#ffffff",
+                "inverse-on-surface": "#f0f1f1",
+                "error": "#ba1a1a",
+                "on-primary-fixed": "#410005",
+                "surface": "#f9f9f9",
+                "surface-variant": "#e2e2e2",
+                "secondary-container": "#e5e2e1",
+                "tertiary-fixed": "#dce2f3",
+                "on-error-container": "#93000a",
+                "on-tertiary": "#ffffff",
+                "primary": "#ac001c",
+                "secondary-fixed-dim": "#c9c6c5",
+                "secondary-fixed": "#e5e2e1",
+                "on-secondary-fixed": "#1c1b1b",
+                "primary-fixed": "#ffdad7",
+                "tertiary-container": "#666d7b",
+                "on-background": "#1a1c1c",
+                "outline": "#926e6c",
+                "on-tertiary-fixed-variant": "#404754",
+                "on-primary-fixed-variant": "#930016",
+                "on-primary-container": "#ffebe9",
+                "surface-dim": "#dadada",
+                "surface-container-highest": "#e2e2e2",
+                "surface-container-low": "#f3f3f3",
+                "inverse-primary": "#ffb3af",
+                "tertiary-fixed-dim": "#c0c7d6",
+                "on-surface": "#1a1c1c",
+                "surface-tint": "#c00021",
+                "background": "#f9f9f9",
+                "on-secondary-fixed-variant": "#474646",
+                "error-container": "#ffdad6",
+                "surface-container-high": "#e8e8e8",
+                "surface-container": "#eeeeee",
+                "primary-fixed-dim": "#ffb3af",
+                "surface-container-lowest": "#ffffff",
+                "primary-container": "#d90828",
+                "on-tertiary-container": "#eaf0ff",
+                "surface-bright": "#f9f9f9",
+                "on-secondary": "#ffffff"
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+</head>
+<body class="bg-surface text-on-surface min-h-screen flex flex-col items-center">
+<!-- TopNavBar (Shared Component) -->
+<header class="sticky top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200/50 dark:border-zinc-800/50">
+<div class="flex justify-between items-center h-16 px-6 max-w-7xl mx-auto">
+<div class="text-2xl font-black text-red-700 dark:text-red-600">KFN</div>
+<nav class="hidden md:flex items-center gap-8 text-sm">
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400 transition-colors" href="#">홈</a>
+<a class="text-red-700 dark:text-red-500 font-bold border-b-2 border-red-700 dark:border-red-500 pb-1" href="#">선수</a>
+<a class="text-zinc-600 dark:text-zinc-400 hover:text-red-600 dark:hover:text-red-400 transition-colors" href="#">뉴스</a>
+</nav>
+<div class="flex items-center gap-4">
+<span class="material-symbols-outlined text-zinc-600 cursor-pointer p-2 hover:bg-zinc-100/50 rounded-lg">notifications</span>
+<span class="material-symbols-outlined text-zinc-600 cursor-pointer p-2 hover:bg-zinc-100/50 rounded-lg">person</span>
+</div>
+</div>
+</header>
+<main class="w-full max-w-[860px] px-4 py-8 flex flex-col gap-8">
+<!-- Player Hero Header -->
+<section class="flex flex-col gap-6">
+<div class="flex items-center justify-between">
+<button class="flex items-center gap-2 text-on-surface-variant hover:text-primary transition-colors">
+<span class="text-sm font-medium">← 목록으로 돌아가기</span>
+</button>
+<span class="material-symbols-outlined text-zinc-400 cursor-pointer">open_in_new</span>
+</div>
+<div class="flex items-end gap-6">
+<div class="relative group">
+<div class="w-32 h-32 rounded-2xl bg-surface-container-high overflow-hidden shadow-sm">
+<img alt="이강인 선수 프로필" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD8tuvcrb5sDRHFd_u8vKV3R2dpO0RbV_23GwlR-rAvZk2t80dm23hD2-wXvILE0IPr1J4bvtMcGPonvlPA5LzasBBVIwpXme5KeRgP3ovEkkbeqybjF4M_zIJ_zT3JXqTh6IeAy0iRXiSWJHU0dJNW3EvXYA2oTXFT8OC9n5-MsYm7ERaJkYykNsA8VADOqQh9m5JS5UWPmoNuMJuwpPEMHcqPJ6Gwy5hdKJjgWc1YEAuaXDStXBAJC023XiW3J6GJOQiNO3KZpDs"/>
+</div>
+</div>
+<div class="flex-1 pb-2">
+<div class="flex items-baseline gap-4">
+<h1 class="text-4xl font-extrabold tracking-tight text-on-surface leading-none">이강인</h1>
+<a class="text-xs font-bold text-blue-600 hover:underline" href="#">FotMob 프로필 보기 ↗</a>
+</div>
+<p class="text-on-surface-variant text-lg font-medium mt-2">파리 생제르맹 · 리그1 · 미드필더</p>
+</div>
+</div>
+</section>
+<!-- Section 1: Recent Form (Bento Style) -->
+<section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-black/5 flex flex-col justify-between">
+<div>
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">최근 폼</span>
+<div class="flex items-baseline gap-3 mt-2">
+<h2 class="text-5xl font-black text-primary">8.4</h2>
+<span class="text-sm font-semibold text-on-surface-variant">평균 평점</span>
+</div>
+</div>
+<div class="mt-6 flex items-end gap-2 h-16">
+<div class="flex-1 bg-surface-container-low rounded-t-md h-[40%] group relative hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container-low rounded-t-md h-[75%] group relative hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-primary-container rounded-t-md h-[95%] group relative"></div>
+<div class="flex-1 bg-surface-container-low rounded-t-md h-[60%] group relative hover:bg-primary transition-colors"></div>
+<div class="flex-1 bg-surface-container-low rounded-t-md h-[85%] group relative hover:bg-primary transition-colors"></div>
+</div>
+</div>
+<div class="bg-surface-container-lowest rounded-2xl p-6 shadow-sm border border-black/5 grid grid-cols-2 gap-4">
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">득점</span>
+<span class="text-2xl font-bold">12</span>
+<div class="w-full bg-surface-container-low h-1 rounded-full overflow-hidden mt-1">
+<div class="bg-primary w-[85%] h-full"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">도움</span>
+<span class="text-2xl font-bold">시즌 5도움</span>
+<div class="w-full bg-surface-container-low h-1 rounded-full overflow-hidden mt-1">
+<div class="bg-primary-container w-[65%] h-full"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">패스 성공률</span>
+<span class="text-2xl font-bold">92%</span>
+<div class="w-full bg-surface-container-low h-1 rounded-full overflow-hidden mt-1">
+<div class="bg-tertiary w-[92%] h-full"></div>
+</div>
+</div>
+<div class="flex flex-col gap-1">
+<span class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">키패스</span>
+<span class="text-2xl font-bold">경기당 2.1회</span>
+<div class="w-full bg-surface-container-low h-1 rounded-full overflow-hidden mt-1">
+<div class="bg-secondary-container w-[45%] h-full"></div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 2: Sentiment Temperature -->
+<section class="bg-surface-container-low rounded-2xl p-6">
+<div class="flex items-center justify-between mb-6">
+<h3 class="text-xl font-bold">여론 온도</h3>
+<div class="px-3 py-1 bg-surface-container-highest rounded-full text-[10px] font-bold uppercase tracking-wider">AI Powered</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+<div class="flex flex-col gap-6">
+<div class="space-y-4">
+<div>
+<div class="flex justify-between text-xs font-bold mb-1">
+<span>국내 (KR)</span>
+<span class="text-primary">88% Hot</span>
+</div>
+<div class="h-2 w-full bg-white rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 88%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs font-bold mb-1">
+<span>해외 (Global)</span>
+<span class="text-blue-600">72% Positive</span>
+</div>
+<div class="h-2 w-full bg-white rounded-full overflow-hidden">
+<div class="h-full bg-blue-600" style="width: 72%"></div>
+</div>
+</div>
+</div>
+<div class="p-4 bg-surface-container-lowest rounded-xl border-l-4 border-primary">
+<p class="text-sm leading-relaxed italic text-on-surface-variant">
+                        "최근 UCL 활약 이후 국내 관심도가 크게 급증하고 있습니다. 기술적인 탁월함에 대한 찬사가 주를 이루고 있으나, 에펨코리아 등 커뮤니티에서는 수비 가담 능력에 대한 일부 우려도 관찰됩니다."
+                    </p>
+</div>
+<!-- Added 주요 의견 list -->
+<div class="space-y-2">
+<p class="text-xs font-bold text-on-surface-variant uppercase tracking-wider">주요 의견</p>
+<div class="space-y-2">
+<div class="flex items-center gap-3 p-2 bg-white/50 rounded-lg">
+<span class="text-[9px] font-black px-1.5 py-0.5 bg-orange-100 text-orange-700 rounded">r/Ligue1</span>
+<p class="text-[12px] font-medium truncate">Kang-in Lee is genuinely world class on his day</p>
+</div>
+<div class="flex items-center gap-3 p-2 bg-white/50 rounded-lg">
+<span class="text-[9px] font-black px-1.5 py-0.5 bg-green-100 text-green-700 rounded">에펨코리아</span>
+<p class="text-[12px] font-medium truncate">PSG에서 포지션 경쟁이 너무 치열한게 문제</p>
+</div>
+<div class="flex items-center gap-3 p-2 bg-white/50 rounded-lg">
+<span class="text-[9px] font-black px-1.5 py-0.5 bg-blue-100 text-blue-700 rounded">DC해축갤</span>
+<p class="text-[12px] font-medium truncate">이강인 요즘 확실히 좋아졌다</p>
+</div>
+<div class="flex items-center gap-3 p-2 bg-white/50 rounded-lg">
+<span class="text-[9px] font-black px-1.5 py-0.5 bg-red-100 text-red-700 rounded">YouTube</span>
+<p class="text-[12px] font-medium truncate">One of the most exciting young players in Ligue 1</p>
+</div>
+<div class="flex items-center gap-3 p-2 bg-white/50 rounded-lg">
+<span class="text-[9px] font-black px-1.5 py-0.5 bg-purple-100 text-purple-700 rounded">쿠팡플레이</span>
+<p class="text-[12px] font-medium truncate">기술적으로 리그앙 탑급이라는 평가</p>
+</div>
+</div>
+</div>
+</div>
+<div class="space-y-3">
+<div class="flex items-center gap-3 p-3 bg-white rounded-xl shadow-sm">
+<span class="text-[9px] font-black px-2 py-1 bg-red-100 text-red-700 rounded-md">FMKOREA</span>
+<p class="text-[13px] font-medium truncate flex-1">이 기술이면 역대급 테크니션 맞지 않나?</p>
+<span class="material-symbols-outlined text-sm text-zinc-400">trending_up</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white rounded-xl shadow-sm">
+<span class="text-[9px] font-black px-2 py-1 bg-orange-100 text-orange-700 rounded-md">REDDIT</span>
+<p class="text-[13px] font-medium truncate flex-1">The link up play with Mbappe is getting scary good.</p>
+<span class="material-symbols-outlined text-sm text-zinc-400">favorite</span>
+</div>
+<div class="flex items-center gap-3 p-3 bg-white rounded-xl shadow-sm">
+<span class="text-[9px] font-black px-2 py-1 bg-blue-100 text-blue-700 rounded-md">YOUTUBE</span>
+<p class="text-[13px] font-medium truncate flex-1">하이라이트가 다 못 담음, 경기 풀타임을 봐야됨</p>
+<span class="material-symbols-outlined text-sm text-zinc-400">mode_comment</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 3: Match Timeline -->
+<section>
+<h3 class="text-xl font-bold mb-6">경기별 타임라인</h3>
+<div class="relative space-y-6 before:absolute before:left-6 before:top-2 before:bottom-2 before:w-[2px] before:bg-surface-container-highest">
+<!-- Timeline Item -->
+<div class="relative flex items-center gap-6 group">
+<div class="w-12 h-12 rounded-full bg-primary text-white flex items-center justify-center font-bold text-sm z-10 shadow-lg shadow-primary/20">8.9</div>
+<div class="flex-1 bg-surface-container-lowest p-4 rounded-xl border border-black/5 flex justify-between items-center">
+<div class="flex items-center gap-8 flex-1">
+<div>
+<p class="text-xs font-bold text-on-surface-variant">리그1 · 3월 10일</p>
+<h4 class="font-bold">vs OGC 니스 (홈)</h4>
+</div>
+<div class="text-[11px] font-bold text-zinc-400 px-3 border-l border-zinc-100">
+                            국내 85% · 해외 88%
+                        </div>
+</div>
+<div class="flex gap-4">
+<div class="text-center"><p class="text-[10px] text-zinc-400 font-bold uppercase">G</p><p class="font-bold">1</p></div>
+<div class="text-center"><p class="text-[10px] text-zinc-400 font-bold uppercase">A</p><p class="font-bold">0</p></div>
+<div class="text-center"><p class="text-[10px] text-zinc-400 font-bold uppercase">MIN</p><p class="font-bold">90'</p></div>
+</div>
+</div>
+</div>
+<!-- Timeline Item -->
+<div class="relative flex items-center gap-6 group">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-sm z-10">7.2</div>
+<div class="flex-1 bg-surface-container-lowest p-4 rounded-xl border border-black/5 flex justify-between items-center">
+<div class="flex items-center gap-8 flex-1">
+<div>
+<p class="text-xs font-bold text-on-surface-variant">UCL · 3월 5일</p>
+<h4 class="font-bold">vs 레알 소시에다드 (원정)</h4>
+</div>
+<div class="text-[11px] font-bold text-zinc-400 px-3 border-l border-zinc-100">
+                            국내 78% · 해외 82%
+                        </div>
+</div>
+<div class="flex gap-4">
+<div class="text-center"><p class="text-[10px] text-zinc-400 font-bold uppercase">G</p><p class="font-bold">0</p></div>
+<div class="text-center"><p class="text-[10px] text-zinc-400 font-bold uppercase">A</p><p class="font-bold">1</p></div>
+<div class="text-center"><p class="text-[10px] text-zinc-400 font-bold uppercase">MIN</p><p class="font-bold">78'</p></div>
+</div>
+</div>
+</div>
+<!-- Timeline Item -->
+<div class="relative flex items-center gap-6 group">
+<div class="w-12 h-12 rounded-full bg-surface-container-highest text-on-surface flex items-center justify-center font-bold text-sm z-10">6.8</div>
+<div class="flex-1 bg-surface-container-lowest p-4 rounded-xl border border-black/5 flex justify-between items-center">
+<div class="flex items-center gap-8 flex-1">
+<div>
+<p class="text-xs font-bold text-on-surface-variant">리그1 · 3월 1일</p>
+<h4 class="font-bold">vs AS 모나코 (원정)</h4>
+</div>
+<div class="text-[11px] font-bold text-zinc-400 px-3 border-l border-zinc-100">
+                            국내 65% · 해외 60%
+                        </div>
+</div>
+<div class="flex gap-4">
+<div class="text-center"><p class="text-[10px] text-zinc-400 font-bold uppercase">G</p><p class="font-bold">0</p></div>
+<div class="text-center"><p class="text-[10px] text-zinc-400 font-bold uppercase">A</p><p class="font-bold">0</p></div>
+<div class="text-center"><p class="text-[10px] text-zinc-400 font-bold uppercase">MIN</p><p class="font-bold">62'</p></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section 4: Season Stats (Tabbed) -->
+<section class="bg-surface-container-lowest rounded-2xl overflow-hidden border border-black/5">
+<div class="flex border-b border-surface-container-high">
+<button class="px-8 py-4 text-sm font-bold border-b-2 border-primary text-primary">공격</button>
+<button class="px-8 py-4 text-sm font-medium text-on-surface-variant hover:text-on-surface">수비</button>
+<button class="px-8 py-4 text-sm font-medium text-on-surface-variant hover:text-on-surface">패스</button>
+</div>
+<div class="p-6 space-y-6">
+<div class="flex items-center justify-between">
+<div class="flex-1 max-w-[200px]">
+<p class="text-xs font-bold text-on-surface-variant uppercase mb-1">Dribble Success</p>
+<p class="text-lg font-bold">2.4 <span class="text-xs font-medium text-on-surface-variant">/ match</span></p>
+</div>
+<div class="flex-1 bg-surface-container-low h-3 rounded-full mx-6 overflow-hidden relative">
+<div class="bg-primary h-full w-[92%] rounded-full"></div>
+</div>
+<div class="bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-black px-2 py-1 rounded">TOP 5%</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex-1 max-w-[200px]">
+<p class="text-xs font-bold text-on-surface-variant uppercase mb-1">Shots on Target</p>
+<p class="text-lg font-bold">1.8 <span class="text-xs font-medium text-on-surface-variant">/ match</span></p>
+</div>
+<div class="flex-1 bg-surface-container-low h-3 rounded-full mx-6 overflow-hidden relative">
+<div class="bg-primary h-full w-[78%] rounded-full"></div>
+</div>
+<div class="bg-surface-container-high text-on-surface-variant text-[10px] font-black px-2 py-1 rounded">TOP 15%</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex-1 max-w-[200px]">
+<p class="text-xs font-bold text-on-surface-variant uppercase mb-1">Key Passes</p>
+<p class="text-lg font-bold">3.1 <span class="text-xs font-medium text-on-surface-variant">/ match</span></p>
+</div>
+<div class="flex-1 bg-surface-container-low h-3 rounded-full mx-6 overflow-hidden relative">
+<div class="bg-primary h-full w-[98%] rounded-full"></div>
+</div>
+<div class="bg-primary-fixed text-on-primary-fixed-variant text-[10px] font-black px-2 py-1 rounded">TOP 2%</div>
+</div>
+</div>
+</section>
+<!-- Section 5: News -->
+<section>
+<h3 class="text-xl font-bold mb-6">관련 기사</h3>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="group cursor-pointer">
+<div class="aspect-video rounded-xl overflow-hidden mb-3">
+<img alt="스타디움 관중" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCDsKBh4hyF5TiatrdBGNQiYu42ksHUExFOhMti0kOqsXrXrEK2L_JqWMpucoQZOHTNH8xx4_Ch4bzCvP_rjP2a0p7z-2KWvohN8jibW1mvluqbvOP-43Rvho9lMN7IgbW9eW7FRh73jWANBn7FL3Q24F27RDyn47sGeK02ZUqT7oeNROd_z22GpHy8lxcNfmgAsIKXFSNifsmjPX2XTV4UlRmHEFd-ew45K-wkljDJIgIyOw0Z4p0KGg972c_SIkKYxu7Io0PyYnA"/>
+</div>
+<p class="text-[10px] font-bold text-primary mb-1">경기 리포트</p>
+<h4 class="font-bold text-sm leading-snug group-hover:underline">이강인 맹활약, PSG 홈에서 OGC 니스 완파</h4>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-video rounded-xl overflow-hidden mb-3">
+<img alt="축구 경기장" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJkA3BqMH48X6OGLzYAK_Js6F0zb0RWuoXB3hmz26qFRVxzO5RR5LgoVtL-BLCqnYZdVVDm-EMySya38TYPhaBBHLN07r1ChuUkh-xa_luObIwmvGJxjnBwsECSO5ZRIDSVCidRRCyODbQFWbB-ZAuJCHjsIP4x6RboVN5sFm_-ar5hfHwvJQSNAXJ7_zTpXpk-SoiglLXQxEXqks8-61Adl3paTkGnBJ_iWr6n4JenSAnQWojUewHvzYJqSryKhgPym7h87cozfQ"/>
+</div>
+<p class="text-[10px] font-bold text-primary mb-1">이적 설</p>
+<h4 class="font-bold text-sm leading-snug group-hover:underline">프리미어리그 클럽들, 이강인의 엄청난 바이아웃 주시 중</h4>
+</div>
+<div class="group cursor-pointer">
+<div class="aspect-video rounded-xl overflow-hidden mb-3">
+<img alt="축구공 근접 촬영" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpvN-j4G2dlf_ZTKm72TjNRBRqBl_nxlbv0eIfK8LdTcnY9EQJQsntnVMC6YoIW7WBgTJslbKa0WsIgMiIh7BaHKeKx6ju5nh1JQf5VTO61hUKgvE-Fg2_vOAKGe8uc7wnoSF-ZSfiDX3Qhsn0jjg7vbvr4SvnmMIjghtgji2IweDgdmKLL4PejUWZp4skTDNdgiI7ZD_4lRna3JNL24SwSjQ_GnVPZcwrbE2aS4gj7AS0Ru1r-metx2A_vIGOMHg36-fEpDcejNc"/>
+</div>
+<p class="text-[10px] font-bold text-primary mb-1">사설</p>
+<h4 class="font-bold text-sm leading-snug group-hover:underline">'코리안 마에스트로' 이강인의 전술적 진화 분석</h4>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (Shared Component) -->
+<footer class="w-full py-12 px-6 mt-auto bg-zinc-950 dark:bg-black border-t border-zinc-900">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+<div>
+<div class="text-xl font-black text-white mb-4">KFN</div>
+<p class="text-zinc-400 text-sm leading-relaxed">전 세계 한국 축구 팬들을 위한 최고의 플랫폼. 실시간 통계, AI 감성 분석 및 독점 인사이트를 제공합니다.</p>
+</div>
+<div class="flex flex-col gap-2">
+<span class="text-white text-lg font-bold mb-2">빠른 링크</span>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">개인정보 처리방침</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">이용약관</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">문의하기</a>
+</div>
+<div>
+<span class="text-white text-lg font-bold mb-4 block">뉴스레터</span>
+<div class="flex gap-2">
+<input class="bg-zinc-900 border-none rounded-lg text-white text-sm focus:ring-1 focus:ring-red-600 outline-none w-full" placeholder="이메일 주소" type="email"/>
+<button class="bg-primary px-4 py-2 rounded-lg text-white font-bold text-sm">구독</button>
+</div>
+<p class="text-zinc-400 text-sm mt-6">© 2024 Korean Football Now. All rights reserved.</p>
+</div>
+</div>
+</footer>
+</body></html>

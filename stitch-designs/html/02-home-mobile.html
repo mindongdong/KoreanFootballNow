@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KFN | Korean Football Now - Mobile</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "on-tertiary": "#ffffff",
+                        "primary": "#ac001c",
+                        "background": "#f9f9f9",
+                        "tertiary-fixed-dim": "#c0c7d6",
+                        "secondary-fixed-dim": "#c9c6c5",
+                        "on-tertiary-fixed-variant": "#404754",
+                        "on-tertiary-container": "#eaf0ff",
+                        "outline": "#926e6c",
+                        "on-secondary": "#ffffff",
+                        "error": "#ba1a1a",
+                        "on-primary-fixed-variant": "#930016",
+                        "on-background": "#1a1c1c",
+                        "surface-container": "#eeeeee",
+                        "tertiary": "#4e5562",
+                        "error-container": "#ffdad6",
+                        "on-primary-fixed": "#410005",
+                        "surface-dim": "#dadada",
+                        "on-error": "#ffffff",
+                        "on-secondary-container": "#656464",
+                        "secondary-container": "#e5e2e1",
+                        "surface-container-lowest": "#ffffff",
+                        "inverse-on-surface": "#f0f1f1",
+                        "inverse-surface": "#2f3131",
+                        "primary-container": "#d90828",
+                        "outline-variant": "#e7bdb9",
+                        "on-primary": "#ffffff",
+                        "surface-tint": "#c00021",
+                        "on-primary-container": "#ffebe9",
+                        "surface-container-high": "#e8e8e8",
+                        "secondary-fixed": "#e5e2e1",
+                        "surface-container-highest": "#e2e2e2",
+                        "on-surface": "#1a1c1c",
+                        "tertiary-container": "#666d7b",
+                        "surface-bright": "#f9f9f9",
+                        "surface": "#f9f9f9",
+                        "primary-fixed-dim": "#ffb3af",
+                        "on-secondary-fixed-variant": "#474646",
+                        "secondary": "#5f5e5e",
+                        "primary-fixed": "#ffdad7",
+                        "tertiary-fixed": "#dce2f3",
+                        "on-tertiary-fixed": "#151c27",
+                        "on-secondary-fixed": "#1c1b1b",
+                        "surface-variant": "#e2e2e2",
+                        "on-surface-variant": "#5d3f3d",
+                        "inverse-primary": "#ffb3af",
+                        "on-error-container": "#93000a",
+                        "surface-container-low": "#f3f3f3"
+                    },
+                    fontFamily: {
+                        "headline": ["Pretendard", "Inter", "sans-serif"],
+                        "body": ["Pretendard", "Inter", "sans-serif"],
+                        "label": ["Pretendard", "Inter", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "2xl": "1.5rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Pretendard', sans-serif; background-color: #f9f9f9; color: #1a1c1c; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .glass-nav { background: rgba(255, 255, 255, 0.8); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="flex flex-col min-h-screen">
+<!-- TopNavBar -->
+<header class="sticky top-0 w-full z-50 glass-nav border-b border-zinc-200/50">
+<div class="flex justify-between items-center h-16 px-6 max-w-7xl mx-auto">
+<div class="text-2xl font-black text-red-700">KFN</div>
+<div class="flex items-center gap-4">
+<button class="p-2 text-zinc-600 hover:bg-zinc-100/50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 text-zinc-600 hover:bg-zinc-100/50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<button class="p-2 text-zinc-600 hover:bg-zinc-100/50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined">menu</span>
+</button>
+</div>
+</div>
+<!-- Horizontal Scroll Tabs -->
+<nav class="flex overflow-x-auto hide-scrollbar px-6 pb-2 gap-6 items-center">
+<a class="text-red-700 font-bold border-b-2 border-red-700 pb-1 whitespace-nowrap text-sm" href="#">Home</a>
+<a class="text-zinc-600 hover:text-red-600 transition-colors whitespace-nowrap text-sm" href="#">Players</a>
+<a class="text-zinc-600 hover:text-red-600 transition-colors whitespace-nowrap text-sm" href="#">News</a>
+<a class="text-zinc-600 hover:text-red-600 transition-colors whitespace-nowrap text-sm" href="#">Transfers</a>
+<a class="text-zinc-600 hover:text-red-600 transition-colors whitespace-nowrap text-sm" href="#">Schedule</a>
+</nav>
+</header>
+<main class="flex-grow">
+<!-- Section: Hero Editorial -->
+<section class="px-6 py-8">
+<div class="relative overflow-hidden rounded-2xl aspect-[4/5] bg-zinc-900 group">
+<img class="absolute inset-0 w-full h-full object-cover opacity-80 transition-transform duration-700 group-hover:scale-105" data-alt="dynamic close-up of Son Heung-min celebrating a goal in a stadium under bright floodlights with dramatic shadows" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDtEtKFaw3kh7JZrDke_Cbsew1N82hXNN0mp9rS623RACLrZVFE6KSbUL4Wx9uxWu-ZF1hTK8YFYV2YY71rtKjubFIN4Ob0J9yuJRwAOYZps4c_Pr2JNMofbDV3PF3Tg2XMy16DsQyuISUDKeCz0z3j3ilaGnCXOIYOhuGh3jd4gdIxuKvnVH1tPKjIBkaIX2cnn8ha7YNUwv0lAmW0j1Oi0RdHE74mKb-mnY2MeTlM_KZnkZNjdf4xbYxLs1MuTRvtVVFHqtNGjFw"/>
+<div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent"></div>
+<div class="absolute bottom-0 p-6">
+<span class="inline-block px-3 py-1 bg-primary text-white text-[10px] font-bold tracking-widest uppercase rounded-full mb-3">Breaking Analysis</span>
+<h1 class="text-3xl font-bold text-white tracking-tight leading-tight mb-2">The European Renaissance: Son's Strategic Shift</h1>
+<p class="text-zinc-300 text-sm font-medium">How tactical adjustments are redefining Korea's talisman in London.</p>
+</div>
+</div>
+</section>
+<!-- Section A: Horizontal Scroll Player Cards -->
+<section class="py-4">
+<div class="flex items-center justify-between px-6 mb-4">
+<h2 class="text-xl font-bold tracking-tight">Key Players</h2>
+<a class="text-primary text-xs font-bold uppercase tracking-wider" href="#">View All</a>
+</div>
+<div class="flex overflow-x-auto hide-scrollbar gap-4 px-6 snap-x">
+<!-- Player Card 1 -->
+<div class="flex-shrink-0 w-64 snap-start">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm">
+<div class="relative h-40 bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="professional football player portrait with focused expression wearing national team jersey against clean studio background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAdb5LIkUIlVHEwbkHoBJ0mUCff8LvIh4H2IBWrLmIgy6gw90LYsMD4o6TKrM1uWY5IswHOEi7BRhfLV8WFq5it8vWZCdvA2LHc0qy2w_4pq6_-p7KBN3rpuA1ilQuBgLjaToIMRP7J6OPHzMhZD1aEJFExLyNoTQg6IFV9n7aIEMuIQfzYpy4CD83FPVnDy-Ga_dB1A2sn-BpY4yf6ooBP14h-Bt6sPVL3BMbir2O_lZpjXJpcoHa5fGzrMXAu_6PGDihmu2ZaYGQ"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-[10px] font-black text-primary">8.4 RATING</div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-bold text-on-surface">Son Heung-min</h3>
+<p class="text-zinc-500 text-xs mb-3">Tottenham Hotspur • FW</p>
+<div class="grid grid-cols-3 gap-2 py-2 border-t border-zinc-100">
+<div class="text-center">
+<div class="text-xs font-bold">12</div>
+<div class="text-[8px] text-zinc-400 uppercase font-black">Goals</div>
+</div>
+<div class="text-center border-x border-zinc-100">
+<div class="text-xs font-bold">5</div>
+<div class="text-[8px] text-zinc-400 uppercase font-black">Assists</div>
+</div>
+<div class="text-center">
+<div class="text-xs font-bold">18</div>
+<div class="text-[8px] text-zinc-400 uppercase font-black">Apps</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Player Card 2 -->
+<div class="flex-shrink-0 w-64 snap-start">
+<div class="bg-surface-container-lowest rounded-2xl overflow-hidden shadow-sm">
+<div class="relative h-40 bg-surface-container-low">
+<img class="w-full h-full object-cover" data-alt="football defender in mid-action jump during a match under bright sunlight with stadium background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDaPf7OHPnqTAAa0h6iciWfRLWZo08LCz-XcBmMv8iV5O8uceXc_1koKHUc3edoaQX5vESiAoggcIe4GuW7kE20RYTgWL8Nef2fIiEzWfeLIEbnsRkPcYVgoyiKBIAPX_0pOQhRj55M3cJqPLIkR2wOzAJkUFXjbG-mhuhdIbXKJ8vHj6TxXgYcpAQSV4OtHrBWss2XQAcEjJE6H7JZLP63pSLruveprF4rrVSK9o3YOu2-QvUl5c3Yidh-8vt7FSZgqDFJDM-AGUM"/>
+<div class="absolute top-3 right-3 bg-white/90 backdrop-blur-sm px-2 py-1 rounded-lg text-[10px] font-black text-primary">7.9 RATING</div>
+</div>
+<div class="p-4">
+<h3 class="text-lg font-bold text-on-surface">Kim Min-jae</h3>
+<p class="text-zinc-500 text-xs mb-3">Bayern Munich • DF</p>
+<div class="grid grid-cols-3 gap-2 py-2 border-t border-zinc-100">
+<div class="text-center">
+<div class="text-xs font-bold">92%</div>
+<div class="text-[8px] text-zinc-400 uppercase font-black">Pass</div>
+</div>
+<div class="text-center border-x border-zinc-100">
+<div class="text-xs font-bold">3.2</div>
+<div class="text-[8px] text-zinc-400 uppercase font-black">Tackles</div>
+</div>
+<div class="text-center">
+<div class="text-xs font-bold">15</div>
+<div class="text-[8px] text-zinc-400 uppercase font-black">Apps</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section B: Single Column News List -->
+<section class="px-6 py-8 bg-surface-container-low">
+<h2 class="text-xl font-bold tracking-tight mb-6">Latest Updates</h2>
+<div class="space-y-4">
+<article class="flex gap-4 items-center bg-surface-container-lowest p-3 rounded-xl shadow-sm">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="modern football boots on lush green turf with shallow depth of field and morning dew" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCovw0sqS537aTPmItxAAsq-mMYScnCVHR_CmLUkrCZdJVWzrVR7hl-ltMgqNShOx4SYjsptuq2IxdXCx-JNHEhmxd3zjU7mFub9xctCXMUmUc8RNh40O0I5vfHSbDzuPmHo34VJk8t86j4X0Vd6J5eRH-eYPRtn_BtA65wO7OY82jTLXAwJVt8zQD79HeifR1I9AZ6voGcGzptqtqevmtLjVeXQ8sjX5_hVMrPL0oODeILCi9XgMfQKaWQjSPCM4A0LCp1vKZ_YHw"/>
+</div>
+<div class="flex-grow">
+<div class="text-[10px] font-bold text-primary uppercase mb-1">Transfer News</div>
+<h4 class="text-sm font-bold leading-tight mb-1">Lee Kang-in attracting interest from La Liga giants</h4>
+<p class="text-zinc-500 text-[10px]">2 hours ago • 4 min read</p>
+</div>
+</article>
+<article class="flex gap-4 items-center bg-surface-container-lowest p-3 rounded-xl shadow-sm">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="wide angle shot of empty football stadium at dusk with atmospheric blue lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVcQIYyPQvGg9vLQtPiwEne_AhO6tWw2Y_ylLiS373nTVC2TEqpiD7gcJBUoe2IrAdlHLV_ZwEHjOjL1WgrRdjSUm35M4I_gfjgrbjPSKXW6AxRboF1bvCwcpSlfwsoe_Y60kBoHOvm3c1I6eL3SCJ2aC1lq_5Fr-eR-4CVjFp1g5CDbquxZrk1Bq_iTeQoA2DERzLUtA-EAGfFPlvf0lYvV4eETQRiWHQqcGeQZBTx89KChLmRasaq4A4c_IMy-MMfoM5qNR6gbY"/>
+</div>
+<div class="flex-grow">
+<div class="text-[10px] font-bold text-primary uppercase mb-1">National Team</div>
+<h4 class="text-sm font-bold leading-tight mb-1">KFA announces new training facility in Cheonan</h4>
+<p class="text-zinc-500 text-[10px]">5 hours ago • 2 min read</p>
+</div>
+</article>
+<article class="flex gap-4 items-center bg-surface-container-lowest p-3 rounded-xl shadow-sm">
+<div class="w-20 h-20 rounded-lg overflow-hidden flex-shrink-0">
+<img class="w-full h-full object-cover" data-alt="soccer player kicked a ball, focus on feet and ball contact with grass flying up" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDxnzs9ywq1ZlIghIRnXKSw8dYmAVNrx-Eg_QjarouFyVitycqZyw9AxjpRAJJedOpzR2rVjYYFP4c8DoPeQHmqzdyRVj-qKhWm1QXuTJJYy-3XBAoZXWlYdmklgZl7VHXFWepoiFYNs3UpYdOPEqKNwfH6QlcPmMOLm7-aDANpIw0nYqci54Kbnb_m6oyfmzZMRU6fg7ynLKCWZ5jiuwF1tlRqFCHgEszv1rSOYC2aRxLztqeRDxJcuhXTORCb1YDVma2mHSTmEAk"/>
+</div>
+<div class="flex-grow">
+<div class="text-[10px] font-bold text-primary uppercase mb-1">Match Report</div>
+<h4 class="text-sm font-bold leading-tight mb-1">Wolves: Hwang Hee-chan injury update</h4>
+<p class="text-zinc-500 text-[10px]">Yesterday • 6 min read</p>
+</div>
+</article>
+</div>
+</section>
+<!-- Section D: 2-Column Grid Performance Stats -->
+<section class="px-6 py-8">
+<h2 class="text-xl font-bold tracking-tight mb-6">Rising Stars</h2>
+<div class="grid grid-cols-2 gap-4">
+<div class="bg-surface-container-low p-4 rounded-2xl">
+<div class="w-12 h-12 rounded-full overflow-hidden mb-3 ring-2 ring-primary">
+<img class="w-full h-full object-cover" data-alt="portrait of a young athlete in athletic wear looking confident" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAvLvKqFFKLhtNsJSp32oow6qn-sRed98KysExRdzOp1p1TYeJS2UQa2103cqfDnis-NyKdY9Ph_JzoQatyJZ4R2q3zP4ssVt7AKI-r-brn2wfxbD7b4uslWltZo1PSTOxGggx0aYMkkJEncRnn86zp7EIJPPXeDKufdsHQ45ZzoxuJZwMZJu0fAVRWxl_TvjrN1qMvQYe8qfx7xGnUnxfNtxjFR7f-fjlFfYGN74BMH_NMssIt8MEMuIkD_k_jO_24uJCY-k7OMVA"/>
+</div>
+<div class="text-sm font-bold">Bae Jun-ho</div>
+<div class="text-[10px] text-zinc-500 mb-3">Stoke City • MF</div>
+<div class="h-1 bg-zinc-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 75%;"></div>
+</div>
+<div class="flex justify-between mt-1">
+<span class="text-[8px] text-zinc-400 font-bold uppercase">Potential</span>
+<span class="text-[8px] font-bold">75%</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl">
+<div class="w-12 h-12 rounded-full overflow-hidden mb-3 ring-2 ring-zinc-300">
+<img class="w-full h-full object-cover" data-alt="portrait of a determined young football player in white jersey" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY_faQuzGmIEp9L4BJhXRWQgO9nNtQN2rA1mSnHBKqyNNbUGb_8UN76cIxJKOTL8--FMK3XfThowlQ8vRXO6HTzpYieyEJnWE8-OqYKGC4FN9vUVcygpSQMcONDdsrmkNOFplMcqsMeUAdH3JiMrXDsNhC6Yu-aCrDQKi-MwTBfot8bs6RYckIJUVcfhj82iIAaHyyLebzqwBnShb0nsWuuZN79GuCVHRr3S8kTOpRdSTX5Nda2IuOid1jesDuxeSKEnjhnTpSR00"/>
+</div>
+<div class="text-sm font-bold">Yang Min-hyeok</div>
+<div class="text-[10px] text-zinc-500 mb-3">Gangwon FC • FW</div>
+<div class="h-1 bg-zinc-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 92%;"></div>
+</div>
+<div class="flex justify-between mt-1">
+<span class="text-[8px] text-zinc-400 font-bold uppercase">Potential</span>
+<span class="text-[8px] font-bold">92%</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl">
+<div class="w-12 h-12 rounded-full overflow-hidden mb-3 ring-2 ring-zinc-300">
+<img class="w-full h-full object-cover" data-alt="young man in sports training gear with focused expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBN9UcHf6MEuTgaedHPgMg9wpL2kUGyKZeCG0ATiXdRGTdMaW8uKnKFkFgsPFi6BprrO7vl_stIVXVf7o5gZ2bSxpjZHQTdCuWptS7YXtJSkpJvDh6BE0Dj_4QxUwhsYbfP_RC9WUitexX1DqPj5TM596G5A3hUEdfk0SQS-u6SylBLuy_AgZtAcR9VjOjg9PQIPzQnfyicqq6SZfuKjYa4f3oIlQrnbiS0cd87b-XleQPI5vDboZGkbSP7itaxSW8kQkpEi2eeyjQ"/>
+</div>
+<div class="text-sm font-bold">Eom Ji-sung</div>
+<div class="text-[10px] text-zinc-500 mb-3">Swansea • MF</div>
+<div class="h-1 bg-zinc-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 68%;"></div>
+</div>
+<div class="flex justify-between mt-1">
+<span class="text-[8px] text-zinc-400 font-bold uppercase">Potential</span>
+<span class="text-[8px] font-bold">68%</span>
+</div>
+</div>
+<div class="bg-surface-container-low p-4 rounded-2xl">
+<div class="w-12 h-12 rounded-full overflow-hidden mb-3 ring-2 ring-zinc-300">
+<img class="w-full h-full object-cover" data-alt="portrait of smiling athletic man in stadium" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDm1qVfMEVF8y0_WEZ5vw2T18lyxg6sWWOUNVYCATcRRIWt_4cVdr9QyLA-B4ARgWK-WcXinwE5A9NYjDRe3P5BPT9RbQI_SN8AG2YgpAZ1GqyHLSaG0a_E-OTeXfTpG7ot75tpDiG8uHD-Zel0Y-pOOEL8Y3yjrISb7mdbWpobwrg2gdlwxADv3UDL9xpiD9cYTrJX_b7aLRUjJZa0Ji4T3KEwpH72FGhHXk608xWpSlW9mM2-zZQu_D_9w49DSjRwYxvV2uuSy2k"/>
+</div>
+<div class="text-sm font-bold">Seol Young-woo</div>
+<div class="text-[10px] text-zinc-500 mb-3">Red Star • DF</div>
+<div class="h-1 bg-zinc-200 rounded-full overflow-hidden">
+<div class="h-full bg-primary" style="width: 81%;"></div>
+</div>
+<div class="flex justify-between mt-1">
+<span class="text-[8px] text-zinc-400 font-bold uppercase">Potential</span>
+<span class="text-[8px] font-bold">81%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section E: Results List -->
+<section class="px-6 py-8 bg-zinc-950 text-white">
+<h2 class="text-xl font-bold tracking-tight mb-6">Recent Results</h2>
+<div class="space-y-4">
+<div class="bg-zinc-900 rounded-xl p-4 border border-zinc-800">
+<div class="flex justify-between items-center mb-4">
+<span class="text-[8px] font-bold text-zinc-500 uppercase tracking-widest">World Cup Qualifier</span>
+<span class="text-[8px] font-bold text-primary uppercase">Finished</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-[10px]">KOR</div>
+<span class="text-xs font-bold">S. Korea</span>
+</div>
+<div class="text-2xl font-black">2 - 0</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-[10px]">IRQ</div>
+<span class="text-xs font-bold">Iraq</span>
+</div>
+</div>
+</div>
+<div class="bg-zinc-900 rounded-xl p-4 border border-zinc-800">
+<div class="flex justify-between items-center mb-4">
+<span class="text-[8px] font-bold text-zinc-500 uppercase tracking-widest">Premier League</span>
+<span class="text-[8px] font-bold text-zinc-400 uppercase">FT</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-[10px]">TOT</div>
+<span class="text-xs font-bold">Spurs</span>
+</div>
+<div class="text-2xl font-black">4 - 1</div>
+<div class="flex flex-col items-center gap-2">
+<div class="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center font-bold text-[10px]">WHU</div>
+<span class="text-xs font-bold">West Ham</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 px-6 mt-auto bg-zinc-950">
+<div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
+<div class="space-y-4">
+<div class="text-xl font-black text-white">KFN</div>
+<p class="text-zinc-400 text-sm">Korean Football Now. Your ultimate source for professional analysis of Korean athletes worldwide.</p>
+</div>
+<div class="space-y-4">
+<h3 class="text-white text-lg font-bold">Explore</h3>
+<nav class="flex flex-col gap-2">
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">Terms of Service</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">Contact Us</a>
+</nav>
+</div>
+<div class="space-y-4">
+<h3 class="text-white text-lg font-bold">Stay Updated</h3>
+<div class="flex gap-2">
+<input class="bg-zinc-900 border-none rounded-lg text-sm flex-grow focus:ring-1 focus:ring-red-600 outline-none text-white" placeholder="Your email" type="email"/>
+<button class="bg-primary hover:bg-primary-container p-2 rounded-lg transition-all">
+<span class="material-symbols-outlined text-white">arrow_forward</span>
+</button>
+</div>
+<div class="text-[10px] uppercase tracking-widest text-zinc-500">© 2024 Korean Football Now. All rights reserved.</div>
+</div>
+</div>
+</footer>
+<!-- FAB for focused action -->
+<button class="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-br from-primary to-primary-container rounded-full shadow-lg flex items-center justify-center text-white active:scale-90 transition-transform z-40">
+<span class="material-symbols-outlined">sports_soccer</span>
+</button>
+</body></html>

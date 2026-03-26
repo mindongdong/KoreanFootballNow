@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KFN | Korean Football Now</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary": "#ffffff",
+              "primary": "#ac001c",
+              "background": "#f9f9f9",
+              "tertiary-fixed-dim": "#c0c7d6",
+              "secondary-fixed-dim": "#c9c6c5",
+              "on-tertiary-fixed-variant": "#404754",
+              "on-tertiary-container": "#eaf0ff",
+              "outline": "#926e6c",
+              "on-secondary": "#ffffff",
+              "error": "#ba1a1a",
+              "on-primary-fixed-variant": "#930016",
+              "on-background": "#1a1c1c",
+              "surface-container": "#eeeeee",
+              "tertiary": "#4e5562",
+              "error-container": "#ffdad6",
+              "on-primary-fixed": "#410005",
+              "surface-dim": "#dadada",
+              "on-error": "#ffffff",
+              "on-secondary-container": "#656464",
+              "secondary-container": "#e5e2e1",
+              "surface-container-lowest": "#ffffff",
+              "inverse-on-surface": "#f0f1f1",
+              "inverse-surface": "#2f3131",
+              "primary-container": "#d90828",
+              "outline-variant": "#e7bdb9",
+              "on-primary": "#ffffff",
+              "surface-tint": "#c00021",
+              "on-primary-container": "#ffebe9",
+              "surface-container-high": "#e8e8e8",
+              "secondary-fixed": "#e5e2e1",
+              "surface-container-highest": "#e2e2e2",
+              "on-surface": "#1a1c1c",
+              "tertiary-container": "#666d7b",
+              "surface-bright": "#f9f9f9",
+              "surface": "#f9f9f9",
+              "primary-fixed-dim": "#ffb3af",
+              "on-secondary-fixed-variant": "#474646",
+              "secondary": "#5f5e5e",
+              "primary-fixed": "#ffdad7",
+              "tertiary-fixed": "#dce2f3",
+              "on-tertiary-fixed": "#151c27",
+              "on-secondary-fixed": "#1c1b1b",
+              "surface-variant": "#e2e2e2",
+              "on-surface-variant": "#5d3f3d",
+              "inverse-primary": "#ffb3af",
+              "on-error-container": "#93000a",
+              "surface-container-low": "#f3f3f3"
+            },
+            fontFamily: {
+              "headline": ["Pretendard", "Inter", "sans-serif"],
+              "body": ["Pretendard", "Inter", "sans-serif"],
+              "label": ["Pretendard", "Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Pretendard', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            vertical-align: middle;
+        }
+        .editorial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+        }
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 w-full z-50 bg-white/80 dark:bg-zinc-950/80 backdrop-blur-md border-b border-zinc-200/50">
+<div class="flex justify-between items-center h-16 px-6 max-w-[1400px] mx-auto">
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-black text-red-700">KFN</span>
+<span class="hidden md:block text-sm font-medium text-zinc-500 tracking-tight">Korean Football Now</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-red-700 font-bold border-b-2 border-red-700 pb-1 text-sm font-medium" href="#">Home</a>
+<a class="text-zinc-600 hover:text-red-600 transition-colors text-sm font-medium" href="#">Players</a>
+<a class="text-zinc-600 hover:text-red-600 transition-colors text-sm font-medium" href="#">News</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 hover:bg-zinc-100/50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-zinc-600">notifications</span>
+</button>
+<button class="p-2 hover:bg-zinc-100/50 rounded-lg transition-all active:scale-95">
+<span class="material-symbols-outlined text-zinc-600">person</span>
+</button>
+</div>
+</div>
+</header>
+<main class="max-w-[1400px] mx-auto px-6 py-10 space-y-16">
+<!-- Section A: Feature Players -->
+<section>
+<div class="flex justify-between items-end mb-6">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">🔥 이번 라운드 활약 선수</h2>
+<a class="text-sm font-semibold text-primary hover:underline flex items-center gap-1" href="#">
+                    더보기 <span class="material-symbols-outlined text-xs">arrow_forward_ios</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Player Card 1 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/10 hover:bg-surface-bright transition-all shadow-sm">
+<div class="flex items-start justify-between mb-4">
+<div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="close-up portrait of professional football player with intense focus against a blurred stadium background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCkMjoATVg4muB59Lu4erjkVZOgkX8ccV0sHbfZDIXVgIuCNDTjb0NcwZqUvDr5EasG8vojFoSrCht-EcPpLQ4H_RcJ3iPZT63MKQ4w5XTYsaDoNg0X1oVbRH8huxIgmZDSNLCs1wQ6VZ2PzOjopCepkrs0gLvd0gghaV4EjvudNdKTouLCaZw-WqUfE3vRvBn5UGms5QRdwS2mL9bmnWzMb6zYoauJ6bzTvLzHimahfNv2qP8x_F8jgOVRnkBAyVr3NIVqQnSQ394"/>
+</div>
+<div class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-lg font-black tracking-tighter">8.2</div>
+</div>
+<h3 class="text-lg font-bold">손흥민</h3>
+<p class="text-xs text-on-surface-variant font-medium mb-3">Tottenham Hotspur / Premier League</p>
+<div class="flex gap-2 mb-4">
+<span class="text-[10px] font-bold uppercase bg-surface-container-high px-2 py-0.5 rounded text-secondary">1 GOAL</span>
+<span class="text-[10px] font-bold uppercase bg-surface-container-high px-2 py-0.5 rounded text-secondary">1 AS</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+<span>🇰🇷 78%</span>
+<span>🌍 91%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 78%"></div>
+<div class="h-full bg-primary-container opacity-40" style="width: 13%"></div>
+</div>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/10 hover:bg-surface-bright transition-all shadow-sm">
+<div class="flex items-start justify-between mb-4">
+<div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="professional football player in athletic jersey during pre-match training session" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCs5noPi5QwzzFjqRCv-ZGcMA0FYLjXZ9SJi2chozsyf0Ac3Og4Q7oDgVACLl-IWeOrDnFfZ5DL1aYS4v-Yhovwi1iOPOfoYdT1QujYIPPhvffnP2P0Xd33h7Osbtbb-kPuXVRUpfE_SqwiAZWWN1Ce5tlE4Z_AobCp2obRCPpqkykXhsVfjkhnCCXXe530lMK0nlrAICRFu0ujeiAIISHDxc5BOhhRhi7pD17eAOq4NdsohVRpSvES_mGDqqzTYYfl7u343ahTO5c"/>
+</div>
+<div class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-lg font-black tracking-tighter">7.9</div>
+</div>
+<h3 class="text-lg font-bold">김민재</h3>
+<p class="text-xs text-on-surface-variant font-medium mb-3">Bayern Munich / Bundesliga</p>
+<div class="flex gap-2 mb-4">
+<span class="text-[10px] font-bold uppercase bg-surface-container-high px-2 py-0.5 rounded text-secondary">6 RECOV</span>
+<span class="text-[10px] font-bold uppercase bg-surface-container-high px-2 py-0.5 rounded text-secondary">91% PASS</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+<span>🇰🇷 85%</span>
+<span>🌍 88%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 85%"></div>
+<div class="h-full bg-primary-container opacity-40" style="width: 3%"></div>
+</div>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/10 hover:bg-surface-bright transition-all shadow-sm">
+<div class="flex items-start justify-between mb-4">
+<div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="dynamic shot of a football player celebrating a goal in front of cheering fans" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBtMUtLLSbXe5ZGSvlzdvg19moX68yU6m4tr3ASAI_sXTPJAmQZhNWlak7Sx9-4tr8GFxZGq3xei9uwL2tfdqYELuyvlOcLQHyO2N5EcWCcxib_7Mgo_7gDl_ZyUCuO9TilVTfIX3srB4PvAziO9Y-eCdJ9a613Dvgi1xsv0J6eWZz9KJoDNH7jKbiRMMAY7IOnPfTNhWkTx1aR7HPTOSFhxECoQ1UOvSknAjmPRzKz0MBCUnmB0imu0pO1hkixrppfSSbqdzHRXhw"/>
+</div>
+<div class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-lg font-black tracking-tighter">7.4</div>
+</div>
+<h3 class="text-lg font-bold">이강인</h3>
+<p class="text-xs text-on-surface-variant font-medium mb-3">PSG / Ligue 1</p>
+<div class="flex gap-2 mb-4">
+<span class="text-[10px] font-bold uppercase bg-surface-container-high px-2 py-0.5 rounded text-secondary">3 KEY PASS</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+<span>🇰🇷 92%</span>
+<span>🌍 76%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full flex flex-row-reverse overflow-hidden">
+<div class="h-full bg-primary opacity-40" style="width: 76%"></div>
+<div class="h-full bg-primary" style="width: 16%"></div>
+</div>
+</div>
+</div>
+<!-- Card 4 -->
+<div class="bg-surface-container-lowest p-5 rounded-xl border border-outline-variant/10 hover:bg-surface-bright transition-all shadow-sm">
+<div class="flex items-start justify-between mb-4">
+<div class="w-14 h-14 rounded-full overflow-hidden bg-surface-container">
+<img class="w-full h-full object-cover" data-alt="focused athlete during a professional match at night under bright stadium lights" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDjiycwCKAyt_-eC_jfvLXB4ZRnriEEsekORBi-m_IF7o9xsiaGmCoo3Qk_s13a9ZZfU4YADR13CFw2trR12l8-KluLlwi4n5kyvyDiYI-Lwx9Vg0_ySCFc000LXQN2sIbPmBPTK2yumm60CdligcKGLvpArCN9V1nIyZUNM3R8e63e7EMxVe2uP0HxIoipvnMC9LGBea9kgnnXxK6nm24ek4c4QMFTdgMv4HGjLNxASTcPLStZFcBMk2p4jJZrk67Y7OQNqq4ZTfQ"/>
+</div>
+<div class="bg-primary-container/10 text-primary px-3 py-1 rounded-full text-lg font-black tracking-tighter">7.1</div>
+</div>
+<h3 class="text-lg font-bold">황희찬</h3>
+<p class="text-xs text-on-surface-variant font-medium mb-3">Wolves / Premier League</p>
+<div class="flex gap-2 mb-4">
+<span class="text-[10px] font-bold uppercase bg-surface-container-high px-2 py-0.5 rounded text-secondary">82% PASS</span>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-zinc-400">
+<span>🇰🇷 70%</span>
+<span>🌍 72%</span>
+</div>
+<div class="h-1.5 w-full bg-surface-container rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 70%"></div>
+<div class="h-full bg-primary-container opacity-40" style="width: 2%"></div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section B & C: Editorial Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-10">
+<!-- Section B: News Headlines -->
+<section class="lg:col-span-7">
+<div class="flex justify-between items-end mb-6">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">📰 주요 헤드라인</h2>
+<a class="text-sm font-semibold text-primary hover:underline flex items-center gap-1" href="#">더보기 &gt;</a>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low transition-colors rounded-xl group">
+<span class="text-[10px] font-extrabold uppercase bg-secondary-container px-2 py-1 rounded-full min-w-[60px] text-center">EPL</span>
+<h3 class="flex-1 font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-1">손흥민, 북런던 더비 MVP 선정... 현지 평점 9점대 기록</h3>
+<span class="text-xs text-zinc-400">3 hours ago</span>
+<span class="material-symbols-outlined text-zinc-300 group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low transition-colors rounded-xl group">
+<span class="text-[10px] font-extrabold uppercase bg-secondary-container px-2 py-1 rounded-full min-w-[60px] text-center">BUNDES</span>
+<h3 class="flex-1 font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-1">김민재, 독일 매체 선정 '최고의 센터백' 선정</h3>
+<span class="text-xs text-zinc-400">5 hours ago</span>
+<span class="material-symbols-outlined text-zinc-300 group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low transition-colors rounded-xl group">
+<span class="text-[10px] font-extrabold uppercase bg-secondary-container px-2 py-1 rounded-full min-w-[60px] text-center">LIGUE1</span>
+<h3 class="flex-1 font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-1">이강인, 챔피언스리그 선발 출격 예고... 엔리케 감독 신뢰</h3>
+<span class="text-xs text-zinc-400">8 hours ago</span>
+<span class="material-symbols-outlined text-zinc-300 group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low transition-colors rounded-xl group">
+<span class="text-[10px] font-extrabold uppercase bg-secondary-container px-2 py-1 rounded-full min-w-[60px] text-center">EPL</span>
+<h3 class="flex-1 font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-1">황희찬, 부상 복귀 준비 완료... 다음 경기 복귀 가능성</h3>
+<span class="text-xs text-zinc-400">12 hours ago</span>
+<span class="material-symbols-outlined text-zinc-300 group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+<div class="flex items-center gap-4 p-4 hover:bg-surface-container-low transition-colors rounded-xl group">
+<span class="text-[10px] font-extrabold uppercase bg-secondary-container px-2 py-1 rounded-full min-w-[60px] text-center">SCOT</span>
+<h3 class="flex-1 font-semibold text-on-surface group-hover:text-primary transition-colors line-clamp-1">양현준, 셀틱 데뷔골 터졌다... 리그 첫 득점 신고</h3>
+<span class="text-xs text-zinc-400">1 day ago</span>
+<span class="material-symbols-outlined text-zinc-300 group-hover:text-primary transition-colors">arrow_forward</span>
+</div>
+</div>
+</section>
+<!-- Section C: Tonal Difference -->
+<section class="lg:col-span-5">
+<div class="flex justify-between items-end mb-6">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">🌡️ 국내 vs 해외 온도차</h2>
+<a class="text-sm font-semibold text-primary hover:underline" href="#">더보기 &gt;</a>
+</div>
+<div class="space-y-4">
+<div class="bg-surface-container-low p-6 rounded-xl border border-white/50">
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-bold">손흥민</span>
+<span class="text-sm font-black text-primary">+13% <span class="text-[10px] font-medium text-zinc-400">Global favored</span></span>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+<span>🇰🇷 78%</span>
+<span>🌍 91%</span>
+</div>
+<div class="h-2 w-full bg-white rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 78%"></div>
+<div class="h-full bg-primary/20" style="width: 13%"></div>
+</div>
+</div>
+<p class="text-sm italic text-on-surface-variant leading-relaxed">
+                            "해외에서는 전술적 움직임과 리더십에 높은 점수를 주는 반면, 국내는 최근 결정력에 대한 아쉬움이 공존합니다."
+                        </p>
+</div>
+<div class="bg-surface-container-low p-6 rounded-xl border border-white/50">
+<div class="flex justify-between items-center mb-4">
+<span class="text-lg font-bold">김민재</span>
+<span class="text-sm font-black text-primary">+3% <span class="text-[10px] font-medium text-zinc-400">Global favored</span></span>
+</div>
+<div class="space-y-2 mb-4">
+<div class="flex justify-between text-[10px] font-bold uppercase tracking-widest text-zinc-500">
+<span>🇰🇷 85%</span>
+<span>🌍 88%</span>
+</div>
+<div class="h-2 w-full bg-white rounded-full flex overflow-hidden">
+<div class="h-full bg-primary" style="width: 85%"></div>
+<div class="h-full bg-primary/20" style="width: 3%"></div>
+</div>
+</div>
+<p class="text-sm italic text-on-surface-variant leading-relaxed">
+                            "철벽 수비력에 대해서는 동서양을 막론하고 이견 없는 최정상급 평가를 받고 있습니다."
+                        </p>
+</div>
+</div>
+</section>
+</div>
+<!-- Section D: League Grid -->
+<section>
+<div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-8 gap-4">
+<div>
+<h2 class="text-2xl font-bold tracking-tight text-on-surface mb-4">📊 리그별 선수</h2>
+<div class="flex flex-wrap gap-2">
+<button class="px-4 py-1.5 rounded-full text-sm font-bold bg-primary text-white shadow-md">All</button>
+<button class="px-4 py-1.5 rounded-full text-sm font-bold bg-surface-container-high text-secondary hover:bg-surface-variant transition-all">EPL</button>
+<button class="px-4 py-1.5 rounded-full text-sm font-bold bg-surface-container-high text-secondary hover:bg-surface-variant transition-all">Bundesliga</button>
+<button class="px-4 py-1.5 rounded-full text-sm font-bold bg-surface-container-high text-secondary hover:bg-surface-variant transition-all">La Liga</button>
+<button class="px-4 py-1.5 rounded-full text-sm font-bold bg-surface-container-high text-secondary hover:bg-surface-variant transition-all">MLS</button>
+<button class="px-4 py-1.5 rounded-full text-sm font-bold bg-surface-container-high text-secondary hover:bg-surface-variant transition-all">Scottish</button>
+</div>
+</div>
+<a class="text-sm font-semibold text-primary hover:underline" href="#">더보기 &gt;</a>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- League Player Row 1 -->
+<div class="p-5 bg-white rounded-xl border border-zinc-100 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-bold">설영우</h4>
+<span class="text-xs font-black text-zinc-300">#RB</span>
+</div>
+<p class="text-[10px] text-zinc-400 uppercase font-bold tracking-wider mb-2">Crvena zvezda</p>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-zinc-400 font-bold">SEASON</span>
+<span class="text-sm font-bold">1 Goal 2 AS</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-zinc-400 font-bold block">RATING</span>
+<span class="text-lg font-black text-primary">7.02</span>
+</div>
+</div>
+</div>
+<div class="p-5 bg-white rounded-xl border border-zinc-100 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-bold">백승호</h4>
+<span class="text-xs font-black text-zinc-300">#CM</span>
+</div>
+<p class="text-[10px] text-zinc-400 uppercase font-bold tracking-wider mb-2">Birmingham City</p>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-zinc-400 font-bold">SEASON</span>
+<span class="text-sm font-bold">0 Goal 4 AS</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-zinc-400 font-bold block">RATING</span>
+<span class="text-lg font-black text-primary">6.98</span>
+</div>
+</div>
+</div>
+<div class="p-5 bg-white rounded-xl border border-zinc-100 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-bold">정우영</h4>
+<span class="text-xs font-black text-zinc-300">#LW</span>
+</div>
+<p class="text-[10px] text-zinc-400 uppercase font-bold tracking-wider mb-2">Union Berlin</p>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-zinc-400 font-bold">SEASON</span>
+<span class="text-sm font-bold">2 Goal 1 AS</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-zinc-400 font-bold block">RATING</span>
+<span class="text-lg font-black text-primary">6.85</span>
+</div>
+</div>
+</div>
+<div class="p-5 bg-white rounded-xl border border-zinc-100 hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start mb-4">
+<h4 class="font-bold">조규성</h4>
+<span class="text-xs font-black text-zinc-300">#ST</span>
+</div>
+<p class="text-[10px] text-zinc-400 uppercase font-bold tracking-wider mb-2">Midtjylland</p>
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] text-zinc-400 font-bold">SEASON</span>
+<span class="text-sm font-bold">12 Goal 3 AS</span>
+</div>
+<div class="text-right">
+<span class="text-[10px] text-zinc-400 font-bold block">RATING</span>
+<span class="text-lg font-black text-primary">7.42</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Section E: Match Schedule -->
+<section>
+<div class="flex justify-between items-end mb-6">
+<h2 class="text-2xl font-bold tracking-tight text-on-surface">⏰ 다음 라운드 경기 예정</h2>
+<a class="text-sm font-semibold text-primary hover:underline" href="#">더보기 &gt;</a>
+</div>
+<div class="bg-surface-container-low rounded-2xl overflow-hidden border border-zinc-200/50 shadow-sm">
+<!-- Date Group -->
+<div>
+<div class="bg-zinc-200/50 px-6 py-3">
+<span class="text-sm font-black tracking-widest text-secondary">3/28 (Sat)</span>
+</div>
+<div class="divide-y divide-zinc-200/30">
+<div class="flex items-center justify-between px-6 py-5 bg-white hover:bg-zinc-50 transition-colors">
+<div class="flex items-center gap-4 flex-1">
+<span class="material-symbols-outlined text-red-600">timer</span>
+<div class="flex items-baseline gap-2">
+<span class="font-bold text-lg">손흥민</span>
+<span class="text-xs font-medium text-zinc-400 uppercase tracking-tighter">Tottenham</span>
+</div>
+</div>
+<div class="flex items-center gap-6 flex-1 justify-center">
+<span class="text-xs font-bold text-zinc-300">vs</span>
+<span class="font-bold text-lg text-zinc-400">Everton</span>
+</div>
+<div class="flex-1 text-right">
+<span class="bg-surface-container px-3 py-1 rounded-full text-xs font-black tracking-tight">23:00</span>
+</div>
+</div>
+<div class="flex items-center justify-between px-6 py-5 bg-white hover:bg-zinc-50 transition-colors">
+<div class="flex items-center gap-4 flex-1">
+<span class="material-symbols-outlined text-zinc-300">timer</span>
+<div class="flex items-baseline gap-2">
+<span class="font-bold text-lg text-on-surface">김민재</span>
+<span class="text-xs font-medium text-zinc-400 uppercase tracking-tighter">Bayern</span>
+</div>
+</div>
+<div class="flex items-center gap-6 flex-1 justify-center">
+<span class="text-xs font-bold text-zinc-300">vs</span>
+<span class="font-bold text-lg text-zinc-400">Dortmund</span>
+</div>
+<div class="flex-1 text-right">
+<span class="bg-surface-container px-3 py-1 rounded-full text-xs font-black tracking-tight">02:30</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Date Group 2 -->
+<div>
+<div class="bg-zinc-200/50 px-6 py-3">
+<span class="text-sm font-black tracking-widest text-secondary">3/29 (Sun)</span>
+</div>
+<div class="divide-y divide-zinc-200/30">
+<div class="flex items-center justify-between px-6 py-5 bg-white hover:bg-zinc-50 transition-colors">
+<div class="flex items-center gap-4 flex-1">
+<span class="material-symbols-outlined text-red-600">timer</span>
+<div class="flex items-baseline gap-2">
+<span class="font-bold text-lg">이강인</span>
+<span class="text-xs font-medium text-zinc-400 uppercase tracking-tighter">PSG</span>
+</div>
+</div>
+<div class="flex items-center gap-6 flex-1 justify-center">
+<span class="text-xs font-bold text-zinc-300">vs</span>
+<span class="font-bold text-lg text-zinc-400">Marseille</span>
+</div>
+<div class="flex-1 text-right">
+<span class="bg-surface-container px-3 py-1 rounded-full text-xs font-black tracking-tight">04:00</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer -->
+<footer class="bg-zinc-950 text-white w-full py-16 px-6 mt-auto border-t border-zinc-900">
+<div class="max-w-[1400px] mx-auto grid grid-cols-1 md:grid-cols-12 gap-12">
+<div class="md:col-span-5">
+<div class="flex items-baseline gap-2 mb-6">
+<span class="text-2xl font-black text-white">KFN</span>
+<span class="text-sm text-zinc-500 font-medium">Korean Football Now</span>
+</div>
+<p class="text-zinc-400 text-sm mb-8 leading-relaxed max-w-sm">
+                    해외에서 활약 중인 한국 선수들의 데이터와 뉴스를 가장 빠르고 정확하게 전달합니다. 전 세계의 시선으로 바라보는 우리의 영웅들을 만나보세요.
+                </p>
+<div class="flex flex-col gap-4">
+<span class="text-[10px] uppercase tracking-[0.2em] text-zinc-500 font-bold">News Letter</span>
+<div class="flex gap-2">
+<input class="bg-zinc-900 border-none rounded-full px-5 py-3 text-sm flex-1 focus:ring-1 focus:ring-red-600 outline-none" placeholder="Email address" type="email"/>
+<button class="bg-primary hover:bg-primary-container text-white text-sm font-bold px-6 py-3 rounded-full transition-all active:scale-95">Subscribe</button>
+</div>
+</div>
+</div>
+<div class="md:col-span-2 space-y-4">
+<h4 class="text-lg font-bold">Menu</h4>
+<nav class="flex flex-col gap-2">
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">Home</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">Players</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">League News</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">Transfer Market</a>
+</nav>
+</div>
+<div class="md:col-span-2 space-y-4">
+<h4 class="text-lg font-bold">Support</h4>
+<nav class="flex flex-col gap-2">
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">Privacy Policy</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">Terms of Service</a>
+<a class="text-zinc-500 hover:text-red-500 transition-colors text-sm" href="#">Contact Us</a>
+</nav>
+</div>
+<div class="md:col-span-3 space-y-4">
+<h4 class="text-lg font-bold">Social</h4>
+<div class="flex gap-4">
+<div class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center cursor-pointer hover:bg-zinc-800 transition-all">
+<span class="material-symbols-outlined text-sm">share</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center cursor-pointer hover:bg-zinc-800 transition-all">
+<span class="material-symbols-outlined text-sm">podcasts</span>
+</div>
+<div class="w-10 h-10 rounded-full bg-zinc-900 flex items-center justify-center cursor-pointer hover:bg-zinc-800 transition-all">
+<span class="material-symbols-outlined text-sm">videocam</span>
+</div>
+</div>
+<p class="text-[10px] text-zinc-600 pt-8">
+                    © 2024 Korean Football Now. All rights reserved.
+                </p>
+</div>
+</div>
+</footer>
+</body></html>

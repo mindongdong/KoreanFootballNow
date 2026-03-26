@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="ko"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>KFN STADIUM - 선수 명단</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link as="style" crossorigin="" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.css" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-primary": "#ffffff",
+              "surface-container-high": "#e8e8e8",
+              "inverse-primary": "#ffb3af",
+              "surface-tint": "#c00021",
+              "primary-fixed": "#ffdad7",
+              "on-surface": "#1a1c1c",
+              "on-secondary-fixed-variant": "#474646",
+              "on-secondary-fixed": "#1c1b1b",
+              "on-surface-variant": "#5d3f3d",
+              "surface-container-low": "#f3f3f3",
+              "on-primary-fixed": "#410005",
+              "surface-container-highest": "#e2e2e2",
+              "on-secondary": "#ffffff",
+              "secondary-fixed": "#e5e2e1",
+              "secondary": "#5f5e5e",
+              "on-tertiary-container": "#eaf0ff",
+              "secondary-container": "#e5e2e1",
+              "on-primary-container": "#ffebe9",
+              "background": "#f9f9f9",
+              "primary": "#ac001c",
+              "surface-variant": "#e2e2e2",
+              "tertiary-container": "#666d7b",
+              "surface-dim": "#dadada",
+              "outline-variant": "#e7bdb9",
+              "on-error": "#ffffff",
+              "on-tertiary-fixed": "#151c27",
+              "surface-bright": "#f9f9f9",
+              "secondary-fixed-dim": "#c9c6c5",
+              "on-error-container": "#93000a",
+              "error-container": "#ffdad6",
+              "on-background": "#1a1c1c",
+              "inverse-on-surface": "#f0f1f1",
+              "primary-fixed-dim": "#ffb3af",
+              "tertiary-fixed": "#dce2f3",
+              "surface-container-lowest": "#ffffff",
+              "on-tertiary": "#ffffff",
+              "surface-container": "#eeeeee",
+              "on-tertiary-fixed-variant": "#404754",
+              "outline": "#926e6c",
+              "primary-container": "#d90828",
+              "on-secondary-container": "#656464",
+              "error": "#ba1a1a",
+              "tertiary": "#4e5562",
+              "tertiary-fixed-dim": "#c0c7d6",
+              "surface": "#f9f9f9",
+              "inverse-surface": "#2f3131",
+              "on-primary-fixed-variant": "#930016"
+            },
+            fontFamily: {
+              "headline": ["Pretendard", "Inter", "sans-serif"],
+              "body": ["Pretendard", "Inter", "sans-serif"],
+              "label": ["Pretendard", "Inter", "sans-serif"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "1.5rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Pretendard', sans-serif; -webkit-font-smoothing: antialiased; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+        .editorial-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.5rem; }
+        .glass-nav { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+</head>
+<body class="bg-background text-on-surface">
+<!-- Top Navigation Bar -->
+<nav class="fixed top-0 w-full z-50 bg-white/80 dark:bg-neutral-900/80 backdrop-blur-xl">
+<div class="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto font-['Pretendard'] tracking-tight">
+<div class="text-2xl font-black italic tracking-tighter text-red-700 dark:text-red-600">KFN STADIUM</div>
+<div class="hidden md:flex items-center space-x-8">
+<a class="text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-400 transition-colors" href="#">홈</a>
+<a class="text-red-700 dark:text-red-500 font-bold border-b-2 border-red-700 dark:border-red-500 pb-1" href="#">선수</a>
+<a class="text-neutral-600 dark:text-neutral-400 hover:text-red-600 dark:hover:text-red-400 transition-colors" href="#">뉴스</a>
+</div>
+<div class="flex items-center space-x-4">
+<button class="material-symbols-outlined text-neutral-600 hover:opacity-80 transition-all duration-200" data-icon="search">search</button>
+<button class="material-symbols-outlined text-neutral-600 hover:opacity-80 transition-all duration-200" data-icon="notifications">notifications</button>
+<div class="w-8 h-8 rounded-full overflow-hidden bg-surface-container">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional man in a clean studio setting with neutral background, minimalist aesthetic" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDvPta_ekTwVCCHrgN27GkFPvI7l82078eF8wAgPs8zk1fxEIRdLtLN4Z30MGQs56mfyiM-kMvT6TXPxGzzgLjNeZLkJMibWrUWcE2XpBNLgx2JbXEoZYDpM5ys4webAqFrK_gooDprX-tFiqxZjjs-g0Idg7BqQeOd5ozRPpINy8-F6HyqUK8w1PyWdy6WwW9nkQqulb24hEUUKWpxsjlEL4bmVSa4S0ZgIRuscPFZ0-2Lzyu1l1rS8wQC2-kDc1UOH74qYJjWDWY"/>
+</div>
+</div>
+</div>
+</nav>
+<!-- Main Content -->
+<main class="pt-28 pb-20 max-w-7xl mx-auto px-6">
+<!-- Page Header -->
+<header class="mb-12 flex flex-col md:flex-row md:items-end justify-between gap-6">
+<div class="max-w-2xl">
+<div class="flex items-center gap-4 mb-2">
+<h1 class="text-5xl font-black tracking-tight text-on-surface">해외파 한국 선수</h1>
+<span class="bg-primary text-on-primary px-3 py-1 rounded-full text-sm font-bold">31명</span>
+</div>
+<p class="text-on-surface-variant text-lg font-medium opacity-80">해외 리그에서 뛰고 있는 한국 선수들의 최신 스탯과 여론</p>
+</div>
+<div class="flex items-center bg-surface-container-low p-1 rounded-full">
+<button class="px-6 py-2 rounded-full text-sm font-semibold bg-white shadow-sm text-primary">활성 리스트</button>
+<button class="px-6 py-2 rounded-full text-sm font-semibold text-secondary hover:text-on-surface transition-colors">아카이브</button>
+</div>
+</header>
+<!-- Filter Bar -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-10 pb-4 border-b border-outline-variant/10">
+<div class="flex items-center gap-3 overflow-x-auto no-scrollbar pb-2 md:pb-0">
+<button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-bold bg-primary-container text-on-primary">전체</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium bg-surface-container-low hover:bg-surface-container-high transition-colors text-secondary">EPL</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium bg-surface-container-low hover:bg-surface-container-high transition-colors text-secondary">분데스리가</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium bg-surface-container-low hover:bg-surface-container-high transition-colors text-secondary">라리가</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium bg-surface-container-low hover:bg-surface-container-high transition-colors text-secondary">MLS</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium bg-surface-container-low hover:bg-surface-container-high transition-colors text-secondary">리그1</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium bg-surface-container-low hover:bg-surface-container-high transition-colors text-secondary">스코티시</button>
+<button class="whitespace-nowrap px-5 py-2 rounded-full text-sm font-medium bg-surface-container-low hover:bg-surface-container-high transition-colors text-secondary">기타</button>
+</div>
+<div class="flex items-center gap-2 text-sm font-medium text-on-surface whitespace-nowrap">
+<span>정렬: 평점순</span>
+<span class="material-symbols-outlined text-sm" data-icon="keyboard_arrow_down">keyboard_arrow_down</span>
+</div>
+</div>
+<!-- Player Grid -->
+<div class="editorial-grid">
+<!-- Card 1: 손흥민 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:bg-surface-bright border border-transparent hover:border-outline-variant/20">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-primary-container flex items-center justify-center text-white font-bold text-lg">SHM</div>
+<div>
+<h3 class="font-black text-lg leading-tight">손흥민</h3>
+<p class="text-xs text-on-surface-variant font-medium">LAFC · MLS</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1">최근 평점</p>
+<p class="text-3xl font-black text-primary leading-none">8.2</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low rounded-lg p-3 flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">시즌 기록</span>
+<span class="text-sm font-black">12골 5도움</span>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">출전</span>
+<span class="text-xs font-bold text-on-surface">18경기</span>
+</div>
+<div class="h-1 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 82%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 2: 김민재 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:bg-surface-bright border border-transparent hover:border-outline-variant/20">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-neutral-800 flex items-center justify-center text-white font-bold text-lg">KMJ</div>
+<div>
+<h3 class="font-black text-lg leading-tight">김민재</h3>
+<p class="text-xs text-on-surface-variant font-medium">바이에른 뮌헨 · 분데스리가</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1">최근 평점</p>
+<p class="text-3xl font-black text-primary leading-none">7.8</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low rounded-lg p-3 flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">시즌 기록</span>
+<span class="text-sm font-black">0골 1도움</span>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">출전</span>
+<span class="text-xs font-bold text-on-surface">22경기</span>
+</div>
+<div class="h-1 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 78%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 3: 이강인 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:bg-surface-bright border border-transparent hover:border-outline-variant/20">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-blue-900 flex items-center justify-center text-white font-bold text-lg">LGI</div>
+<div>
+<h3 class="font-black text-lg leading-tight">이강인</h3>
+<p class="text-xs text-on-surface-variant font-medium">PSG · 리그1</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1">최근 평점</p>
+<p class="text-3xl font-black text-primary leading-none">7.5</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low rounded-lg p-3 flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">시즌 기록</span>
+<span class="text-sm font-black">4골 8도움</span>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">출전</span>
+<span class="text-xs font-bold text-on-surface">20경기</span>
+</div>
+<div class="h-1 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 75%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 4: 황희찬 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:bg-surface-bright border border-transparent hover:border-outline-variant/20">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center text-white font-bold text-lg">HHC</div>
+<div>
+<h3 class="font-black text-lg leading-tight">황희찬</h3>
+<p class="text-xs text-on-surface-variant font-medium">울버햄튼 · EPL</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1">최근 평점</p>
+<p class="text-3xl font-black text-primary leading-none">7.1</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low rounded-lg p-3 flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">시즌 기록</span>
+<span class="text-sm font-black">6골 2도움</span>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">출전</span>
+<span class="text-xs font-bold text-on-surface">19경기</span>
+</div>
+<div class="h-1 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 71%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 5: 정우영 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:bg-surface-bright border border-transparent hover:border-outline-variant/20">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-red-800 flex items-center justify-center text-white font-bold text-lg">JWY</div>
+<div>
+<h3 class="font-black text-lg leading-tight">정우영</h3>
+<p class="text-xs text-on-surface-variant font-medium">프라이부르크 · 분데스리가</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1">최근 평점</p>
+<p class="text-3xl font-black text-primary leading-none">6.9</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low rounded-lg p-3 flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">시즌 기록</span>
+<span class="text-sm font-black">2골 3도움</span>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">출전</span>
+<span class="text-xs font-bold text-on-surface">15경기</span>
+</div>
+<div class="h-1 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 69%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 6: 조규성 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:bg-surface-bright border border-transparent hover:border-outline-variant/20">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-teal-800 flex items-center justify-center text-white font-bold text-lg">CGS</div>
+<div>
+<h3 class="font-black text-lg leading-tight">조규성</h3>
+<p class="text-xs text-on-surface-variant font-medium">미도틸란 · 유로파리그</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1">최근 평점</p>
+<p class="text-3xl font-black text-primary leading-none">6.8</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low rounded-lg p-3 flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">시즌 기록</span>
+<span class="text-sm font-black">5골 1도움</span>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">출전</span>
+<span class="text-xs font-bold text-on-surface">16경기</span>
+</div>
+<div class="h-1 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 68%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 7: 양현준 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:bg-surface-bright border border-transparent hover:border-outline-variant/20">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-green-700 flex items-center justify-center text-white font-bold text-lg">YHJ</div>
+<div>
+<h3 class="font-black text-lg leading-tight">양현준</h3>
+<p class="text-xs text-on-surface-variant font-medium">셀틱 · 스코티시</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1">최근 평점</p>
+<p class="text-3xl font-black text-primary leading-none">7.0</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low rounded-lg p-3 flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">시즌 기록</span>
+<span class="text-sm font-black">1골 4도움</span>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">출전</span>
+<span class="text-xs font-bold text-on-surface">12경기</span>
+</div>
+<div class="h-1 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 70%;"></div>
+</div>
+</div>
+</div>
+<!-- Card 8: 백승호 -->
+<div class="bg-surface-container-lowest rounded-xl p-6 transition-all duration-300 hover:bg-surface-bright border border-transparent hover:border-outline-variant/20">
+<div class="flex items-start justify-between mb-6">
+<div class="flex items-center gap-4">
+<div class="w-12 h-12 rounded-full bg-red-600 flex items-center justify-center text-white font-bold text-lg">BSH</div>
+<div>
+<h3 class="font-black text-lg leading-tight">백승호</h3>
+<p class="text-xs text-on-surface-variant font-medium">페예노르트 · 에레디비시</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] uppercase tracking-wider text-on-surface-variant font-bold mb-1">최근 평점</p>
+<p class="text-3xl font-black text-primary leading-none">6.7</p>
+</div>
+</div>
+<div class="space-y-3">
+<div class="bg-surface-container-low rounded-lg p-3 flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">시즌 기록</span>
+<span class="text-sm font-black">1골 2도움</span>
+</div>
+<div class="flex justify-between items-center px-1">
+<span class="text-[10px] font-bold text-on-surface-variant uppercase">출전</span>
+<span class="text-xs font-bold text-on-surface">10경기</span>
+</div>
+<div class="h-1 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary-container" style="width: 67%;"></div>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Load More -->
+<div class="mt-16 flex justify-center">
+<button class="px-10 py-4 bg-surface-container-high text-on-surface font-bold rounded-full hover:bg-surface-container-highest transition-all duration-200">
+                선수 더 보기
+            </button>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-neutral-950 dark:bg-black w-full py-12 px-6">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto">
+<div class="space-y-6">
+<div class="text-xl font-black text-white">KFN STADIUM</div>
+<div class="flex flex-wrap gap-4 text-sm text-neutral-400 font-['Pretendard']">
+<a class="text-neutral-500 hover:text-neutral-200 transition-colors" href="#">회사소개</a>
+<a class="text-neutral-500 hover:text-neutral-200 transition-colors" href="#">이용약관</a>
+<a class="text-neutral-500 hover:text-neutral-200 transition-colors" href="#">개인정보처리방침</a>
+<a class="text-neutral-500 hover:text-neutral-200 transition-colors" href="#">제휴문의</a>
+</div>
+<p class="text-neutral-500 text-sm font-['Pretendard']">© 2024 KFN STADIUM. All rights reserved.</p>
+</div>
+<div class="flex flex-col justify-end space-y-4">
+<h4 class="text-white font-bold">뉴스레터 구독</h4>
+<div class="flex gap-2">
+<input class="flex-1 bg-neutral-900 border-none rounded-lg px-4 py-3 text-white focus:ring-1 focus:ring-red-600 transition-all" placeholder="이메일 주소를 입력하세요" type="email"/>
+<button class="bg-primary text-on-primary px-6 py-3 rounded-lg font-bold hover:bg-primary-container transition-all">구독</button>
+</div>
+<p class="text-neutral-500 text-xs">최신 해외파 소식을 가장 빠르게 받아보세요.</p>
+</div>
+</div>
+</footer>
+</body></html>
